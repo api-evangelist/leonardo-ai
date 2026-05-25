@@ -1,0 +1,86 @@
+extends: spectral:oas
+documentationUrl: https://docs.leonardo.ai/
+rules:
+  # Naming & casing
+  operation-id-pattern:
+    description: Leonardo.AI uses lowerCamelCase operationIds (e.g. createGeneration, getGenerationById).
+    severity: error
+    given: "$.paths.*[get,post,put,delete,patch].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]+$"
+
+  resource-path-kebab-or-camel:
+    description: Leonardo.AI paths use kebab-case segments and lowerCamelCase parameter names (e.g. /init-image, /platformModels, /generations-image-to-video).
+    severity: warn
+    given: "$.paths"
+    then:
+      field: "@key"
+      function: pattern
+      functionOptions:
+        match: "^(/[a-z0-9][a-z0-9-]*(/\\{[a-zA-Z]+\\})?)+$"
+
+  tag-required:
+    description: Every operation must declare at least one tag.
+    severity: error
+    given: "$.paths.*[get,post,put,delete,patch]"
+    then:
+      field: tags
+      function: truthy
+
+  bearer-security:
+    description: Leonardo.AI requires HTTP bearer authentication on every operation.
+    severity: error
+    given: "$"
+    then:
+      field: "components.securitySchemes.bearerAuth"
+      function: truthy
+
+  # Documentation
+  operation-summary-required:
+    description: Every operation should have a non-empty summary.
+    severity: warn
+    given: "$.paths.*[get,post,put,delete,patch]"
+    then:
+      field: summary
+      function: truthy
+
+  operation-summary-title-case:
+    description: Operation summaries should use Title Case.
+    severity: warn
+    given: "$.paths.*[get,post,put,delete,patch].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z]"
+
+  # Conventions
+  no-trailing-slash:
+    description: Leonardo.AI paths do not end with a trailing slash.
+    severity: error
+    given: "$.paths"
+    then:
+      field: "@key"
+      function: pattern
+      functionOptions:
+        notMatch: "/$"
+
+  id-path-uuid:
+    description: "Path parameters named {id} are UUIDs and should declare format: uuid where present."
+    severity: hint
+    given: "$.paths.*.parameters[?(@.in=='path' && @.name=='id')].schema"
+    then:
+      field: format
+      function: enumeration
+      functionOptions:
+        values: ["uuid"]
+
+  server-leonardo:
+    description: The canonical Leonardo.AI server URL is https://cloud.leonardo.ai/api/rest/v1.
+    severity: warn
+    given: "$.servers[*].url"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://cloud\\.leonardo\\.ai/api/rest/v1$"

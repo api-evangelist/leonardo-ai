@@ -1,0 +1,33 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://cloud.leonardo.ai/api/rest/v1/generations",
+    "headers": {
+      "Authorization": "Bearer YOUR_LEONARDO_AI_PRODUCTION_API_KEY",
+      "accept": "application/json",
+      "content-type": "application/json"
+    },
+    "body": {
+      "prompt": "A serene mountain lake at golden hour, cinematic, photo-realistic",
+      "negative_prompt": "low quality, blurry",
+      "modelId": "b24e16ff-06e3-43eb-8d33-4416c2d75876",
+      "num_images": 2,
+      "width": 1024,
+      "height": 1024,
+      "num_inference_steps": 30,
+      "guidance_scale": 7,
+      "alchemy": true,
+      "presetStyle": "CINEMATIC",
+      "public": false
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "sdGenerationJob": {
+        "generationId": "f3e95b9a-37a4-4f3a-9c40-2c1a3c0a2dd1",
+        "apiCreditCost": 0.024
+      }
+    }
+  }
+}

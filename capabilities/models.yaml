@@ -1,0 +1,235 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Leonardo.AI Models
+  description: 'Leonardo.AI Models. 5 operations. Lead operation: Train a Custom Model. Self-contained Naftiko capability
+    covering the Leonardo.AI Models business surface.'
+  tags:
+  - Leonardo.AI
+  - Models
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    LEONARDO_AI_API_KEY: LEONARDO_AI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: models
+    baseUri: https://cloud.leonardo.ai/api/rest/v1
+    description: Leonardo.AI Models business capability. Self-contained, no shared references.
+    resources:
+    - name: models
+      path: /models
+      operations:
+      - name: create-model
+        method: POST
+        description: This endpoint will train a new custom model
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: models-id
+      path: /models/{id}
+      operations:
+      - name: get-model-by-id
+        method: GET
+        description: This endpoint gets the specific custom model
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: The ID of the custom model to return.
+          required: true
+      - name: delete-model-by-id
+        method: DELETE
+        description: This endpoint will delete a specific custom model
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: The ID of the model to delete.
+          required: true
+    - name: models-user-user-id
+      path: /models/user/{userId}
+      operations:
+      - name: get-custom-models-by-user-id
+        method: GET
+        description: This endpoint gets the list of custom models belongs to the user.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          description: The ID of the user to return.
+          required: true
+    - name: platform-models
+      path: /platformModels
+      operations:
+      - name: list-platform-models
+        method: GET
+        description: Get a list of public Platform Models available for use with generations.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+    authentication:
+      type: bearer
+      value: '{{env.LEONARDO_AI_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: models-rest
+    port: 8080
+    description: REST adapter for Leonardo.AI Models. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/models
+      name: models
+      description: REST surface for models.
+      operations:
+      - method: POST
+        name: create-model
+        description: This endpoint will train a new custom model
+        call: models.create-model
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/models/{id}
+      name: models-id
+      description: REST surface for models-id.
+      operations:
+      - method: GET
+        name: get-model-by-id
+        description: This endpoint gets the specific custom model
+        call: models.get-model-by-id
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete-model-by-id
+        description: This endpoint will delete a specific custom model
+        call: models.delete-model-by-id
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/models/user/{userId}
+      name: models-user-user-id
+      description: REST surface for models-user-user-id.
+      operations:
+      - method: GET
+        name: get-custom-models-by-user-id
+        description: This endpoint gets the list of custom models belongs to the user.
+        call: models.get-custom-models-by-user-id
+        with:
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/platformModels
+      name: platform-models
+      description: REST surface for platform-models.
+      operations:
+      - method: GET
+        name: list-platform-models
+        description: Get a list of public Platform Models available for use with generations.
+        call: models.list-platform-models
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: models-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Leonardo.AI Models. One tool per consumed operation, routed through this capability's consumes
+      block.
+    tools:
+    - name: leonardo-ai-create-model
+      description: This endpoint will train a new custom model
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: models.create-model
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: leonardo-ai-get-model-by-id
+      description: This endpoint gets the specific custom model
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: models.get-model-by-id
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: leonardo-ai-delete-model-by-id
+      description: This endpoint will delete a specific custom model
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: models.delete-model-by-id
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: leonardo-ai-get-custom-models-by-user-id
+      description: This endpoint gets the list of custom models belongs to the user.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: models.get-custom-models-by-user-id
+      with:
+        userId: tools.userId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: leonardo-ai-list-platform-models
+      description: Get a list of public Platform Models available for use with generations.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: models.list-platform-models
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.

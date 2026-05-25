@@ -1,0 +1,123 @@
+name: Leonardo.AI Vocabulary
+description: Operational, capability, and modality vocabulary for the Leonardo.AI Production API. Captures the
+  generation modalities, model families, pipelines, and lifecycle states exposed by Leonardo.AI.
+provider: Leonardo.AI
+providerId: leonardo-ai
+created: '2026-05-25'
+modified: '2026-05-25'
+domains:
+  modalities:
+    - id: image
+      label: Image
+      description: Static raster image generation, editing, and post-processing.
+    - id: video
+      label: Video
+      description: Motion video generation from text or image seeds.
+    - id: 3d
+      label: 3D
+      description: 3D model asset generation and texturing workflows.
+    - id: canvas
+      label: Realtime Canvas
+      description: Sub-second LCM-driven iterative editing.
+  model_families:
+    - id: phoenix
+      label: Phoenix
+      provider: Leonardo
+    - id: lucid-origin
+      label: Lucid Origin
+      provider: Leonardo
+    - id: lucid-realism
+      label: Lucid Realism
+      provider: Leonardo
+    - id: flux
+      label: FLUX (1.x / 2.x / Kontext / Schnell / Dev / Pro)
+      provider: Black Forest Labs
+    - id: ideogram
+      label: Ideogram 3.0
+      provider: Ideogram
+    - id: gpt-image
+      label: GPT Image 1.5 / 2
+      provider: OpenAI
+    - id: nano-banana
+      label: Nano Banana
+      provider: Third party
+    - id: seedream
+      label: Seedream
+      provider: ByteDance
+    - id: kling
+      label: Kling 2.x / 3.x
+      provider: Kuaishou
+    - id: ltx
+      label: LTX 2.x
+      provider: Lightricks
+    - id: veo
+      label: Veo 3.x
+      provider: Google
+    - id: seedance
+      label: Seedance
+      provider: ByteDance
+    - id: hailuo
+      label: Hailuo 2.3
+      provider: MiniMax
+    - id: rodin
+      label: Rodin V2
+      provider: Hyper3D
+    - id: svd
+      label: Stable Video Diffusion
+      provider: Stability AI
+  pipelines:
+    - id: photoreal
+      label: PhotoReal
+      description: Leonardo-tuned realism pipeline (v1, v2) layered on top of SD-family base models.
+    - id: alchemy
+      label: Alchemy
+      description: Higher-fidelity composition and detail pipeline.
+    - id: prompt-magic
+      label: Prompt Magic
+      description: Automated prompt enhancement for richer outputs.
+    - id: transparency
+      label: Transparency
+      description: Foreground-only transparent-background image output.
+    - id: image-guidance
+      label: Image Guidance (ControlNet)
+      description: ControlNet-style structural guidance from a reference image.
+    - id: image-prompt
+      label: Image Prompt
+      description: Use an image as a style/content prompt alongside text.
+  lifecycle_states:
+    - PENDING
+    - COMPLETE
+    - FAILED
+  job_kinds:
+    - image-generation
+    - video-generation
+    - lcm-generation
+    - lcm-inpainting
+    - lcm-instant-refine
+    - lcm-upscale
+    - variation-upscale
+    - variation-unzoom
+    - variation-nobg
+    - variation-universal-upscaler
+    - blueprint-execution
+    - custom-model-training
+    - custom-element-training
+  artifacts:
+    - dataset
+    - init-image
+    - media
+    - generated-image
+    - 3d-model-asset
+    - custom-model
+    - custom-element
+    - blueprint
+    - blueprint-execution
+  delivery:
+    - http-poll
+    - webhook-callback
+  billing:
+    - pay-as-you-go-usd
+    - pricing-calculator-preflight
+  auth:
+    - production-api-key
+    - bearer-token

@@ -1,0 +1,33 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://cloud.leonardo.ai/api/rest/v1/me",
+    "headers": {
+      "Authorization": "Bearer YOUR_LEONARDO_AI_PRODUCTION_API_KEY",
+      "accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "user_details": [
+        {
+          "user": {
+            "id": "11111111-2222-3333-4444-555555555555",
+            "username": "example-user"
+          },
+          "tokenRenewalDate": "2026-06-01T00:00:00.000Z",
+          "paidTokens": 12.4567,
+          "subscriptionTokens": 0,
+          "subscriptionGptTokens": 0,
+          "subscriptionModelTokens": 0,
+          "apiConcurrencySlots": 5,
+          "apiSubscriptionTokens": 0,
+          "apiPaidTokens": 12.4567,
+          "apiPlanTokenRenewalDate": null,
+          "usedAPIBoosters": 0
+        }
+      ]
+    }
+  }
+}

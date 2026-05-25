@@ -1,0 +1,158 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Leonardo.AI Media
+  description: 'Leonardo.AI Media. 3 operations. Lead operation: Upload media. Self-contained Naftiko capability covering
+    the Leonardo.AI Media business surface.'
+  tags:
+  - Leonardo.AI
+  - Media
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    LEONARDO_AI_API_KEY: LEONARDO_AI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: media
+    baseUri: https://cloud.leonardo.ai/api/rest/v1
+    description: Leonardo.AI Media business capability. Self-contained, no shared references.
+    resources:
+    - name: media
+      path: /media
+      operations:
+      - name: upload-media
+        method: POST
+        description: This endpoint returns presigned details to upload a media file to S3
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: media-id
+      path: /media/{id}
+      operations:
+      - name: get-uploaded-media-by-id
+        method: GET
+        description: This endpoint returns details of an uploaded media record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: _"id" is required_
+          required: true
+      - name: delete-uploaded-media-by-id
+        method: DELETE
+        description: This endpoint deletes an uploaded media record and removes the associated file from S3
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: _"id" is required_
+          required: true
+    authentication:
+      type: bearer
+      value: '{{env.LEONARDO_AI_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: media-rest
+    port: 8080
+    description: REST adapter for Leonardo.AI Media. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/media
+      name: media
+      description: REST surface for media.
+      operations:
+      - method: POST
+        name: upload-media
+        description: This endpoint returns presigned details to upload a media file to S3
+        call: media.upload-media
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/media/{id}
+      name: media-id
+      description: REST surface for media-id.
+      operations:
+      - method: GET
+        name: get-uploaded-media-by-id
+        description: This endpoint returns details of an uploaded media record
+        call: media.get-uploaded-media-by-id
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete-uploaded-media-by-id
+        description: This endpoint deletes an uploaded media record and removes the associated file from S3
+        call: media.delete-uploaded-media-by-id
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: media-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Leonardo.AI Media. One tool per consumed operation, routed through this capability's consumes
+      block.
+    tools:
+    - name: leonardo-ai-upload-media
+      description: This endpoint returns presigned details to upload a media file to S3
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: media.upload-media
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: leonardo-ai-get-uploaded-media-by-id
+      description: This endpoint returns details of an uploaded media record
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: media.get-uploaded-media-by-id
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: leonardo-ai-delete-uploaded-media-by-id
+      description: This endpoint deletes an uploaded media record and removes the associated file from S3
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: media.delete-uploaded-media-by-id
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.

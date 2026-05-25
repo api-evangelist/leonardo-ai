@@ -1,0 +1,120 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Leonardo.AI
+providerId: leonardo-ai
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: true
+tags:
+  - AI
+  - Image Generation
+  - Video Generation
+  - PAYG
+description: 'Reconciled plans for the Leonardo.AI Production API. As of 2024+, the API is on a Pay-As-You-Go
+  USD-denominated model that replaced the older Basic / Standard / Pro / Custom API tier subscriptions; legacy
+  app subscription plans remain available for the in-app product. Per-generation costs vary by model and
+  resolution — use the /pricing-calculator endpoint or the in-app calculator for exact figures.'
+sources:
+  - https://leonardo.ai/pricing/
+  - https://docs.leonardo.ai/docs/payg-guide
+  - https://docs.leonardo.ai/docs/pricing-and-plans-faq
+  - https://docs.leonardo.ai/docs/plan-with-the-pricing-calculator
+plans:
+  - id: leonardo-ai-payg
+    name: API Pay-As-You-Go
+    type: usage-based
+    description: Dollar-denominated, top-up balance with no monthly commitment. Each generation deducts USD from
+      the account balance. Manual or automatic top-ups; balances never expire. New accounts receive starter
+      credits.
+    entries:
+      - label: Account balance top-up
+        name: balance_topup
+        type: prepaid
+        metric: usd
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: 'variable'
+        userMultiplied: false
+        description: Manual or auto top-up amount; minimum top-up applies.
+      - label: Per-generation usage
+        name: generation_usage
+        type: metered
+        metric: usd
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: 'variable'
+        userMultiplied: false
+        description: Per-generation USD cost varies by model, resolution, num_images, and feature toggles
+          (Alchemy, PhotoReal, Universal Upscaler, etc.). Use the Pricing Calculator endpoint for pre-flight
+          quotes.
+    notes:
+      - Legacy fixed API subscriptions (Basic ~$9/mo for ~3,500 credits, Standard ~$49 for 25k credits, Pro,
+        Custom) have been retired in favour of PAYG for new sign-ups. PAYG rates are reported to be ~24-42%
+        cheaper than the prior Standard/Basic tiers.
+      - In-app (non-API) consumer subscriptions — Free, Apprentice, Artisan, Maestro — remain on the consumer
+        product surface but do not grant API access.
+  - id: leonardo-ai-app-free
+    name: App Free
+    type: subscription
+    description: Free in-app tier for the Leonardo App. Does not grant API access.
+    entries:
+      - label: Monthly free tokens
+        name: free_tokens
+        type: included
+        metric: token
+        limit: 150
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+  - id: leonardo-ai-app-apprentice
+    name: App Apprentice
+    type: subscription
+    description: Entry-level paid in-app subscription. Does not grant API access.
+    entries:
+      - label: Monthly subscription
+        name: subscription
+        type: subscription
+        metric: subscription
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '12.00'
+        userMultiplied: true
+  - id: leonardo-ai-app-artisan
+    name: App Artisan
+    type: subscription
+    description: Mid-tier in-app subscription. Does not grant API access.
+    entries:
+      - label: Monthly subscription
+        name: subscription
+        type: subscription
+        metric: subscription
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '30.00'
+        userMultiplied: true
+  - id: leonardo-ai-app-maestro
+    name: App Maestro
+    type: subscription
+    description: Top-tier in-app subscription. Does not grant API access.
+    entries:
+      - label: Monthly subscription
+        name: subscription
+        type: subscription
+        metric: subscription
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '60.00'
+        userMultiplied: true

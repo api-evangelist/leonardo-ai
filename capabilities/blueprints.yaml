@@ -1,0 +1,328 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Leonardo.AI Blueprints
+  description: 'Leonardo.AI Blueprints. 6 operations. Lead operation: List Blueprints. Self-contained Naftiko capability covering
+    the Leonardo.AI Blueprints business surface.'
+  tags:
+  - Leonardo.AI
+  - Blueprints
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    LEONARDO_AI_API_KEY: LEONARDO_AI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: blueprints
+    baseUri: https://cloud.leonardo.ai/api/rest/v1
+    description: Leonardo.AI Blueprints business capability. Self-contained, no shared references.
+    resources:
+    - name: blueprints
+      path: /blueprints
+      operations:
+      - name: list-blueprints
+        method: GET
+        description: 'Returns a list of Blueprints. Use either forward pagination (first/after) or backward pagination (last/before),
+          but not both. Note: This endpoint uses a request body to support complex filtering parameters'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: blueprints-id
+      path: /blueprints/{id}
+      operations:
+      - name: get-blueprint-by-id
+        method: GET
+        description: Returns a single Blueprint by its akUUID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: The akUUID of the Blueprint to return
+          required: true
+    - name: blueprints-id-versions
+      path: /blueprints/{id}/versions
+      operations:
+      - name: get-blueprint-versions-by-blueprint-id
+        method: GET
+        description: Returns all versions of a Blueprint by its akUUID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: The akUUID of the Blueprint
+          required: true
+    - name: blueprint-executions
+      path: /blueprint-executions
+      operations:
+      - name: execute-blueprint
+        method: POST
+        description: Execute a Blueprint Version with custom node inputs. This endpoint triggers the execution of the specified
+          Blueprint Version and returns a Blueprint Execution ID to track the job.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: blueprint-executions-id
+      path: /blueprint-executions/{id}
+      operations:
+      - name: get-blueprint-execution
+        method: GET
+        description: Retrieves details of a specific Blueprint Execution by its akUUID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: The akUUID of the Blueprint Execution to retrieve
+          required: true
+    - name: blueprint-executions-id-generations
+      path: /blueprint-executions/{id}/generations
+      operations:
+      - name: get-blueprint-execution-generations
+        method: GET
+        description: Retrieves paginated generations for a specific Blueprint Execution, including their statuses and any
+          prompt moderation failure details.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: The akUUID of the Blueprint Execution to retrieve generations for
+          required: true
+        - name: first
+          in: query
+          type: integer
+          description: Number of generations to return from the beginning of the list (forward pagination)
+          required: false
+        - name: after
+          in: query
+          type: string
+          description: Cursor for forward pagination - returns generations after this cursor
+          required: false
+        - name: last
+          in: query
+          type: integer
+          description: Number of generations to return from the end of the list (backward pagination)
+          required: false
+        - name: before
+          in: query
+          type: string
+          description: Cursor for backward pagination - returns generations before this cursor
+          required: false
+    authentication:
+      type: bearer
+      value: '{{env.LEONARDO_AI_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: blueprints-rest
+    port: 8080
+    description: REST adapter for Leonardo.AI Blueprints. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/blueprints
+      name: blueprints
+      description: REST surface for blueprints.
+      operations:
+      - method: GET
+        name: list-blueprints
+        description: 'Returns a list of Blueprints. Use either forward pagination (first/after) or backward pagination (last/before),
+          but not both. Note: This endpoint uses a request body to support complex filtering parameters'
+        call: blueprints.list-blueprints
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/blueprints/{id}
+      name: blueprints-id
+      description: REST surface for blueprints-id.
+      operations:
+      - method: GET
+        name: get-blueprint-by-id
+        description: Returns a single Blueprint by its akUUID
+        call: blueprints.get-blueprint-by-id
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/blueprints/{id}/versions
+      name: blueprints-id-versions
+      description: REST surface for blueprints-id-versions.
+      operations:
+      - method: GET
+        name: get-blueprint-versions-by-blueprint-id
+        description: Returns all versions of a Blueprint by its akUUID
+        call: blueprints.get-blueprint-versions-by-blueprint-id
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/blueprint-executions
+      name: blueprint-executions
+      description: REST surface for blueprint-executions.
+      operations:
+      - method: POST
+        name: execute-blueprint
+        description: Execute a Blueprint Version with custom node inputs. This endpoint triggers the execution of the specified
+          Blueprint Version and returns a Blueprint Execution ID to track the job.
+        call: blueprints.execute-blueprint
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/blueprint-executions/{id}
+      name: blueprint-executions-id
+      description: REST surface for blueprint-executions-id.
+      operations:
+      - method: GET
+        name: get-blueprint-execution
+        description: Retrieves details of a specific Blueprint Execution by its akUUID
+        call: blueprints.get-blueprint-execution
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/blueprint-executions/{id}/generations
+      name: blueprint-executions-id-generations
+      description: REST surface for blueprint-executions-id-generations.
+      operations:
+      - method: GET
+        name: get-blueprint-execution-generations
+        description: Retrieves paginated generations for a specific Blueprint Execution, including their statuses and any
+          prompt moderation failure details.
+        call: blueprints.get-blueprint-execution-generations
+        with:
+          id: rest.id
+          first: rest.first
+          after: rest.after
+          last: rest.last
+          before: rest.before
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: blueprints-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Leonardo.AI Blueprints. One tool per consumed operation, routed through this capability's
+      consumes block.
+    tools:
+    - name: leonardo-ai-list-blueprints
+      description: 'Returns a list of Blueprints. Use either forward pagination (first/after) or backward pagination (last/before),
+        but not both. Note: This endpoint uses a request body to support complex filtering parameters'
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: blueprints.list-blueprints
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: leonardo-ai-get-blueprint-by-id
+      description: Returns a single Blueprint by its akUUID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: blueprints.get-blueprint-by-id
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: leonardo-ai-get-blueprint-versions-by-blueprint-id
+      description: Returns all versions of a Blueprint by its akUUID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: blueprints.get-blueprint-versions-by-blueprint-id
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: leonardo-ai-execute-blueprint
+      description: Execute a Blueprint Version with custom node inputs. This endpoint triggers the execution of the specified
+        Blueprint Version and returns a Blueprint Execution ID to track the job.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: blueprints.execute-blueprint
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: leonardo-ai-get-blueprint-execution
+      description: Retrieves details of a specific Blueprint Execution by its akUUID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: blueprints.get-blueprint-execution
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: leonardo-ai-get-blueprint-execution-generations
+      description: Retrieves paginated generations for a specific Blueprint Execution, including their statuses and any prompt
+        moderation failure details.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: blueprints.get-blueprint-execution-generations
+      with:
+        id: tools.id
+        first: tools.first
+        after: tools.after
+        last: tools.last
+        before: tools.before
+      outputParameters:
+      - type: object
+        mapping: $.

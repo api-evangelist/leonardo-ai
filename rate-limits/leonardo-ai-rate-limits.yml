@@ -1,0 +1,57 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Leonardo.AI
+providerId: leonardo-ai
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: true
+tags:
+  - AI
+  - Rate Limiting
+  - Concurrency
+  - Queue
+description: Reconciled concurrency, queue, and rate-limit behaviour for the Leonardo.AI Production API.
+  Leonardo enforces per-API-key concurrency limits (parallel in-flight generations) on top of a queueing system
+  rather than a strict RPM/TPM token bucket. Excess requests are queued, not 429'd, up to the queue depth.
+sources:
+  - https://docs.leonardo.ai/docs/concurrency-rate-limits-and-queue
+  - https://docs.leonardo.ai/docs/api-faq
+  - https://docs.leonardo.ai/docs/api-error-messages
+responseCodes:
+  unauthorized: 401
+  forbidden: 403
+  notFound: 404
+  validationError: 400
+  rateLimited: 429
+  serverError: 500
+algorithm: per-key-concurrency-with-queue
+notes:
+  - Each Production API key has a concurrency limit — the maximum number of in-flight generations Leonardo will
+    process in parallel for that key. Additional requests are queued, not rejected, up to the queue depth.
+  - Concurrency and queue depth scale with account standing and historical usage. Contact Leonardo support to
+    request an increased limit for production workloads.
+  - Synchronous endpoints (Pricing Calculator, /me, list endpoints, prompt utilities) are subject to a
+    separate, higher RPM-style ceiling and may return 429 if the caller floods them.
+  - Webhook callbacks are the preferred completion-notification path; the FAQ explicitly recommends webhooks
+    over polling GET /generations/{id}.
+  - Up to 10 Production API keys may be issued per account.
+limits:
+  - tier: Default Production API
+    model: All generation endpoints
+    concurrency: variable
+    queue: yes
+    rpm: not-published
+    notes: Concurrency and queue depth are account-scoped, not publicly documented. Use the in-app API
+      Access dashboard and contact support for production limit increases.
+  - tier: Synchronous utility endpoints
+    model: "/pricing-calculator, /me, /platformModels, /prompt/*"
+    concurrency: higher
+    queue: no
+    rpm: not-published
+    notes: Designed for higher request rates than the generation endpoints, but still subject to a fair-use
+      ceiling.
+keyManagement:
+  maxKeysPerAccount: 10
+  rotation: Production API keys can be rotated from the in-app API Access dashboard. The legacy User API key
+    is fully deprecated; all integrations must use a Production API key.

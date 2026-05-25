@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/leonardo-ai/leonardo-ai-model-schema.json",
+  "title": "Leonardo.AI Model",
+  "description": "Schema for Leonardo.AI platform models and custom models exposed via GET /platformModels and GET /models/user/{userId}.",
+  "type": "object",
+  "definitions": {
+    "PlatformModel": {
+      "type": "object",
+      "description": "A Leonardo platform model (in-house or third-party).",
+      "properties": {
+        "id": { "type": "string", "format": "uuid", "description": "Model UUID used in generation requests." },
+        "name": { "type": "string", "description": "Human-readable model name (e.g., 'Phoenix', 'Lucid Origin', 'FLUX.2 Pro')." },
+        "description": { "type": "string" },
+        "modelHeight": { "type": "integer" },
+        "modelWidth": { "type": "integer" },
+        "trainingType": { "type": "string", "description": "Base model family (e.g., 'STABLE_DIFFUSION_3_5', 'FLUX', 'PHOENIX')." },
+        "sdVersion": { "type": "string" },
+        "category": { "type": "string" },
+        "previewImageUrl": { "type": "string", "format": "uri" },
+        "supportsPhotoReal": { "type": "boolean" },
+        "supportsAlchemy": { "type": "boolean" },
+        "supportsTransparency": { "type": "boolean" }
+      }
+    },
+    "CustomModel": {
+      "type": "object",
+      "description": "A user-trained custom model returned by /models endpoints.",
+      "properties": {
+        "id": { "type": "string", "format": "uuid" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "modelHeight": { "type": "integer" },
+        "modelWidth": { "type": "integer" },
+        "userId": { "type": "string", "format": "uuid" },
+        "datasetId": { "type": "string", "format": "uuid" },
+        "instance_prompt": { "type": "string" },
+        "trainingStatus": { "type": "string", "enum": ["PENDING", "TRAINING", "COMPLETE", "FAILED"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "modelType": { "type": "string" },
+        "sdVersion": { "type": "string" }
+      }
+    }
+  }
+}

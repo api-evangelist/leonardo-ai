@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/leonardo-ai/leonardo-ai-generation-schema.json",
+  "title": "Leonardo.AI Generation",
+  "description": "Schema for Leonardo.AI image generation request and response objects. Covers the POST /generations request body and the generation object returned by GET /generations/{id}.",
+  "type": "object",
+  "definitions": {
+    "GenerationRequest": {
+      "type": "object",
+      "description": "Request body for POST /generations.",
+      "required": ["prompt"],
+      "properties": {
+        "prompt": { "type": "string", "description": "Text prompt to generate from." },
+        "negative_prompt": { "type": "string", "description": "Negative text prompt." },
+        "modelId": { "type": "string", "description": "Platform model UUID. Use GET /platformModels to list." },
+        "num_images": { "type": "integer", "minimum": 1, "maximum": 8, "description": "Number of images to generate." },
+        "width": { "type": "integer", "description": "Output width in pixels." },
+        "height": { "type": "integer", "description": "Output height in pixels." },
+        "num_inference_steps": { "type": "integer", "minimum": 1, "maximum": 60, "description": "Diffusion steps." },
+        "guidance_scale": { "type": "number", "description": "Classifier-free guidance scale." },
+        "seed": { "type": "integer", "description": "Random seed for reproducibility." },
+        "scheduler": { "type": "string", "description": "Sampler/scheduler name." },
+        "presetStyle": { "type": "string", "description": "Style preset (e.g., DYNAMIC, CINEMATIC, VIBRANT)." },
+        "photoReal": { "type": "boolean", "description": "Enable PhotoReal pipeline." },
+        "photoRealVersion": { "type": "string", "enum": ["v1", "v2"], "description": "PhotoReal version." },
+        "alchemy": { "type": "boolean", "description": "Enable Alchemy pipeline." },
+        "promptMagic": { "type": "boolean", "description": "Enable Prompt Magic enhancement." },
+        "transparency": { "type": "string", "enum": ["foreground_only", "disabled"], "description": "Transparent background output mode." },
+        "public": { "type": "boolean", "description": "Make generation public in the Leonardo community." },
+        "tiling": { "type": "boolean", "description": "Generate tileable textures." },
+        "controlnets": {
+          "type": "array",
+          "description": "Optional ControlNet image guidance entries.",
+          "items": { "$ref": "#/definitions/ControlNet" }
+        },
+        "elements": {
+          "type": "array",
+          "description": "Optional Custom Element references to apply.",
+          "items": { "$ref": "#/definitions/ElementRef" }
+        },
+        "webhookCallbackUrl": { "type": "string", "format": "uri", "description": "URL to POST job completion events to." }
+      }
+    },
+    "ControlNet": {
+      "type": "object",
+      "properties": {
+        "initImageId": { "type": "string", "format": "uuid" },
+        "initImageType": { "type": "string", "enum": ["UPLOADED", "GENERATED"] },
+        "preprocessorId": { "type": "integer" },
+        "weight": { "type": "number" },
+        "strengthType": { "type": "string", "enum": ["Low", "Mid", "High", "Max"] }
+      }
+    },
+    "ElementRef": {
+      "type": "object",
+      "properties": {
+        "akUUID": { "type": "string", "format": "uuid" },
+        "weight": { "type": "number" }
+      }
+    },
+    "GenerationResponse": {
+      "type": "object",
+      "description": "Response from POST /generations (job acknowledgement).",
+      "properties": {
+        "sdGenerationJob": {
+          "type": "object",
+          "properties": {
+            "generationId": { "type": "string", "format": "uuid" },
+            "apiCreditCost": { "type": "number", "description": "USD cost deducted from balance." }
+          }
+        }
+      }
+    },
+    "Generation": {
+      "type": "object",
+      "description": "Generation object returned by GET /generations/{id}.",
+      "properties": {
+        "id": { "type": "string", "format": "uuid" },
+        "status": { "type": "string", "enum": ["PENDING", "COMPLETE", "FAILED"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "modelId": { "type": "string" },
+        "prompt": { "type": "string" },
+        "negativePrompt": { "type": "string" },
+        "imageHeight": { "type": "integer" },
+        "imageWidth": { "type": "integer" },
+        "generated_images": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string", "format": "uuid" },
+              "url": { "type": "string", "format": "uri" },
+              "nsfw": { "type": "boolean" },
+              "likeCount": { "type": "integer" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

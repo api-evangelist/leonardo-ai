@@ -1,0 +1,99 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Leonardo.AI
+providerId: leonardo-ai
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: true
+tags:
+  - FinOps
+  - Cost Management
+  - FOCUS
+  - AI
+  - Generative AI
+  - Images
+  - Video
+description: FOCUS-aligned FinOps definition for the Leonardo.AI Production API. Generation jobs are
+  metered in USD against a prepaid account balance; the cost of any request can be pre-computed via the
+  /pricing-calculator endpoint and the remaining balance is exposed via GET /me.
+sources:
+  - https://leonardo.ai/pricing/
+  - https://docs.leonardo.ai/docs/payg-guide
+  - https://docs.leonardo.ai/docs/plan-with-the-pricing-calculator
+  - https://docs.leonardo.ai/reference/pricingcalculator
+  - https://docs.leonardo.ai/reference/getuserself
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Leonardo.AI (Canva Pty Ltd)
+serviceCategory: AI and Machine Learning
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Real-time (per request, against prepaid balance)
+  billingCurrency: USD
+  chargeCategories:
+    - Purchase
+    - Usage
+    - Adjustment
+    - Refund
+  primaryUnit: usd
+  secondaryUnits:
+    - generation
+    - image
+    - video-second
+    - upscale-job
+focusColumns:
+  ServiceName: Leonardo.AI Production API
+  ServiceCategory: AI and Machine Learning
+  ProviderName: Leonardo.AI
+  PublisherName: Leonardo.AI (Canva)
+  InvoiceIssuerName: Leonardo.AI
+  PricingCategory: Usage-Based
+  PricingUnit: USD
+  BillingCurrency: USD
+meters:
+  - name: generation_cost_usd
+    unit: usd
+    aggregation: sum
+    dimensions:
+      - model
+      - endpoint
+      - resolution
+      - num_images
+      - pipeline (alchemy, photoReal, etc.)
+  - name: video_seconds
+    unit: second
+    aggregation: sum
+    dimensions:
+      - model
+      - resolution
+  - name: variation_jobs
+    unit: job
+    aggregation: count
+    dimensions:
+      - kind (upscale, unzoom, nobg, universal-upscaler)
+  - name: training_jobs
+    unit: job
+    aggregation: count
+    dimensions:
+      - kind (custom-model, custom-element)
+preFlight:
+  endpoint: POST /pricing-calculator
+  description: Pre-compute the exact USD cost of a generation request before submitting it. Recommended for
+    cost-controlled workloads and FinOps tagging.
+balance:
+  endpoint: GET /me
+  fields:
+    - apiSubscriptionTokens / apiPaidTokens (remaining USD-equivalent balance)
+    - apiPlanTokenRenewalDate (for legacy subscription plans)
+budgetControls:
+  - Manual top-up of any USD amount; balance never expires.
+  - Auto top-up — threshold + recharge amount (e.g., recharge $50 when balance drops below $10).
+  - Custom enterprise quotes and discounts are available via the Leonardo sales team for high-volume
+    workloads.
+  - Stop-spend can be implemented client-side by checking GET /me balance and the /pricing-calculator estimate
+    before each request.

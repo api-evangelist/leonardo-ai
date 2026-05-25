@@ -1,0 +1,29 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://cloud.leonardo.ai/api/rest/v1/generations-image-to-video",
+    "headers": {
+      "Authorization": "Bearer YOUR_LEONARDO_AI_PRODUCTION_API_KEY",
+      "accept": "application/json",
+      "content-type": "application/json"
+    },
+    "body": {
+      "imageId": "img-abc123",
+      "imageType": "GENERATED",
+      "model": "VEO_3",
+      "prompt": "Slow camera dolly forward across the lake surface, gentle ripples",
+      "resolution": "RESOLUTION_720",
+      "frameInterpolation": true,
+      "promptEnhance": true
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "motionSvdGenerationJob": {
+        "generationId": "vid-9f81a2",
+        "apiCreditCost": 0.43
+      }
+    }
+  }
+}

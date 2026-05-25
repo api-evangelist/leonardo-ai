@@ -1,0 +1,92 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://schema.org/",
+    "leonardo": "https://cloud.leonardo.ai/api/rest/v1/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "Generation": {
+      "@id": "leonardo:Generation",
+      "@context": {
+        "id": { "@id": "leonardo:Generation/id", "@type": "xsd:string" },
+        "status": { "@id": "leonardo:Generation/status", "@type": "xsd:string" },
+        "createdAt": { "@id": "dcterms:created", "@type": "xsd:dateTime" },
+        "modelId": { "@id": "leonardo:Generation/modelId", "@type": "xsd:string" },
+        "prompt": { "@id": "leonardo:Generation/prompt", "@type": "xsd:string" },
+        "negativePrompt": { "@id": "leonardo:Generation/negativePrompt", "@type": "xsd:string" },
+        "imageHeight": { "@id": "schema:height", "@type": "xsd:integer" },
+        "imageWidth": { "@id": "schema:width", "@type": "xsd:integer" },
+        "generated_images": { "@id": "leonardo:Generation/images", "@container": "@list" },
+        "apiCreditCost": { "@id": "leonardo:Generation/apiCreditCost", "@type": "xsd:decimal" }
+      }
+    },
+
+    "GeneratedImage": {
+      "@id": "leonardo:GeneratedImage",
+      "@context": {
+        "id": { "@id": "leonardo:GeneratedImage/id", "@type": "xsd:string" },
+        "url": { "@id": "schema:contentUrl", "@type": "xsd:anyURI" },
+        "nsfw": { "@id": "leonardo:GeneratedImage/nsfw", "@type": "xsd:boolean" },
+        "likeCount": { "@id": "leonardo:GeneratedImage/likeCount", "@type": "xsd:integer" }
+      }
+    },
+
+    "PlatformModel": {
+      "@id": "leonardo:PlatformModel",
+      "@context": {
+        "id": { "@id": "leonardo:PlatformModel/id", "@type": "xsd:string" },
+        "name": { "@id": "schema:name", "@type": "xsd:string" },
+        "description": { "@id": "schema:description", "@type": "xsd:string" },
+        "modelHeight": { "@id": "schema:height", "@type": "xsd:integer" },
+        "modelWidth": { "@id": "schema:width", "@type": "xsd:integer" },
+        "trainingType": { "@id": "leonardo:PlatformModel/trainingType", "@type": "xsd:string" },
+        "supportsPhotoReal": { "@id": "leonardo:PlatformModel/supportsPhotoReal", "@type": "xsd:boolean" },
+        "supportsAlchemy": { "@id": "leonardo:PlatformModel/supportsAlchemy", "@type": "xsd:boolean" },
+        "supportsTransparency": { "@id": "leonardo:PlatformModel/supportsTransparency", "@type": "xsd:boolean" }
+      }
+    },
+
+    "Dataset": {
+      "@id": "leonardo:Dataset",
+      "@context": {
+        "id": { "@id": "leonardo:Dataset/id", "@type": "xsd:string" },
+        "name": { "@id": "schema:name", "@type": "xsd:string" },
+        "description": { "@id": "schema:description", "@type": "xsd:string" },
+        "createdAt": { "@id": "dcterms:created", "@type": "xsd:dateTime" }
+      }
+    },
+
+    "Element": {
+      "@id": "leonardo:Element",
+      "@context": {
+        "id": { "@id": "leonardo:Element/id", "@type": "xsd:string" },
+        "name": { "@id": "schema:name", "@type": "xsd:string" },
+        "description": { "@id": "schema:description", "@type": "xsd:string" },
+        "datasetId": { "@id": "leonardo:Element/datasetId", "@type": "xsd:string" },
+        "trainingStatus": { "@id": "leonardo:Element/trainingStatus", "@type": "xsd:string" }
+      }
+    },
+
+    "Blueprint": {
+      "@id": "leonardo:Blueprint",
+      "@context": {
+        "id": { "@id": "leonardo:Blueprint/id", "@type": "xsd:string" },
+        "name": { "@id": "schema:name", "@type": "xsd:string" },
+        "description": { "@id": "schema:description", "@type": "xsd:string" },
+        "version": { "@id": "schema:version", "@type": "xsd:string" }
+      }
+    },
+
+    "User": {
+      "@id": "leonardo:User",
+      "@context": {
+        "id": { "@id": "leonardo:User/id", "@type": "xsd:string" },
+        "username": { "@id": "schema:alternateName", "@type": "xsd:string" },
+        "apiSubscriptionTokens": { "@id": "leonardo:User/apiSubscriptionTokens", "@type": "xsd:decimal" },
+        "apiPlanTokenRenewalDate": { "@id": "leonardo:User/apiPlanTokenRenewalDate", "@type": "xsd:dateTime" }
+      }
+    }
+  }
+}

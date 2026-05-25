@@ -1,0 +1,256 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Leonardo.AI Datasets
+  description: 'Leonardo.AI Datasets. 5 operations. Lead operation: Create a Dataset. Self-contained Naftiko capability covering
+    the Leonardo.AI Datasets business surface.'
+  tags:
+  - Leonardo.AI
+  - Datasets
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    LEONARDO_AI_API_KEY: LEONARDO_AI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: datasets
+    baseUri: https://cloud.leonardo.ai/api/rest/v1
+    description: Leonardo.AI Datasets business capability. Self-contained, no shared references.
+    resources:
+    - name: datasets
+      path: /datasets
+      operations:
+      - name: create-dataset
+        method: POST
+        description: This endpoint creates a new dataset
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: datasets-id
+      path: /datasets/{id}
+      operations:
+      - name: get-dataset-by-id
+        method: GET
+        description: This endpoint gets the specific dataset
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: The ID of the dataset to return.
+          required: true
+      - name: delete-dataset-by-id
+        method: DELETE
+        description: This endpoint deletes the specific dataset
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: The ID of the dataset to delete.
+          required: true
+    - name: datasets-dataset-id-upload
+      path: /datasets/{datasetId}/upload
+      operations:
+      - name: upload-dataset-image
+        method: POST
+        description: This endpoint returns presigned details to upload a dataset image to S3
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: datasetId
+          in: path
+          type: string
+          description: _"datasetId" is required
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: datasets-dataset-id-upload-gen
+      path: /datasets/{datasetId}/upload/gen
+      operations:
+      - name: upload-dataset-image-from-gen
+        method: POST
+        description: This endpoint will upload a previously generated image to the dataset
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: datasetId
+          in: path
+          type: string
+          description: The ID of the dataset to upload the image to.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      value: '{{env.LEONARDO_AI_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: datasets-rest
+    port: 8080
+    description: REST adapter for Leonardo.AI Datasets. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/datasets
+      name: datasets
+      description: REST surface for datasets.
+      operations:
+      - method: POST
+        name: create-dataset
+        description: This endpoint creates a new dataset
+        call: datasets.create-dataset
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/datasets/{id}
+      name: datasets-id
+      description: REST surface for datasets-id.
+      operations:
+      - method: GET
+        name: get-dataset-by-id
+        description: This endpoint gets the specific dataset
+        call: datasets.get-dataset-by-id
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete-dataset-by-id
+        description: This endpoint deletes the specific dataset
+        call: datasets.delete-dataset-by-id
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/datasets/{datasetId}/upload
+      name: datasets-dataset-id-upload
+      description: REST surface for datasets-dataset-id-upload.
+      operations:
+      - method: POST
+        name: upload-dataset-image
+        description: This endpoint returns presigned details to upload a dataset image to S3
+        call: datasets.upload-dataset-image
+        with:
+          datasetId: rest.datasetId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/datasets/{datasetId}/upload/gen
+      name: datasets-dataset-id-upload-gen
+      description: REST surface for datasets-dataset-id-upload-gen.
+      operations:
+      - method: POST
+        name: upload-dataset-image-from-gen
+        description: This endpoint will upload a previously generated image to the dataset
+        call: datasets.upload-dataset-image-from-gen
+        with:
+          datasetId: rest.datasetId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: datasets-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Leonardo.AI Datasets. One tool per consumed operation, routed through this capability's consumes
+      block.
+    tools:
+    - name: leonardo-ai-create-dataset
+      description: This endpoint creates a new dataset
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: datasets.create-dataset
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: leonardo-ai-get-dataset-by-id
+      description: This endpoint gets the specific dataset
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: datasets.get-dataset-by-id
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: leonardo-ai-delete-dataset-by-id
+      description: This endpoint deletes the specific dataset
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: datasets.delete-dataset-by-id
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: leonardo-ai-upload-dataset-image
+      description: This endpoint returns presigned details to upload a dataset image to S3
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: datasets.upload-dataset-image
+      with:
+        datasetId: tools.datasetId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: leonardo-ai-upload-dataset-image-from-gen
+      description: This endpoint will upload a previously generated image to the dataset
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: datasets.upload-dataset-image-from-gen
+      with:
+        datasetId: tools.datasetId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

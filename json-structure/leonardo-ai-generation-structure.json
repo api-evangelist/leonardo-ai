@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-structure.org/schema/draft-01",
+  "$id": "https://api-evangelist.com/structures/leonardo-ai/leonardo-ai-generation-structure.json",
+  "title": "Leonardo.AI Generation Structure",
+  "description": "Operational structure describing the lifecycle of a Leonardo.AI image generation job — request shape, async job acknowledgement, polling key, and the eventual generation result returned via GET or webhook callback.",
+  "structure": {
+    "Generation": {
+      "lifecycle": ["request", "ack", "pending", "complete", "failed"],
+      "identifier": "id",
+      "request": {
+        "endpoint": "POST /generations",
+        "required": ["prompt"],
+        "optional": [
+          "negative_prompt", "modelId", "num_images", "width", "height",
+          "num_inference_steps", "guidance_scale", "seed", "scheduler",
+          "presetStyle", "photoReal", "photoRealVersion", "alchemy",
+          "promptMagic", "transparency", "public", "tiling", "controlnets",
+          "elements", "webhookCallbackUrl"
+        ]
+      },
+      "ack": {
+        "endpoint": "POST /generations",
+        "returns": "sdGenerationJob.generationId",
+        "cost": "sdGenerationJob.apiCreditCost"
+      },
+      "poll": {
+        "endpoint": "GET /generations/{id}",
+        "interval": "exponential backoff starting at 2s; prefer webhookCallbackUrl",
+        "terminal_states": ["COMPLETE", "FAILED"]
+      },
+      "result": {
+        "endpoint": "GET /generations/{id}",
+        "shape": "generations_by_pk.generated_images[].url"
+      }
+    },
+    "Video": {
+      "lifecycle": ["request", "ack", "pending", "complete", "failed"],
+      "request_endpoints": [
+        "POST /generations-image-to-video",
+        "POST /generations-text-to-video",
+        "POST /generations-motion-svd"
+      ],
+      "poll": "GET /motion-variations/{id}"
+    },
+    "Variation": {
+      "lifecycle": ["request", "ack", "pending", "complete", "failed"],
+      "request_endpoints": [
+        "POST /variations/upscale",
+        "POST /variations/unzoom",
+        "POST /variations/nobg",
+        "POST /variations/universal-upscaler"
+      ],
+      "poll": "GET /variations/{id}"
+    }
+  }
+}

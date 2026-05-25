@@ -1,0 +1,214 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Leonardo.AI Image Generation
+  description: 'Leonardo.AI Image Generation. 4 operations. Lead operation: Create a Generation of Images. Self-contained
+    Naftiko capability covering the Leonardo.AI Image Generation business surface.'
+  tags:
+  - Leonardo.AI
+  - Image Generation
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    LEONARDO_AI_API_KEY: LEONARDO_AI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: image-generation
+    baseUri: https://cloud.leonardo.ai/api/rest/v1
+    description: Leonardo.AI Image Generation business capability. Self-contained, no shared references.
+    resources:
+    - name: generations
+      path: /generations
+      operations:
+      - name: create-generation
+        method: POST
+        description: This endpoint will generate images
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: generations-id
+      path: /generations/{id}
+      operations:
+      - name: get-generation-by-id
+        method: GET
+        description: This endpoint will provide information about a specific generation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: The ID of the generation to return.
+          required: true
+      - name: delete-generation-by-id
+        method: DELETE
+        description: This endpoint deletes a specific generation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: The ID of the generation to delete.
+          required: true
+    - name: generations-user-user-id
+      path: /generations/user/{userId}
+      operations:
+      - name: get-generations-by-user-id
+        method: GET
+        description: This endpoint returns all generations by a specific user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: offset
+          in: query
+          type: integer
+          description: offset
+          required: false
+        - name: limit
+          in: query
+          type: integer
+          description: limit
+          required: false
+        - name: userId
+          in: path
+          type: string
+          description: userId
+          required: true
+    authentication:
+      type: bearer
+      value: '{{env.LEONARDO_AI_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: image-generation-rest
+    port: 8080
+    description: REST adapter for Leonardo.AI Image Generation. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/generations
+      name: generations
+      description: REST surface for generations.
+      operations:
+      - method: POST
+        name: create-generation
+        description: This endpoint will generate images
+        call: image-generation.create-generation
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/generations/{id}
+      name: generations-id
+      description: REST surface for generations-id.
+      operations:
+      - method: GET
+        name: get-generation-by-id
+        description: This endpoint will provide information about a specific generation
+        call: image-generation.get-generation-by-id
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete-generation-by-id
+        description: This endpoint deletes a specific generation
+        call: image-generation.delete-generation-by-id
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/generations/user/{userId}
+      name: generations-user-user-id
+      description: REST surface for generations-user-user-id.
+      operations:
+      - method: GET
+        name: get-generations-by-user-id
+        description: This endpoint returns all generations by a specific user
+        call: image-generation.get-generations-by-user-id
+        with:
+          offset: rest.offset
+          limit: rest.limit
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: image-generation-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Leonardo.AI Image Generation. One tool per consumed operation, routed through this capability's
+      consumes block.
+    tools:
+    - name: leonardo-ai-create-generation
+      description: This endpoint will generate images
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: image-generation.create-generation
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: leonardo-ai-get-generation-by-id
+      description: This endpoint will provide information about a specific generation
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: image-generation.get-generation-by-id
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: leonardo-ai-delete-generation-by-id
+      description: This endpoint deletes a specific generation
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: image-generation.delete-generation-by-id
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: leonardo-ai-get-generations-by-user-id
+      description: This endpoint returns all generations by a specific user
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: image-generation.get-generations-by-user-id
+      with:
+        offset: tools.offset
+        limit: tools.limit
+        userId: tools.userId
+      outputParameters:
+      - type: object
+        mapping: $.
