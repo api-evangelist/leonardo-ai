@@ -41,6 +41,8 @@ apis:
     type: GettingStarted
   - url: openapi/leonardo-ai-image-generation-openapi.json
     type: OpenAPI
+  - url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
+    type: AsyncAPI
   - url: json-schema/leonardo-ai-generation-schema.json
     type: JSONSchema
   - url: json-ld/leonardo-ai-context.jsonld
@@ -295,6 +297,12 @@ common:
 - url: https://docs.leonardo.ai/docs/webhook-callback-feature
   name: Webhook Callback Feature
   type: Webhooks
+- url: https://docs.leonardo.ai/docs/guide-to-the-webhook-callback-feature
+  name: Guide to the Webhook Callback Feature
+  type: Webhooks
+- url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
+  name: Leonardo.AI Webhook Callbacks (AsyncAPI 2.6)
+  type: AsyncAPI
 - url: https://docs.leonardo.ai/docs/payg-guide
   name: Pay-As-You-Go (PAYG) Guide
   type: Pricing
@@ -407,6 +415,6 @@ maintainers:
   X: apievangelist
   url: https://apievangelist.com
 created: '2026-05-25'
-modified: '2026-05-25'
+modified: '2026-05-30'
 position: Consuming
 specificationVersion: '0.16'

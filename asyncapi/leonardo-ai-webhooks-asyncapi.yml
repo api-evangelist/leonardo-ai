@@ -1,0 +1,660 @@
+asyncapi: 2.6.0
+info:
+  title: Leonardo.AI Webhook Callbacks
+  version: '1.0.0'
+  description: |-
+    AsyncAPI description of Leonardo.AI's outbound webhook callback surface.
+    Leonardo delivers asynchronous job-completion notifications to a customer-
+    hosted HTTPS endpoint that is configured per Production API key. Instead of
+    polling the Get a Single Generation endpoint, subscribers can receive a
+    POST containing the generation result envelope.
+
+    Scope of this document:
+      Only the `image_generation.complete` event is documented verbatim by
+      Leonardo in the public Guide to the Webhook Callback Feature, and only
+      that event is modelled here. The Leonardo platform also runs video,
+      upscale, and variation jobs through similarly asynchronous queues, but
+      no separate event names or payload examples for those job classes are
+      published in the public docs as of the source date below. Operators
+      that have observed additional event names in production should extend
+      the `oneOf` list in the publish operation and add the corresponding
+      message + payload definitions.
+
+    Source documentation (retrieved 2026-05-30):
+      - Webhook callback guide:
+          https://docs.leonardo.ai/docs/guide-to-the-webhook-callback-feature
+      - Common reference (apis.yml link):
+          https://docs.leonardo.ai/docs/webhook-callback-feature
+      - API access dashboard (where the webhook URL and webhook API key are
+        configured on a Production API key):
+          https://app.leonardo.ai/api-access
+
+    Delivery and security model:
+      - Transport: HTTPS POST with `Content-Type: application/json`.
+      - Authentication to the subscriber endpoint: optional bearer token.
+        When a `webhookCallbackApiKey` is set on the Production API key,
+        Leonardo adds the header `Authorization: Bearer <webhookCallbackApiKey>`
+        to every callback request.
+      - Source IP allowlist (documented in the webhook guide):
+            35.173.108.170
+            34.239.69.60
+            52.73.75.186
+            3.229.99.26
+            44.218.0.197
+            174.129.230.221
+      - Retry policy: not documented in the public webhook guide.
+      - Signature header: none documented. Subscribers should rely on the
+        bearer token and/or IP allowlist for authentication.
+      - Registration: webhook URL and webhook API key are bound to a
+        Production API key at creation time. To rotate them, create a new
+        Production API key and delete the old one.
+
+  contact:
+    name: Leonardo.AI API Support
+    url: https://docs.leonardo.ai/
+  license:
+    name: Leonardo.AI Terms of Service
+    url: https://leonardo.ai/terms-of-service/
+
+defaultContentType: application/json
+
+servers:
+  subscriber:
+    url: '{webhookCallbackUrl}'
+    protocol: https
+    description: |-
+      Customer-hosted HTTPS endpoint that receives webhook POSTs from
+      Leonardo.AI. The URL is bound to a single Production API key via the
+      `webhookCallbackUrl` field when the key is created in the API access
+      dashboard.
+    variables:
+      webhookCallbackUrl:
+        default: https://example.com/leonardo/webhook
+        description: |-
+          Fully-qualified HTTPS URL of the subscriber endpoint. Must use the
+          HTTPS protocol; HTTP is rejected at key-creation time.
+    security:
+      - bearerToken: []
+      - ipAllowList: []
+
+channels:
+  /leonardo/webhook:
+    description: |-
+      Single subscriber endpoint that receives every Leonardo.AI webhook
+      callback for the configured Production API key. The top-level `type`
+      field on the JSON body identifies the event class; the inner
+      `data.object` carries the resource that completed.
+    bindings:
+      http:
+        type: request
+        method: POST
+        bindingVersion: '0.3.0'
+    publish:
+      operationId: receiveLeonardoWebhook
+      summary: Receive a Leonardo.AI webhook callback
+      description: |-
+        Leonardo POSTs a JSON event envelope to the subscriber endpoint when
+        an asynchronous job that was submitted under the bound Production
+        API key reaches a terminal state. Subscribers should respond with a
+        2xx status code; the public webhook guide does not document a retry
+        schedule.
+      bindings:
+        http:
+          bindingVersion: '0.3.0'
+          headers:
+            type: object
+            properties:
+              Authorization:
+                type: string
+                description: |-
+                  When the Production API key has a `webhookCallbackApiKey`
+                  configured, Leonardo sends it as a bearer token in this
+                  header: `Authorization: Bearer <webhookCallbackApiKey>`.
+                  Absent when no webhook API key is configured.
+                example: Bearer abcd
+              Content-Type:
+                type: string
+                enum:
+                  - application/json
+              User-Agent:
+                type: string
+                description: |-
+                  Sample value observed in the public webhook guide.
+                example: axios/1.4.0
+      message:
+        oneOf:
+          - $ref: '#/components/messages/ImageGenerationComplete'
+
+components:
+  securitySchemes:
+    bearerToken:
+      type: httpApiKey
+      in: header
+      name: Authorization
+      description: |-
+        Optional bearer token. When the Production API key is created with a
+        `webhookCallbackApiKey`, Leonardo includes
+        `Authorization: Bearer <webhookCallbackApiKey>` on every callback.
+        Subscribers should reject requests that do not present the expected
+        bearer value.
+    ipAllowList:
+      type: httpApiKey
+      in: header
+      name: X-Forwarded-For
+      description: |-
+        Source-IP allowlisting against the six documented Leonardo egress
+        addresses: 35.173.108.170, 34.239.69.60, 52.73.75.186, 3.229.99.26,
+        44.218.0.197, 174.129.230.221. Modelled here as an httpApiKey scheme
+        because AsyncAPI 2.6 has no first-class allowlist security type.
+
+  messages:
+    ImageGenerationComplete:
+      name: ImageGenerationComplete
+      title: Image generation complete
+      summary: |-
+        Fired when an image generation job submitted via POST /generations
+        reaches the COMPLETE status.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/ImageGenerationCompleteEnvelope'
+      examples:
+        - name: imageGenerationCompleteSample
+          summary: >-
+            Verbatim sample payload from the public Leonardo webhook callback
+            guide.
+          payload:
+            type: image_generation.complete
+            object: generation
+            timestamp: 1699490546932
+            api_version: v1
+            data:
+              object:
+                id: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+                createdAt: '2023-11-09T00:42:22.707Z'
+                updatedAt: '2023-11-09T00:42:26.740Z'
+                userId: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+                public: false
+                flagged: false
+                nsfw: false
+                status: COMPLETE
+                coreModel: SD
+                guidanceScale: 7
+                imageHeight: 512
+                imageWidth: 512
+                inferenceSteps: 30
+                initGeneratedImageId: null
+                initImageId: null
+                initStrength: null
+                initType: null
+                initUpscaledImageId: null
+                modelId: 6bef9f1b-29cb-40c7-b9df-32b51c1f67d3
+                negativePrompt: ''
+                prompt: An oil painting of a cat
+                quantity: 1
+                sdVersion: v2
+                tiling: false
+                imageAspectRatio: null
+                tokenCost: 0
+                negativeStylePrompt: ''
+                seed: '905778432'
+                scheduler: EULER_DISCRETE
+                presetStyle: null
+                promptMagic: false
+                canvasInitImageId: null
+                canvasMaskImageId: null
+                canvasRequest: false
+                api: true
+                poseImage2Image: false
+                imagePromptStrength: null
+                category: null
+                poseImage2ImageType: null
+                highContrast: false
+                apiDollarCost: '9'
+                poseImage2ImageWeight: null
+                alchemy: null
+                contrastRatio: null
+                highResolution: null
+                expandedDomain: null
+                promptMagicVersion: null
+                unzoom: null
+                unzoomAmount: null
+                apiKeyId: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+                photoReal: false
+                promptMagicStrength: null
+                photoRealStrength: null
+                imageToImage: false
+                controlnetsUsed: false
+                model:
+                  id: 6bef9f1b-29cb-40c7-b9df-32b51c1f67d3
+                  createdAt: '2023-01-06T01:02:38.315Z'
+                  updatedAt: '2023-03-01T11:45:06.428Z'
+                  name: Leonardo Creative
+                  description: >-
+                    An alternative finetune of SD 2.1 that brings a little
+                    more creative interpretation to the mix.
+                  public: true
+                  userId: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+                  flagged: false
+                  nsfw: false
+                  official: true
+                  status: COMPLETE
+                  classPrompt: null
+                  coreModel: SD
+                  initDatasetId: null
+                  instancePrompt: null
+                  sdVersion: v2
+                  trainingEpoch: null
+                  trainingSteps: null
+                  tokenCost: null
+                  batchSize: 4
+                  learningRate: null
+                  type: GENERAL
+                  modelHeight: 768
+                  modelWidth: 768
+                  leonardoInstancePrompt: null
+                  trainingStrength: MEDIUM
+                  featured: false
+                  featuredImageId: null
+                  featuredPosition: 4
+                  api: false
+                  favouriteCount: 0
+                  imageCount: 2416039
+                  enhancedModeration: false
+                  apiDollarCost: null
+                  apiKeyId: null
+                  modelLRN: null
+                images:
+                  - id: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+                    createdAt: '2023-11-09T00:42:26.733Z'
+                    updatedAt: '2023-11-09T00:42:26.733Z'
+                    userId: ef8b8386-94f7-48d1-b10e-e87fd4dee6e6
+                    url: >-
+                      https://cdn.leonardo.ai/users/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/generations/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/Leonardo_Creative_An_oil_painting_of_a_cat_0.jpg
+                    generationId: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+                    nobgId: null
+                    nsfw: false
+                    likeCount: 0
+                    trendingScore: 0
+                    public: false
+                apiKey:
+                  id: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+                  createdAt: '2023-11-07T00:11:07.274Z'
+                  userId: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+                  key: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+                  lastUsed: '2023-11-07T00:11:07.274Z'
+                  name: webhook with key
+                  type: PRODUCTION
+                  webhookCallbackUrl: >-
+                    https://webhook.site/cc21af5f-4caa-498e-8f26-20c664680b73
+                  webhookCallbackApiKey: abcd
+
+  schemas:
+    ImageGenerationCompleteEnvelope:
+      type: object
+      description: |-
+        Top-level event envelope delivered for `image_generation.complete`.
+        Field set is taken verbatim from the public Leonardo webhook callback
+        guide.
+      required:
+        - type
+        - object
+        - timestamp
+        - api_version
+        - data
+      properties:
+        type:
+          type: string
+          description: Event class. Documented value is `image_generation.complete`.
+          enum:
+            - image_generation.complete
+        object:
+          type: string
+          description: Resource class carried in `data.object`.
+          enum:
+            - generation
+        timestamp:
+          type: integer
+          format: int64
+          description: Unix epoch time in milliseconds.
+          example: 1699490546932
+        api_version:
+          type: string
+          description: Webhook envelope version.
+          enum:
+            - v1
+        data:
+          type: object
+          required:
+            - object
+          properties:
+            object:
+              $ref: '#/components/schemas/Generation'
+
+    Generation:
+      type: object
+      description: |-
+        Generation resource as delivered inside `data.object` for an
+        `image_generation.complete` event. Field names and example values
+        mirror the public guide exactly; types are inferred from the sample
+        payload.
+      properties:
+        id:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        userId:
+          type: string
+          format: uuid
+        public:
+          type: boolean
+        flagged:
+          type: boolean
+        nsfw:
+          type: boolean
+        status:
+          type: string
+          description: Terminal status for the generation.
+          example: COMPLETE
+        coreModel:
+          type: string
+          example: SD
+        guidanceScale:
+          type: number
+        imageHeight:
+          type: integer
+        imageWidth:
+          type: integer
+        inferenceSteps:
+          type: integer
+        initGeneratedImageId:
+          type: string
+          nullable: true
+        initImageId:
+          type: string
+          nullable: true
+        initStrength:
+          type: number
+          nullable: true
+        initType:
+          type: string
+          nullable: true
+        initUpscaledImageId:
+          type: string
+          nullable: true
+        modelId:
+          type: string
+          format: uuid
+          nullable: true
+        negativePrompt:
+          type: string
+        prompt:
+          type: string
+        quantity:
+          type: integer
+        sdVersion:
+          type: string
+        tiling:
+          type: boolean
+        imageAspectRatio:
+          type: string
+          nullable: true
+        tokenCost:
+          type: number
+        negativeStylePrompt:
+          type: string
+        seed:
+          type: string
+        scheduler:
+          type: string
+        presetStyle:
+          type: string
+          nullable: true
+        promptMagic:
+          type: boolean
+          nullable: true
+        canvasInitImageId:
+          type: string
+          nullable: true
+        canvasMaskImageId:
+          type: string
+          nullable: true
+        canvasRequest:
+          type: boolean
+        api:
+          type: boolean
+        poseImage2Image:
+          type: boolean
+        imagePromptStrength:
+          type: number
+          nullable: true
+        category:
+          type: string
+          nullable: true
+        poseImage2ImageType:
+          type: string
+          nullable: true
+        highContrast:
+          type: boolean
+          nullable: true
+        apiDollarCost:
+          type: string
+          description: |-
+            USD cost of the generation expressed as a string to preserve
+            decimal precision, mirroring the sample payload.
+        poseImage2ImageWeight:
+          type: number
+          nullable: true
+        alchemy:
+          type: boolean
+          nullable: true
+        contrastRatio:
+          type: number
+          nullable: true
+        highResolution:
+          type: boolean
+          nullable: true
+        expandedDomain:
+          type: boolean
+          nullable: true
+        promptMagicVersion:
+          type: string
+          nullable: true
+        unzoom:
+          type: boolean
+          nullable: true
+        unzoomAmount:
+          type: number
+          nullable: true
+        apiKeyId:
+          type: string
+          format: uuid
+        photoReal:
+          type: boolean
+        promptMagicStrength:
+          type: number
+          nullable: true
+        photoRealStrength:
+          type: number
+          nullable: true
+        imageToImage:
+          type: boolean
+        controlnetsUsed:
+          type: boolean
+        model:
+          $ref: '#/components/schemas/Model'
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/GeneratedImage'
+        apiKey:
+          $ref: '#/components/schemas/ApiKey'
+
+    Model:
+      type: object
+      description: |-
+        Snapshot of the model that produced the generation, nested inside the
+        generation envelope.
+      properties:
+        id:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        name:
+          type: string
+        description:
+          type: string
+        public:
+          type: boolean
+        userId:
+          type: string
+          format: uuid
+        flagged:
+          type: boolean
+        nsfw:
+          type: boolean
+        official:
+          type: boolean
+        status:
+          type: string
+        classPrompt:
+          type: string
+          nullable: true
+        coreModel:
+          type: string
+        initDatasetId:
+          type: string
+          nullable: true
+        instancePrompt:
+          type: string
+          nullable: true
+        sdVersion:
+          type: string
+        trainingEpoch:
+          type: integer
+          nullable: true
+        trainingSteps:
+          type: integer
+          nullable: true
+        tokenCost:
+          type: number
+          nullable: true
+        batchSize:
+          type: integer
+        learningRate:
+          type: number
+          nullable: true
+        type:
+          type: string
+          example: GENERAL
+        modelHeight:
+          type: integer
+        modelWidth:
+          type: integer
+        leonardoInstancePrompt:
+          type: string
+          nullable: true
+        trainingStrength:
+          type: string
+        featured:
+          type: boolean
+        featuredImageId:
+          type: string
+          nullable: true
+        featuredPosition:
+          type: integer
+        api:
+          type: boolean
+        favouriteCount:
+          type: integer
+        imageCount:
+          type: integer
+        enhancedModeration:
+          type: boolean
+        apiDollarCost:
+          type: string
+          nullable: true
+        apiKeyId:
+          type: string
+          nullable: true
+        modelLRN:
+          type: string
+          nullable: true
+
+    GeneratedImage:
+      type: object
+      description: |-
+        Image asset produced by the generation. The `url` points to the CDN
+        location where the rendered image can be fetched.
+      properties:
+        id:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        userId:
+          type: string
+          format: uuid
+        url:
+          type: string
+          format: uri
+        generationId:
+          type: string
+          format: uuid
+        nobgId:
+          type: string
+          nullable: true
+        nsfw:
+          type: boolean
+        likeCount:
+          type: integer
+        trendingScore:
+          type: number
+        public:
+          type: boolean
+
+    ApiKey:
+      type: object
+      description: |-
+        Snapshot of the Production API key the generation was billed to,
+        including the webhook callback URL and webhook API key that triggered
+        this delivery.
+      properties:
+        id:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
+        userId:
+          type: string
+          format: uuid
+        key:
+          type: string
+        lastUsed:
+          type: string
+          format: date-time
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+            - PRODUCTION
+        webhookCallbackUrl:
+          type: string
+          format: uri
+        webhookCallbackApiKey:
+          type: string
