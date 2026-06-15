@@ -1,0 +1,119 @@
+{
+  "item": [
+    {
+      "id": "492d48c4-972e-4b2b-b1a1-d927c6c09050",
+      "name": "User",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d15425f0-7997-4eec-9645-1fb993d1981f",
+          "name": "Get user information",
+          "request": {
+            "name": "Get user information",
+            "description": {
+              "content": "This endpoint will return your user information such as your user id, username, token renewal date and current amounts of the following: subscription tokens, gpt (prompt generation) tokens, and model training tokens",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9c48f5da-025f-4ed0-a6f0-9ab263fdbea8",
+              "name": "Responses for GET /me",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user_details\": [\n    {\n      \"user\": {\n        \"id\": \"96979ccf-0b7a-419c-95c1-f5fe4a606a8e\",\n        \"username\": \"string\"\n      },\n      \"tokenRenewalDate\": \"string\",\n      \"paidTokens\": 9467,\n      \"subscriptionTokens\": 9729,\n      \"subscriptionGptTokens\": 1285,\n      \"subscriptionModelTokens\": 1458,\n      \"apiConcurrencySlots\": 3659,\n      \"apiPaidTokens\": 4773,\n      \"apiSubscriptionTokens\": 9733,\n      \"apiPlanTokenRenewalDate\": \"string\"\n    },\n    {\n      \"user\": {\n        \"id\": \"48bddc11-773c-483f-Ac05-6d7717b6a1d3\",\n        \"username\": \"string\"\n      },\n      \"tokenRenewalDate\": \"string\",\n      \"paidTokens\": 2875,\n      \"subscriptionTokens\": 1743,\n      \"subscriptionGptTokens\": 3444,\n      \"subscriptionModelTokens\": 1233,\n      \"apiConcurrencySlots\": 9967,\n      \"apiPaidTokens\": 4431,\n      \"apiSubscriptionTokens\": 9210,\n      \"apiPlanTokenRenewalDate\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cloud.leonardo.ai/api/rest/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "86c9d49b-5e3e-4ea1-bf08-d3e26b827370",
+    "name": "Leonardo.AI User API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Retrieve the authenticated user's profile, API key info, and remaining credit balance via /me.\n\nContact Support:\n Name: Leonardo.AI Support",
+      "type": "text/plain"
+    }
+  }
+}

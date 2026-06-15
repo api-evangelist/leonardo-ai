@@ -1,0 +1,437 @@
+{
+  "item": [
+    {
+      "id": "163d14c9-c073-4fef-b15f-fcb1955e5b40",
+      "name": "Realtime Canvas",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "149c6e89-9b83-4bcc-b1da-5f4d9cffe1aa",
+          "name": "Create LCM Generation",
+          "request": {
+            "name": "Create LCM Generation",
+            "description": {
+              "content": "This endpoint will generate a LCM image generation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "generations-lcm"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"imageDataUrl\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"guidance\": \"<number>\",\n  \"strength\": \"<number>\",\n  \"requestTimestamp\": \"<string>\",\n  \"style\": \"<string>\",\n  \"steps\": \"<integer>\",\n  \"width\": 512,\n  \"height\": 512,\n  \"seed\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9642c609-9b68-413a-beb0-037aa9e8ad3b",
+              "name": "Responses for POST /generations-lcm",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "generations-lcm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"imageDataUrl\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"guidance\": \"<number>\",\n  \"strength\": \"<number>\",\n  \"requestTimestamp\": \"<string>\",\n  \"style\": \"<string>\",\n  \"steps\": \"<integer>\",\n  \"width\": 512,\n  \"height\": 512,\n  \"seed\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"lcmGenerationJob\": {\n    \"imageDataUrl\": [\n      \"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAAAAAAAD...\"\n    ],\n    \"requestTimestamp\": \"1234567890\",\n    \"apiCreditCost\": null,\n    \"cost\": {\n      \"amount\": \"0.0147\",\n      \"unit\": \"DOLLARS\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "11c132ff-6766-4f9b-a5f9-f3dde7610524",
+          "name": "Perform instant refine on a LCM image",
+          "request": {
+            "name": "Perform instant refine on a LCM image",
+            "description": {
+              "content": "This endpoint will perform instant refine on a LCM image",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lcm-instant-refine"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"imageDataUrl\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"guidance\": \"<number>\",\n  \"strength\": \"<number>\",\n  \"requestTimestamp\": \"<string>\",\n  \"style\": \"<string>\",\n  \"steps\": \"<integer>\",\n  \"width\": 512,\n  \"height\": 512,\n  \"seed\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "453dc72b-f461-4be0-b952-1a90b7dc5caf",
+              "name": "Responses for POST /lcm-instant-refine",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lcm-instant-refine"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"imageDataUrl\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"guidance\": \"<number>\",\n  \"strength\": \"<number>\",\n  \"requestTimestamp\": \"<string>\",\n  \"style\": \"<string>\",\n  \"steps\": \"<integer>\",\n  \"width\": 512,\n  \"height\": 512,\n  \"seed\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"lcmGenerationJob\": {\n    \"imageDataUrl\": [\n      \"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAAAAAAAD...\"\n    ],\n    \"requestTimestamp\": \"1234567891\",\n    \"apiCreditCost\": null,\n    \"cost\": {\n      \"amount\": \"0.0147\",\n      \"unit\": \"DOLLARS\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f93a9f36-db2f-43c8-8812-60ee2851621c",
+          "name": "Perform inpainting on a LCM image",
+          "request": {
+            "name": "Perform inpainting on a LCM image",
+            "description": {
+              "content": "This endpoint will perform a inpainting on a LCM image",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lcm-inpainting"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"imageDataUrl\": \"<string>\",\n  \"maskDataUrl\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"guidance\": \"<number>\",\n  \"strength\": \"<number>\",\n  \"requestTimestamp\": \"<string>\",\n  \"style\": \"<string>\",\n  \"steps\": \"<integer>\",\n  \"width\": 512,\n  \"height\": 512,\n  \"seed\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e9847342-d481-402c-ab6e-5a7a268d593d",
+              "name": "Responses for POST /lcm-inpainting",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lcm-inpainting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"imageDataUrl\": \"<string>\",\n  \"maskDataUrl\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"guidance\": \"<number>\",\n  \"strength\": \"<number>\",\n  \"requestTimestamp\": \"<string>\",\n  \"style\": \"<string>\",\n  \"steps\": \"<integer>\",\n  \"width\": 512,\n  \"height\": 512,\n  \"seed\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"lcmGenerationJob\": {\n    \"imageDataUrl\": [\n      \"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAAAAAAAD...\"\n    ],\n    \"requestTimestamp\": \"1234567892\",\n    \"apiCreditCost\": null,\n    \"cost\": {\n      \"amount\": \"0.0147\",\n      \"unit\": \"DOLLARS\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2bc4d68f-2e2e-4435-82db-645e546c60b5",
+          "name": "Perform Alchemy Upscale on a LCM image",
+          "request": {
+            "name": "Perform Alchemy Upscale on a LCM image",
+            "description": {
+              "content": "This endpoint will perform Alchemy Upscale on a LCM image",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lcm-upscale"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"imageDataUrl\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"guidance\": \"<number>\",\n  \"strength\": \"<number>\",\n  \"requestTimestamp\": \"<string>\",\n  \"style\": \"<string>\",\n  \"steps\": \"<integer>\",\n  \"width\": 512,\n  \"height\": 512,\n  \"seed\": \"<integer>\",\n  \"refineCreative\": \"<boolean>\",\n  \"refineStrength\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "900ea8a1-92e5-4341-80b1-40e4f879249b",
+              "name": "Responses for POST /lcm-upscale",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lcm-upscale"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"imageDataUrl\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"guidance\": \"<number>\",\n  \"strength\": \"<number>\",\n  \"requestTimestamp\": \"<string>\",\n  \"style\": \"<string>\",\n  \"steps\": \"<integer>\",\n  \"width\": 512,\n  \"height\": 512,\n  \"seed\": \"<integer>\",\n  \"refineCreative\": \"<boolean>\",\n  \"refineStrength\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"lcmGenerationJob\": {\n    \"imageDataUrl\": [\n      \"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAAAAAAAD...\"\n    ],\n    \"variationId\": [\n      \"var234567-8901-bcde-fghi-jklmnopqrstu\"\n    ],\n    \"generatedImageId\": \"l1m2n3o4-p5q6-r7s8-tuvw-xy0123456789\",\n    \"requestTimestamp\": \"1234567893\",\n    \"apiCreditCost\": null,\n    \"cost\": {\n      \"amount\": \"0.0147\",\n      \"unit\": \"DOLLARS\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cloud.leonardo.ai/api/rest/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6a4f37fc-41f3-4b52-a77e-85eff5a753b5",
+    "name": "Leonardo.AI Realtime Canvas API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Real-time LCM (Latent Consistency Model) generation, inpainting, instant refine, and Alchemy upscale for interactive canvas workflows.\n\nContact Support:\n Name: Leonardo.AI Support",
+      "type": "text/plain"
+    }
+  }
+}

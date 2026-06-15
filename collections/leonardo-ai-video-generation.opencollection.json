@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Leonardo.AI Video Generation API",
+    "version": "v1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Motion",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create SVD Motion Generation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/generations-motion-svd",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint will generate a SVD motion generation."
+        },
+        {
+          "info": {
+            "name": "Create a video generation from an image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/generations-image-to-video",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint will generate a video using an uploaded or generated image."
+        },
+        {
+          "info": {
+            "name": "Create a video generation from a text prompt",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/generations-text-to-video",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint will generate a video using a text prompt"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

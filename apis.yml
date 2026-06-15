@@ -1,419 +1,406 @@
 aid: leonardo-ai
 url: https://raw.githubusercontent.com/api-evangelist/leonardo-ai/refs/heads/main/apis.yml
 name: Leonardo.AI
-description: Leonardo.AI is an Australian generative-AI company (acquired by Canva in July 2024) offering a
-  Production API for AI image generation, video generation, 3D model creation, custom model and element training,
-  realtime canvas editing, upscaling and variations, and Blueprint workflow execution. The platform supports
-  in-house Leonardo models (Phoenix, Lucid Origin, Lucid Realism) and third-party models (FLUX.1/FLUX.2, Ideogram
-  3.0, GPT Image, Nano Banana, Seedream, Kling, LTX, Veo, Seedance, Hailuo, Rodin) under a unified pay-as-you-go
-  dollar-denominated API surface with webhook callbacks, MCP server integration, and official Python and
-  TypeScript SDKs.
+description: >-
+  Leonardo.AI is an Australian generative-AI company (acquired by Canva in July 2024) offering a Production API for AI
+  image generation, video generation, 3D model creation, custom model and element training, realtime canvas editing,
+  upscaling and variations, and Blueprint workflow execution. The platform supports in-house Leonardo models (Phoenix,
+  Lucid Origin, Lucid Realism) and third-party models (FLUX.1/FLUX.2, Ideogram 3.0, GPT Image, Nano Banana, Seedream,
+  Kling, LTX, Veo, Seedance, Hailuo, Rodin) under a unified pay-as-you-go dollar-denominated API surface with webhook
+  callbacks, MCP server integration, and official Python and TypeScript SDKs.
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 kind: contract
 access: 3rd-Party
 tags:
-- AI
-- Artificial Intelligence
-- Image Generation
-- Video Generation
-- Generative AI
-- Creative
-- 3D
-- Diffusion
-- Canva
-apis:
-- aid: leonardo-ai:leonardo-ai-image-generation
-  name: Leonardo.AI Image Generation API
-  description: Create image generations with FLUX.2 Pro, FLUX Dev, FLUX Schnell, FLUX.1 Kontext, Phoenix,
-    Lucid Origin, Lucid Realism, Ideogram 3.0, GPT Image 2, Nano Banana, Seedream, and other supported models.
-    POST /generations submits a job; results are retrieved via GET /generations/{id} or via the optional
-    webhook callback. Supports PhotoReal, Alchemy, image prompts, image guidance (ControlNet), enhanced prompts,
-    transparency, and per-model knobs.
-  humanURL: https://docs.leonardo.ai/reference/creategeneration
-  tags:
   - AI
+  - Artificial Intelligence
   - Image Generation
-  - Generations
-  properties:
-  - url: https://docs.leonardo.ai/reference/creategeneration
+  - Video Generation
+  - Generative AI
+  - Creative
+  - 3D
+  - Diffusion
+  - Canva
+apis:
+  - aid: leonardo-ai:leonardo-ai-image-generation
+    name: Leonardo.AI Image Generation API
+    description: >-
+      Create image generations with FLUX.2 Pro, FLUX Dev, FLUX Schnell, FLUX.1 Kontext, Phoenix, Lucid Origin, Lucid
+      Realism, Ideogram 3.0, GPT Image 2, Nano Banana, Seedream, and other supported models. POST /generations submits a
+      job; results are retrieved via GET /generations/{id} or via the optional webhook callback. Supports PhotoReal,
+      Alchemy, image prompts, image guidance (ControlNet), enhanced prompts, transparency, and per-model knobs.
+    humanURL: https://docs.leonardo.ai/reference/creategeneration
+    tags:
+      - AI
+      - Image Generation
+      - Generations
+    properties:
+      - url: https://docs.leonardo.ai/reference/creategeneration
+        type: Documentation
+      - url: https://docs.leonardo.ai/docs/getting-started
+        type: GettingStarted
+      - url: openapi/leonardo-ai-image-generation-openapi.json
+        type: OpenAPI
+      - url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
+        type: AsyncAPI
+      - url: json-schema/leonardo-ai-generation-schema.json
+        type: JSONSchema
+      - url: json-ld/leonardo-ai-context.jsonld
+        type: JSONLD
+  - aid: leonardo-ai:leonardo-ai-video-generation
+    name: Leonardo.AI Video Generation API
+    description: >-
+      Generate videos from text or images via Kling 2.x/3.x, LTX 2.x, Veo 3.x, Seedance, Hailuo, and Stable Video
+      Diffusion motion models. Three endpoints cover image-to-video, text-to-video, and SVD motion. Jobs are
+      asynchronous; poll the variation/motion endpoints or use a webhook for completion.
+    humanURL: https://docs.leonardo.ai/reference/createimagetovideogeneration
+    tags:
+      - AI
+      - Video Generation
+      - Motion
+    properties:
+      - url: https://docs.leonardo.ai/reference/createimagetovideogeneration
+        type: Documentation
+      - url: openapi/leonardo-ai-video-generation-openapi.json
+        type: OpenAPI
+  - aid: leonardo-ai:leonardo-ai-variation
+    name: Leonardo.AI Variation and Upscale API
+    description: >-
+      Apply post-generation transformations to existing images including unzoom (outpainting), creative upscale,
+      background removal, and the Universal Upscaler. Retrieve variation job status by ID.
+    humanURL: https://docs.leonardo.ai/reference/createvariationupscale
+    tags:
+      - AI
+      - Upscale
+      - Variation
+      - Image Editing
+    properties:
+      - url: https://docs.leonardo.ai/reference/createvariationupscale
+        type: Documentation
+      - url: openapi/leonardo-ai-variation-openapi.json
+        type: OpenAPI
+  - aid: leonardo-ai:leonardo-ai-realtime-canvas
+    name: Leonardo.AI Realtime Canvas API
+    description: >-
+      Real-time Latent Consistency Model (LCM) endpoints for sub-second iterative generation, inpainting, instant
+      refine, and Alchemy upscale — backing the Leonardo Realtime Canvas product surface.
+    humanURL: https://docs.leonardo.ai/reference/createlcmgeneration
+    tags:
+      - AI
+      - Realtime
+      - LCM
+      - Canvas
+    properties:
+      - url: https://docs.leonardo.ai/reference/createlcmgeneration
+        type: Documentation
+      - url: openapi/leonardo-ai-realtime-canvas-openapi.json
+        type: OpenAPI
+  - aid: leonardo-ai:leonardo-ai-models
+    name: Leonardo.AI Models API
+    description: >-
+      List Leonardo platform models (Phoenix, Lucid, FLUX, Ideogram, etc.) and manage custom fine-tuned models. Includes
+      model catalog, custom model training, retrieval, and deletion by user.
+    humanURL: https://docs.leonardo.ai/reference/getplatformmodels
+    tags:
+      - AI
+      - Models
+      - Custom Models
+      - Training
+    properties:
+      - url: https://docs.leonardo.ai/reference/getplatformmodels
+        type: Documentation
+      - url: openapi/leonardo-ai-models-openapi.json
+        type: OpenAPI
+      - url: json-schema/leonardo-ai-model-schema.json
+        type: JSONSchema
+  - aid: leonardo-ai:leonardo-ai-elements
+    name: Leonardo.AI Elements API
+    description: >-
+      Create and manage Custom Elements — LoRA-style style adapters trainable on user datasets and reusable across image
+      generations to enforce visual identity, style, or character consistency.
+    humanURL: https://docs.leonardo.ai/reference/createelement
+    tags:
+      - AI
+      - Elements
+      - LoRA
+      - Fine Tuning
+    properties:
+      - url: https://docs.leonardo.ai/reference/createelement
+        type: Documentation
+      - url: openapi/leonardo-ai-elements-openapi.json
+        type: OpenAPI
+  - aid: leonardo-ai:leonardo-ai-datasets
+    name: Leonardo.AI Datasets API
+    description: >-
+      Create, upload to, and delete training datasets used as input to custom model and element training. Upload images
+      directly or from existing generations.
+    humanURL: https://docs.leonardo.ai/reference/createdataset
+    tags:
+      - AI
+      - Datasets
+      - Training
+    properties:
+      - url: https://docs.leonardo.ai/reference/createdataset
+        type: Documentation
+      - url: openapi/leonardo-ai-datasets-openapi.json
+        type: OpenAPI
+  - aid: leonardo-ai:leonardo-ai-init-images
+    name: Leonardo.AI Init Images API
+    description: >-
+      Upload, retrieve, and delete init images used for image-to-image, image-prompt, canvas, and image-guidance
+      workflows. Returns presigned upload URLs.
+    humanURL: https://docs.leonardo.ai/reference/uploadinitimage
+    tags:
+      - AI
+      - Image Upload
+      - Init Images
+    properties:
+      - url: https://docs.leonardo.ai/reference/uploadinitimage
+        type: Documentation
+      - url: openapi/leonardo-ai-init-images-openapi.json
+        type: OpenAPI
+  - aid: leonardo-ai:leonardo-ai-media
+    name: Leonardo.AI Media API
+    description: >-
+      Upload, retrieve, and delete general-purpose media (images, video frames, reference assets) used across generation
+      endpoints.
+    humanURL: https://docs.leonardo.ai/reference/uploadmedia
+    tags:
+      - AI
+      - Media
+      - Upload
+    properties:
+      - url: https://docs.leonardo.ai/reference/uploadmedia
+        type: Documentation
+      - url: openapi/leonardo-ai-media-openapi.json
+        type: OpenAPI
+  - aid: leonardo-ai:leonardo-ai-3d-model-assets
+    name: Leonardo.AI 3D Model Assets API
+    description: >-
+      Upload, retrieve, and delete 3D model assets — used with Rodin V2 and other 3D-capable workflows for texturing and
+      generation.
+    humanURL: https://docs.leonardo.ai/reference/upload3dmodelasset
+    tags:
+      - AI
+      - 3D
+      - Models
+      - Assets
+    properties:
+      - url: https://docs.leonardo.ai/reference/upload3dmodelasset
+        type: Documentation
+      - url: openapi/leonardo-ai-3d-model-assets-openapi.json
+        type: OpenAPI
+  - aid: leonardo-ai:leonardo-ai-blueprints
+    name: Leonardo.AI Blueprints API
+    description: >-
+      Execute Leonardo Blueprints — pre-packaged multi-step image and video workflows authored in the Leonardo App — and
+      retrieve their executions, generations, and version history. List the blueprint catalog for the authenticated
+      user.
+    humanURL: https://docs.leonardo.ai/reference/listblueprints
+    tags:
+      - AI
+      - Blueprints
+      - Workflows
+    properties:
+      - url: https://docs.leonardo.ai/reference/listblueprints
+        type: Documentation
+      - url: openapi/leonardo-ai-blueprints-openapi.json
+        type: OpenAPI
+  - aid: leonardo-ai:leonardo-ai-prompt
+    name: Leonardo.AI Prompt API
+    description: >-
+      Improve user-supplied prompts with the Prompt Improvement endpoint and generate random prompts for inspiration.
+      Used to bootstrap and refine generation requests.
+    humanURL: https://docs.leonardo.ai/reference/promptimprove
+    tags:
+      - AI
+      - Prompts
+      - Prompt Engineering
+    properties:
+      - url: https://docs.leonardo.ai/reference/promptimprove
+        type: Documentation
+      - url: openapi/leonardo-ai-prompt-openapi.json
+        type: OpenAPI
+  - aid: leonardo-ai:leonardo-ai-pricing-calculator
+    name: Leonardo.AI Pricing Calculator API
+    description: >-
+      Pre-calculate the API credit cost (in USD) of a generation request before submitting it. Mirrors the cost
+      estimation logic of the in-app Pricing Calculator.
+    humanURL: https://docs.leonardo.ai/reference/pricingcalculator
+    tags:
+      - AI
+      - Pricing
+      - Cost
+      - FinOps
+    properties:
+      - url: https://docs.leonardo.ai/reference/pricingcalculator
+        type: Documentation
+      - url: openapi/leonardo-ai-pricing-calculator-openapi.json
+        type: OpenAPI
+  - aid: leonardo-ai:leonardo-ai-user
+    name: Leonardo.AI User API
+    description: >-
+      Retrieve the authenticated user's profile, subscription info, and remaining API credit balance via GET /me. Used
+      as the canonical balance-check endpoint for FinOps reporting.
+    humanURL: https://docs.leonardo.ai/reference/getuserself
+    tags:
+      - AI
+      - User
+      - Account
+    properties:
+      - url: https://docs.leonardo.ai/reference/getuserself
+        type: Documentation
+      - url: openapi/leonardo-ai-user-openapi.json
+        type: OpenAPI
+common:
+  - url: https://leonardo.ai
+    type: Portal
+  - url: https://leonardo.ai/api
+    name: Leonardo.AI API
+    type: Portal
+  - url: https://docs.leonardo.ai/
+    name: Leonardo.AI Documentation
     type: Documentation
   - url: https://docs.leonardo.ai/docs/getting-started
+    name: Quick Start Guide
     type: GettingStarted
-  - url: openapi/leonardo-ai-image-generation-openapi.json
-    type: OpenAPI
+  - url: https://docs.leonardo.ai/reference
+    name: API Reference
+    type: Documentation
+  - url: https://docs.leonardo.ai/llms.txt
+    name: llms.txt index
+    type: Documentation
+  - url: https://docs.leonardo.ai/docs/api-faq
+    name: API FAQ
+    type: Documentation
+  - url: https://docs.leonardo.ai/docs/api-error-messages
+    name: API Error Messages
+    type: Errors
+  - url: https://docs.leonardo.ai/docs/concurrency-rate-limits-and-queue
+    name: Concurrency, Queue, and Rate Limiting
+    type: RateLimits
+  - url: https://docs.leonardo.ai/docs/webhook-callback-feature
+    name: Webhook Callback Feature
+    type: Webhooks
+  - url: https://docs.leonardo.ai/docs/guide-to-the-webhook-callback-feature
+    name: Guide to the Webhook Callback Feature
+    type: Webhooks
   - url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
+    name: Leonardo.AI Webhook Callbacks (AsyncAPI 2.6)
     type: AsyncAPI
-  - url: json-schema/leonardo-ai-generation-schema.json
-    type: JSONSchema
-  - url: json-ld/leonardo-ai-context.jsonld
-    type: JSONLD
-  - type: NaftikoCapability
-    url: capabilities/image-generation.yaml
-- aid: leonardo-ai:leonardo-ai-video-generation
-  name: Leonardo.AI Video Generation API
-  description: Generate videos from text or images via Kling 2.x/3.x, LTX 2.x, Veo 3.x, Seedance, Hailuo, and
-    Stable Video Diffusion motion models. Three endpoints cover image-to-video, text-to-video, and SVD motion.
-    Jobs are asynchronous; poll the variation/motion endpoints or use a webhook for completion.
-  humanURL: https://docs.leonardo.ai/reference/createimagetovideogeneration
-  tags:
-  - AI
-  - Video Generation
-  - Motion
-  properties:
-  - url: https://docs.leonardo.ai/reference/createimagetovideogeneration
+  - url: https://docs.leonardo.ai/docs/payg-guide
+    name: Pay-As-You-Go (PAYG) Guide
+    type: Pricing
+  - url: https://docs.leonardo.ai/docs/plan-with-the-pricing-calculator
+    name: Pricing Calculator Guide
+    type: Pricing
+  - url: https://docs.leonardo.ai/docs/leonardoai-official-sdks
+    name: Official SDKs
+    type: SDK
+  - url: https://docs.leonardo.ai/docs/mcp-server
+    name: MCP Server Integration
     type: Documentation
-  - url: openapi/leonardo-ai-video-generation-openapi.json
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/video-generation.yaml
-- aid: leonardo-ai:leonardo-ai-variation
-  name: Leonardo.AI Variation and Upscale API
-  description: Apply post-generation transformations to existing images including unzoom (outpainting),
-    creative upscale, background removal, and the Universal Upscaler. Retrieve variation job status by ID.
-  humanURL: https://docs.leonardo.ai/reference/createvariationupscale
-  tags:
-  - AI
-  - Upscale
-  - Variation
-  - Image Editing
-  properties:
-  - url: https://docs.leonardo.ai/reference/createvariationupscale
+  - url: https://docs.leonardo.ai/docs/nsfw-handling
+    name: NSFW Handling
     type: Documentation
-  - url: openapi/leonardo-ai-variation-openapi.json
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/variation.yaml
-- aid: leonardo-ai:leonardo-ai-realtime-canvas
-  name: Leonardo.AI Realtime Canvas API
-  description: Real-time Latent Consistency Model (LCM) endpoints for sub-second iterative generation,
-    inpainting, instant refine, and Alchemy upscale — backing the Leonardo Realtime Canvas product surface.
-  humanURL: https://docs.leonardo.ai/reference/createlcmgeneration
-  tags:
-  - AI
-  - Realtime
-  - LCM
-  - Canvas
-  properties:
-  - url: https://docs.leonardo.ai/reference/createlcmgeneration
+  - url: https://github.com/Leonardo-Interactive
+    type: GitHubOrganization
+  - url: https://github.com/Leonardo-Interactive/leonardo-python-sdk
+    name: Python SDK
+    type: SDK
+  - url: https://github.com/Leonardo-Interactive/leonardo-ts-sdk
+    name: TypeScript SDK
+    type: SDK
+  - url: https://github.com/Leonardo-Interactive/agent-browser
+    name: agent-browser
+    type: Tool
+  - url: https://github.com/Leonardo-Interactive/background-removal-js
+    name: background-removal-js
+    type: Tool
+  - url: https://github.com/Leonardo-Interactive/leonardo-texturing-blender-plugin
+    name: Blender Texturing Plugin
+    type: Plugins
+  - url: https://pypi.org/project/leonardoai/
+    name: PyPI — leonardoai
+    type: SDK
+  - url: https://www.npmjs.com/package/@leonardo-ai/sdk
+    name: npm — @leonardo-ai/sdk
+    type: SDK
+  - url: https://app.leonardo.ai/api-access
+    name: API Access Dashboard
+    type: SignUp
+  - url: https://app.leonardo.ai/
+    name: Leonardo App
+    type: Portal
+  - url: https://leonardo.ai/pricing/
+    name: Pricing
+    type: Pricing
+  - url: https://leonardo.ai/news/
+    type: Blog
+  - url: https://leonardo.ai/news/supercharging-leonardo-with-canva/
+    name: Joining Canva announcement
+    type: Press
+  - url: https://www.canva.com/newsroom/news/leonardo-ai/
+    name: Welcome to Canva, Leonardo!
+    type: Press
+  - url: https://leonardo.ai/terms-of-service/
+    type: TermsOfService
+  - url: https://leonardo.ai/privacy-policy/
+    type: PrivacyPolicy
+  - url: https://leonardo.ai/legal/acceptable-use-policy/
+    type: AcceptableUsePolicy
+  - url: https://intercom.help/leonardo-ai/
+    name: Leonardo.Ai Help Center
+    type: Support
+  - url: https://intercom.help/leonardo-ai/en/articles/8973587-api-reference-and-guides-for-developers
+    name: API Reference and Guides (Help Center)
     type: Documentation
-  - url: openapi/leonardo-ai-realtime-canvas-openapi.json
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/realtime-canvas.yaml
-- aid: leonardo-ai:leonardo-ai-models
-  name: Leonardo.AI Models API
-  description: List Leonardo platform models (Phoenix, Lucid, FLUX, Ideogram, etc.) and manage custom
-    fine-tuned models. Includes model catalog, custom model training, retrieval, and deletion by user.
-  humanURL: https://docs.leonardo.ai/reference/getplatformmodels
-  tags:
-  - AI
-  - Models
-  - Custom Models
-  - Training
-  properties:
-  - url: https://docs.leonardo.ai/reference/getplatformmodels
-    type: Documentation
-  - url: openapi/leonardo-ai-models-openapi.json
-    type: OpenAPI
-  - url: json-schema/leonardo-ai-model-schema.json
-    type: JSONSchema
-  - type: NaftikoCapability
-    url: capabilities/models.yaml
-- aid: leonardo-ai:leonardo-ai-elements
-  name: Leonardo.AI Elements API
-  description: Create and manage Custom Elements — LoRA-style style adapters trainable on user datasets and
-    reusable across image generations to enforce visual identity, style, or character consistency.
-  humanURL: https://docs.leonardo.ai/reference/createelement
-  tags:
-  - AI
-  - Elements
-  - LoRA
-  - Fine Tuning
-  properties:
-  - url: https://docs.leonardo.ai/reference/createelement
-    type: Documentation
-  - url: openapi/leonardo-ai-elements-openapi.json
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/elements.yaml
-- aid: leonardo-ai:leonardo-ai-datasets
-  name: Leonardo.AI Datasets API
-  description: Create, upload to, and delete training datasets used as input to custom model and element
-    training. Upload images directly or from existing generations.
-  humanURL: https://docs.leonardo.ai/reference/createdataset
-  tags:
-  - AI
-  - Datasets
-  - Training
-  properties:
-  - url: https://docs.leonardo.ai/reference/createdataset
-    type: Documentation
-  - url: openapi/leonardo-ai-datasets-openapi.json
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/datasets.yaml
-- aid: leonardo-ai:leonardo-ai-init-images
-  name: Leonardo.AI Init Images API
-  description: Upload, retrieve, and delete init images used for image-to-image, image-prompt, canvas, and
-    image-guidance workflows. Returns presigned upload URLs.
-  humanURL: https://docs.leonardo.ai/reference/uploadinitimage
-  tags:
-  - AI
-  - Image Upload
-  - Init Images
-  properties:
-  - url: https://docs.leonardo.ai/reference/uploadinitimage
-    type: Documentation
-  - url: openapi/leonardo-ai-init-images-openapi.json
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/init-images.yaml
-- aid: leonardo-ai:leonardo-ai-media
-  name: Leonardo.AI Media API
-  description: Upload, retrieve, and delete general-purpose media (images, video frames, reference assets)
-    used across generation endpoints.
-  humanURL: https://docs.leonardo.ai/reference/uploadmedia
-  tags:
-  - AI
-  - Media
-  - Upload
-  properties:
-  - url: https://docs.leonardo.ai/reference/uploadmedia
-    type: Documentation
-  - url: openapi/leonardo-ai-media-openapi.json
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/media.yaml
-- aid: leonardo-ai:leonardo-ai-3d-model-assets
-  name: Leonardo.AI 3D Model Assets API
-  description: Upload, retrieve, and delete 3D model assets — used with Rodin V2 and other 3D-capable
-    workflows for texturing and generation.
-  humanURL: https://docs.leonardo.ai/reference/upload3dmodelasset
-  tags:
-  - AI
-  - 3D
-  - Models
-  - Assets
-  properties:
-  - url: https://docs.leonardo.ai/reference/upload3dmodelasset
-    type: Documentation
-  - url: openapi/leonardo-ai-3d-model-assets-openapi.json
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/3d-model-assets.yaml
-- aid: leonardo-ai:leonardo-ai-blueprints
-  name: Leonardo.AI Blueprints API
-  description: Execute Leonardo Blueprints — pre-packaged multi-step image and video workflows authored in
-    the Leonardo App — and retrieve their executions, generations, and version history. List the blueprint
-    catalog for the authenticated user.
-  humanURL: https://docs.leonardo.ai/reference/listblueprints
-  tags:
-  - AI
-  - Blueprints
-  - Workflows
-  properties:
-  - url: https://docs.leonardo.ai/reference/listblueprints
-    type: Documentation
-  - url: openapi/leonardo-ai-blueprints-openapi.json
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/blueprints.yaml
-- aid: leonardo-ai:leonardo-ai-prompt
-  name: Leonardo.AI Prompt API
-  description: Improve user-supplied prompts with the Prompt Improvement endpoint and generate random prompts
-    for inspiration. Used to bootstrap and refine generation requests.
-  humanURL: https://docs.leonardo.ai/reference/promptimprove
-  tags:
-  - AI
-  - Prompts
-  - Prompt Engineering
-  properties:
-  - url: https://docs.leonardo.ai/reference/promptimprove
-    type: Documentation
-  - url: openapi/leonardo-ai-prompt-openapi.json
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/prompt.yaml
-- aid: leonardo-ai:leonardo-ai-pricing-calculator
-  name: Leonardo.AI Pricing Calculator API
-  description: Pre-calculate the API credit cost (in USD) of a generation request before submitting it.
-    Mirrors the cost estimation logic of the in-app Pricing Calculator.
-  humanURL: https://docs.leonardo.ai/reference/pricingcalculator
-  tags:
-  - AI
-  - Pricing
-  - Cost
-  - FinOps
-  properties:
-  - url: https://docs.leonardo.ai/reference/pricingcalculator
-    type: Documentation
-  - url: openapi/leonardo-ai-pricing-calculator-openapi.json
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/pricing-calculator.yaml
-- aid: leonardo-ai:leonardo-ai-user
-  name: Leonardo.AI User API
-  description: Retrieve the authenticated user's profile, subscription info, and remaining API credit balance
-    via GET /me. Used as the canonical balance-check endpoint for FinOps reporting.
-  humanURL: https://docs.leonardo.ai/reference/getuserself
-  tags:
-  - AI
-  - User
-  - Account
-  properties:
-  - url: https://docs.leonardo.ai/reference/getuserself
-    type: Documentation
-  - url: openapi/leonardo-ai-user-openapi.json
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/user.yaml
-common:
-- url: https://leonardo.ai
-  type: Portal
-- url: https://leonardo.ai/api
-  name: Leonardo.AI API
-  type: Portal
-- url: https://docs.leonardo.ai/
-  name: Leonardo.AI Documentation
-  type: Documentation
-- url: https://docs.leonardo.ai/docs/getting-started
-  name: Quick Start Guide
-  type: GettingStarted
-- url: https://docs.leonardo.ai/reference
-  name: API Reference
-  type: Documentation
-- url: https://docs.leonardo.ai/llms.txt
-  name: llms.txt index
-  type: Documentation
-- url: https://docs.leonardo.ai/docs/api-faq
-  name: API FAQ
-  type: Documentation
-- url: https://docs.leonardo.ai/docs/api-error-messages
-  name: API Error Messages
-  type: Errors
-- url: https://docs.leonardo.ai/docs/concurrency-rate-limits-and-queue
-  name: Concurrency, Queue, and Rate Limiting
-  type: RateLimits
-- url: https://docs.leonardo.ai/docs/webhook-callback-feature
-  name: Webhook Callback Feature
-  type: Webhooks
-- url: https://docs.leonardo.ai/docs/guide-to-the-webhook-callback-feature
-  name: Guide to the Webhook Callback Feature
-  type: Webhooks
-- url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
-  name: Leonardo.AI Webhook Callbacks (AsyncAPI 2.6)
-  type: AsyncAPI
-- url: https://docs.leonardo.ai/docs/payg-guide
-  name: Pay-As-You-Go (PAYG) Guide
-  type: Pricing
-- url: https://docs.leonardo.ai/docs/plan-with-the-pricing-calculator
-  name: Pricing Calculator Guide
-  type: Pricing
-- url: https://docs.leonardo.ai/docs/leonardoai-official-sdks
-  name: Official SDKs
-  type: SDK
-- url: https://docs.leonardo.ai/docs/mcp-server
-  name: MCP Server Integration
-  type: Documentation
-- url: https://docs.leonardo.ai/docs/nsfw-handling
-  name: NSFW Handling
-  type: Documentation
-- url: https://github.com/Leonardo-Interactive
-  type: GitHubOrganization
-- url: https://github.com/Leonardo-Interactive/leonardo-python-sdk
-  name: Python SDK
-  type: SDK
-- url: https://github.com/Leonardo-Interactive/leonardo-ts-sdk
-  name: TypeScript SDK
-  type: SDK
-- url: https://github.com/Leonardo-Interactive/agent-browser
-  name: agent-browser
-  type: Tool
-- url: https://github.com/Leonardo-Interactive/background-removal-js
-  name: background-removal-js
-  type: Tool
-- url: https://github.com/Leonardo-Interactive/leonardo-texturing-blender-plugin
-  name: Blender Texturing Plugin
-  type: Plugins
-- url: https://pypi.org/project/leonardoai/
-  name: PyPI — leonardoai
-  type: SDK
-- url: https://www.npmjs.com/package/@leonardo-ai/sdk
-  name: npm — @leonardo-ai/sdk
-  type: SDK
-- url: https://app.leonardo.ai/api-access
-  name: API Access Dashboard
-  type: SignUp
-- url: https://app.leonardo.ai/
-  name: Leonardo App
-  type: Portal
-- url: https://leonardo.ai/pricing/
-  name: Pricing
-  type: Pricing
-- url: https://leonardo.ai/news/
-  type: Blog
-- url: https://leonardo.ai/news/supercharging-leonardo-with-canva/
-  name: Joining Canva announcement
-  type: Press
-- url: https://www.canva.com/newsroom/news/leonardo-ai/
-  name: Welcome to Canva, Leonardo!
-  type: Press
-- url: https://leonardo.ai/terms-of-service/
-  type: TermsOfService
-- url: https://leonardo.ai/privacy-policy/
-  type: PrivacyPolicy
-- url: https://leonardo.ai/legal/acceptable-use-policy/
-  type: AcceptableUsePolicy
-- url: https://intercom.help/leonardo-ai/
-  name: Leonardo.Ai Help Center
-  type: Support
-- url: https://intercom.help/leonardo-ai/en/articles/8973587-api-reference-and-guides-for-developers
-  name: API Reference and Guides (Help Center)
-  type: Documentation
-- type: LinkedIn
-  url: https://www.linkedin.com/company/leonardo-ai/
-- type: X
-  url: https://x.com/LeonardoAi_
-- url: plans/leonardo-ai-plans-pricing.yml
-  type: Plans
-- url: rate-limits/leonardo-ai-rate-limits.yml
-  type: RateLimits
-- url: finops/leonardo-ai-finops.yml
-  type: FinOps
-- type: Features
-  data:
-  - Production API for image, video, 3D, and workflow generation under a unified dollar-denominated PAYG model
-  - In-house Leonardo models — Phoenix, Lucid Origin, Lucid Realism — alongside third-party FLUX.1/FLUX.2,
-    Ideogram 3.0, GPT Image 2, Nano Banana, Seedream
-  - Video generation through Kling 2.x/3.x, LTX 2.x, Veo 3.x, Seedance, Hailuo, and Stable Video Diffusion
-    motion models
-  - 3D model generation via Rodin V2 and 3D model asset management
-  - Realtime Canvas powered by LCM (Latent Consistency Models) for sub-second iterative editing
-  - Custom Models and Custom Elements — LoRA-style fine-tuning on user-uploaded datasets
-  - Blueprints — pre-packaged multi-step generation workflows that can be executed via the API
-  - PhotoReal, Alchemy, image prompts, image guidance (ControlNet), enhanced prompts, transparency
-  - Universal Upscaler, unzoom (outpainting), creative upscale, and background-removal variations
-  - Webhook callbacks for asynchronous job completion (no polling required)
-  - Pricing Calculator endpoint for pre-flight cost estimation
-  - Pay-As-You-Go billing in USD with manual and auto top-up, no monthly commitment, free starter credits
-  - Concurrency, queue, and rate-limit controls scoped per API key
-  - Production API key system (replaces deprecated User API key) — up to 10 keys per account
-  - Official Python and TypeScript SDKs generated from the OpenAPI spec via Speakeasy
-  - MCP Server integration for AI-agent workflows
-  - Browser-side background-removal JS library and Blender texturing plugin available as open source
-  - NSFW handling controls and per-model safety guardrails
-  - Acquired by Canva July 2024; tech being integrated into Canva Magic Studio while the API remains independent
-  sources:
-  - https://docs.leonardo.ai/docs/getting-started
-  - https://docs.leonardo.ai/llms.txt
-  - https://leonardo.ai/api
-  - https://leonardo.ai/news/supercharging-leonardo-with-canva/
-  updated: '2026-05-25'
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/leonardo-ai/
+  - type: X
+    url: https://x.com/LeonardoAi_
+  - url: plans/leonardo-ai-plans-pricing.yml
+    type: Plans
+  - url: rate-limits/leonardo-ai-rate-limits.yml
+    type: RateLimits
+  - url: finops/leonardo-ai-finops.yml
+    type: FinOps
+  - type: Features
+    data:
+      - Production API for image, video, 3D, and workflow generation under a unified dollar-denominated PAYG model
+      - >-
+        In-house Leonardo models — Phoenix, Lucid Origin, Lucid Realism — alongside third-party FLUX.1/FLUX.2, Ideogram
+        3.0, GPT Image 2, Nano Banana, Seedream
+      - >-
+        Video generation through Kling 2.x/3.x, LTX 2.x, Veo 3.x, Seedance, Hailuo, and Stable Video Diffusion motion
+        models
+      - 3D model generation via Rodin V2 and 3D model asset management
+      - Realtime Canvas powered by LCM (Latent Consistency Models) for sub-second iterative editing
+      - Custom Models and Custom Elements — LoRA-style fine-tuning on user-uploaded datasets
+      - Blueprints — pre-packaged multi-step generation workflows that can be executed via the API
+      - PhotoReal, Alchemy, image prompts, image guidance (ControlNet), enhanced prompts, transparency
+      - Universal Upscaler, unzoom (outpainting), creative upscale, and background-removal variations
+      - Webhook callbacks for asynchronous job completion (no polling required)
+      - Pricing Calculator endpoint for pre-flight cost estimation
+      - Pay-As-You-Go billing in USD with manual and auto top-up, no monthly commitment, free starter credits
+      - Concurrency, queue, and rate-limit controls scoped per API key
+      - Production API key system (replaces deprecated User API key) — up to 10 keys per account
+      - Official Python and TypeScript SDKs generated from the OpenAPI spec via Speakeasy
+      - MCP Server integration for AI-agent workflows
+      - Browser-side background-removal JS library and Blender texturing plugin available as open source
+      - NSFW handling controls and per-model safety guardrails
+      - Acquired by Canva July 2024; tech being integrated into Canva Magic Studio while the API remains independent
+    sources:
+      - https://docs.leonardo.ai/docs/getting-started
+      - https://docs.leonardo.ai/llms.txt
+      - https://leonardo.ai/api
+      - https://leonardo.ai/news/supercharging-leonardo-with-canva/
+    updated: '2026-05-25'
 maintainers:
-- FN: Kin Lane
-  email: info@apievangelist.com
-  X: apievangelist
-  url: https://apievangelist.com
+  - FN: Kin Lane
+    email: info@apievangelist.com
+    X: apievangelist
+    url: https://apievangelist.com
 created: '2026-05-25'
 modified: '2026-05-30'
 position: Consuming

@@ -1,0 +1,107 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Leonardo.AI Elements API",
+    "version": "v1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Elements",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a Single Custom Element by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/elements/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the custom element to return."
+              }
+            ]
+          },
+          "docs": "This endpoint gets the specific custom element."
+        },
+        {
+          "info": {
+            "name": "Delete a Single Custom Element by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/elements/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the element to delete."
+              }
+            ]
+          },
+          "docs": "This endpoint will delete a specific custom model."
+        },
+        {
+          "info": {
+            "name": "Get a list of Custom Elements by User ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/elements/user/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the user to return."
+              }
+            ]
+          },
+          "docs": "This endpoint gets the list of custom elements belongs to the user."
+        },
+        {
+          "info": {
+            "name": "List Elements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/elements"
+          },
+          "docs": "Get a list of public Elements available for use with generations."
+        },
+        {
+          "info": {
+            "name": "Train a Custom Element",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/elements",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint will train a new custom element."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

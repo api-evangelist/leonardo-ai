@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Leonardo.AI Init Images API",
+    "version": "v1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Init Images",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Upload init image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/init-image",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint returns presigned details to upload an init image to S3"
+        },
+        {
+          "info": {
+            "name": "Get single init image",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/init-image/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "_\"id\" is required_"
+              }
+            ]
+          },
+          "docs": "This endpoint will return a single init image"
+        },
+        {
+          "info": {
+            "name": "Delete init image",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/init-image/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "_\"id\" is required_"
+              }
+            ]
+          },
+          "docs": "This endpoint deletes an init image"
+        },
+        {
+          "info": {
+            "name": "Upload Canvas Editor init and mask image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/canvas-init-image",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint returns presigned details to upload an init image and a mask image to S3"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

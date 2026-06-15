@@ -1,0 +1,508 @@
+{
+  "item": [
+    {
+      "id": "88bd1101-7d5a-42af-8ef9-4fed49e0e201",
+      "name": "Models",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dbadae66-aad8-4ee8-ba3d-13766e37e8ff",
+          "name": "Train a Custom Model",
+          "request": {
+            "name": "Train a Custom Model",
+            "description": {
+              "content": "This endpoint will train a new custom model",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "models"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"datasetId\": \"<string>\",\n  \"instance_prompt\": \"<string>\",\n  \"description\": \"\",\n  \"modelType\": \"GENERAL\",\n  \"nsfw\": false,\n  \"resolution\": 512,\n  \"sd_version\": \"<string>\",\n  \"strength\": \"MEDIUM\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "eeb4a95b-3145-4345-b6b0-92cfde97b007",
+              "name": "Responses for POST /models",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"datasetId\": \"<string>\",\n  \"instance_prompt\": \"<string>\",\n  \"description\": \"\",\n  \"modelType\": \"GENERAL\",\n  \"nsfw\": false,\n  \"resolution\": 512,\n  \"sd_version\": \"<string>\",\n  \"strength\": \"MEDIUM\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sdTrainingJob\": {\n    \"customModelId\": \"m2n3o4p5-q6r7-s8t9-uvwx-yz1234567890\",\n    \"apiCreditCost\": null,\n    \"cost\": {\n      \"amount\": \"0.0147\",\n      \"unit\": \"DOLLARS\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "42c07a21-a7b1-4400-bfed-9722e6f589c5",
+          "name": "Get a Single Custom Model by ID",
+          "request": {
+            "name": "Get a Single Custom Model by ID",
+            "description": {
+              "content": "This endpoint gets the specific custom model",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "models",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the custom model to return."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "24a5b44b-f8e4-4a06-bed3-30ccf7a28599",
+              "name": "Responses for GET /models/{id}",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "models",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the custom model to return."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"custom_models_by_pk\": {\n    \"createdAt\": \"string\",\n    \"description\": \"string\",\n    \"id\": \"696431d2-1461-4f3f-bff4-f15695915114\",\n    \"instancePrompt\": \"string\",\n    \"modelHeight\": 2391,\n    \"modelWidth\": 5054,\n    \"name\": \"string\",\n    \"public\": false,\n    \"sdVersion\": \"SDXL_0_8\",\n    \"status\": \"PENDING\",\n    \"type\": \"GENERAL\",\n    \"updatedAt\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "62527d90-a87c-4e42-90b8-fabb68cffefd",
+          "name": "Delete a Single Custom Model by ID",
+          "request": {
+            "name": "Delete a Single Custom Model by ID",
+            "description": {
+              "content": "This endpoint will delete a specific custom model",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "models",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the model to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e5421c1a-7918-453b-b209-6dd876738a27",
+              "name": "Responses for DELETE /models/{id}",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "models",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the model to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"delete_custom_models_by_pk\": {\n    \"id\": \"2a9604eb-6052-4360-9043-6b18fed88aaf\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ee64237b-31ca-48d7-8699-d29d7cc57db5",
+          "name": "Get a list of Custom Models by User ID",
+          "request": {
+            "name": "Get a list of Custom Models by User ID",
+            "description": {
+              "content": "This endpoint gets the list of custom models belongs to the user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "models",
+                "user",
+                ":userId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) The ID of the user to return."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a3095f8f-ee07-4054-8604-9e934e40bc25",
+              "name": "Responses for GET /models/user/{userId}",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "models",
+                    "user",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) The ID of the user to return."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"custom_models\": [\n    {\n      \"createdAt\": \"string\",\n      \"description\": \"string\",\n      \"id\": \"f0248e64-e446-4111-92de-77a7700ebf49\",\n      \"instancePrompt\": \"string\",\n      \"modelHeight\": 3193,\n      \"modelWidth\": 7110,\n      \"name\": \"string\",\n      \"public\": false,\n      \"sdVersion\": \"FLUX_DEV\",\n      \"status\": \"COMPLETE\",\n      \"type\": \"GENERAL\",\n      \"updatedAt\": \"string\"\n    },\n    {\n      \"createdAt\": \"string\",\n      \"description\": \"string\",\n      \"id\": \"a65ca5c4-532c-4433-Af4c-7f51c805dc66\",\n      \"instancePrompt\": \"string\",\n      \"modelHeight\": 7768,\n      \"modelWidth\": 7940,\n      \"name\": \"string\",\n      \"public\": false,\n      \"sdVersion\": \"FLUX\",\n      \"status\": \"PENDING\",\n      \"type\": \"GENERAL\",\n      \"updatedAt\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b75d5a61-63a6-4fd4-bd8c-6aa890204020",
+          "name": "List Platform Models",
+          "request": {
+            "name": "List Platform Models",
+            "description": {
+              "content": "Get a list of public Platform Models available for use with generations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "platformModels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "86c61afb-525b-4c8f-9d37-aa3172e2ce09",
+              "name": "Responses for GET /api/rest/v1/platformModels",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "platformModels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"custom_models\": [\n    {\n      \"description\": \"string\",\n      \"featured\": true,\n      \"generated_image\": {\n        \"id\": \"36bdb067-b576-4a23-A52f-77192a2629bd\",\n        \"url\": \"string\"\n      },\n      \"id\": \"96374eec-c6f9-4c5d-bd50-7bacae2094c4\",\n      \"name\": \"string\",\n      \"nsfw\": true\n    },\n    {\n      \"description\": \"string\",\n      \"featured\": false,\n      \"generated_image\": {\n        \"id\": \"980da0d4-2416-4a9c-B316-1e24b879bc35\",\n        \"url\": \"string\"\n      },\n      \"id\": \"1d10645b-1c48-4bc1-8fd8-0d65d2e5bee9\",\n      \"name\": \"string\",\n      \"nsfw\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cloud.leonardo.ai/api/rest/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0cd0891a-2e3c-4688-bcc1-a160f73a08ce",
+    "name": "Leonardo.AI Models API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "List Leonardo platform models and manage custom-trained models for users. Includes platform model catalog, custom model training, retrieval, and deletion.\n\nContact Support:\n Name: Leonardo.AI Support",
+      "type": "text/plain"
+    }
+  }
+}

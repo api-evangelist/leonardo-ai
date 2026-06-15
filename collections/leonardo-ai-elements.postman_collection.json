@@ -1,0 +1,508 @@
+{
+  "item": [
+    {
+      "id": "697a5c16-dbe6-4b3a-ac3c-0239fb582321",
+      "name": "Elements",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "53cb7c9a-2086-4b74-a8ae-581402f8a20e",
+          "name": "Get a Single Custom Element by ID",
+          "request": {
+            "name": "Get a Single Custom Element by ID",
+            "description": {
+              "content": "This endpoint gets the specific custom element.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "elements",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the custom element to return."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7bc9877f-d975-4b09-8ac8-32cb7da5b13d",
+              "name": "Responses for GET /elements/{id}.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elements",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the custom element to return."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user_loras_by_pk\": {\n    \"createdAt\": \"string\",\n    \"description\": \"string\",\n    \"id\": 3534,\n    \"instancePrompt\": \"string\",\n    \"resolution\": 1848,\n    \"learningRate\": 7851.735616424823,\n    \"trainingEpoch\": 919,\n    \"name\": \"string\",\n    \"trainTextEncoder\": true,\n    \"baseModel\": \"string\",\n    \"status\": \"PENDING\",\n    \"focus\": \"string\",\n    \"updatedAt\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "05ed2f5d-1e45-4a7e-99a6-f02584ebbae3",
+          "name": "Delete a Single Custom Element by ID",
+          "request": {
+            "name": "Delete a Single Custom Element by ID",
+            "description": {
+              "content": "This endpoint will delete a specific custom model.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "elements",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the element to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "74791835-b5d2-4c82-a7cf-f7491ecfffd7",
+              "name": "Responses for DELETE /models/{id}",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elements",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the element to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"delete_user_loras_by_pk\": {\n    \"id\": 7228\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6596b632-ec66-4e8f-b127-a8f800965c1d",
+          "name": "Get a list of Custom Elements by User ID",
+          "request": {
+            "name": "Get a list of Custom Elements by User ID",
+            "description": {
+              "content": "This endpoint gets the list of custom elements belongs to the user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "elements",
+                "user",
+                ":userId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) The ID of the user to return."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "87a9308e-7792-4d2b-b762-b407213f4bd5",
+              "name": "Responses for GET /elements/user/{userId}.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elements",
+                    "user",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) The ID of the user to return."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user_loras\": [\n    {\n      \"createdAt\": \"string\",\n      \"description\": \"string\",\n      \"id\": 889,\n      \"instancePrompt\": \"string\",\n      \"resolution\": 3147,\n      \"learningRate\": 6981.932505362277,\n      \"trainingEpoch\": 5032,\n      \"name\": \"string\",\n      \"trainTextEncoder\": true,\n      \"baseModel\": \"string\",\n      \"status\": \"COMPLETE\",\n      \"focus\": \"string\",\n      \"updatedAt\": \"string\"\n    },\n    {\n      \"createdAt\": \"string\",\n      \"description\": \"string\",\n      \"id\": 5037,\n      \"instancePrompt\": \"string\",\n      \"resolution\": 1718,\n      \"learningRate\": 5360.496309169328,\n      \"trainingEpoch\": 5889,\n      \"name\": \"string\",\n      \"trainTextEncoder\": true,\n      \"baseModel\": \"string\",\n      \"status\": \"COMPLETE\",\n      \"focus\": \"string\",\n      \"updatedAt\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dd1a2003-b013-4124-885c-b4f8f8d1d406",
+          "name": "Train a Custom Element",
+          "request": {
+            "name": "Train a Custom Element",
+            "description": {
+              "content": "This endpoint will train a new custom element.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "elements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"placeholder\",\n  \"datasetId\": \"\",\n  \"lora_focus\": \"<string>\",\n  \"sd_version\": \"FLUX_DEV\",\n  \"learning_rate\": \"<number>\",\n  \"num_train_epochs\": \"<integer>\",\n  \"train_text_encoder\": true,\n  \"description\": \"\",\n  \"instance_prompt\": \"\",\n  \"resolution\": 1024\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "081c2023-cbf5-4e1a-8d7c-38b9a694258b",
+              "name": "Responses for POST /elements.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"placeholder\",\n  \"datasetId\": \"\",\n  \"lora_focus\": \"<string>\",\n  \"sd_version\": \"FLUX_DEV\",\n  \"learning_rate\": \"<number>\",\n  \"num_train_epochs\": \"<integer>\",\n  \"train_text_encoder\": true,\n  \"description\": \"\",\n  \"instance_prompt\": \"\",\n  \"resolution\": 1024\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sdTrainingJob\": {\n    \"userLoraId\": 123456,\n    \"apiCreditCost\": null,\n    \"cost\": {\n      \"amount\": \"0.0147\",\n      \"unit\": \"DOLLARS\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f0886212-e4d2-4c05-904c-2e780ba01f0b",
+          "name": "List Elements",
+          "request": {
+            "name": "List Elements",
+            "description": {
+              "content": "Get a list of public Elements available for use with generations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "elements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ea34ece3-1538-4797-83d9-c07368f4484b",
+              "name": "Responses for GET /api/rest/v1/elements.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"loras\": [\n    {\n      \"akUUID\": \"string\",\n      \"baseModel\": \"SDXL_LIGHTNING\",\n      \"creatorName\": \"string\",\n      \"description\": \"string\",\n      \"name\": \"string\",\n      \"urlImage\": \"string\",\n      \"weightDefault\": 2662,\n      \"weightMax\": 2242,\n      \"weightMin\": 6971\n    },\n    {\n      \"akUUID\": \"string\",\n      \"baseModel\": \"SDXL_0_9\",\n      \"creatorName\": \"string\",\n      \"description\": \"string\",\n      \"name\": \"string\",\n      \"urlImage\": \"string\",\n      \"weightDefault\": 2865,\n      \"weightMax\": 4729,\n      \"weightMin\": 3182\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cloud.leonardo.ai/api/rest/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1df8335d-decf-4e3c-a9a4-f4e61f4fb349",
+    "name": "Leonardo.AI Elements API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Create and manage Custom Elements — LoRA-style style adapters trainable on user datasets and reusable across image generations.\n\nContact Support:\n Name: Leonardo.AI Support",
+      "type": "text/plain"
+    }
+  }
+}

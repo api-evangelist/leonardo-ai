@@ -1,0 +1,122 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Leonardo.AI Variation & Upscale API",
+    "version": "v1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Variation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create unzoom",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/variations/unzoom",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint will create an unzoom variation for the provided image ID"
+        },
+        {
+          "info": {
+            "name": "Create upscale",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/variations/upscale",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint will create an upscale for the provided image ID"
+        },
+        {
+          "info": {
+            "name": "Create no background",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/variations/nobg",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint will create a no background variation of the provided image ID"
+        },
+        {
+          "info": {
+            "name": "Create using Universal Upscaler",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/variations/universal-upscaler",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint will create a high resolution image using Universal Upscaler"
+        },
+        {
+          "info": {
+            "name": "Get variation by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/variations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "\"id\" is required"
+              }
+            ]
+          },
+          "docs": "This endpoint will get the variation by ID"
+        },
+        {
+          "info": {
+            "name": "Get motion variation by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/motion-variations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "\"id\" is required"
+              }
+            ]
+          },
+          "docs": "This endpoint will get the motion variation by ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

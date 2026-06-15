@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Leonardo.AI Media API",
+    "version": "v1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Media",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Upload media",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/media",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint returns presigned details to upload a media file to S3"
+        },
+        {
+          "info": {
+            "name": "Get uploaded media",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/media/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "_\"id\" is required_"
+              }
+            ]
+          },
+          "docs": "This endpoint returns details of an uploaded media record"
+        },
+        {
+          "info": {
+            "name": "Delete uploaded media",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/media/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "_\"id\" is required_"
+              }
+            ]
+          },
+          "docs": "This endpoint deletes an uploaded media record and removes the associated file from S3"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

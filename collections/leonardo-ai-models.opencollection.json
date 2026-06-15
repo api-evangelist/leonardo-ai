@@ -1,0 +1,107 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Leonardo.AI Models API",
+    "version": "v1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Models",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Train a Custom Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/models",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint will train a new custom model"
+        },
+        {
+          "info": {
+            "name": "Get a Single Custom Model by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/models/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the custom model to return."
+              }
+            ]
+          },
+          "docs": "This endpoint gets the specific custom model"
+        },
+        {
+          "info": {
+            "name": "Delete a Single Custom Model by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/models/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the model to delete."
+              }
+            ]
+          },
+          "docs": "This endpoint will delete a specific custom model"
+        },
+        {
+          "info": {
+            "name": "Get a list of Custom Models by User ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/models/user/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the user to return."
+              }
+            ]
+          },
+          "docs": "This endpoint gets the list of custom models belongs to the user."
+        },
+        {
+          "info": {
+            "name": "List Platform Models",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/platformModels"
+          },
+          "docs": "Get a list of public Platform Models available for use with generations."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

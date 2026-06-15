@@ -1,0 +1,154 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Leonardo.AI Blueprints API",
+    "version": "v1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Blueprints",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Blueprints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/blueprints",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns a list of Blueprints. Use either forward pagination (first/after) or backward pagination (last/before), but not both. Note: This endpoint uses a request body to support complex filtering parameters"
+        },
+        {
+          "info": {
+            "name": "Get Blueprint by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/blueprints/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The akUUID of the Blueprint to return"
+              }
+            ]
+          },
+          "docs": "Returns a single Blueprint by its akUUID"
+        },
+        {
+          "info": {
+            "name": "Get Blueprint Versions by Blueprint ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/blueprints/:id/versions",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The akUUID of the Blueprint"
+              }
+            ]
+          },
+          "docs": "Returns all versions of a Blueprint by its akUUID"
+        },
+        {
+          "info": {
+            "name": "Execute a Blueprint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/blueprint-executions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Execute a Blueprint Version with custom node inputs. This endpoint triggers the execution of the specified Blueprint Version and returns a Blueprint Execution ID to track the job."
+        },
+        {
+          "info": {
+            "name": "Get Blueprint Execution by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/blueprint-executions/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The akUUID of the Blueprint Execution to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves details of a specific Blueprint Execution by its akUUID"
+        },
+        {
+          "info": {
+            "name": "Get Blueprint Execution Generations by Execution ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/blueprint-executions/:id/generations",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The akUUID of the Blueprint Execution to retrieve generations for"
+              },
+              {
+                "name": "first",
+                "value": "",
+                "type": "query",
+                "description": "Number of generations to return from the beginning of the list (forward pagination)"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "Cursor for forward pagination - returns generations after this cursor"
+              },
+              {
+                "name": "last",
+                "value": "",
+                "type": "query",
+                "description": "Number of generations to return from the end of the list (backward pagination)"
+              },
+              {
+                "name": "before",
+                "value": "",
+                "type": "query",
+                "description": "Cursor for backward pagination - returns generations before this cursor"
+              }
+            ]
+          },
+          "docs": "Retrieves paginated generations for a specific Blueprint Execution, including their statuses and any prompt moderation failure details."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

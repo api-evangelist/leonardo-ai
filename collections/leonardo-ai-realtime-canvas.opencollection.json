@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Leonardo.AI Realtime Canvas API",
+    "version": "v1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Realtime Canvas",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create LCM Generation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/generations-lcm",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint will generate a LCM image generation."
+        },
+        {
+          "info": {
+            "name": "Perform instant refine on a LCM image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/lcm-instant-refine",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint will perform instant refine on a LCM image"
+        },
+        {
+          "info": {
+            "name": "Perform inpainting on a LCM image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/lcm-inpainting",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint will perform a inpainting on a LCM image"
+        },
+        {
+          "info": {
+            "name": "Perform Alchemy Upscale on a LCM image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.leonardo.ai/api/rest/v1/lcm-upscale",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint will perform Alchemy Upscale on a LCM image"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

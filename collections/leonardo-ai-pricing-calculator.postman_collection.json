@@ -1,0 +1,140 @@
+{
+  "item": [
+    {
+      "id": "2a059c28-7644-4e26-896f-f3b8a5c3090e",
+      "name": "Pricing Calculator",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "14e12dbb-2f45-4a46-8a2b-edaa8ce5e632",
+          "name": "Calculating API Cost",
+          "request": {
+            "name": "Calculating API Cost",
+            "description": {
+              "content": "This endpoint returns the cost used for generating images using a particular service type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pricing-calculator"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"service\": \"<string>\",\n  \"serviceParams\": {\n    \"IMAGE_GENERATION\": {\n      \"imageHeight\": \"<integer>\",\n      \"imageWidth\": \"<integer>\",\n      \"numImages\": \"<integer>\",\n      \"inferenceSteps\": \"<integer>\",\n      \"promptMagic\": \"<boolean>\",\n      \"promptMagicStrength\": \"<number>\",\n      \"promptMagicVersion\": \"<string>\",\n      \"alchemyMode\": \"<boolean>\",\n      \"photoRealMode\": \"<boolean>\",\n      \"photoRealStrength\": \"<number>\",\n      \"photoRealVersion\": \"<string>\",\n      \"highResolution\": \"<boolean>\",\n      \"loraCount\": \"<integer>\",\n      \"isModelCustom\": \"<boolean>\",\n      \"controlnetsCost\": \"<integer>\",\n      \"isPhoenix\": \"<boolean>\",\n      \"isSDXL\": \"<boolean>\",\n      \"isSDXLLightning\": \"<boolean>\",\n      \"isUltra\": \"<boolean>\",\n      \"isFluxSchnell\": \"<boolean>\",\n      \"isFluxDev\": \"<boolean>\",\n      \"isFluxKontext\": \"<boolean>\"\n    },\n    \"FANTASY_AVATAR_GENERATION\": {\n      \"imageHeight\": \"<integer>\",\n      \"imageWidth\": \"<integer>\",\n      \"numImages\": \"<integer>\"\n    },\n    \"MOTION_SVD_GENERATION\": {},\n    \"MOTION_VIDEO_GENERATION\": {\n      \"resolution\": \"<string>\"\n    },\n    \"VEO3_MOTION_VIDEO_GENERATION\": {\n      \"resolution\": \"<string>\"\n    },\n    \"LCM_GENERATION\": {\n      \"height\": \"<integer>\",\n      \"width\": \"<integer>\",\n      \"instantRefine\": \"<boolean>\",\n      \"refine\": \"<boolean>\"\n    },\n    \"MODEL_TRAINING\": {\n      \"resolution\": \"<integer>\",\n      \"sd_version\": \"<string>\",\n      \"datasetImageCount\": \"<integer>\"\n    },\n    \"TEXTURE_GENERATION\": {\n      \"preview\": \"<boolean>\"\n    },\n    \"UNIVERSAL_UPSCALER\": {\n      \"megapixel\": \"<integer>\"\n    },\n    \"UNIVERSAL_UPSCALER_ULTRA\": {\n      \"inputWidth\": \"<integer>\",\n      \"inputHeight\": \"<integer>\",\n      \"upscaleMultiplier\": \"<number>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6c4f7292-851e-45a9-b9fc-3a98cf8d25c8",
+              "name": "Responses for POST /pricing-calculator",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pricing-calculator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"service\": \"<string>\",\n  \"serviceParams\": {\n    \"IMAGE_GENERATION\": {\n      \"imageHeight\": \"<integer>\",\n      \"imageWidth\": \"<integer>\",\n      \"numImages\": \"<integer>\",\n      \"inferenceSteps\": \"<integer>\",\n      \"promptMagic\": \"<boolean>\",\n      \"promptMagicStrength\": \"<number>\",\n      \"promptMagicVersion\": \"<string>\",\n      \"alchemyMode\": \"<boolean>\",\n      \"photoRealMode\": \"<boolean>\",\n      \"photoRealStrength\": \"<number>\",\n      \"photoRealVersion\": \"<string>\",\n      \"highResolution\": \"<boolean>\",\n      \"loraCount\": \"<integer>\",\n      \"isModelCustom\": \"<boolean>\",\n      \"controlnetsCost\": \"<integer>\",\n      \"isPhoenix\": \"<boolean>\",\n      \"isSDXL\": \"<boolean>\",\n      \"isSDXLLightning\": \"<boolean>\",\n      \"isUltra\": \"<boolean>\",\n      \"isFluxSchnell\": \"<boolean>\",\n      \"isFluxDev\": \"<boolean>\",\n      \"isFluxKontext\": \"<boolean>\"\n    },\n    \"FANTASY_AVATAR_GENERATION\": {\n      \"imageHeight\": \"<integer>\",\n      \"imageWidth\": \"<integer>\",\n      \"numImages\": \"<integer>\"\n    },\n    \"MOTION_SVD_GENERATION\": {},\n    \"MOTION_VIDEO_GENERATION\": {\n      \"resolution\": \"<string>\"\n    },\n    \"VEO3_MOTION_VIDEO_GENERATION\": {\n      \"resolution\": \"<string>\"\n    },\n    \"LCM_GENERATION\": {\n      \"height\": \"<integer>\",\n      \"width\": \"<integer>\",\n      \"instantRefine\": \"<boolean>\",\n      \"refine\": \"<boolean>\"\n    },\n    \"MODEL_TRAINING\": {\n      \"resolution\": \"<integer>\",\n      \"sd_version\": \"<string>\",\n      \"datasetImageCount\": \"<integer>\"\n    },\n    \"TEXTURE_GENERATION\": {\n      \"preview\": \"<boolean>\"\n    },\n    \"UNIVERSAL_UPSCALER\": {\n      \"megapixel\": \"<integer>\"\n    },\n    \"UNIVERSAL_UPSCALER_ULTRA\": {\n      \"inputWidth\": \"<integer>\",\n      \"inputHeight\": \"<integer>\",\n      \"upscaleMultiplier\": \"<number>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"calculateProductionApiServiceCost\": {\n    \"cost\": 5067\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cloud.leonardo.ai/api/rest/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fb099066-0736-4bdd-b0be-1409824ba187",
+    "name": "Leonardo.AI Pricing Calculator API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Pre-calculate the API credit cost of a generation request before submitting it.\n\nContact Support:\n Name: Leonardo.AI Support",
+      "type": "text/plain"
+    }
+  }
+}
