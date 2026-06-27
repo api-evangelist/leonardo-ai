@@ -275,7 +275,7 @@ common:
     type: Documentation
   - url: https://docs.leonardo.ai/docs/api-error-messages
     name: API Error Messages
-    type: Errors
+    type: ErrorCodes
   - url: https://docs.leonardo.ai/docs/concurrency-rate-limits-and-queue
     name: Concurrency, Queue, and Rate Limiting
     type: RateLimits
@@ -296,7 +296,7 @@ common:
     type: Pricing
   - url: https://docs.leonardo.ai/docs/leonardoai-official-sdks
     name: Official SDKs
-    type: SDK
+    type: SDKs
   - url: https://docs.leonardo.ai/docs/mcp-server
     name: MCP Server Integration
     type: Documentation
@@ -307,28 +307,28 @@ common:
     type: GitHubOrganization
   - url: https://github.com/Leonardo-Interactive/leonardo-python-sdk
     name: Python SDK
-    type: SDK
+    type: SDKs
   - url: https://github.com/Leonardo-Interactive/leonardo-ts-sdk
     name: TypeScript SDK
-    type: SDK
+    type: SDKs
   - url: https://github.com/Leonardo-Interactive/agent-browser
     name: agent-browser
-    type: Tool
+    type: Tools
   - url: https://github.com/Leonardo-Interactive/background-removal-js
     name: background-removal-js
-    type: Tool
+    type: Tools
   - url: https://github.com/Leonardo-Interactive/leonardo-texturing-blender-plugin
     name: Blender Texturing Plugin
     type: Plugins
   - url: https://pypi.org/project/leonardoai/
     name: PyPI — leonardoai
-    type: SDK
+    type: SDKs
   - url: https://www.npmjs.com/package/@leonardo-ai/sdk
     name: npm — @leonardo-ai/sdk
-    type: SDK
+    type: SDKs
   - url: https://app.leonardo.ai/api-access
     name: API Access Dashboard
-    type: SignUp
+    type: Signup
   - url: https://app.leonardo.ai/
     name: Leonardo App
     type: Portal
