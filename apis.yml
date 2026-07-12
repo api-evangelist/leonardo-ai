@@ -253,6 +253,10 @@ apis:
       - url: openapi/leonardo-ai-user-openapi.json
         type: OpenAPI
 common:
+  - type: DomainSecurity
+    url: security/leonardo-ai-domain-security.yml
+  - type: Authentication
+    url: authentication/leonardo-ai-authentication.yml
   - url: https://leonardo.ai
     type: Portal
   - url: https://leonardo.ai/api

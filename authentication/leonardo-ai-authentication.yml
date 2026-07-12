@@ -1,0 +1,31 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/leonardo-ai-3d-model-assets-openapi.json, openapi/leonardo-ai-blueprints-openapi.json,
+  openapi/leonardo-ai-datasets-openapi.json, openapi/leonardo-ai-elements-openapi.json, openapi/leonardo-ai-image-generation-openapi.json,
+  openapi/leonardo-ai-init-images-openapi.json, openapi/leonardo-ai-media-openapi.json, openapi/leonardo-ai-models-openapi.json,
+  openapi/leonardo-ai-pricing-calculator-openapi.json, openapi/leonardo-ai-prompt-openapi.json,
+  openapi/leonardo-ai-realtime-canvas-openapi.json, openapi/leonardo-ai-user-openapi.json ...
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: auth-scheme
+  description: 'Bearer HTTP authentication. Allowed headers `Authorization: Bearer <api_key>`'
+  sources:
+  - openapi/leonardo-ai-3d-model-assets-openapi.json
+  - openapi/leonardo-ai-blueprints-openapi.json
+  - openapi/leonardo-ai-datasets-openapi.json
+  - openapi/leonardo-ai-elements-openapi.json
+  - openapi/leonardo-ai-image-generation-openapi.json
+  - openapi/leonardo-ai-init-images-openapi.json
+  - openapi/leonardo-ai-media-openapi.json
+  - openapi/leonardo-ai-models-openapi.json
+  - openapi/leonardo-ai-pricing-calculator-openapi.json
+  - openapi/leonardo-ai-prompt-openapi.json
+  - openapi/leonardo-ai-realtime-canvas-openapi.json
+  - openapi/leonardo-ai-user-openapi.json
+  - openapi/leonardo-ai-variation-openapi.json
+  - openapi/leonardo-ai-video-generation-openapi.json
