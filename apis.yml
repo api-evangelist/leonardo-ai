@@ -253,6 +253,8 @@ apis:
       - url: openapi/leonardo-ai-user-openapi.json
         type: OpenAPI
 common:
+  - type: AgenticAccess
+    url: agentic-access/leonardo-ai-agentic-access.yml
   - type: DomainSecurity
     url: security/leonardo-ai-domain-security.yml
   - type: Authentication
