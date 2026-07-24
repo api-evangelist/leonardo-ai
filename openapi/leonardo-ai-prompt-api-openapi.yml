@@ -1,0 +1,149 @@
+openapi: 3.0.0
+info:
+  title: Leonardo.AI 3D Model Assets Prompt API
+  description: Upload, retrieve, and delete 3D model assets for use with Rodin and other 3D-capable workflows.
+  version: v1.0.0
+  contact:
+    name: Leonardo.AI Support
+    url: https://docs.leonardo.ai/docs/need-more-support
+  license:
+    name: Leonardo.AI Terms of Service
+    url: https://leonardo.ai/terms-of-service/
+servers:
+- url: https://cloud.leonardo.ai/api/rest/v1
+  description: Leonardo.AI Production API
+security:
+- bearerAuth: []
+tags:
+- name: Prompt
+paths:
+  /prompt/random:
+    post:
+      tags:
+      - Prompt
+      summary: Generate a Random prompt
+      description: This endpoint returns a random prompt
+      operationId: promptRandom
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  promptGeneration:
+                    nullable: false
+                    properties:
+                      prompt:
+                        nullable: false
+                        title: String
+                        type: string
+                        description: The random prompt generated.
+                        default: The random prompt generated.
+                      apiCreditCost:
+                        nullable: false
+                        type: integer
+                        description: 'API Credits Cost for Random Prompt Generation. Available for Production API Users. Note: it will be deprecated. Please use the cost instead.'
+                        default: 4
+                        deprecated: true
+                      cost:
+                        $ref: '#/components/schemas/cost'
+                    title: promptGenerationOutput
+                    type: object
+              example:
+                promptGeneration:
+                  prompt: A majestic dragon soaring through stormy clouds
+                  apiCreditCost: null
+                  cost:
+                    amount: '0.0147'
+                    unit: DOLLARS
+          description: Responses for POST /prompt/random
+  /prompt/improve:
+    post:
+      tags:
+      - Prompt
+      summary: Improve a Prompt
+      description: This endpoint returns a improved prompt
+      operationId: promptImprove
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                prompt:
+                  nullable: false
+                  title: String
+                  type: string
+                  description: The prompt to improve.
+                promptInstructions:
+                  nullable: true
+                  title: String
+                  type: string
+                  description: The prompt is improved based on the given instructions.
+                isVideo:
+                  type: boolean
+                  description: Specifies whether the prompt is for a video generation. Defaults to false (image prompt).
+                  nullable: true
+                  example: true
+              required:
+              - prompt
+              type: object
+        description: Query parameters to be provided in the request body as a JSON object
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  promptGeneration:
+                    nullable: false
+                    properties:
+                      prompt:
+                        nullable: false
+                        title: String
+                        type: string
+                        description: The improved prompt.
+                        default: The improved prompt.
+                      apiCreditCost:
+                        nullable: false
+                        type: integer
+                        description: 'API Credits Cost for Random Prompt Generation. Available for Production API Users. Note: it will be deprecated. Please use the cost instead.'
+                        default: 4
+                        deprecated: true
+                      cost:
+                        $ref: '#/components/schemas/cost'
+                    title: promptGenerationOutput
+                    type: object
+              example:
+                promptGeneration:
+                  prompt: A majestic dragon soaring through dramatic stormy clouds, photorealistic, cinematic lighting, 8k ultra detailed
+                  apiCreditCost: null
+                  cost:
+                    amount: '0.0147'
+                    unit: DOLLARS
+          description: Responses for POST /prompt/improve
+components:
+  schemas:
+    cost:
+      nullable: true
+      type: object
+      title: Cost
+      description: The cost of the operation.
+      properties:
+        amount:
+          type: string
+          description: The amount of the cost.
+        unit:
+          type: string
+          enum:
+          - CREDITS
+          - DOLLARS
+          description: 'The unit of the cost. Can be CREDITS or DOLLARS. Note: DOLLARS unit only supports PAYG plan.'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      bearerFormat: auth-scheme
+      description: 'Bearer HTTP authentication. Allowed headers `Authorization: Bearer <api_key>`'
+      scheme: bearer

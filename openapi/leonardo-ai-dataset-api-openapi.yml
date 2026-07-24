@@ -1,0 +1,273 @@
+openapi: 3.0.0
+info:
+  title: Leonardo.AI 3D Model Assets Dataset API
+  description: Upload, retrieve, and delete 3D model assets for use with Rodin and other 3D-capable workflows.
+  version: v1.0.0
+  contact:
+    name: Leonardo.AI Support
+    url: https://docs.leonardo.ai/docs/need-more-support
+  license:
+    name: Leonardo.AI Terms of Service
+    url: https://leonardo.ai/terms-of-service/
+servers:
+- url: https://cloud.leonardo.ai/api/rest/v1
+  description: Leonardo.AI Production API
+security:
+- bearerAuth: []
+tags:
+- name: Dataset
+paths:
+  /datasets:
+    post:
+      tags:
+      - Dataset
+      summary: Create a Dataset
+      description: This endpoint creates a new dataset
+      operationId: createDataset
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                name:
+                  nullable: false
+                  title: String
+                  type: string
+                  description: The name of the dataset.
+                description:
+                  nullable: true
+                  title: String
+                  type: string
+                  description: A description for the dataset.
+              required:
+              - name
+              type: object
+        description: Query parameters to be provided in the request body as a JSON object
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  insert_datasets_one:
+                    description: columns and relationships of "datasets"
+                    nullable: true
+                    properties:
+                      id:
+                        $ref: '#/components/schemas/uuid'
+                    title: datasets
+                    type: object
+          description: Responses for POST /datasets
+  /datasets/{id}:
+    get:
+      tags:
+      - Dataset
+      summary: Get a Single Dataset by ID
+      description: This endpoint gets the specific dataset
+      operationId: getDatasetById
+      parameters:
+      - required: true
+        description: The ID of the dataset to return.
+        in: path
+        name: id
+        schema:
+          pattern: '[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}'
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  datasets_by_pk:
+                    description: columns and relationships of "datasets"
+                    nullable: true
+                    properties:
+                      createdAt:
+                        $ref: '#/components/schemas/timestamp'
+                      dataset_images:
+                        items:
+                          description: columns and relationships of "dataset_images"
+                          nullable: false
+                          properties:
+                            createdAt:
+                              $ref: '#/components/schemas/timestamp'
+                            id:
+                              $ref: '#/components/schemas/uuid'
+                            url:
+                              nullable: false
+                              title: String
+                              type: string
+                          title: dataset_images
+                          type: object
+                        nullable: false
+                        type: array
+                      description:
+                        nullable: true
+                        title: String
+                        type: string
+                      id:
+                        $ref: '#/components/schemas/uuid'
+                      name:
+                        nullable: false
+                        title: String
+                        type: string
+                      updatedAt:
+                        $ref: '#/components/schemas/timestamp'
+                    title: datasets
+                    type: object
+          description: Responses for GET /datasets/{id}
+    delete:
+      tags:
+      - Dataset
+      summary: Delete a Single Dataset by ID
+      description: This endpoint deletes the specific dataset
+      operationId: deleteDatasetById
+      parameters:
+      - required: true
+        description: The ID of the dataset to delete.
+        in: path
+        name: id
+        schema:
+          pattern: '[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}'
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  delete_datasets_by_pk:
+                    description: columns and relationships of "datasets"
+                    nullable: true
+                    properties:
+                      id:
+                        $ref: '#/components/schemas/uuid'
+                    title: datasets
+                    type: object
+          description: Responses for DELETE /datasets/{id}
+  /datasets/{datasetId}/upload:
+    post:
+      tags:
+      - Dataset
+      summary: Upload dataset image
+      description: This endpoint returns presigned details to upload a dataset image to S3
+      operationId: uploadDatasetImage
+      parameters:
+      - required: true
+        description: _"datasetId" is required
+        in: path
+        name: datasetId
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                extension:
+                  nullable: false
+                  title: String
+                  type: string
+                  description: Has to be png, jpg, jpeg, or webp.
+              required:
+              - extension
+              type: object
+        description: Query parameters provided in the request body as a JSON object
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  uploadDatasetImage:
+                    nullable: true
+                    properties:
+                      fields:
+                        nullable: true
+                        title: String
+                        type: string
+                      id:
+                        nullable: true
+                        title: String
+                        type: string
+                      key:
+                        nullable: true
+                        title: String
+                        type: string
+                      url:
+                        nullable: true
+                        title: String
+                        type: string
+                    title: DatasetUploadOutput
+                    type: object
+          description: Responses for POST /datasets/{datasetId}/upload
+  /datasets/{datasetId}/upload/gen:
+    post:
+      tags:
+      - Dataset
+      summary: Upload a Single Generated Image to a Dataset
+      description: This endpoint will upload a previously generated image to the dataset
+      operationId: uploadDatasetImageFromGen
+      parameters:
+      - required: true
+        description: The ID of the dataset to upload the image to.
+        in: path
+        name: datasetId
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                generatedImageId:
+                  nullable: false
+                  title: String
+                  type: string
+                  description: The ID of the image to upload to the dataset.
+              required:
+              - generatedImageId
+              type: object
+        description: Query parameters to be provided in the request body as a JSON object
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  uploadDatasetImageFromGen:
+                    nullable: true
+                    properties:
+                      id:
+                        nullable: true
+                        title: String
+                        type: string
+                    title: DatasetGenUploadOutput
+                    type: object
+          description: Responses for POST /datasets/{datasetId}/upload/gen
+components:
+  schemas:
+    uuid:
+      nullable: true
+      pattern: '[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}'
+      title: uuid
+      type: string
+    timestamp:
+      type: string
+      nullable: false
+      title: timestamp
+  securitySchemes:
+    bearerAuth:
+      type: http
+      bearerFormat: auth-scheme
+      description: 'Bearer HTTP authentication. Allowed headers `Authorization: Bearer <api_key>`'
+      scheme: bearer

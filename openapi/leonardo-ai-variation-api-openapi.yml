@@ -1,0 +1,441 @@
+openapi: 3.0.0
+info:
+  title: Leonardo.AI 3D Model Assets Variation API
+  description: Upload, retrieve, and delete 3D model assets for use with Rodin and other 3D-capable workflows.
+  version: v1.0.0
+  contact:
+    name: Leonardo.AI Support
+    url: https://docs.leonardo.ai/docs/need-more-support
+  license:
+    name: Leonardo.AI Terms of Service
+    url: https://leonardo.ai/terms-of-service/
+servers:
+- url: https://cloud.leonardo.ai/api/rest/v1
+  description: Leonardo.AI Production API
+security:
+- bearerAuth: []
+tags:
+- name: Variation
+paths:
+  /variations/unzoom:
+    post:
+      tags:
+      - Variation
+      summary: Create unzoom
+      description: This endpoint will create an unzoom variation for the provided image ID
+      operationId: createVariationUnzoom
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                id:
+                  nullable: false
+                  title: String
+                  type: string
+                isVariation:
+                  nullable: true
+                  title: Boolean
+                  type: boolean
+              type: object
+        description: Query parameters can also be provided in the request body as a JSON object
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  sdUnzoomJob:
+                    nullable: true
+                    properties:
+                      id:
+                        nullable: false
+                        title: String
+                        type: string
+                      apiCreditCost:
+                        nullable: true
+                        type: integer
+                        description: 'API Credits Cost for Unzoom Variation. Available for Production API Users. Note: it will be deprecated. Please use the cost instead.'
+                        deprecated: true
+                      cost:
+                        $ref: '#/components/schemas/cost'
+                    title: SDUnzoomOutput
+                    type: object
+              example:
+                sdUnzoomJob:
+                  id: c2d3e4f5-g6h7-8901-ijkl-mn2345678901
+                  apiCreditCost: null
+                  cost:
+                    amount: '0.0147'
+                    unit: DOLLARS
+          description: Responses for POST /api/rest/v1/variations/unzoom
+  /variations/upscale:
+    post:
+      tags:
+      - Variation
+      summary: Create upscale
+      description: This endpoint will create an upscale for the provided image ID
+      operationId: createVariationUpscale
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                id:
+                  nullable: false
+                  title: String
+                  type: string
+              required:
+              - id
+              type: object
+        description: Query parameters are provided in the request body as a JSON object
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sdUpscaleJob:
+                    nullable: true
+                    properties:
+                      id:
+                        nullable: false
+                        title: String
+                        type: string
+                      apiCreditCost:
+                        nullable: true
+                        type: integer
+                        description: 'API Credits Cost for Upscale Variation. Available for Production API Users. Note: it will be deprecated. Please use the cost instead.'
+                        deprecated: true
+                      cost:
+                        $ref: '#/components/schemas/cost'
+                    title: SDUpscaleJobOutput
+                    type: object
+              example:
+                sdUpscalerjob:
+                  id: d3e4f5g6-h7i8-9012-jklm-no3456789012
+                  apiCreditCost: null
+                  cost:
+                    amount: '0.0147'
+                    unit: DOLLARS
+          description: Responses for POST /variations/upscale
+  /variations/nobg:
+    post:
+      tags:
+      - Variation
+      summary: Create no background
+      description: This endpoint will create a no background variation of the provided image ID
+      operationId: createVariationNoBG
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                id:
+                  nullable: false
+                  title: String
+                  type: string
+                isVariation:
+                  nullable: false
+                  type: boolean
+                  title: Boolean
+              required:
+              - id
+              type: object
+        description: Query parameters are provided in the request body as a JSON object
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sdNobgJob:
+                    properties:
+                      id:
+                        $ref: '#/components/schemas/uuid'
+                      apiCreditCost:
+                        nullable: true
+                        type: integer
+                        description: 'API Credits Cost for No Background Variation. Available for Production API Users. Note: it will be deprecated. Please use the cost instead.'
+                        deprecated: true
+                      cost:
+                        $ref: '#/components/schemas/cost'
+                    title: SDUpscaleJobOutput
+                    type: object
+              example:
+                sdNobgJob:
+                  id: f5g6h7i8-j9k0-l1m2-nopq-rs4567890123
+                  apiCreditCost: null
+                  cost:
+                    amount: '0.0147'
+                    unit: DOLLARS
+          description: Responses for POST /variations/nobg
+  /variations/universal-upscaler:
+    post:
+      tags:
+      - Variation
+      summary: Create using Universal Upscaler
+      description: This endpoint will create a high resolution image using Universal Upscaler
+      operationId: CreateUniversalUpscalerJob
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                creativityStrength:
+                  nullable: true
+                  title: Int
+                  type: integer
+                  default: 5
+                  description: The creativity strength of the universal upscaler. Must be between 1 and 10.
+                detailContrast:
+                  nullable: true
+                  title: Int
+                  type: integer
+                  description: The detail contrast of the universal upscaler. Must be between 1 and 10. Can only be used with ultraUpscaleStyle.
+                generatedImageId:
+                  nullable: true
+                  title: String
+                  type: string
+                  description: The ID of the generated image.
+                initImageId:
+                  nullable: true
+                  title: String
+                  type: string
+                  description: The ID of the init image uploaded.
+                prompt:
+                  nullable: true
+                  title: String
+                  type: string
+                  description: The prompt for the universal upscaler.
+                similarity:
+                  nullable: true
+                  title: Int
+                  type: integer
+                  description: The similarity of the universal upscaler. Must be between 1 and 10. Can only be used with ultraUpscaleStyle.
+                ultraUpscaleStyle:
+                  $ref: '#/components/schemas/universal_upscaler_ultra_style'
+                upscaleMultiplier:
+                  nullable: true
+                  title: Float
+                  type: number
+                  default: 1.5
+                  description: The upscale multiplier of the universal upscaler. Must be between 1.0 and 2.0.
+                upscalerStyle:
+                  $ref: '#/components/schemas/universal_upscaler_style'
+                variationId:
+                  nullable: true
+                  title: String
+                  type: string
+                  description: The ID of the variation image.
+              type: object
+        description: Query parameters are provided in the request body as a JSON object
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  universalUpscaler:
+                    properties:
+                      id:
+                        $ref: '#/components/schemas/uuid'
+                      apiCreditCost:
+                        nullable: true
+                        type: integer
+                        description: 'API Credits Cost for Universal Upscaler Variation. Available for Production API Users. Note: it will be deprecated. Please use the cost instead.'
+                        deprecated: true
+                      cost:
+                        $ref: '#/components/schemas/cost'
+                    title: UniversalUpscalerOutput
+                    type: object
+              example:
+                universalUpscaler:
+                  id: g6h7i8j9-k0l1-m2n3-opqr-st5678901234
+                  apiCreditCost: null
+                  cost:
+                    amount: '0.0147'
+                    unit: DOLLARS
+          description: Responses for POST /variations/universal-upscaler
+  /variations/{id}:
+    get:
+      tags:
+      - Variation
+      summary: Get variation by ID
+      description: This endpoint will get the variation by ID
+      operationId: getVariationById
+      parameters:
+      - required: true
+        description: '"id" is required'
+        in: path
+        name: id
+        schema:
+          pattern: '[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}'
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  generated_image_variation_generic:
+                    items:
+                      description: columns and relationships of "generated_image_variation_generic"
+                      nullable: false
+                      properties:
+                        createdAt:
+                          $ref: '#/components/schemas/timestamp'
+                        id:
+                          $ref: '#/components/schemas/uuid'
+                        status:
+                          $ref: '#/components/schemas/job_status'
+                        transformType:
+                          $ref: '#/components/schemas/VARIATION_TYPE'
+                        url:
+                          nullable: true
+                          title: String
+                          type: string
+                      title: generated_image_variation_generic
+                      type: object
+                    nullable: false
+                    type: array
+          description: Responses for GET /variations/{id}
+  /motion-variations/{id}:
+    get:
+      tags:
+      - Variation
+      summary: Get motion variation by ID
+      description: This endpoint will get the motion variation by ID
+      operationId: getMotionVariationById
+      parameters:
+      - required: true
+        description: '"id" is required'
+        in: path
+        name: id
+        schema:
+          pattern: '[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}'
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  generated_image_variation_motion:
+                    items:
+                      description: columns and relationships of "generated_image_variation_motion"
+                      nullable: false
+                      properties:
+                        createdAt:
+                          $ref: '#/components/schemas/timestamp'
+                        id:
+                          $ref: '#/components/schemas/uuid'
+                        status:
+                          $ref: '#/components/schemas/job_status'
+                        motionTransformType:
+                          $ref: '#/components/schemas/MOTION_VARIATION_TYPE'
+                        resolution:
+                          $ref: '#/components/schemas/MOTION_RESOLUTION'
+                        url:
+                          nullable: true
+                          title: String
+                          type: string
+                      title: generated_image_variation_motion
+                      type: object
+                    nullable: false
+                    type: array
+          description: Responses for GET /motion-variations/{id}
+components:
+  schemas:
+    uuid:
+      nullable: true
+      pattern: '[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}'
+      title: uuid
+      type: string
+    timestamp:
+      type: string
+      nullable: false
+      title: timestamp
+    MOTION_RESOLUTION:
+      type: string
+      nullable: false
+      title: MOTION_RESOLUTION
+      enum:
+      - RESOLUTION_720
+      description: The resolution of the upscaled video. RESOLUTION_720 is the only option for now.
+    universal_upscaler_ultra_style:
+      type: string
+      nullable: true
+      title: universal_upscaler_ultra_style
+      enum:
+      - ARTISTIC
+      - REALISTIC
+      description: The ultra style to upscale images using universal upscaler with. Can not be used with upscalerStyle.
+    VARIATION_TYPE:
+      type: string
+      nullable: false
+      title: VARIATION_TYPE
+      enum:
+      - OUTPAINT
+      - INPAINT
+      - UPSCALE
+      - UNZOOM
+      - NOBG
+      description: The type of variation.
+    universal_upscaler_style:
+      type: string
+      nullable: true
+      default: GENERAL
+      title: universal_upscaler_style
+      enum:
+      - GENERAL
+      - CINEMATIC
+      - 2D ART & ILLUSTRATION
+      - CG ART & GAME ASSETS
+      description: The style to upscale images using universal upscaler with. Can not be used with ultraUpscaleStyle.
+    job_status:
+      type: string
+      nullable: false
+      title: job_status
+      enum:
+      - PENDING
+      - COMPLETE
+      - FAILED
+      description: The status of the current task.
+    MOTION_VARIATION_TYPE:
+      type: string
+      nullable: false
+      title: MOTION_VARIATION_TYPE
+      enum:
+      - UPSCALE
+      description: The type of motion variation.
+    cost:
+      nullable: true
+      type: object
+      title: Cost
+      description: The cost of the operation.
+      properties:
+        amount:
+          type: string
+          description: The amount of the cost.
+        unit:
+          type: string
+          enum:
+          - CREDITS
+          - DOLLARS
+          description: 'The unit of the cost. Can be CREDITS or DOLLARS. Note: DOLLARS unit only supports PAYG plan.'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      bearerFormat: auth-scheme
+      description: 'Bearer HTTP authentication. Allowed headers `Authorization: Bearer <api_key>`'
+      scheme: bearer

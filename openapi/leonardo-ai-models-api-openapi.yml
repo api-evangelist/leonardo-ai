@@ -1,0 +1,419 @@
+openapi: 3.0.0
+info:
+  title: Leonardo.AI 3D Model Assets Models API
+  description: Upload, retrieve, and delete 3D model assets for use with Rodin and other 3D-capable workflows.
+  version: v1.0.0
+  contact:
+    name: Leonardo.AI Support
+    url: https://docs.leonardo.ai/docs/need-more-support
+  license:
+    name: Leonardo.AI Terms of Service
+    url: https://leonardo.ai/terms-of-service/
+servers:
+- url: https://cloud.leonardo.ai/api/rest/v1
+  description: Leonardo.AI Production API
+security:
+- bearerAuth: []
+tags:
+- name: Models
+paths:
+  /models:
+    post:
+      tags:
+      - Models
+      summary: Train a Custom Model
+      description: This endpoint will train a new custom model
+      operationId: createModel
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                name:
+                  nullable: false
+                  title: String
+                  type: string
+                  description: The name of the model.
+                description:
+                  default: ''
+                  nullable: true
+                  title: String
+                  type: string
+                  description: The description of the model.
+                datasetId:
+                  nullable: false
+                  title: String
+                  type: string
+                  description: The ID of the dataset to train the model on.
+                instance_prompt:
+                  nullable: false
+                  title: String
+                  type: string
+                  description: The instance prompt to use during training.
+                modelType:
+                  $ref: '#/components/schemas/custom_model_type'
+                nsfw:
+                  default: false
+                  nullable: true
+                  title: Boolean
+                  type: boolean
+                  description: Whether or not the model is NSFW.
+                resolution:
+                  default: 512
+                  nullable: true
+                  title: Int
+                  type: integer
+                  description: The resolution for training. Must be 512 or 768.
+                sd_version:
+                  nullable: true
+                  title: sd_versions
+                  enum:
+                  - v1_5
+                  - v2
+                  description: The base version of stable diffusion to use if not using a custom model. v1_5 is 1.5, v2 is 2.1, if not specified it will default to v1_5.
+                strength:
+                  $ref: '#/components/schemas/strength'
+              required:
+              - name
+              - datasetId
+              - instance_prompt
+              type: object
+        description: Query parameters to be provided in the request body as a JSON object
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sdTrainingJob:
+                    nullable: true
+                    properties:
+                      customModelId:
+                        nullable: false
+                        title: String
+                        type: string
+                      apiCreditCost:
+                        nullable: true
+                        type: integer
+                        description: 'API Credits Cost for Model Training. Available for Production API Users. Note: it will be deprecated. Please use the cost instead.'
+                        deprecated: true
+                      cost:
+                        $ref: '#/components/schemas/cost'
+                    title: SDTrainingOutput
+                    type: object
+              example:
+                sdTrainingJob:
+                  customModelId: m2n3o4p5-q6r7-s8t9-uvwx-yz1234567890
+                  apiCreditCost: null
+                  cost:
+                    amount: '0.0147'
+                    unit: DOLLARS
+          description: Responses for POST /models
+  /models/{id}:
+    get:
+      tags:
+      - Models
+      summary: Get a Single Custom Model by ID
+      description: This endpoint gets the specific custom model
+      operationId: getModelById
+      parameters:
+      - required: true
+        description: The ID of the custom model to return.
+        in: path
+        name: id
+        schema:
+          pattern: '[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}'
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  custom_models_by_pk:
+                    description: columns and relationships of "custom_models"
+                    nullable: true
+                    properties:
+                      createdAt:
+                        $ref: '#/components/schemas/timestamp'
+                      description:
+                        nullable: false
+                        title: String
+                        type: string
+                      id:
+                        $ref: '#/components/schemas/uuid'
+                      instancePrompt:
+                        nullable: true
+                        title: String
+                        type: string
+                      modelHeight:
+                        nullable: false
+                        title: Int
+                        type: integer
+                      modelWidth:
+                        nullable: false
+                        title: Int
+                        type: integer
+                      name:
+                        nullable: false
+                        title: String
+                        type: string
+                      public:
+                        nullable: false
+                        title: Boolean
+                        type: boolean
+                      sdVersion:
+                        $ref: '#/components/schemas/sd_versions'
+                      status:
+                        $ref: '#/components/schemas/job_status'
+                      type:
+                        $ref: '#/components/schemas/custom_model_type'
+                      updatedAt:
+                        $ref: '#/components/schemas/timestamp'
+                    title: custom_models
+                    type: object
+          description: Responses for GET /models/{id}
+    delete:
+      tags:
+      - Models
+      summary: Delete a Single Custom Model by ID
+      description: This endpoint will delete a specific custom model
+      operationId: deleteModelById
+      parameters:
+      - required: true
+        description: The ID of the model to delete.
+        in: path
+        name: id
+        schema:
+          pattern: '[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}'
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  delete_custom_models_by_pk:
+                    description: columns and relationships of "custom_models"
+                    nullable: true
+                    properties:
+                      id:
+                        $ref: '#/components/schemas/uuid'
+                    title: custom_models
+                    type: object
+          description: Responses for DELETE /models/{id}
+  /models/user/{userId}:
+    get:
+      tags:
+      - Models
+      summary: Get a list of Custom Models by User ID
+      description: This endpoint gets the list of custom models belongs to the user.
+      operationId: getCustomModelsByUserId
+      parameters:
+      - required: true
+        description: The ID of the user to return.
+        in: path
+        name: userId
+        schema:
+          pattern: '[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}'
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  custom_models:
+                    items:
+                      description: columns and relationships of "custom_models"
+                      nullable: true
+                      properties:
+                        createdAt:
+                          $ref: '#/components/schemas/timestamp'
+                        description:
+                          nullable: false
+                          title: String
+                          type: string
+                        id:
+                          $ref: '#/components/schemas/uuid'
+                        instancePrompt:
+                          nullable: true
+                          title: String
+                          type: string
+                        modelHeight:
+                          nullable: false
+                          title: Int
+                          type: integer
+                        modelWidth:
+                          nullable: false
+                          title: Int
+                          type: integer
+                        name:
+                          nullable: false
+                          title: String
+                          type: string
+                        public:
+                          nullable: false
+                          title: Boolean
+                          type: boolean
+                        sdVersion:
+                          $ref: '#/components/schemas/sd_versions'
+                        status:
+                          $ref: '#/components/schemas/job_status'
+                        type:
+                          $ref: '#/components/schemas/custom_model_type'
+                        updatedAt:
+                          $ref: '#/components/schemas/timestamp'
+                      title: custom_models
+                      type: object
+                    nullable: true
+                    type: array
+          description: Responses for GET /models/user/{userId}
+  /platformModels:
+    get:
+      tags:
+      - Models
+      parameters: []
+      summary: List Platform Models
+      description: Get a list of public Platform Models available for use with generations.
+      operationId: listPlatformModels
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  custom_models:
+                    items:
+                      description: columns and relationships of "custom_models"
+                      nullable: false
+                      properties:
+                        description:
+                          nullable: false
+                          title: String
+                          type: string
+                        featured:
+                          nullable: false
+                          title: Boolean
+                          type: boolean
+                        generated_image:
+                          description: columns and relationships of "generated_images"
+                          nullable: true
+                          properties:
+                            id:
+                              $ref: '#/components/schemas/uuid'
+                            url:
+                              nullable: false
+                              title: String
+                              type: string
+                          title: generated_images
+                          type: object
+                        id:
+                          $ref: '#/components/schemas/uuid'
+                        name:
+                          nullable: false
+                          title: String
+                          type: string
+                        nsfw:
+                          nullable: false
+                          title: Boolean
+                          type: boolean
+                      title: custom_models
+                      type: object
+                    nullable: false
+                    type: array
+          description: Responses for GET /api/rest/v1/platformModels
+components:
+  schemas:
+    uuid:
+      nullable: true
+      pattern: '[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}'
+      title: uuid
+      type: string
+    timestamp:
+      type: string
+      nullable: false
+      title: timestamp
+    strength:
+      type: string
+      nullable: false
+      title: strength
+      enum:
+      - VERY_LOW
+      - LOW
+      - MEDIUM
+      - HIGH
+      description: When training using the PIXEL_ART model type, this influences the training strength.
+      default: MEDIUM
+    custom_model_type:
+      type: string
+      default: GENERAL
+      nullable: false
+      title: custom_model_type
+      enum:
+      - GENERAL
+      - BUILDINGS
+      - CHARACTERS
+      - ENVIRONMENTS
+      - FASHION
+      - ILLUSTRATIONS
+      - GAME_ITEMS
+      - GRAPHICAL_ELEMENTS
+      - PHOTOGRAPHY
+      - PIXEL_ART
+      - PRODUCT_DESIGN
+      - TEXTURES
+      - UI_ELEMENTS
+      - VECTOR
+      description: The category the most accurately reflects the model.
+    sd_versions:
+      type: string
+      nullable: false
+      title: sd_versions
+      enum:
+      - v1_5
+      - v2
+      - v3
+      - SDXL_0_8
+      - SDXL_0_9
+      - SDXL_1_0
+      - SDXL_LIGHTNING
+      - PHOENIX
+      - FLUX
+      - FLUX_DEV
+      - KINO_2_0
+      description: The base version of stable diffusion to use if not using a custom model. v1_5 is 1.5, v2 is 2.1, if not specified it will default to v1_5. Also includes SDXL and SDXL Lightning models
+    job_status:
+      type: string
+      nullable: false
+      title: job_status
+      enum:
+      - PENDING
+      - COMPLETE
+      - FAILED
+      description: The status of the current task.
+    cost:
+      nullable: true
+      type: object
+      title: Cost
+      description: The cost of the operation.
+      properties:
+        amount:
+          type: string
+          description: The amount of the cost.
+        unit:
+          type: string
+          enum:
+          - CREDITS
+          - DOLLARS
+          description: 'The unit of the cost. Can be CREDITS or DOLLARS. Note: DOLLARS unit only supports PAYG plan.'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      bearerFormat: auth-scheme
+      description: 'Bearer HTTP authentication. Allowed headers `Authorization: Bearer <api_key>`'
+      scheme: bearer
