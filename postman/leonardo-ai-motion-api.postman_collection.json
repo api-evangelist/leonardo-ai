@@ -1,0 +1,360 @@
+{
+  "info": {
+    "_postman_id": "7a9dfbba-9b10-45f0-ad2d-5694368f20fb",
+    "name": "Leonardo.AI 3D Model Assets Motion API",
+    "description": "Upload, retrieve, and delete 3D model assets for use with Rodin and other 3D-capable workflows.\n\nContact Support:\n Name: Leonardo.AI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:05:51.000Z",
+    "updatedAt": "2026-07-28T02:05:51.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7a9dfbba-9b10-45f0-ad2d-5694368f20fb"
+  },
+  "item": [
+    {
+      "name": "generations-motion-svd",
+      "item": [
+        {
+          "name": "Create SVD Motion Generation",
+          "id": "c975574a-0be5-464d-95d4-b37a17918608",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"imageId\": \"<string>\",\n  \"isPublic\": \"<boolean>\",\n  \"isInitImage\": \"<boolean>\",\n  \"isVariation\": \"<boolean>\",\n  \"motionStrength\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/generations-motion-svd",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "generations-motion-svd"
+              ]
+            },
+            "description": "This endpoint will generate a SVD motion generation."
+          },
+          "response": [
+            {
+              "id": "232a0b17-176e-49fa-a622-7a730c38f98e",
+              "name": "Responses for POST /generations-motion-svd",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"imageId\": \"<string>\",\n  \"isPublic\": \"<boolean>\",\n  \"isInitImage\": \"<boolean>\",\n  \"isVariation\": \"<boolean>\",\n  \"motionStrength\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/generations-motion-svd",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "generations-motion-svd"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"motionSvdGenerationJob\": {\n    \"generationId\": \"<string>\",\n    \"apiCreditCost\": \"<integer>\",\n    \"cost\": {\n      \"amount\": \"<string>\",\n      \"unit\": \"DOLLARS\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:05:51.000Z",
+              "updatedAt": "2026-07-28T02:05:51.000Z",
+              "uid": "35240-232a0b17-176e-49fa-a622-7a730c38f98e"
+            }
+          ],
+          "createdAt": "2026-07-28T02:05:51.000Z",
+          "updatedAt": "2026-07-28T02:05:51.000Z",
+          "uid": "35240-c975574a-0be5-464d-95d4-b37a17918608"
+        }
+      ],
+      "id": "495c4f59-3823-47d4-bec8-e62b87619a2f",
+      "createdAt": "2026-07-28T02:05:51.000Z",
+      "updatedAt": "2026-07-28T02:05:51.000Z",
+      "uid": "35240-495c4f59-3823-47d4-bec8-e62b87619a2f"
+    },
+    {
+      "name": "generations-image-to-video",
+      "item": [
+        {
+          "name": "Create a video generation from an image",
+          "id": "58d1c7e4-c74d-4465-bb16-8d95d6071ea8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"prompt\": \"<string>\",\n  \"imageId\": \"<string>\",\n  \"imageType\": \"UPLOADED\",\n  \"endFrameImage\": {\n    \"id\": \"<string>\",\n    \"type\": \"UPLOADED\"\n  },\n  \"resolution\": \"RESOLUTION_480\",\n  \"model\": \"MOTION2\",\n  \"frameInterpolation\": \"<boolean>\",\n  \"isPublic\": \"<boolean>\",\n  \"seed\": \"<integer>\",\n  \"negativePrompt\": \"<string>\",\n  \"promptEnhance\": \"<boolean>\",\n  \"duration\": \"<integer>\",\n  \"promptEnhanceInstruction\": \"<string>\",\n  \"styleIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"elements\": [\n    {\n      \"akUUID\": \"<string>\",\n      \"weight\": 1\n    },\n    {\n      \"akUUID\": \"<string>\",\n      \"weight\": 1\n    }\n  ],\n  \"height\": \"<integer>\",\n  \"width\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/generations-image-to-video",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "generations-image-to-video"
+              ]
+            },
+            "description": "This endpoint will generate a video using an uploaded or generated image."
+          },
+          "response": [
+            {
+              "id": "16c0e3fe-d9fb-4e9b-acc8-acde95f1be12",
+              "name": "Responses for POST /generations-image-to-video",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"prompt\": \"<string>\",\n  \"imageId\": \"<string>\",\n  \"imageType\": \"UPLOADED\",\n  \"endFrameImage\": {\n    \"id\": \"<string>\",\n    \"type\": \"UPLOADED\"\n  },\n  \"resolution\": \"RESOLUTION_480\",\n  \"model\": \"MOTION2\",\n  \"frameInterpolation\": \"<boolean>\",\n  \"isPublic\": \"<boolean>\",\n  \"seed\": \"<integer>\",\n  \"negativePrompt\": \"<string>\",\n  \"promptEnhance\": \"<boolean>\",\n  \"duration\": \"<integer>\",\n  \"promptEnhanceInstruction\": \"<string>\",\n  \"styleIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"elements\": [\n    {\n      \"akUUID\": \"<string>\",\n      \"weight\": 1\n    },\n    {\n      \"akUUID\": \"<string>\",\n      \"weight\": 1\n    }\n  ],\n  \"height\": \"<integer>\",\n  \"width\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/generations-image-to-video",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "generations-image-to-video"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"motionVideoGenerationJob\": {\n    \"generationId\": \"<string>\",\n    \"apiCreditCost\": \"<integer>\",\n    \"cost\": {\n      \"amount\": \"<string>\",\n      \"unit\": \"DOLLARS\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:05:51.000Z",
+              "updatedAt": "2026-07-28T02:05:51.000Z",
+              "uid": "35240-16c0e3fe-d9fb-4e9b-acc8-acde95f1be12"
+            }
+          ],
+          "createdAt": "2026-07-28T02:05:51.000Z",
+          "updatedAt": "2026-07-28T02:05:51.000Z",
+          "uid": "35240-58d1c7e4-c74d-4465-bb16-8d95d6071ea8"
+        }
+      ],
+      "id": "65bfbe3b-24d8-4109-839a-a23327c058a3",
+      "createdAt": "2026-07-28T02:05:51.000Z",
+      "updatedAt": "2026-07-28T02:05:51.000Z",
+      "uid": "35240-65bfbe3b-24d8-4109-839a-a23327c058a3"
+    },
+    {
+      "name": "generations-text-to-video",
+      "item": [
+        {
+          "name": "Create a video generation from a text prompt",
+          "id": "efcf0915-26ac-47b3-a94d-b888faad5a6c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"prompt\": \"<string>\",\n  \"resolution\": \"RESOLUTION_480\",\n  \"model\": \"MOTION2\",\n  \"frameInterpolation\": \"<boolean>\",\n  \"isPublic\": \"<boolean>\",\n  \"seed\": \"<integer>\",\n  \"negativePrompt\": \"<string>\",\n  \"promptEnhance\": \"<boolean>\",\n  \"promptEnhanceInstruction\": \"<string>\",\n  \"styleIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"height\": \"<integer>\",\n  \"width\": \"<integer>\",\n  \"duration\": 8,\n  \"elements\": [\n    {\n      \"akUUID\": \"<string>\",\n      \"weight\": 1\n    },\n    {\n      \"akUUID\": \"<string>\",\n      \"weight\": 1\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/generations-text-to-video",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "generations-text-to-video"
+              ]
+            },
+            "description": "This endpoint will generate a video using a text prompt"
+          },
+          "response": [
+            {
+              "id": "88a2c247-f0c0-4132-b7fb-3350984fc3c2",
+              "name": "Responses for POST /generations-text-to-video",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"prompt\": \"<string>\",\n  \"resolution\": \"RESOLUTION_480\",\n  \"model\": \"MOTION2\",\n  \"frameInterpolation\": \"<boolean>\",\n  \"isPublic\": \"<boolean>\",\n  \"seed\": \"<integer>\",\n  \"negativePrompt\": \"<string>\",\n  \"promptEnhance\": \"<boolean>\",\n  \"promptEnhanceInstruction\": \"<string>\",\n  \"styleIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"height\": \"<integer>\",\n  \"width\": \"<integer>\",\n  \"duration\": 8,\n  \"elements\": [\n    {\n      \"akUUID\": \"<string>\",\n      \"weight\": 1\n    },\n    {\n      \"akUUID\": \"<string>\",\n      \"weight\": 1\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/generations-text-to-video",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "generations-text-to-video"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"motionVideoGenerationJob\": {\n    \"generationId\": \"<string>\",\n    \"apiCreditCost\": \"<integer>\",\n    \"cost\": {\n      \"amount\": \"<string>\",\n      \"unit\": \"DOLLARS\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:05:51.000Z",
+              "updatedAt": "2026-07-28T02:05:51.000Z",
+              "uid": "35240-88a2c247-f0c0-4132-b7fb-3350984fc3c2"
+            }
+          ],
+          "createdAt": "2026-07-28T02:05:51.000Z",
+          "updatedAt": "2026-07-28T02:05:51.000Z",
+          "uid": "35240-efcf0915-26ac-47b3-a94d-b888faad5a6c"
+        }
+      ],
+      "id": "71c5b4ea-131e-4977-b7a1-c73d5da85d60",
+      "createdAt": "2026-07-28T02:05:51.000Z",
+      "updatedAt": "2026-07-28T02:05:51.000Z",
+      "uid": "35240-71c5b4ea-131e-4977-b7a1-c73d5da85d60"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://cloud.leonardo.ai/api/rest/v1"
+    }
+  ]
+}

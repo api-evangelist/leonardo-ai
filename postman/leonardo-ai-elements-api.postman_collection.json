@@ -1,0 +1,506 @@
+{
+  "info": {
+    "_postman_id": "c9d09d2f-25d2-49ec-8a2d-165a665d1778",
+    "name": "Leonardo.AI 3D Model Assets Elements API",
+    "description": "Upload, retrieve, and delete 3D model assets for use with Rodin and other 3D-capable workflows.\n\nContact Support:\n Name: Leonardo.AI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:05:42.000Z",
+    "updatedAt": "2026-07-28T02:05:42.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c9d09d2f-25d2-49ec-8a2d-165a665d1778"
+  },
+  "item": [
+    {
+      "name": "elements",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get a Single Custom Element by ID",
+              "id": "d2bb46a3-9278-46eb-85db-ce9fc9c77246",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/elements/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "elements",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "8bf4706e-5c50-442d-809f-1ee819ca49ab",
+                      "key": "id",
+                      "value": "2",
+                      "description": "(Required) The ID of the custom element to return."
+                    }
+                  ]
+                },
+                "description": "This endpoint gets the specific custom element."
+              },
+              "response": [
+                {
+                  "id": "b1b1ac19-7267-41d2-9208-588f6248a971",
+                  "name": "Responses for GET /elements/{id}.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/elements/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "elements",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"user_loras_by_pk\": {\n    \"createdAt\": \"<string>\",\n    \"description\": \"<string>\",\n    \"id\": \"<integer>\",\n    \"instancePrompt\": \"<string>\",\n    \"resolution\": \"<integer>\",\n    \"learningRate\": \"<number>\",\n    \"trainingEpoch\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"trainTextEncoder\": \"<boolean>\",\n    \"baseModel\": \"<string>\",\n    \"status\": \"PENDING\",\n    \"focus\": \"<string>\",\n    \"updatedAt\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:05:43.000Z",
+                  "updatedAt": "2026-07-28T02:05:43.000Z",
+                  "uid": "35240-b1b1ac19-7267-41d2-9208-588f6248a971"
+                }
+              ],
+              "createdAt": "2026-07-28T02:05:43.000Z",
+              "updatedAt": "2026-07-28T02:05:43.000Z",
+              "uid": "35240-d2bb46a3-9278-46eb-85db-ce9fc9c77246"
+            },
+            {
+              "name": "Delete a Single Custom Element by ID",
+              "id": "f3a6ff08-cd5a-4bab-a99e-137f4930f9f1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/elements/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "elements",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "741cdc31-ab5b-496a-ba51-13f2d4d688ab",
+                      "key": "id",
+                      "value": "2",
+                      "description": "(Required) The ID of the element to delete."
+                    }
+                  ]
+                },
+                "description": "This endpoint will delete a specific custom model."
+              },
+              "response": [
+                {
+                  "id": "2faf01f0-3e21-4833-bb0e-db8e4d69eba0",
+                  "name": "Responses for DELETE /models/{id}",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/elements/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "elements",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"delete_user_loras_by_pk\": {\n    \"id\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:05:43.000Z",
+                  "updatedAt": "2026-07-28T02:05:43.000Z",
+                  "uid": "35240-2faf01f0-3e21-4833-bb0e-db8e4d69eba0"
+                }
+              ],
+              "createdAt": "2026-07-28T02:05:43.000Z",
+              "updatedAt": "2026-07-28T02:05:43.000Z",
+              "uid": "35240-f3a6ff08-cd5a-4bab-a99e-137f4930f9f1"
+            }
+          ],
+          "id": "e6e226d8-8fe5-44cb-a639-03798f13f2ad",
+          "createdAt": "2026-07-28T02:05:43.000Z",
+          "updatedAt": "2026-07-28T02:05:43.000Z",
+          "uid": "35240-e6e226d8-8fe5-44cb-a639-03798f13f2ad"
+        },
+        {
+          "name": "user",
+          "item": [
+            {
+              "name": "{userId}",
+              "item": [
+                {
+                  "name": "Get a list of Custom Elements by User ID",
+                  "id": "269b1b30-fba0-4547-bfe9-2781f115c767",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/elements/user/:userId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "elements",
+                        "user",
+                        ":userId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "79884c68-f188-4052-ad8d-93ed1b39584f",
+                          "key": "userId",
+                          "value": "32eb46e7-f81e-4159-8c36-558b2882315d",
+                          "description": "(Required) The ID of the user to return."
+                        }
+                      ]
+                    },
+                    "description": "This endpoint gets the list of custom elements belongs to the user."
+                  },
+                  "response": [
+                    {
+                      "id": "25e88155-6540-4123-923c-effb17054798",
+                      "name": "Responses for GET /elements/user/{userId}.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/elements/user/:userId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "elements",
+                            "user",
+                            ":userId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "userId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"user_loras\": [\n    {\n      \"createdAt\": \"<string>\",\n      \"description\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"instancePrompt\": \"<string>\",\n      \"resolution\": \"<integer>\",\n      \"learningRate\": \"<number>\",\n      \"trainingEpoch\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"trainTextEncoder\": \"<boolean>\",\n      \"baseModel\": \"<string>\",\n      \"status\": \"COMPLETE\",\n      \"focus\": \"<string>\",\n      \"updatedAt\": \"<string>\"\n    },\n    {\n      \"createdAt\": \"<string>\",\n      \"description\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"instancePrompt\": \"<string>\",\n      \"resolution\": \"<integer>\",\n      \"learningRate\": \"<number>\",\n      \"trainingEpoch\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"trainTextEncoder\": \"<boolean>\",\n      \"baseModel\": \"<string>\",\n      \"status\": \"FAILED\",\n      \"focus\": \"<string>\",\n      \"updatedAt\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:05:43.000Z",
+                      "updatedAt": "2026-07-28T02:05:43.000Z",
+                      "uid": "35240-25e88155-6540-4123-923c-effb17054798"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:05:43.000Z",
+                  "updatedAt": "2026-07-28T02:05:43.000Z",
+                  "uid": "35240-269b1b30-fba0-4547-bfe9-2781f115c767"
+                }
+              ],
+              "id": "64b0150f-6028-44c7-9773-56e774f20b28",
+              "createdAt": "2026-07-28T02:05:43.000Z",
+              "updatedAt": "2026-07-28T02:05:43.000Z",
+              "uid": "35240-64b0150f-6028-44c7-9773-56e774f20b28"
+            }
+          ],
+          "id": "7a9d4db5-d16d-435a-8867-5bf0c35d4416",
+          "createdAt": "2026-07-28T02:05:43.000Z",
+          "updatedAt": "2026-07-28T02:05:43.000Z",
+          "uid": "35240-7a9d4db5-d16d-435a-8867-5bf0c35d4416"
+        },
+        {
+          "name": "Train a Custom Element",
+          "id": "58b105e4-c780-4286-836d-2e01178e21fe",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"placeholder\",\n  \"datasetId\": \"\",\n  \"lora_focus\": \"<string>\",\n  \"sd_version\": \"FLUX_DEV\",\n  \"learning_rate\": \"<number>\",\n  \"num_train_epochs\": \"<integer>\",\n  \"train_text_encoder\": true,\n  \"description\": \"\",\n  \"instance_prompt\": \"\",\n  \"resolution\": 1024\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/elements",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "elements"
+              ]
+            },
+            "description": "This endpoint will train a new custom element."
+          },
+          "response": [
+            {
+              "id": "cde575f2-7447-45d7-b164-4990143f8d8a",
+              "name": "Responses for POST /elements.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"placeholder\",\n  \"datasetId\": \"\",\n  \"lora_focus\": \"<string>\",\n  \"sd_version\": \"FLUX_DEV\",\n  \"learning_rate\": \"<number>\",\n  \"num_train_epochs\": \"<integer>\",\n  \"train_text_encoder\": true,\n  \"description\": \"\",\n  \"instance_prompt\": \"\",\n  \"resolution\": 1024\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/elements",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "elements"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"sdTrainingJob\": {\n    \"userLoraId\": \"<integer>\",\n    \"apiCreditCost\": \"<integer>\",\n    \"cost\": {\n      \"amount\": \"<string>\",\n      \"unit\": \"DOLLARS\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:05:43.000Z",
+              "updatedAt": "2026-07-28T02:05:43.000Z",
+              "uid": "35240-cde575f2-7447-45d7-b164-4990143f8d8a"
+            }
+          ],
+          "createdAt": "2026-07-28T02:05:43.000Z",
+          "updatedAt": "2026-07-28T02:05:43.000Z",
+          "uid": "35240-58b105e4-c780-4286-836d-2e01178e21fe"
+        },
+        {
+          "name": "List Elements",
+          "id": "817d98c2-2ab3-4a1f-94a9-235d790d3217",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/elements",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "elements"
+              ]
+            },
+            "description": "Get a list of public Elements available for use with generations."
+          },
+          "response": [
+            {
+              "id": "8684b96f-35e6-4833-aad3-e7f7d288a261",
+              "name": "Responses for GET /api/rest/v1/elements.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/elements",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "elements"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"loras\": [\n    {\n      \"akUUID\": \"<string>\",\n      \"baseModel\": \"SDXL_LIGHTNING\",\n      \"creatorName\": \"<string>\",\n      \"description\": \"<string>\",\n      \"name\": \"<string>\",\n      \"urlImage\": \"<string>\",\n      \"weightDefault\": \"<integer>\",\n      \"weightMax\": \"<integer>\",\n      \"weightMin\": \"<integer>\"\n    },\n    {\n      \"akUUID\": \"<string>\",\n      \"baseModel\": \"v2\",\n      \"creatorName\": \"<string>\",\n      \"description\": \"<string>\",\n      \"name\": \"<string>\",\n      \"urlImage\": \"<string>\",\n      \"weightDefault\": \"<integer>\",\n      \"weightMax\": \"<integer>\",\n      \"weightMin\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:05:43.000Z",
+              "updatedAt": "2026-07-28T02:05:43.000Z",
+              "uid": "35240-8684b96f-35e6-4833-aad3-e7f7d288a261"
+            }
+          ],
+          "createdAt": "2026-07-28T02:05:43.000Z",
+          "updatedAt": "2026-07-28T02:05:43.000Z",
+          "uid": "35240-817d98c2-2ab3-4a1f-94a9-235d790d3217"
+        }
+      ],
+      "id": "3f31e4cd-ea5d-439c-98e1-c837e7015d6f",
+      "createdAt": "2026-07-28T02:05:43.000Z",
+      "updatedAt": "2026-07-28T02:05:43.000Z",
+      "uid": "35240-3f31e4cd-ea5d-439c-98e1-c837e7015d6f"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://cloud.leonardo.ai/api/rest/v1"
+    }
+  ]
+}

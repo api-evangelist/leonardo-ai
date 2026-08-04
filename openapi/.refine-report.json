@@ -1,0 +1,40 @@
+{
+  "provider": "leonardo-ai",
+  "sources": [
+    "leonardo-ai-3d-model-assets-api-openapi.yml",
+    "leonardo-ai-blueprints-api-openapi.yml",
+    "leonardo-ai-dataset-api-openapi.yml",
+    "leonardo-ai-elements-api-openapi.yml",
+    "leonardo-ai-image-api-openapi.yml",
+    "leonardo-ai-init-images-api-openapi.yml",
+    "leonardo-ai-media-api-openapi.yml",
+    "leonardo-ai-models-api-openapi.yml",
+    "leonardo-ai-motion-api-openapi.yml",
+    "leonardo-ai-pricing-calculator-api-openapi.yml",
+    "leonardo-ai-prompt-api-openapi.yml",
+    "leonardo-ai-realtime-canvas-api-openapi.yml",
+    "leonardo-ai-user-api-openapi.yml",
+    "leonardo-ai-variation-api-openapi.yml"
+  ],
+  "outputs": [
+    "leonardo-ai-3d-model-assets-api-openapi.yml",
+    "leonardo-ai-blueprints-api-openapi.yml",
+    "leonardo-ai-dataset-api-openapi.yml",
+    "leonardo-ai-elements-api-openapi.yml",
+    "leonardo-ai-image-api-openapi.yml",
+    "leonardo-ai-init-images-api-openapi.yml",
+    "leonardo-ai-media-api-openapi.yml",
+    "leonardo-ai-models-api-openapi.yml",
+    "leonardo-ai-motion-api-openapi.yml",
+    "leonardo-ai-pricing-calculator-api-openapi.yml",
+    "leonardo-ai-prompt-api-openapi.yml",
+    "leonardo-ai-realtime-canvas-api-openapi.yml",
+    "leonardo-ai-user-api-openapi.yml",
+    "leonardo-ai-variation-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

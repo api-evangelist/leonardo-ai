@@ -1,0 +1,325 @@
+{
+  "info": {
+    "_postman_id": "edd98059-37e4-45b3-a3f4-5b980b4e1a13",
+    "name": "Leonardo.AI 3D Model Assets Media API",
+    "description": "Upload, retrieve, and delete 3D model assets for use with Rodin and other 3D-capable workflows.\n\nContact Support:\n Name: Leonardo.AI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:05:46.000Z",
+    "updatedAt": "2026-07-28T02:05:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-edd98059-37e4-45b3-a3f4-5b980b4e1a13"
+  },
+  "item": [
+    {
+      "name": "media",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get uploaded media",
+              "id": "7be1e01d-1725-46f1-93df-a400529a0231",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/media/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "media",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "0625a22b-5b23-4209-9a49-c81aa56632ae",
+                      "key": "id",
+                      "value": "d113e46a-99a2-40dc-a597-fd766b00d33f",
+                      "description": "(Required) _\"id\" is required_"
+                    }
+                  ]
+                },
+                "description": "This endpoint returns details of an uploaded media record"
+              },
+              "response": [
+                {
+                  "id": "67501d0f-2f13-44bd-a7e2-f76060f78692",
+                  "name": "Responses for GET /media/{id}",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/media/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "media",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"uploaded_media_by_pk\": {\n    \"id\": \"<string>\",\n    \"createdAt\": \"<string>\",\n    \"url\": \"<string>\",\n    \"thumbnailUrl\": \"<string>\",\n    \"status\": \"<string>\",\n    \"statusReason\": \"<string>\",\n    \"mediaType\": \"<string>\",\n    \"duration\": \"<number>\",\n    \"width\": \"<integer>\",\n    \"height\": \"<integer>\",\n    \"video_fps\": \"<number>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:05:47.000Z",
+                  "updatedAt": "2026-07-28T02:05:47.000Z",
+                  "uid": "35240-67501d0f-2f13-44bd-a7e2-f76060f78692"
+                }
+              ],
+              "createdAt": "2026-07-28T02:05:47.000Z",
+              "updatedAt": "2026-07-28T02:05:47.000Z",
+              "uid": "35240-7be1e01d-1725-46f1-93df-a400529a0231"
+            },
+            {
+              "name": "Delete uploaded media",
+              "id": "90cb7c84-ca1d-47b6-a06f-ff6dc15e4678",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/media/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "media",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "5e738b73-844b-487f-8ade-77c1bfb9fb04",
+                      "key": "id",
+                      "value": "d113e46a-99a2-40dc-a597-fd766b00d33f",
+                      "description": "(Required) _\"id\" is required_"
+                    }
+                  ]
+                },
+                "description": "This endpoint deletes an uploaded media record and removes the associated file from S3"
+              },
+              "response": [
+                {
+                  "id": "6e520f16-691f-4af1-99d8-3ae5edd7fb20",
+                  "name": "Responses for DELETE /media/{id}",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/media/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "media",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"delete_uploaded_media_by_pk\": {\n    \"id\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:05:47.000Z",
+                  "updatedAt": "2026-07-28T02:05:47.000Z",
+                  "uid": "35240-6e520f16-691f-4af1-99d8-3ae5edd7fb20"
+                }
+              ],
+              "createdAt": "2026-07-28T02:05:47.000Z",
+              "updatedAt": "2026-07-28T02:05:47.000Z",
+              "uid": "35240-90cb7c84-ca1d-47b6-a06f-ff6dc15e4678"
+            }
+          ],
+          "id": "d197ebaa-bdd9-4bf1-8f48-94e92a46cd11",
+          "createdAt": "2026-07-28T02:05:47.000Z",
+          "updatedAt": "2026-07-28T02:05:47.000Z",
+          "uid": "35240-d197ebaa-bdd9-4bf1-8f48-94e92a46cd11"
+        },
+        {
+          "name": "Upload media",
+          "id": "1aff462e-9d55-4899-9d99-ecb25cef2b65",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"extension\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/media",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "media"
+              ]
+            },
+            "description": "This endpoint returns presigned details to upload a media file to S3"
+          },
+          "response": [
+            {
+              "id": "75533b18-790a-4856-ad36-71bc4d1568e3",
+              "name": "Responses for POST /media",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"extension\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/media",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "media"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"uploadMedia\": {\n    \"uploadId\": \"<string>\",\n    \"url\": \"<string>\",\n    \"fields\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:05:47.000Z",
+              "updatedAt": "2026-07-28T02:05:47.000Z",
+              "uid": "35240-75533b18-790a-4856-ad36-71bc4d1568e3"
+            }
+          ],
+          "createdAt": "2026-07-28T02:05:47.000Z",
+          "updatedAt": "2026-07-28T02:05:47.000Z",
+          "uid": "35240-1aff462e-9d55-4899-9d99-ecb25cef2b65"
+        }
+      ],
+      "id": "fd526ba1-b10e-440f-8bdb-f53abc7a2135",
+      "createdAt": "2026-07-28T02:05:47.000Z",
+      "updatedAt": "2026-07-28T02:05:47.000Z",
+      "uid": "35240-fd526ba1-b10e-440f-8bdb-f53abc7a2135"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://cloud.leonardo.ai/api/rest/v1"
+    }
+  ]
+}

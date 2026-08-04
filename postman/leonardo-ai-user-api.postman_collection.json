@@ -1,0 +1,112 @@
+{
+  "info": {
+    "_postman_id": "7f3ed3a9-cf56-4e8e-b893-8edf83168108",
+    "name": "Leonardo.AI 3D Model Assets User API",
+    "description": "Upload, retrieve, and delete 3D model assets for use with Rodin and other 3D-capable workflows.\n\nContact Support:\n Name: Leonardo.AI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:06:25.000Z",
+    "updatedAt": "2026-07-28T02:06:25.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7f3ed3a9-cf56-4e8e-b893-8edf83168108"
+  },
+  "item": [
+    {
+      "name": "me",
+      "item": [
+        {
+          "name": "Get user information",
+          "id": "cc5e2bfb-5cbd-40c4-8ff8-9f3275749edd",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/me",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "me"
+              ]
+            },
+            "description": "This endpoint will return your user information such as your user id, username, token renewal date and current amounts of the following: subscription tokens, gpt (prompt generation) tokens, and model training tokens"
+          },
+          "response": [
+            {
+              "id": "cae9c632-f585-43a6-85eb-2e6b19431987",
+              "name": "Responses for GET /me",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/me",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "me"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"user_details\": [\n    {\n      \"user\": {\n        \"id\": \"67059df8-1943-4e18-92d3-1f285d8eb0b9\",\n        \"username\": \"<string>\"\n      },\n      \"tokenRenewalDate\": \"<string>\",\n      \"paidTokens\": \"<integer>\",\n      \"subscriptionTokens\": \"<integer>\",\n      \"subscriptionGptTokens\": \"<integer>\",\n      \"subscriptionModelTokens\": \"<integer>\",\n      \"apiConcurrencySlots\": \"<integer>\",\n      \"apiPaidTokens\": \"<integer>\",\n      \"apiSubscriptionTokens\": \"<integer>\",\n      \"apiPlanTokenRenewalDate\": \"<string>\"\n    },\n    {\n      \"user\": {\n        \"id\": \"184cd86f-f03d-4043-81a6-8a02b37164aa\",\n        \"username\": \"<string>\"\n      },\n      \"tokenRenewalDate\": \"<string>\",\n      \"paidTokens\": \"<integer>\",\n      \"subscriptionTokens\": \"<integer>\",\n      \"subscriptionGptTokens\": \"<integer>\",\n      \"subscriptionModelTokens\": \"<integer>\",\n      \"apiConcurrencySlots\": \"<integer>\",\n      \"apiPaidTokens\": \"<integer>\",\n      \"apiSubscriptionTokens\": \"<integer>\",\n      \"apiPlanTokenRenewalDate\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:06:26.000Z",
+              "updatedAt": "2026-07-28T02:06:26.000Z",
+              "uid": "35240-cae9c632-f585-43a6-85eb-2e6b19431987"
+            }
+          ],
+          "createdAt": "2026-07-28T02:06:26.000Z",
+          "updatedAt": "2026-07-28T02:06:26.000Z",
+          "uid": "35240-cc5e2bfb-5cbd-40c4-8ff8-9f3275749edd"
+        }
+      ],
+      "id": "8bd3be6a-edf1-4be1-ad0e-6ebe5ec2ba72",
+      "createdAt": "2026-07-28T02:06:26.000Z",
+      "updatedAt": "2026-07-28T02:06:26.000Z",
+      "uid": "35240-8bd3be6a-edf1-4be1-ad0e-6ebe5ec2ba72"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://cloud.leonardo.ai/api/rest/v1"
+    }
+  ]
+}

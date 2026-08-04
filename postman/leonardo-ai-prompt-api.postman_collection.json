@@ -1,0 +1,235 @@
+{
+  "info": {
+    "_postman_id": "30b9431a-eb8f-493b-b8d1-881670cba72d",
+    "name": "Leonardo.AI 3D Model Assets Prompt API",
+    "description": "Upload, retrieve, and delete 3D model assets for use with Rodin and other 3D-capable workflows.\n\nContact Support:\n Name: Leonardo.AI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:06:22.000Z",
+    "updatedAt": "2026-07-28T02:06:22.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-30b9431a-eb8f-493b-b8d1-881670cba72d"
+  },
+  "item": [
+    {
+      "name": "prompt",
+      "item": [
+        {
+          "name": "random",
+          "item": [
+            {
+              "name": "Generate a Random prompt",
+              "id": "06f7d662-01a4-4fb3-84b2-d5472527f1a7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/prompt/random",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "prompt",
+                    "random"
+                  ]
+                },
+                "description": "This endpoint returns a random prompt"
+              },
+              "response": [
+                {
+                  "id": "f786ea5a-6985-48ca-b475-8f5e90a78219",
+                  "name": "Responses for POST /prompt/random",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/prompt/random",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "prompt",
+                        "random"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"promptGeneration\": {\n    \"prompt\": \"The random prompt generated.\",\n    \"apiCreditCost\": 4,\n    \"cost\": {\n      \"amount\": \"<string>\",\n      \"unit\": \"DOLLARS\"\n    }\n  }\n}",
+                  "createdAt": "2026-07-28T02:06:22.000Z",
+                  "updatedAt": "2026-07-28T02:06:22.000Z",
+                  "uid": "35240-f786ea5a-6985-48ca-b475-8f5e90a78219"
+                }
+              ],
+              "createdAt": "2026-07-28T02:06:22.000Z",
+              "updatedAt": "2026-07-28T02:06:22.000Z",
+              "uid": "35240-06f7d662-01a4-4fb3-84b2-d5472527f1a7"
+            }
+          ],
+          "id": "eed4bb4e-1491-4813-a25a-0aceb3bf073e",
+          "createdAt": "2026-07-28T02:06:22.000Z",
+          "updatedAt": "2026-07-28T02:06:22.000Z",
+          "uid": "35240-eed4bb4e-1491-4813-a25a-0aceb3bf073e"
+        },
+        {
+          "name": "improve",
+          "item": [
+            {
+              "name": "Improve a Prompt",
+              "id": "6d2f9202-b875-4a93-890f-391fa28ffaa3",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"prompt\": \"<string>\",\n  \"promptInstructions\": \"<string>\",\n  \"isVideo\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/prompt/improve",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "prompt",
+                    "improve"
+                  ]
+                },
+                "description": "This endpoint returns a improved prompt"
+              },
+              "response": [
+                {
+                  "id": "19ea58e4-a16c-4ce9-9789-a689fb0e5fda",
+                  "name": "Responses for POST /prompt/improve",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"prompt\": \"<string>\",\n  \"promptInstructions\": \"<string>\",\n  \"isVideo\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/prompt/improve",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "prompt",
+                        "improve"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"promptGeneration\": {\n    \"prompt\": \"The improved prompt.\",\n    \"apiCreditCost\": 4,\n    \"cost\": {\n      \"amount\": \"<string>\",\n      \"unit\": \"CREDITS\"\n    }\n  }\n}",
+                  "createdAt": "2026-07-28T02:06:22.000Z",
+                  "updatedAt": "2026-07-28T02:06:22.000Z",
+                  "uid": "35240-19ea58e4-a16c-4ce9-9789-a689fb0e5fda"
+                }
+              ],
+              "createdAt": "2026-07-28T02:06:22.000Z",
+              "updatedAt": "2026-07-28T02:06:22.000Z",
+              "uid": "35240-6d2f9202-b875-4a93-890f-391fa28ffaa3"
+            }
+          ],
+          "id": "7d5a0107-9656-4f1d-b41e-89d115e5f62a",
+          "createdAt": "2026-07-28T02:06:22.000Z",
+          "updatedAt": "2026-07-28T02:06:22.000Z",
+          "uid": "35240-7d5a0107-9656-4f1d-b41e-89d115e5f62a"
+        }
+      ],
+      "id": "0c03d4d4-3b72-4022-a6ad-2d8fe86358e3",
+      "createdAt": "2026-07-28T02:06:22.000Z",
+      "updatedAt": "2026-07-28T02:06:22.000Z",
+      "uid": "35240-0c03d4d4-3b72-4022-a6ad-2d8fe86358e3"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://cloud.leonardo.ai/api/rest/v1"
+    }
+  ]
+}

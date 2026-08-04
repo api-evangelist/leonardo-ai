@@ -1,0 +1,742 @@
+{
+  "info": {
+    "_postman_id": "c1ac5f90-36c8-4d18-9ade-c20b13c17f26",
+    "name": "Leonardo.AI 3D Model Assets Blueprints API",
+    "description": "Upload, retrieve, and delete 3D model assets for use with Rodin and other 3D-capable workflows.\n\nContact Support:\n Name: Leonardo.AI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:04:50.000Z",
+    "updatedAt": "2026-07-28T02:04:51.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c1ac5f90-36c8-4d18-9ade-c20b13c17f26"
+  },
+  "item": [
+    {
+      "name": "blueprints",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "versions",
+              "item": [
+                {
+                  "name": "Get Blueprint Versions by Blueprint ID",
+                  "id": "835068e7-5264-442c-93e2-071abb6bde47",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/blueprints/:id/versions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "blueprints",
+                        ":id",
+                        "versions"
+                      ],
+                      "variable": [
+                        {
+                          "id": "7db2a412-a5ed-44f4-bfdf-a1a9eadd650a",
+                          "key": "id",
+                          "value": "<uuid>",
+                          "description": "(Required) The akUUID of the Blueprint"
+                        }
+                      ]
+                    },
+                    "description": "Returns all versions of a Blueprint by its akUUID"
+                  },
+                  "response": [
+                    {
+                      "id": "5f47dbed-0549-4c51-ac3b-417af78a3850",
+                      "name": "Successfully retrieved Blueprint Versions",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/blueprints/:id/versions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "blueprints",
+                            ":id",
+                            "versions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"blueprintVersions\": {\n    \"edges\": [\n      {\n        \"cursor\": \"<string>\",\n        \"node\": {\n          \"akUUID\": \"<uuid>\",\n          \"createdAt\": \"<dateTime>\",\n          \"updatedAt\": \"<dateTime>\",\n          \"cost\": \"<integer>\",\n          \"uiMetadata\": {},\n          \"uiMetadataSchemaVersion\": \"<string>\",\n          \"models\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"executability\": {\n            \"isExecutable\": \"<boolean>\",\n            \"reasons\": [\n              {\n                \"models\": \"<string>\"\n              },\n              {\n                \"models\": \"<string>\"\n              }\n            ]\n          }\n        }\n      },\n      {\n        \"cursor\": \"<string>\",\n        \"node\": {\n          \"akUUID\": \"<uuid>\",\n          \"createdAt\": \"<dateTime>\",\n          \"updatedAt\": \"<dateTime>\",\n          \"cost\": \"<integer>\",\n          \"uiMetadata\": {},\n          \"uiMetadataSchemaVersion\": \"<string>\",\n          \"models\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"executability\": {\n            \"isExecutable\": \"<boolean>\",\n            \"reasons\": [\n              {\n                \"models\": \"<string>\"\n              },\n              {\n                \"models\": \"<string>\"\n              }\n            ]\n          }\n        }\n      }\n    ],\n    \"totalCount\": \"<integer>\",\n    \"pageInfo\": {\n      \"hasNextPage\": \"<boolean>\",\n      \"hasPreviousPage\": \"<boolean>\",\n      \"startCursor\": \"<string>\",\n      \"endCursor\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T02:04:51.000Z",
+                      "updatedAt": "2026-07-28T02:04:51.000Z",
+                      "uid": "35240-5f47dbed-0549-4c51-ac3b-417af78a3850"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:04:51.000Z",
+                  "updatedAt": "2026-07-28T02:04:51.000Z",
+                  "uid": "35240-835068e7-5264-442c-93e2-071abb6bde47"
+                }
+              ],
+              "id": "54285d0a-d797-4c8c-a133-edb9deec7387",
+              "createdAt": "2026-07-28T02:04:51.000Z",
+              "updatedAt": "2026-07-28T02:04:51.000Z",
+              "uid": "35240-54285d0a-d797-4c8c-a133-edb9deec7387"
+            },
+            {
+              "name": "Get Blueprint by ID",
+              "id": "bbcb9262-36ec-4a71-84f1-421a538e7482",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/blueprints/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "blueprints",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "31c1d3e1-f085-403f-bcc9-3103e4d8bbf4",
+                      "key": "id",
+                      "value": "<uuid>",
+                      "description": "(Required) The akUUID of the Blueprint to return"
+                    }
+                  ]
+                },
+                "description": "Returns a single Blueprint by its akUUID"
+              },
+              "response": [
+                {
+                  "id": "a9f11a9c-9f62-428c-b1ce-59fe342017b8",
+                  "name": "Successfully retrieved Blueprint",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/blueprints/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "blueprints",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"blueprint\": {\n    \"akUUID\": \"<string>\",\n    \"createdAt\": \"<dateTime>\",\n    \"updatedAt\": \"<dateTime>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"thumbnails\": [\n      {\n        \"name\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"url\": \"<string>\"\n      }\n    ],\n    \"teamId\": \"<string>\",\n    \"official\": \"<boolean>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:04:51.000Z",
+                  "updatedAt": "2026-07-28T02:04:51.000Z",
+                  "uid": "35240-a9f11a9c-9f62-428c-b1ce-59fe342017b8"
+                }
+              ],
+              "createdAt": "2026-07-28T02:04:51.000Z",
+              "updatedAt": "2026-07-28T02:04:51.000Z",
+              "uid": "35240-bbcb9262-36ec-4a71-84f1-421a538e7482"
+            }
+          ],
+          "id": "d3418f03-55bc-4940-8b38-4bcf71752c94",
+          "createdAt": "2026-07-28T02:04:51.000Z",
+          "updatedAt": "2026-07-28T02:04:51.000Z",
+          "uid": "35240-d3418f03-55bc-4940-8b38-4bcf71752c94"
+        },
+        {
+          "name": "List Blueprints",
+          "id": "3f1e5708-c6f2-4921-a15e-3c809bb73149",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first\": 10,\n  \"after\": \"<string>\",\n  \"last\": \"<integer>\",\n  \"before\": \"<string>\",\n  \"platforms\": [\n    \"API\"\n  ],\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/blueprints",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "blueprints"
+              ]
+            },
+            "description": "Returns a list of Blueprints. Use either forward pagination (first/after) or backward pagination (last/before), but not both. Note: This endpoint uses a request body to support complex filtering parameters"
+          },
+          "response": [
+            {
+              "id": "4e564893-b5a8-4a29-8c00-4d8ae1185347",
+              "name": "Responses for GET /api/rest/v1/blueprints",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first\": 10,\n  \"after\": \"<string>\",\n  \"last\": \"<integer>\",\n  \"before\": \"<string>\",\n  \"platforms\": [\n    \"API\"\n  ],\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/blueprints",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "blueprints"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"blueprints\": {\n    \"edges\": [\n      {\n        \"cursor\": \"<string>\",\n        \"node\": {\n          \"akUUID\": \"<string>\",\n          \"createdAt\": \"<dateTime>\",\n          \"updatedAt\": \"<dateTime>\",\n          \"name\": \"<string>\",\n          \"description\": \"<string>\",\n          \"thumbnails\": [\n            {\n              \"name\": \"<string>\",\n              \"url\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"url\": \"<string>\"\n            }\n          ],\n          \"teamId\": \"<string>\",\n          \"official\": \"<boolean>\"\n        }\n      },\n      {\n        \"cursor\": \"<string>\",\n        \"node\": {\n          \"akUUID\": \"<string>\",\n          \"createdAt\": \"<dateTime>\",\n          \"updatedAt\": \"<dateTime>\",\n          \"name\": \"<string>\",\n          \"description\": \"<string>\",\n          \"thumbnails\": [\n            {\n              \"name\": \"<string>\",\n              \"url\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"url\": \"<string>\"\n            }\n          ],\n          \"teamId\": \"<string>\",\n          \"official\": \"<boolean>\"\n        }\n      }\n    ],\n    \"totalCount\": \"<integer>\",\n    \"pageInfo\": {\n      \"hasNextPage\": \"<boolean>\",\n      \"hasPreviousPage\": \"<boolean>\",\n      \"startCursor\": \"<string>\",\n      \"endCursor\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:04:51.000Z",
+              "updatedAt": "2026-07-28T02:04:51.000Z",
+              "uid": "35240-4e564893-b5a8-4a29-8c00-4d8ae1185347"
+            }
+          ],
+          "createdAt": "2026-07-28T02:04:51.000Z",
+          "updatedAt": "2026-07-28T02:04:51.000Z",
+          "uid": "35240-3f1e5708-c6f2-4921-a15e-3c809bb73149"
+        }
+      ],
+      "id": "128e2a23-8ae9-490a-8b4a-14978defd9a4",
+      "createdAt": "2026-07-28T02:04:51.000Z",
+      "updatedAt": "2026-07-28T02:04:51.000Z",
+      "uid": "35240-128e2a23-8ae9-490a-8b4a-14978defd9a4"
+    },
+    {
+      "name": "blueprint-executions",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "generations",
+              "item": [
+                {
+                  "name": "Get Blueprint Execution Generations by Execution ID",
+                  "id": "481458ec-8022-46c9-83c2-15e150bed4ab",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/blueprint-executions/:id/generations?first=<integer>&after=<string>&last=<integer>&before=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "blueprint-executions",
+                        ":id",
+                        "generations"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of generations to return from the beginning of the list (forward pagination)",
+                          "key": "first",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Cursor for forward pagination - returns generations after this cursor",
+                          "key": "after",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of generations to return from the end of the list (backward pagination)",
+                          "key": "last",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Cursor for backward pagination - returns generations before this cursor",
+                          "key": "before",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "d8f21ed6-8f37-4417-b660-abc36d8826c6",
+                          "key": "id",
+                          "value": "ba3785f1-ee86-4f1c-9de0-29d33d6078c0",
+                          "description": "(Required) The akUUID of the Blueprint Execution to retrieve generations for"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves paginated generations for a specific Blueprint Execution, including their statuses and any prompt moderation failure details."
+                  },
+                  "response": [
+                    {
+                      "id": "c8273b81-3913-4daa-bb68-8b9b978adfa5",
+                      "name": "Successfully retrieved Blueprint Execution Generations",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/blueprint-executions/:id/generations?first=<integer>&after=<string>&last=<integer>&before=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "blueprint-executions",
+                            ":id",
+                            "generations"
+                          ],
+                          "query": [
+                            {
+                              "description": "Number of generations to return from the beginning of the list (forward pagination)",
+                              "key": "first",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Cursor for forward pagination - returns generations after this cursor",
+                              "key": "after",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Number of generations to return from the end of the list (backward pagination)",
+                              "key": "last",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Cursor for backward pagination - returns generations before this cursor",
+                              "key": "before",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"blueprintExecutionGenerations\": {\n    \"pageInfo\": {\n      \"hasNextPage\": \"<boolean>\",\n      \"hasPreviousPage\": \"<boolean>\",\n      \"startCursor\": \"<string>\",\n      \"endCursor\": \"<string>\"\n    },\n    \"edges\": [\n      {\n        \"cursor\": \"<string>\",\n        \"node\": {\n          \"akUUID\": \"3e3a23a7-e2d9-46c1-A748-3721e12d4bd2\",\n          \"status\": \"FAILED\",\n          \"generationId\": \"<string>\",\n          \"failedReason\": {\n            \"type\": \"PROMPT_MODERATION_BLOCKED\",\n            \"message\": \"<string>\",\n            \"affectedOutputCount\": \"<integer>\"\n          }\n        }\n      },\n      {\n        \"cursor\": \"<string>\",\n        \"node\": {\n          \"akUUID\": \"ad9ff747-b903-4e59-90dc-61f9b305bf79\",\n          \"status\": \"COMPLETED\",\n          \"generationId\": \"<string>\",\n          \"failedReason\": {\n            \"type\": \"PROMPT_MODERATION_BLOCKED\",\n            \"message\": \"<string>\",\n            \"affectedOutputCount\": \"<integer>\"\n          }\n        }\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:04:51.000Z",
+                      "updatedAt": "2026-07-28T02:04:51.000Z",
+                      "uid": "35240-c8273b81-3913-4daa-bb68-8b9b978adfa5"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:04:51.000Z",
+                  "updatedAt": "2026-07-28T02:04:51.000Z",
+                  "uid": "35240-481458ec-8022-46c9-83c2-15e150bed4ab"
+                }
+              ],
+              "id": "199ad31d-7d63-47ef-9fa2-1e55003fcc2d",
+              "createdAt": "2026-07-28T02:04:51.000Z",
+              "updatedAt": "2026-07-28T02:04:51.000Z",
+              "uid": "35240-199ad31d-7d63-47ef-9fa2-1e55003fcc2d"
+            },
+            {
+              "name": "Get Blueprint Execution by ID",
+              "id": "cf39b16b-82e7-4680-8eb4-dbbdf2545346",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/blueprint-executions/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "blueprint-executions",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "cc7b2d6d-50bb-4fcf-9bff-5baa9e5c0200",
+                      "key": "id",
+                      "value": "ba3785f1-ee86-4f1c-9de0-29d33d6078c0",
+                      "description": "(Required) The akUUID of the Blueprint Execution to retrieve"
+                    }
+                  ]
+                },
+                "description": "Retrieves details of a specific Blueprint Execution by its akUUID"
+              },
+              "response": [
+                {
+                  "id": "f227ba5a-3fed-4899-8a5f-bb78a22a56a5",
+                  "name": "Successfully retrieved Blueprint Execution",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/blueprint-executions/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "blueprint-executions",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"blueprintExecution\": {\n    \"akUUID\": \"74a57a79-c5a9-4380-beb2-e1168177bc90\",\n    \"status\": \"PENDING\",\n    \"inputs\": [\n      {\n        \"nodeId\": \"<uuid>\",\n        \"settingName\": \"textVariables\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"nodeId\": \"<uuid>\",\n        \"settingName\": \"imageUrl\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"public\": \"<boolean>\",\n    \"createdAt\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:04:51.000Z",
+                  "updatedAt": "2026-07-28T02:04:51.000Z",
+                  "uid": "35240-f227ba5a-3fed-4899-8a5f-bb78a22a56a5"
+                }
+              ],
+              "createdAt": "2026-07-28T02:04:51.000Z",
+              "updatedAt": "2026-07-28T02:04:51.000Z",
+              "uid": "35240-cf39b16b-82e7-4680-8eb4-dbbdf2545346"
+            }
+          ],
+          "id": "8fcbdd23-b42f-4b52-be8b-037cf7ce0be5",
+          "createdAt": "2026-07-28T02:04:51.000Z",
+          "updatedAt": "2026-07-28T02:04:51.000Z",
+          "uid": "35240-8fcbdd23-b42f-4b52-be8b-037cf7ce0be5"
+        },
+        {
+          "name": "Execute a Blueprint",
+          "id": "6508fedb-c6e3-4a05-9ff0-524488312e5a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"blueprintVersionId\": \"<uuid>\",\n  \"input\": {\n    \"nodeInputs\": [\n      {\n        \"nodeId\": \"<uuid>\",\n        \"settingName\": \"textVariables\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"nodeId\": \"<uuid>\",\n        \"settingName\": \"text\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"public\": \"<boolean>\",\n    \"collectionIds\": [\n      \"<integer>\",\n      \"<integer>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/blueprint-executions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "blueprint-executions"
+              ]
+            },
+            "description": "Execute a Blueprint Version with custom node inputs. This endpoint triggers the execution of the specified Blueprint Version and returns a Blueprint Execution ID to track the job."
+          },
+          "response": [
+            {
+              "id": "57364979-b3d6-4bbd-858c-ccb69d30b9f0",
+              "name": "Responses for POST /blueprint-executions",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"blueprintVersionId\": \"<uuid>\",\n  \"input\": {\n    \"nodeInputs\": [\n      {\n        \"nodeId\": \"<uuid>\",\n        \"settingName\": \"textVariables\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"nodeId\": \"<uuid>\",\n        \"settingName\": \"text\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"public\": \"<boolean>\",\n    \"collectionIds\": [\n      \"<integer>\",\n      \"<integer>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/blueprint-executions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "blueprint-executions"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"executeBlueprint\": {\n    \"akUUID\": \"<uuid>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:04:51.000Z",
+              "updatedAt": "2026-07-28T02:04:51.000Z",
+              "uid": "35240-57364979-b3d6-4bbd-858c-ccb69d30b9f0"
+            },
+            {
+              "id": "12518d78-1d5c-49d5-8486-5003dba08c7c",
+              "name": "Bad Request - Invalid input type or missing required GraphQL field",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"blueprintVersionId\": \"<uuid>\",\n  \"input\": {\n    \"nodeInputs\": [\n      {\n        \"nodeId\": \"<uuid>\",\n        \"settingName\": \"textVariables\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"nodeId\": \"<uuid>\",\n        \"settingName\": \"text\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"public\": \"<boolean>\",\n    \"collectionIds\": [\n      \"<integer>\",\n      \"<integer>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/blueprint-executions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "blueprint-executions"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:04:51.000Z",
+              "updatedAt": "2026-07-28T02:04:51.000Z",
+              "uid": "35240-12518d78-1d5c-49d5-8486-5003dba08c7c"
+            }
+          ],
+          "createdAt": "2026-07-28T02:04:51.000Z",
+          "updatedAt": "2026-07-28T02:04:51.000Z",
+          "uid": "35240-6508fedb-c6e3-4a05-9ff0-524488312e5a"
+        }
+      ],
+      "id": "a4f36695-0b54-4731-a744-d8e8b68364e1",
+      "createdAt": "2026-07-28T02:04:51.000Z",
+      "updatedAt": "2026-07-28T02:04:51.000Z",
+      "uid": "35240-a4f36695-0b54-4731-a744-d8e8b68364e1"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://cloud.leonardo.ai/api/rest/v1"
+    }
+  ]
+}

@@ -1,0 +1,515 @@
+{
+  "info": {
+    "_postman_id": "5b7c3daa-db3a-4b10-a435-55b84c7045ad",
+    "name": "Leonardo.AI 3D Model Assets Models API",
+    "description": "Upload, retrieve, and delete 3D model assets for use with Rodin and other 3D-capable workflows.\n\nContact Support:\n Name: Leonardo.AI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:05:47.000Z",
+    "updatedAt": "2026-07-28T02:05:47.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5b7c3daa-db3a-4b10-a435-55b84c7045ad"
+  },
+  "item": [
+    {
+      "name": "models",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get a Single Custom Model by ID",
+              "id": "2e69d9c5-f8d6-44ca-8a44-77d91d5982c7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/models/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "models",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "1468a96c-669e-4f81-8dff-a09055d19684",
+                      "key": "id",
+                      "value": "163cda31-d8ea-4e85-979b-9b5bcf8722ea",
+                      "description": "(Required) The ID of the custom model to return."
+                    }
+                  ]
+                },
+                "description": "This endpoint gets the specific custom model"
+              },
+              "response": [
+                {
+                  "id": "a8aca32f-a0cd-4ec0-b553-eec1de8d9548",
+                  "name": "Responses for GET /models/{id}",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/models/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "models",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"custom_models_by_pk\": {\n    \"createdAt\": \"<string>\",\n    \"description\": \"<string>\",\n    \"id\": \"60523227-b2b6-4167-a2af-ebcb16d0a973\",\n    \"instancePrompt\": \"<string>\",\n    \"modelHeight\": \"<integer>\",\n    \"modelWidth\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"public\": \"<boolean>\",\n    \"sdVersion\": \"v3\",\n    \"status\": \"COMPLETE\",\n    \"type\": \"GENERAL\",\n    \"updatedAt\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:05:48.000Z",
+                  "updatedAt": "2026-07-28T02:05:48.000Z",
+                  "uid": "35240-a8aca32f-a0cd-4ec0-b553-eec1de8d9548"
+                }
+              ],
+              "createdAt": "2026-07-28T02:05:48.000Z",
+              "updatedAt": "2026-07-28T02:05:48.000Z",
+              "uid": "35240-2e69d9c5-f8d6-44ca-8a44-77d91d5982c7"
+            },
+            {
+              "name": "Delete a Single Custom Model by ID",
+              "id": "831a046a-387a-48ad-80ed-346899f4b0d6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/models/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "models",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "229cab65-6491-4c64-862b-11c8fb9532e8",
+                      "key": "id",
+                      "value": "163cda31-d8ea-4e85-979b-9b5bcf8722ea",
+                      "description": "(Required) The ID of the model to delete."
+                    }
+                  ]
+                },
+                "description": "This endpoint will delete a specific custom model"
+              },
+              "response": [
+                {
+                  "id": "f39c945e-914b-4af2-ae9b-662a5a0e3d8e",
+                  "name": "Responses for DELETE /models/{id}",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/models/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "models",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"delete_custom_models_by_pk\": {\n    \"id\": \"d7430fa5-1f66-4421-b1c7-20aa3ff9c242\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:05:48.000Z",
+                  "updatedAt": "2026-07-28T02:05:48.000Z",
+                  "uid": "35240-f39c945e-914b-4af2-ae9b-662a5a0e3d8e"
+                }
+              ],
+              "createdAt": "2026-07-28T02:05:48.000Z",
+              "updatedAt": "2026-07-28T02:05:48.000Z",
+              "uid": "35240-831a046a-387a-48ad-80ed-346899f4b0d6"
+            }
+          ],
+          "id": "a671d4d7-732f-4a24-9318-0ceaf20d4115",
+          "createdAt": "2026-07-28T02:05:48.000Z",
+          "updatedAt": "2026-07-28T02:05:48.000Z",
+          "uid": "35240-a671d4d7-732f-4a24-9318-0ceaf20d4115"
+        },
+        {
+          "name": "user",
+          "item": [
+            {
+              "name": "{userId}",
+              "item": [
+                {
+                  "name": "Get a list of Custom Models by User ID",
+                  "id": "a3572848-6245-45f5-bb52-15eb170690f1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/models/user/:userId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "models",
+                        "user",
+                        ":userId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "8c004bb9-4638-439b-9651-18d0338641e1",
+                          "key": "userId",
+                          "value": "163cda31-d8ea-4e85-979b-9b5bcf8722ea",
+                          "description": "(Required) The ID of the user to return."
+                        }
+                      ]
+                    },
+                    "description": "This endpoint gets the list of custom models belongs to the user."
+                  },
+                  "response": [
+                    {
+                      "id": "430ea4ab-d39b-484f-85d2-dee77a4b0c38",
+                      "name": "Responses for GET /models/user/{userId}",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/models/user/:userId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "models",
+                            "user",
+                            ":userId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "userId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"custom_models\": [\n    {\n      \"createdAt\": \"<string>\",\n      \"description\": \"<string>\",\n      \"id\": \"c37eeef3-c269-4231-A398-05d8478ee5f3\",\n      \"instancePrompt\": \"<string>\",\n      \"modelHeight\": \"<integer>\",\n      \"modelWidth\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"public\": \"<boolean>\",\n      \"sdVersion\": \"KINO_2_0\",\n      \"status\": \"COMPLETE\",\n      \"type\": \"GENERAL\",\n      \"updatedAt\": \"<string>\"\n    },\n    {\n      \"createdAt\": \"<string>\",\n      \"description\": \"<string>\",\n      \"id\": \"67c9a70b-f69a-463d-83cb-cd94cea00860\",\n      \"instancePrompt\": \"<string>\",\n      \"modelHeight\": \"<integer>\",\n      \"modelWidth\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"public\": \"<boolean>\",\n      \"sdVersion\": \"KINO_2_0\",\n      \"status\": \"PENDING\",\n      \"type\": \"GENERAL\",\n      \"updatedAt\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:05:48.000Z",
+                      "updatedAt": "2026-07-28T02:05:48.000Z",
+                      "uid": "35240-430ea4ab-d39b-484f-85d2-dee77a4b0c38"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:05:48.000Z",
+                  "updatedAt": "2026-07-28T02:05:48.000Z",
+                  "uid": "35240-a3572848-6245-45f5-bb52-15eb170690f1"
+                }
+              ],
+              "id": "c2a8a781-a6cc-4ae2-a6b6-53697ea1338a",
+              "createdAt": "2026-07-28T02:05:48.000Z",
+              "updatedAt": "2026-07-28T02:05:48.000Z",
+              "uid": "35240-c2a8a781-a6cc-4ae2-a6b6-53697ea1338a"
+            }
+          ],
+          "id": "b295321e-7605-4816-8146-4a6149ecea20",
+          "createdAt": "2026-07-28T02:05:48.000Z",
+          "updatedAt": "2026-07-28T02:05:48.000Z",
+          "uid": "35240-b295321e-7605-4816-8146-4a6149ecea20"
+        },
+        {
+          "name": "Train a Custom Model",
+          "id": "3a2b92af-3c4c-4b44-8d19-e5e6e843f52c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"datasetId\": \"<string>\",\n  \"instance_prompt\": \"<string>\",\n  \"description\": \"\",\n  \"modelType\": \"GENERAL\",\n  \"nsfw\": false,\n  \"resolution\": 512,\n  \"sd_version\": \"v2\",\n  \"strength\": \"MEDIUM\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/models",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "models"
+              ]
+            },
+            "description": "This endpoint will train a new custom model"
+          },
+          "response": [
+            {
+              "id": "a05232c2-27b1-4f86-83ed-e7c29a1f1581",
+              "name": "Responses for POST /models",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"datasetId\": \"<string>\",\n  \"instance_prompt\": \"<string>\",\n  \"description\": \"\",\n  \"modelType\": \"GENERAL\",\n  \"nsfw\": false,\n  \"resolution\": 512,\n  \"sd_version\": \"v2\",\n  \"strength\": \"MEDIUM\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/models",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "models"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"sdTrainingJob\": {\n    \"customModelId\": \"<string>\",\n    \"apiCreditCost\": \"<integer>\",\n    \"cost\": {\n      \"amount\": \"<string>\",\n      \"unit\": \"DOLLARS\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:05:48.000Z",
+              "updatedAt": "2026-07-28T02:05:48.000Z",
+              "uid": "35240-a05232c2-27b1-4f86-83ed-e7c29a1f1581"
+            }
+          ],
+          "createdAt": "2026-07-28T02:05:48.000Z",
+          "updatedAt": "2026-07-28T02:05:48.000Z",
+          "uid": "35240-3a2b92af-3c4c-4b44-8d19-e5e6e843f52c"
+        }
+      ],
+      "id": "9a798b3e-7374-4cf1-af76-275aae169636",
+      "createdAt": "2026-07-28T02:05:48.000Z",
+      "updatedAt": "2026-07-28T02:05:48.000Z",
+      "uid": "35240-9a798b3e-7374-4cf1-af76-275aae169636"
+    },
+    {
+      "name": "platformModels",
+      "item": [
+        {
+          "name": "List Platform Models",
+          "id": "5d1777d5-0fa0-4e30-ad84-d651598a9e13",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/platformModels",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "platformModels"
+              ]
+            },
+            "description": "Get a list of public Platform Models available for use with generations."
+          },
+          "response": [
+            {
+              "id": "cf8005ba-1139-4770-be90-16012f5af8ef",
+              "name": "Responses for GET /api/rest/v1/platformModels",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/platformModels",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "platformModels"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"custom_models\": [\n    {\n      \"description\": \"<string>\",\n      \"featured\": \"<boolean>\",\n      \"generated_image\": {\n        \"id\": \"85e4e472-f011-46f5-a133-79f04c1cb79d\",\n        \"url\": \"<string>\"\n      },\n      \"id\": \"849fce82-88c7-426d-B015-0da5bf0907b4\",\n      \"name\": \"<string>\",\n      \"nsfw\": \"<boolean>\"\n    },\n    {\n      \"description\": \"<string>\",\n      \"featured\": \"<boolean>\",\n      \"generated_image\": {\n        \"id\": \"b56fe9f8-1f7c-4185-A7d0-8c4d11489bde\",\n        \"url\": \"<string>\"\n      },\n      \"id\": \"4e38d3b1-c2df-4d43-A5fa-80cabb00e62a\",\n      \"name\": \"<string>\",\n      \"nsfw\": \"<boolean>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:05:48.000Z",
+              "updatedAt": "2026-07-28T02:05:48.000Z",
+              "uid": "35240-cf8005ba-1139-4770-be90-16012f5af8ef"
+            }
+          ],
+          "createdAt": "2026-07-28T02:05:48.000Z",
+          "updatedAt": "2026-07-28T02:05:48.000Z",
+          "uid": "35240-5d1777d5-0fa0-4e30-ad84-d651598a9e13"
+        }
+      ],
+      "id": "7fc60f8a-4c94-4beb-84b7-9b7c6c0f4b1c",
+      "createdAt": "2026-07-28T02:05:48.000Z",
+      "updatedAt": "2026-07-28T02:05:48.000Z",
+      "uid": "35240-7fc60f8a-4c94-4beb-84b7-9b7c6c0f4b1c"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://cloud.leonardo.ai/api/rest/v1"
+    }
+  ]
+}

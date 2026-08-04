@@ -1,0 +1,1713 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Leonardo.AI Realtime Canvas API",
+    "description": "Real-time LCM (Latent Consistency Model) generation, inpainting, instant refine, and Alchemy upscale for interactive canvas workflows.",
+    "version": "v1.0.0",
+    "contact": {
+      "name": "Leonardo.AI Support",
+      "url": "https://docs.leonardo.ai/docs/need-more-support"
+    },
+    "license": {
+      "name": "Leonardo.AI Terms of Service",
+      "url": "https://leonardo.ai/terms-of-service/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://cloud.leonardo.ai/api/rest/v1",
+      "description": "Leonardo.AI Production API"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Realtime Canvas"
+    }
+  ],
+  "paths": {
+    "/generations-lcm": {
+      "post": {
+        "tags": [
+          "Realtime Canvas"
+        ],
+        "summary": "Create LCM Generation",
+        "description": "This endpoint will generate a LCM image generation.",
+        "operationId": "createLCMGeneration",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "imageDataUrl": {
+                    "nullable": false,
+                    "title": "String",
+                    "type": "string",
+                    "description": "Image data used to generate image. In base64 format. Prefix: `data:image/jpeg;base64,`"
+                  },
+                  "prompt": {
+                    "nullable": false,
+                    "title": "String",
+                    "type": "string",
+                    "description": "The prompt used to generate images"
+                  },
+                  "guidance": {
+                    "nullable": true,
+                    "title": "Float",
+                    "type": "number",
+                    "description": "How strongly the generation should reflect the prompt. Must be a float between 0.5 and 20."
+                  },
+                  "strength": {
+                    "nullable": true,
+                    "title": "Float",
+                    "type": "number",
+                    "description": "Creativity strength of generation. Higher strength will deviate more from the original image supplied in imageDataUrl. Must be a float between 0.1 and 1."
+                  },
+                  "requestTimestamp": {
+                    "$ref": "#/components/schemas/timestamp"
+                  },
+                  "style": {
+                    "$ref": "#/components/schemas/lcm_generation_style"
+                  },
+                  "steps": {
+                    "nullable": true,
+                    "title": "Int",
+                    "type": "integer",
+                    "description": "The number of steps to use for the generation. Must be between 4 and 16."
+                  },
+                  "width": {
+                    "nullable": true,
+                    "title": "Int",
+                    "type": "integer",
+                    "description": "The output width of the image. Must be 512, 640 or 1024.",
+                    "default": 512
+                  },
+                  "height": {
+                    "nullable": true,
+                    "title": "Int",
+                    "type": "integer",
+                    "description": "The output width of the image. Must be 512, 640 or 1024.",
+                    "default": 512
+                  },
+                  "seed": {
+                    "$ref": "#/components/schemas/seed"
+                  }
+                },
+                "type": "object",
+                "required": [
+                  "imageDataUrl",
+                  "prompt"
+                ]
+              }
+            }
+          },
+          "description": "Query parameters can also be provided in the request body as a JSON object",
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "lcmGenerationJob": {
+                      "nullable": true,
+                      "properties": {
+                        "imageDataUrl": {
+                          "nullable": false,
+                          "title": "Array of Strings",
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "requestTimestamp": {
+                          "$ref": "#/components/schemas/timestamp"
+                        },
+                        "apiCreditCost": {
+                          "$ref": "#/components/schemas/apiCreditCost"
+                        },
+                        "cost": {
+                          "$ref": "#/components/schemas/cost"
+                        }
+                      },
+                      "title": "LcmGenerationOutput",
+                      "type": "object"
+                    }
+                  }
+                },
+                "example": {
+                  "lcmGenerationJob": {
+                    "imageDataUrl": [
+                      "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAAAAAAAD..."
+                    ],
+                    "requestTimestamp": "1234567890",
+                    "apiCreditCost": null,
+                    "cost": {
+                      "amount": "0.0147",
+                      "unit": "DOLLARS"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Responses for POST /generations-lcm"
+          }
+        }
+      }
+    },
+    "/lcm-instant-refine": {
+      "post": {
+        "tags": [
+          "Realtime Canvas"
+        ],
+        "summary": "Perform instant refine on a LCM image",
+        "description": "This endpoint will perform instant refine on a LCM image",
+        "operationId": "performInstantRefine",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "imageDataUrl": {
+                    "nullable": false,
+                    "title": "String",
+                    "type": "string",
+                    "description": "Image data used to generate image. In base64 format. Prefix: `data:image/jpeg;base64,`"
+                  },
+                  "prompt": {
+                    "nullable": false,
+                    "title": "String",
+                    "type": "string",
+                    "description": "The prompt used to generate images"
+                  },
+                  "guidance": {
+                    "nullable": true,
+                    "title": "Float",
+                    "type": "number",
+                    "description": "How strongly the generation should reflect the prompt. Must be a float between 0.5 and 20."
+                  },
+                  "strength": {
+                    "nullable": true,
+                    "title": "Float",
+                    "type": "number",
+                    "description": "Creativity strength of generation. Higher strength will deviate more from the original image supplied in imageDataUrl. Must be a float between 0.1 and 1."
+                  },
+                  "requestTimestamp": {
+                    "$ref": "#/components/schemas/timestamp"
+                  },
+                  "style": {
+                    "$ref": "#/components/schemas/lcm_generation_style"
+                  },
+                  "steps": {
+                    "nullable": true,
+                    "title": "Int",
+                    "type": "integer",
+                    "description": "The number of steps to use for the generation. Must be between 4 and 16."
+                  },
+                  "width": {
+                    "nullable": true,
+                    "title": "Int",
+                    "type": "integer",
+                    "description": "The output width of the image. Must be 512, 640 or 1024.",
+                    "default": 512
+                  },
+                  "height": {
+                    "nullable": true,
+                    "title": "Int",
+                    "type": "integer",
+                    "description": "The output width of the image. Must be 512, 640 or 1024.",
+                    "default": 512
+                  },
+                  "seed": {
+                    "$ref": "#/components/schemas/seed"
+                  }
+                },
+                "type": "object",
+                "required": [
+                  "imageDataUrl",
+                  "prompt"
+                ]
+              }
+            }
+          },
+          "description": "Query parameters can also be provided in the request body as a JSON object",
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "lcmGenerationJob": {
+                      "nullable": true,
+                      "properties": {
+                        "imageDataUrl": {
+                          "nullable": false,
+                          "title": "Array of Strings",
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "requestTimestamp": {
+                          "$ref": "#/components/schemas/timestamp"
+                        },
+                        "apiCreditCost": {
+                          "$ref": "#/components/schemas/apiCreditCost"
+                        },
+                        "cost": {
+                          "$ref": "#/components/schemas/cost"
+                        }
+                      },
+                      "title": "LcmGenerationOutput",
+                      "type": "object"
+                    }
+                  }
+                },
+                "example": {
+                  "lcmGenerationJob": {
+                    "imageDataUrl": [
+                      "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAAAAAAAD..."
+                    ],
+                    "requestTimestamp": "1234567891",
+                    "apiCreditCost": null,
+                    "cost": {
+                      "amount": "0.0147",
+                      "unit": "DOLLARS"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Responses for POST /lcm-instant-refine"
+          }
+        }
+      }
+    },
+    "/lcm-inpainting": {
+      "post": {
+        "tags": [
+          "Realtime Canvas"
+        ],
+        "summary": "Perform inpainting on a LCM image",
+        "description": "This endpoint will perform a inpainting on a LCM image",
+        "operationId": "performInpaintingLCM",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "imageDataUrl": {
+                    "nullable": false,
+                    "title": "String",
+                    "type": "string",
+                    "description": "Image data used to generate image. In base64 format. Prefix: `data:image/jpeg;base64,`"
+                  },
+                  "maskDataUrl": {
+                    "nullable": false,
+                    "title": "String",
+                    "type": "string",
+                    "description": "Image data of the mask layer used for inpainting. In base64 format. Prefix: `data:image/jpeg;base64,`. Mask should be white on black where generation is applied to the white area."
+                  },
+                  "prompt": {
+                    "nullable": false,
+                    "title": "String",
+                    "type": "string",
+                    "description": "The prompt used to generate images"
+                  },
+                  "guidance": {
+                    "nullable": true,
+                    "title": "Float",
+                    "type": "number",
+                    "description": "How strongly the generation should reflect the prompt. Must be a float between 0.5 and 20."
+                  },
+                  "strength": {
+                    "nullable": true,
+                    "title": "Float",
+                    "type": "number",
+                    "description": "Creativity strength of generation. Higher strength will deviate more from the original image supplied in imageDataUrl. Must be a float between 0.1 and 1."
+                  },
+                  "requestTimestamp": {
+                    "$ref": "#/components/schemas/timestamp"
+                  },
+                  "style": {
+                    "$ref": "#/components/schemas/lcm_generation_style"
+                  },
+                  "steps": {
+                    "nullable": true,
+                    "title": "Int",
+                    "type": "integer",
+                    "description": "The number of steps to use for the generation. Must be between 4 and 16."
+                  },
+                  "width": {
+                    "nullable": true,
+                    "title": "Int",
+                    "type": "integer",
+                    "description": "The output width of the image. Must be 512, 640 or 1024.",
+                    "default": 512
+                  },
+                  "height": {
+                    "nullable": true,
+                    "title": "Int",
+                    "type": "integer",
+                    "description": "The output width of the image. Must be 512, 640 or 1024.",
+                    "default": 512
+                  },
+                  "seed": {
+                    "$ref": "#/components/schemas/seed"
+                  }
+                },
+                "type": "object",
+                "required": [
+                  "imageDataUrl",
+                  "maskDataUrl",
+                  "prompt"
+                ]
+              }
+            }
+          },
+          "description": "Query parameters can also be provided in the request body as a JSON object",
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "lcmGenerationJob": {
+                      "nullable": true,
+                      "properties": {
+                        "imageDataUrl": {
+                          "nullable": false,
+                          "title": "Array of Strings",
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "requestTimestamp": {
+                          "$ref": "#/components/schemas/timestamp"
+                        },
+                        "apiCreditCost": {
+                          "$ref": "#/components/schemas/apiCreditCost"
+                        },
+                        "cost": {
+                          "$ref": "#/components/schemas/cost"
+                        }
+                      },
+                      "title": "LcmGenerationOutput",
+                      "type": "object"
+                    }
+                  }
+                },
+                "example": {
+                  "lcmGenerationJob": {
+                    "imageDataUrl": [
+                      "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAAAAAAAD..."
+                    ],
+                    "requestTimestamp": "1234567892",
+                    "apiCreditCost": null,
+                    "cost": {
+                      "amount": "0.0147",
+                      "unit": "DOLLARS"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Responses for POST /lcm-inpainting"
+          }
+        }
+      }
+    },
+    "/lcm-upscale": {
+      "post": {
+        "tags": [
+          "Realtime Canvas"
+        ],
+        "summary": "Perform Alchemy Upscale on a LCM image",
+        "description": "This endpoint will perform Alchemy Upscale on a LCM image",
+        "operationId": "performAlchemyUpscaleLCM",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "imageDataUrl": {
+                    "nullable": false,
+                    "title": "String",
+                    "type": "string",
+                    "description": "Image data used to generate image. In base64 format. Prefix: `data:image/jpeg;base64,`"
+                  },
+                  "prompt": {
+                    "nullable": false,
+                    "title": "String",
+                    "type": "string",
+                    "description": "The prompt used to generate images"
+                  },
+                  "guidance": {
+                    "nullable": true,
+                    "title": "Float",
+                    "type": "number",
+                    "description": "How strongly the generation should reflect the prompt. Must be a float between 0.5 and 20."
+                  },
+                  "strength": {
+                    "nullable": true,
+                    "title": "Float",
+                    "type": "number",
+                    "description": "Creativity strength of generation. Higher strength will deviate more from the original image supplied in imageDataUrl. Must be a float between 0.1 and 1."
+                  },
+                  "requestTimestamp": {
+                    "$ref": "#/components/schemas/timestamp"
+                  },
+                  "style": {
+                    "$ref": "#/components/schemas/lcm_generation_style"
+                  },
+                  "steps": {
+                    "nullable": true,
+                    "title": "Int",
+                    "type": "integer",
+                    "description": "The number of steps to use for the generation. Must be between 4 and 16."
+                  },
+                  "width": {
+                    "nullable": true,
+                    "title": "Int",
+                    "type": "integer",
+                    "description": "The output width of the image. Must be 512, 640 or 1024.",
+                    "default": 512
+                  },
+                  "height": {
+                    "nullable": true,
+                    "title": "Int",
+                    "type": "integer",
+                    "description": "The output width of the image. Must be 512, 640 or 1024.",
+                    "default": 512
+                  },
+                  "seed": {
+                    "$ref": "#/components/schemas/seed"
+                  },
+                  "refineCreative": {
+                    "nullable": true,
+                    "title": "Boolean",
+                    "type": "boolean",
+                    "description": "Refine creative"
+                  },
+                  "refineStrength": {
+                    "nullable": true,
+                    "title": "Float",
+                    "type": "number",
+                    "description": "Must be a float between 0.5 and 0.9."
+                  }
+                },
+                "type": "object",
+                "required": [
+                  "imageDataUrl",
+                  "prompt"
+                ]
+              }
+            }
+          },
+          "description": "Query parameters can also be provided in the request body as a JSON object",
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "lcmGenerationJob": {
+                      "nullable": true,
+                      "properties": {
+                        "imageDataUrl": {
+                          "nullable": false,
+                          "title": "Array of Strings",
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "generationId": {
+                          "nullable": false,
+                          "title": "Array of Strings",
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "variationId": {
+                          "nullable": false,
+                          "title": "Array of Strings",
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "generatedImageId": {
+                          "nullable": false,
+                          "title": "String",
+                          "type": "string"
+                        },
+                        "requestTimestamp": {
+                          "$ref": "#/components/schemas/timestamp"
+                        },
+                        "apiCreditCost": {
+                          "$ref": "#/components/schemas/apiCreditCost"
+                        },
+                        "cost": {
+                          "$ref": "#/components/schemas/cost"
+                        }
+                      },
+                      "title": "LcmGenerationOutput",
+                      "type": "object"
+                    }
+                  }
+                },
+                "example": {
+                  "lcmGenerationJob": {
+                    "imageDataUrl": [
+                      "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAAAAAAAD..."
+                    ],
+                    "variationId": [
+                      "var234567-8901-bcde-fghi-jklmnopqrstu"
+                    ],
+                    "generatedImageId": "l1m2n3o4-p5q6-r7s8-tuvw-xy0123456789",
+                    "requestTimestamp": "1234567893",
+                    "apiCreditCost": null,
+                    "cost": {
+                      "amount": "0.0147",
+                      "unit": "DOLLARS"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Responses for POST /lcm-upscale"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "cost": {
+        "nullable": true,
+        "type": "object",
+        "title": "Cost",
+        "description": "The cost of the operation.",
+        "properties": {
+          "amount": {
+            "type": "string",
+            "description": "The amount of the cost."
+          },
+          "unit": {
+            "type": "string",
+            "enum": [
+              "CREDITS",
+              "DOLLARS"
+            ],
+            "description": "The unit of the cost. Can be CREDITS or DOLLARS. Note: DOLLARS unit only supports PAYG plan."
+          }
+        }
+      },
+      "Cursor": {
+        "type": "string",
+        "title": "Cursor",
+        "description": "An opaque cursor used for pagination"
+      },
+      "Blueprint": {
+        "type": "object",
+        "title": "Blueprint",
+        "description": "A Blueprint object",
+        "properties": {
+          "akUUID": {
+            "type": "string",
+            "description": "Unique identifier for the Blueprint",
+            "example": "c846413e-92ba-4302-84f8-47c667d4761f"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation timestamp",
+            "example": "2025-10-29T21:31:47.999Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last update timestamp",
+            "example": "2025-12-19T02:34:44.740Z"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the Blueprint",
+            "example": "Golden Hour Relight"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the Blueprint",
+            "example": "Relight an image with warm, golden tones of late afternoon sunlight for a soft and radiant glow."
+          },
+          "thumbnails": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Thumbnail type name (e.g., thumbnailUrl, videoUrl, thumbnailUrlBanner, thumbnailUrlLandscape, thumbnailUrlExtremePortrait)",
+                  "example": "thumbnailUrl"
+                },
+                "url": {
+                  "type": "string",
+                  "description": "URL of the thumbnail",
+                  "example": "https://cdn.leonardo.ai/blueprint_assets/official/384ab5c8-55d8-47a1-be22-6a274913c324/thumbnails/goldenhour.jpg"
+                }
+              }
+            }
+          },
+          "teamId": {
+            "type": "string",
+            "nullable": true,
+            "description": "Team ID if Blueprint belongs to a team",
+            "example": null
+          },
+          "official": {
+            "type": "boolean",
+            "description": "Whether this is an official Blueprint",
+            "example": true
+          }
+        }
+      },
+      "BlueprintVersion": {
+        "type": "object",
+        "title": "BlueprintVersion",
+        "description": "A Blueprint Version object",
+        "properties": {
+          "edges": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "cursor": {
+                  "type": "string",
+                  "example": "eyJjcmVhdGVkQXQiOiIyMDI1LTExLTI3VDA1OjEzOjIxLjg5NloiLCJha1VVSUQiOiI5NTZlOTU2NC0xOWY3LTQ5NjgtYjU2ZC0wNWMyYzU2NzcyNmYifQ=="
+                },
+                "node": {
+                  "type": "object",
+                  "properties": {
+                    "akUUID": {
+                      "type": "string",
+                      "format": "uuid",
+                      "example": "956e9564-19f7-4968-b56d-05c2c567726f"
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "example": "2025-11-27T05:13:21.896Z"
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "example": "2025-11-27T05:13:21.896Z"
+                    },
+                    "cost": {
+                      "type": "integer",
+                      "example": 160
+                    },
+                    "uiMetadata": {
+                      "type": "object",
+                      "properties": {
+                        "inputs": {
+                          "type": "array",
+                          "items": {
+                            "type": "object"
+                          }
+                        },
+                        "outputs": {
+                          "type": "array",
+                          "items": {
+                            "type": "object"
+                          }
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "uiMetadataSchemaVersion": {
+                      "type": "string",
+                      "example": "21"
+                    },
+                    "models": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "executability": {
+                      "type": "object",
+                      "properties": {
+                        "isExecutable": {
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "reasons": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                              "models": {
+                                "type": "string",
+                                "example": "gemini-2.5-flash-image"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "totalCount": {
+            "type": "integer",
+            "example": 2
+          },
+          "pageInfo": {
+            "type": "object",
+            "properties": {
+              "hasNextPage": {
+                "type": "boolean",
+                "example": false
+              },
+              "hasPreviousPage": {
+                "type": "boolean",
+                "example": false
+              },
+              "startCursor": {
+                "type": "string",
+                "example": "eyJjcmVhdGVkQXQiOiIyMDI1LTExLTI3VDA1OjEzOjIxLjg5NloiLCJha1VVSUQiOiI5NTZlOTU2NC0xOWY3LTQ5NjgtYjU2ZC0wNWMyYzU2NzcyNmYifQ=="
+              },
+              "endCursor": {
+                "type": "string",
+                "example": "eyJjcmVhdGVkQXQiOiIyMDI1LTExLTI3VDA1OjEzOjIxLjg5NloiLCJha1VVSUQiOiI5NTZlOTU2NC0xOWY3LTQ5NjgtYjU2ZC0wNWMyYzU2NzcyNmYifQ=="
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "NodeInput": {
+        "type": "object",
+        "title": "NodeInput",
+        "description": "A node input object for customizing a Blueprint Execution",
+        "required": [
+          "nodeId",
+          "settingName",
+          "value"
+        ],
+        "properties": {
+          "nodeId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "The ID of the node in the Blueprint",
+            "example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+          },
+          "settingName": {
+            "type": "string",
+            "enum": [
+              "text",
+              "imageUrl",
+              "textVariables"
+            ],
+            "description": "The type of setting to replace:\n- `text`: Direct text replacement (value is a string)\n- `imageUrl`: Image URL input (value is a URL string)\n- `textVariables`: Text with placeholder variables (value is an array of TextVariable)",
+            "example": "text"
+          },
+          "value": {
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "String value. Use for settingName='text' (direct text) or settingName='imageUrl' (image URL)"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/TextVariable"
+                },
+                "description": "Array of TextVariable objects. Use only for settingName='textVariables' to replace {{placeholders}} in the Blueprint"
+              }
+            ],
+            "description": "The replacement value. Type depends on settingName:\n- `text`: string (the full text)\n- `imageUrl`: string (the image URL)\n- `textVariables`: array of TextVariable objects",
+            "example": "A futuristic cityscape at sunset"
+          }
+        }
+      },
+      "TextVariable": {
+        "type": "object",
+        "title": "TextVariable",
+        "description": "A text variable for replacing placeholders in Blueprint templates",
+        "required": [
+          "name",
+          "value"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the placeholder variable (without curly braces)",
+            "example": "characterName"
+          },
+          "value": {
+            "type": "string",
+            "description": "The value to replace the placeholder with",
+            "example": "Luna"
+          }
+        }
+      },
+      "ApiError": {
+        "type": "object",
+        "title": "ApiError",
+        "description": "API error response structure",
+        "required": [
+          "message"
+        ],
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Error message"
+          },
+          "path": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Path to the field that caused the error"
+          },
+          "locations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "column": {
+                  "type": "integer"
+                },
+                "line": {
+                  "type": "integer"
+                }
+              }
+            },
+            "description": "Location information for the error"
+          },
+          "extensions": {
+            "type": "object",
+            "description": "Additional error details and context"
+          }
+        }
+      },
+      "apiCreditCost": {
+        "nullable": true,
+        "title": "Int",
+        "type": "integer",
+        "description": "API credits cost, available for Production API users. Note: it will be deprecated. Please use the cost instead.",
+        "deprecated": true
+      },
+      "isVariation": {
+        "nullable": true,
+        "title": "Boolean",
+        "type": "boolean",
+        "description": "If it is a variation image."
+      },
+      "isInitImage": {
+        "nullable": true,
+        "title": "Boolean",
+        "type": "boolean",
+        "description": "If it is an init image uploaded by the user. This image is uploaded from endpoint: Upload init image."
+      },
+      "imageToVideo": {
+        "nullable": true,
+        "title": "Boolean",
+        "type": "boolean",
+        "description": "If it is an image to video generation."
+      },
+      "sd_versions": {
+        "type": "string",
+        "nullable": false,
+        "title": "sd_versions",
+        "enum": [
+          "v1_5",
+          "v2",
+          "v3",
+          "SDXL_0_8",
+          "SDXL_0_9",
+          "SDXL_1_0",
+          "SDXL_LIGHTNING",
+          "PHOENIX",
+          "FLUX",
+          "FLUX_DEV",
+          "KINO_2_0"
+        ],
+        "description": "The base version of stable diffusion to use if not using a custom model. v1_5 is 1.5, v2 is 2.1, if not specified it will default to v1_5. Also includes SDXL and SDXL Lightning models"
+      },
+      "lora": {
+        "type": "object",
+        "properties": {
+          "akUUID": {
+            "nullable": true,
+            "type": "string",
+            "description": "Unique identifier for the element. Elements can be found from the List Elements endpoint."
+          },
+          "creatorName": {
+            "nullable": true,
+            "type": "string",
+            "description": "Name of the creator of the element"
+          },
+          "name": {
+            "nullable": true,
+            "type": "string",
+            "description": "Name of the element"
+          },
+          "description": {
+            "nullable": true,
+            "type": "string",
+            "description": "Description for the element"
+          },
+          "urlImage": {
+            "nullable": true,
+            "type": "string",
+            "description": "URL of the element image"
+          },
+          "baseModel": {
+            "nullable": true,
+            "type": "string",
+            "description": "Base model version for the element"
+          },
+          "weightDefault": {
+            "nullable": true,
+            "type": "integer",
+            "description": "Default weight for the element"
+          },
+          "weightMin": {
+            "nullable": true,
+            "type": "integer",
+            "description": "Minimum weight for the element"
+          },
+          "weightMax": {
+            "nullable": true,
+            "type": "integer",
+            "description": "Maximum weight for the element"
+          },
+          "__typename": {
+            "type": "string",
+            "description": "Type name for introspection purposes"
+          }
+        }
+      },
+      "motion": {
+        "nullable": true,
+        "title": "Boolean",
+        "type": "boolean",
+        "description": "If generation is of motion type."
+      },
+      "motionModel": {
+        "nullable": true,
+        "title": "String",
+        "type": "string",
+        "description": "The name of the motion model."
+      },
+      "motionMP4URL": {
+        "nullable": true,
+        "title": "String",
+        "type": "string",
+        "description": "The URL of the motion MP4."
+      },
+      "motionStrength": {
+        "nullable": true,
+        "title": "Int",
+        "type": "integer",
+        "description": "The motion strength."
+      },
+      "public": {
+        "nullable": true,
+        "title": "Boolean",
+        "type": "boolean",
+        "description": "Whether the generation is public or not"
+      },
+      "strength": {
+        "type": "string",
+        "nullable": false,
+        "title": "strength",
+        "enum": [
+          "VERY_LOW",
+          "LOW",
+          "MEDIUM",
+          "HIGH"
+        ],
+        "description": "When training using the PIXEL_ART model type, this influences the training strength.",
+        "default": "MEDIUM"
+      },
+      "job_status": {
+        "type": "string",
+        "nullable": false,
+        "title": "job_status",
+        "enum": [
+          "PENDING",
+          "COMPLETE",
+          "FAILED"
+        ],
+        "description": "The status of the current task."
+      },
+      "BlueprintExecutionStatus": {
+        "type": "string",
+        "nullable": false,
+        "title": "BlueprintExecutionStatus",
+        "enum": [
+          "PENDING",
+          "QUEUED",
+          "COMPLETED",
+          "FAILED"
+        ],
+        "description": "The status of a Blueprint Execution."
+      },
+      "BlueprintExecution": {
+        "type": "object",
+        "nullable": false,
+        "title": "BlueprintExecution",
+        "description": "Represents the Execution of a Blueprint Version",
+        "properties": {
+          "akUUID": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/uuid"
+              },
+              {
+                "nullable": false,
+                "description": "akUUID of the Blueprint Execution"
+              }
+            ]
+          },
+          "status": {
+            "$ref": "#/components/schemas/BlueprintExecutionStatus",
+            "description": "Status of the Blueprint Execution"
+          },
+          "inputs": {
+            "type": "array",
+            "nullable": false,
+            "description": "Inputs of the Blueprint Execution",
+            "items": {
+              "$ref": "#/components/schemas/NodeInput"
+            }
+          },
+          "public": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/public"
+              },
+              {
+                "nullable": false,
+                "description": "Whether the Blueprint Execution is public"
+              }
+            ]
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/timestamp",
+            "description": "Created date of the Blueprint Execution"
+          }
+        },
+        "required": [
+          "akUUID",
+          "status",
+          "inputs",
+          "public",
+          "createdAt"
+        ]
+      },
+      "BlueprintExecutionGenerationsConnection": {
+        "type": "object",
+        "nullable": false,
+        "title": "BlueprintExecutionGenerationsConnection",
+        "description": "A paginated connection of Blueprint Execution Generations",
+        "properties": {
+          "pageInfo": {
+            "$ref": "#/components/schemas/pageInfo"
+          },
+          "edges": {
+            "type": "array",
+            "description": "List of generation edges",
+            "items": {
+              "$ref": "#/components/schemas/BlueprintExecutionGenerationEdge"
+            }
+          }
+        },
+        "required": [
+          "pageInfo",
+          "edges"
+        ]
+      },
+      "BlueprintExecutionGenerationEdge": {
+        "type": "object",
+        "nullable": false,
+        "title": "BlueprintExecutionGenerationEdge",
+        "description": "An edge containing a Blueprint Execution Generation node",
+        "properties": {
+          "cursor": {
+            "$ref": "#/components/schemas/Cursor",
+            "description": "Cursor for this edge, used for pagination"
+          },
+          "node": {
+            "$ref": "#/components/schemas/BlueprintExecutionGeneration"
+          }
+        },
+        "required": [
+          "cursor",
+          "node"
+        ]
+      },
+      "BlueprintExecutionGeneration": {
+        "type": "object",
+        "nullable": false,
+        "title": "BlueprintExecutionGeneration",
+        "description": "Represents a single generation within a Blueprint Execution",
+        "properties": {
+          "akUUID": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/uuid"
+              },
+              {
+                "nullable": false,
+                "description": "Unique identifier for the Blueprint Execution Generation"
+              }
+            ]
+          },
+          "status": {
+            "$ref": "#/components/schemas/BlueprintExecutionGenerationStatus",
+            "description": "Status of the generation"
+          },
+          "generationId": {
+            "type": "string",
+            "nullable": false,
+            "description": "The generation ID associated with this execution generation",
+            "example": "1f0bba44-923a-69b0-b519-62a6710d46a9"
+          },
+          "failedReason": {
+            "$ref": "#/components/schemas/PromptModerationFailureReason",
+            "description": "Details about why the generation failed, specifically for prompt moderation failures"
+          }
+        },
+        "required": [
+          "akUUID",
+          "status",
+          "generationId"
+        ]
+      },
+      "BlueprintExecutionGenerationStatus": {
+        "type": "string",
+        "nullable": false,
+        "title": "BlueprintExecutionGenerationStatus",
+        "enum": [
+          "PENDING",
+          "COMPLETED",
+          "FAILED"
+        ],
+        "description": "The status of a Blueprint Execution Generation"
+      },
+      "PromptModerationFailureReason": {
+        "type": "object",
+        "nullable": true,
+        "title": "PromptModerationFailureReason",
+        "description": "Details about a generation failure due to prompt moderation",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": false,
+            "enum": [
+              "PROMPT_MODERATION_BLOCKED"
+            ],
+            "description": "The type of failure - PROMPT_MODERATION_BLOCKED indicates the prompt was blocked by content moderation",
+            "example": "PROMPT_MODERATION_BLOCKED"
+          },
+          "message": {
+            "type": "string",
+            "nullable": false,
+            "description": "Human-readable message describing the failure",
+            "example": "Generation blocked due to prompt moderation"
+          },
+          "affectedOutputCount": {
+            "type": "integer",
+            "nullable": false,
+            "description": "Number of outputs affected by this failure",
+            "example": 1
+          }
+        },
+        "required": [
+          "type",
+          "message",
+          "affectedOutputCount"
+        ]
+      },
+      "custom_model_type": {
+        "type": "string",
+        "default": "GENERAL",
+        "nullable": false,
+        "title": "custom_model_type",
+        "enum": [
+          "GENERAL",
+          "BUILDINGS",
+          "CHARACTERS",
+          "ENVIRONMENTS",
+          "FASHION",
+          "ILLUSTRATIONS",
+          "GAME_ITEMS",
+          "GRAPHICAL_ELEMENTS",
+          "PHOTOGRAPHY",
+          "PIXEL_ART",
+          "PRODUCT_DESIGN",
+          "TEXTURES",
+          "UI_ELEMENTS",
+          "VECTOR"
+        ],
+        "description": "The category the most accurately reflects the model."
+      },
+      "sd_generation_schedulers": {
+        "type": "string",
+        "nullable": false,
+        "title": "sd_generation_schedulers",
+        "enum": [
+          "KLMS",
+          "EULER_ANCESTRAL_DISCRETE",
+          "EULER_DISCRETE",
+          "DDIM",
+          "DPM_SOLVER",
+          "PNDM",
+          "LEONARDO"
+        ],
+        "description": "The scheduler to generate images with. Defaults to EULER_DISCRETE if not specified."
+      },
+      "VARIATION_TYPE": {
+        "type": "string",
+        "nullable": false,
+        "title": "VARIATION_TYPE",
+        "enum": [
+          "OUTPAINT",
+          "INPAINT",
+          "UPSCALE",
+          "UNZOOM",
+          "NOBG"
+        ],
+        "description": "The type of variation."
+      },
+      "MOTION_VARIATION_TYPE": {
+        "type": "string",
+        "nullable": false,
+        "title": "MOTION_VARIATION_TYPE",
+        "enum": [
+          "UPSCALE"
+        ],
+        "description": "The type of motion variation."
+      },
+      "MOTION_RESOLUTION": {
+        "type": "string",
+        "nullable": false,
+        "title": "MOTION_RESOLUTION",
+        "enum": [
+          "RESOLUTION_720"
+        ],
+        "description": "The resolution of the upscaled video. RESOLUTION_720 is the only option for now."
+      },
+      "timestamp": {
+        "type": "string",
+        "nullable": false,
+        "title": "timestamp"
+      },
+      "controlnet_input": {
+        "nullable": false,
+        "properties": {
+          "initImageId": {
+            "nullable": false,
+            "title": "String",
+            "type": "string",
+            "description": "The ID of the init image"
+          },
+          "initImageType": {
+            "type": "string",
+            "nullable": false,
+            "enum": [
+              "GENERATED",
+              "UPLOADED"
+            ],
+            "description": "Type indicating whether the init image is uploaded or generated."
+          },
+          "preprocessorId": {
+            "nullable": false,
+            "title": "numeric",
+            "type": "number",
+            "description": "ID of the controlnet. A list of compatible IDs can be found in our guides."
+          },
+          "weight": {
+            "nullable": true,
+            "title": "Float",
+            "type": "number",
+            "description": "Weight for the controlnet"
+          },
+          "strengthType": {
+            "type": "string",
+            "nullable": true,
+            "enum": [
+              "Low",
+              "Mid",
+              "High",
+              "Ultra",
+              "Max"
+            ],
+            "description": "Strength type for the controlnet. Can only be used for Style, Character and Content Reference controlnets."
+          }
+        },
+        "title": "controlnet_input",
+        "type": "object"
+      },
+      "element_input": {
+        "nullable": false,
+        "properties": {
+          "akUUID": {
+            "nullable": false,
+            "title": "String",
+            "type": "string",
+            "description": "Unique identifier for element. Elements can be found from the List Elements endpoint."
+          },
+          "weight": {
+            "nullable": true,
+            "title": "Float",
+            "type": "number",
+            "default": 1.0,
+            "description": "Weight for the element"
+          }
+        },
+        "required": [
+          "akUUID"
+        ],
+        "title": "element_input",
+        "type": "object"
+      },
+      "user_elements_input": {
+        "nullable": false,
+        "properties": {
+          "userLoraId": {
+            "nullable": true,
+            "title": "Int",
+            "type": "number",
+            "description": "Unique identifier for user custom element."
+          },
+          "weight": {
+            "nullable": true,
+            "title": "Float",
+            "type": "number",
+            "description": "Weight for the element"
+          }
+        },
+        "title": "user_elements_input",
+        "type": "object"
+      },
+      "float8": {
+        "type": "number",
+        "nullable": true,
+        "title": "float8"
+      },
+      "numeric": {
+        "type": "number",
+        "nullable": true,
+        "title": "numeric"
+      },
+      "bigint": {
+        "type": "integer",
+        "nullable": true,
+        "title": "bigint"
+      },
+      "seed": {
+        "type": "integer",
+        "nullable": true,
+        "title": "seed",
+        "description": "Apply a fixed seed to maintain consistency across generation sets. The maximum seed value is 2147483637 for Flux and 9999999998 for other models"
+      },
+      "sd_generation_style": {
+        "type": "string",
+        "nullable": true,
+        "title": "sd_generation_style",
+        "enum": [
+          "ANIME",
+          "BOKEH",
+          "CINEMATIC",
+          "CINEMATIC_CLOSEUP",
+          "CREATIVE",
+          "DYNAMIC",
+          "ENVIRONMENT",
+          "FASHION",
+          "FILM",
+          "FOOD",
+          "GENERAL",
+          "HDR",
+          "ILLUSTRATION",
+          "LEONARDO",
+          "LONG_EXPOSURE",
+          "MACRO",
+          "MINIMALISTIC",
+          "MONOCHROME",
+          "MOODY",
+          "NONE",
+          "NEUTRAL",
+          "PHOTOGRAPHY",
+          "PORTRAIT",
+          "RAYTRACED",
+          "RENDER_3D",
+          "RETRO",
+          "SKETCH_BW",
+          "SKETCH_COLOR",
+          "STOCK_PHOTO",
+          "VIBRANT",
+          "UNPROCESSED"
+        ],
+        "description": "The style to generate images with. When photoReal is enabled, refer to the Guide section for a full list. When alchemy is disabled, use LEONARDO or NONE. When alchemy is enabled, use ANIME, CREATIVE, DYNAMIC, ENVIRONMENT, GENERAL, ILLUSTRATION, PHOTOGRAPHY, RAYTRACED, RENDER_3D, SKETCH_BW, SKETCH_COLOR, or NONE.",
+        "default": "DYNAMIC"
+      },
+      "lcm_generation_style": {
+        "type": "string",
+        "nullable": true,
+        "title": "lcm_generation_style",
+        "enum": [
+          "ANIME",
+          "CINEMATIC",
+          "DIGITAL_ART",
+          "DYNAMIC",
+          "ENVIRONMENT",
+          "FANTASY_ART",
+          "ILLUSTRATION",
+          "PHOTOGRAPHY",
+          "RENDER_3D",
+          "RAYTRACED",
+          "SKETCH_BW",
+          "SKETCH_COLOR",
+          "VIBRANT",
+          "NONE"
+        ],
+        "description": "The style to generate LCM images with."
+      },
+      "universal_upscaler_style": {
+        "type": "string",
+        "nullable": true,
+        "default": "GENERAL",
+        "title": "universal_upscaler_style",
+        "enum": [
+          "GENERAL",
+          "CINEMATIC",
+          "2D ART & ILLUSTRATION",
+          "CG ART & GAME ASSETS"
+        ],
+        "description": "The style to upscale images using universal upscaler with. Can not be used with ultraUpscaleStyle."
+      },
+      "universal_upscaler_ultra_style": {
+        "type": "string",
+        "nullable": true,
+        "title": "universal_upscaler_ultra_style",
+        "enum": [
+          "ARTISTIC",
+          "REALISTIC"
+        ],
+        "description": "The ultra style to upscale images using universal upscaler with. Can not be used with upscalerStyle."
+      },
+      "controlnet_type": {
+        "type": "string",
+        "nullable": false,
+        "title": "controlnet_type",
+        "enum": [
+          "POSE",
+          "CANNY",
+          "DEPTH"
+        ],
+        "description": "This parameter will be deprecated in September 2024. Please use the controlnets array instead.",
+        "deprecated": true
+      },
+      "uuid": {
+        "nullable": true,
+        "pattern": "[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}",
+        "title": "uuid",
+        "type": "string"
+      },
+      "photoRealArg": {
+        "nullable": true,
+        "title": "Boolean",
+        "type": "boolean",
+        "description": "Enable the photoReal feature. Requires enabling alchemy and unspecifying modelId (for photoRealVersion V1)."
+      },
+      "photoRealVersion": {
+        "nullable": true,
+        "title": "String",
+        "type": "string",
+        "description": "The version of photoReal to use. Must be v1 or v2."
+      },
+      "photoRealRes": {
+        "nullable": true,
+        "title": "Boolean",
+        "type": "boolean",
+        "description": "If photoReal feature was used."
+      },
+      "photoRealStrengthArg": {
+        "nullable": true,
+        "title": "Float",
+        "type": "number",
+        "description": "Depth of field of photoReal. Must be 0.55 for low, 0.5 for medium, or 0.45 for high. Defaults to 0.55 if not specified."
+      },
+      "photoRealStrengthRes": {
+        "nullable": true,
+        "title": "Float",
+        "type": "number",
+        "description": "Depth of field of photoReal used. 0.55 is low, 0.5 is medium, and 0.45 is high. Default is 0.55."
+      },
+      "promptMagicArg": {
+        "nullable": true,
+        "title": "Boolean",
+        "type": "boolean",
+        "description": "Enable to use Prompt Magic."
+      },
+      "promptMagicRes": {
+        "nullable": true,
+        "title": "Boolean",
+        "type": "boolean",
+        "description": "If prompt magic was used."
+      },
+      "promptMagicVersionArg": {
+        "nullable": true,
+        "title": "String",
+        "type": "string",
+        "description": "Prompt magic version v2 or v3, for use when promptMagic: true"
+      },
+      "promptMagicVersionRes": {
+        "nullable": true,
+        "title": "String",
+        "type": "string",
+        "description": "Version of prompt magic used."
+      },
+      "promptMagicStrengthArg": {
+        "nullable": true,
+        "title": "Float",
+        "type": "number",
+        "description": "Strength of prompt magic. Must be a float between 0.1 and 1.0"
+      },
+      "promptMagicStrengthRes": {
+        "nullable": true,
+        "title": "Float",
+        "type": "number",
+        "description": "Strength of prompt magic used."
+      },
+      "pricingCalculatorServices": {
+        "type": "string",
+        "nullable": false,
+        "title": "pricingCalculatorServices",
+        "enum": [
+          "IMAGE_GENERATION",
+          "FANTASY_AVATAR_GENERATION",
+          "MOTION_SVD_GENERATION",
+          "MOTION_VIDEO_GENERATION",
+          "VEO3_MOTION_VIDEO_GENERATION",
+          "LCM_GENERATION",
+          "MODEL_TRAINING",
+          "TEXTURE_GENERATION",
+          "UNIVERSAL_UPSCALER",
+          "UNIVERSAL_UPSCALER_ULTRA"
+        ],
+        "description": "The services to be chosen for calculating the API credit cost."
+      },
+      "imageHeight": {
+        "nullable": false,
+        "title": "Int",
+        "type": "integer",
+        "description": "The input height of the images. Must be between 32 and 1024 and be a multiple of 8. Note: Input resolution is not always the same as output resolution due to upscaling from other features"
+      },
+      "imageWidth": {
+        "nullable": false,
+        "title": "Int",
+        "type": "integer",
+        "description": "The input width of the images. Must be between 32 and 1024 and be a multiple of 8. Note: Input resolution is not always the same as output resolution due to upscaling from other features"
+      },
+      "numImages": {
+        "nullable": false,
+        "title": "Int",
+        "type": "integer",
+        "description": "The number of images to generate. Must be between 1 and 8. If either width or height is over 768, must be between 1 and 4."
+      },
+      "canvasRequestType": {
+        "type": "string",
+        "nullable": true,
+        "title": "canvasRequestType",
+        "enum": [
+          "INPAINT",
+          "OUTPAINT",
+          "SKETCH2IMG",
+          "IMG2IMG"
+        ],
+        "description": "The type of request for the Canvas Editor."
+      },
+      "sd_generation_ultra": {
+        "nullable": true,
+        "title": "Boolean",
+        "type": "boolean",
+        "description": "If ultra generation mode was used."
+      },
+      "pageInfo": {
+        "type": "object",
+        "title": "PageInfo",
+        "description": "Pagination information following the Relay cursor pagination spec",
+        "properties": {
+          "hasNextPage": {
+            "type": "boolean",
+            "description": "Whether there is a next page"
+          },
+          "hasPreviousPage": {
+            "type": "boolean",
+            "description": "Whether there is a previous page"
+          },
+          "startCursor": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Cursor"
+              }
+            ],
+            "description": "Cursor for the first item in the result set"
+          },
+          "endCursor": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Cursor"
+              }
+            ],
+            "description": "Cursor for the last item in the result set"
+          }
+        }
+      },
+      "totalCount": {
+        "type": "integer",
+        "description": "Total number of results available"
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "bearerFormat": "auth-scheme",
+        "description": "Bearer HTTP authentication. Allowed headers `Authorization: Bearer <api_key>`",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ]
+}

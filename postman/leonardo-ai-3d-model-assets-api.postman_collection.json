@@ -1,0 +1,568 @@
+{
+  "info": {
+    "_postman_id": "d68f2fbb-119d-4e01-879b-f4a1a110f336",
+    "name": "Leonardo.AI 3D Model Assets API",
+    "description": "Upload, retrieve, and delete 3D model assets for use with Rodin and other 3D-capable workflows.\n\nContact Support:\n Name: Leonardo.AI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:04:49.000Z",
+    "updatedAt": "2026-07-28T02:04:49.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d68f2fbb-119d-4e01-879b-f4a1a110f336"
+  },
+  "item": [
+    {
+      "name": "models-3d",
+      "item": [
+        {
+          "name": "upload",
+          "item": [
+            {
+              "name": "Upload 3D Model",
+              "id": "c07b254c-1c54-446c-8402-be319201b2f5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"modelExtension\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/models-3d/upload",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "models-3d",
+                    "upload"
+                  ]
+                },
+                "description": "This endpoint returns presigned details to upload a 3D model to S3"
+              },
+              "response": [
+                {
+                  "id": "ec7ba8cb-fd4f-42c4-b90a-7fec19c9002b",
+                  "name": "Responses for POST /api/rest/v1/models-3d/upload",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"modelExtension\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/models-3d/upload",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "models-3d",
+                        "upload"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"uploadModelAsset\": {\n    \"modelFields\": \"<string>\",\n    \"modelId\": \"<string>\",\n    \"modelKey\": \"<string>\",\n    \"modelUrl\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:04:50.000Z",
+                  "updatedAt": "2026-07-28T02:04:50.000Z",
+                  "uid": "35240-ec7ba8cb-fd4f-42c4-b90a-7fec19c9002b"
+                }
+              ],
+              "createdAt": "2026-07-28T02:04:50.000Z",
+              "updatedAt": "2026-07-28T02:04:50.000Z",
+              "uid": "35240-c07b254c-1c54-446c-8402-be319201b2f5"
+            }
+          ],
+          "id": "6a7c569c-8625-4a64-aaf6-89490843b17d",
+          "createdAt": "2026-07-28T02:04:50.000Z",
+          "updatedAt": "2026-07-28T02:04:50.000Z",
+          "uid": "35240-6a7c569c-8625-4a64-aaf6-89490843b17d"
+        },
+        {
+          "name": "user",
+          "item": [
+            {
+              "name": "{userId}",
+              "item": [
+                {
+                  "name": "Get 3D models by user ID",
+                  "id": "de85dd28-8a2a-4c29-9a9e-82617826040c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"userId\": \"db86a699-5687-46fa-Bd8f-e1e213a05ce9\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/models-3d/user/:userId?offset=0&limit=10",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "models-3d",
+                        "user",
+                        ":userId"
+                      ],
+                      "query": [
+                        {
+                          "key": "offset",
+                          "value": "0"
+                        },
+                        {
+                          "key": "limit",
+                          "value": "10"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "d8628999-2fa4-4471-a2c6-7562b7558081",
+                          "key": "userId",
+                          "value": "75f1ba6a-7954-484b-a34c-2251e58cd401",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "This endpoint returns all 3D models by a specific user"
+                  },
+                  "response": [
+                    {
+                      "id": "ae5a52e9-0ec0-4c77-abac-289154382199",
+                      "name": "Responses for GET /api/rest/v1/models-3d/user/{userId}",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"userId\": \"db86a699-5687-46fa-Bd8f-e1e213a05ce9\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/models-3d/user/:userId?offset=0&limit=10",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "models-3d",
+                            "user",
+                            ":userId"
+                          ],
+                          "query": [
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "key": "limit",
+                              "value": "10"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "userId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"model_assets\": [\n    {\n      \"createdAt\": \"<string>\",\n      \"id\": \"94c5a9ab-e814-4720-Aa25-8e57d9179cfe\",\n      \"meshUrl\": \"<string>\",\n      \"name\": \"<string>\",\n      \"updatedAt\": \"<string>\",\n      \"userId\": \"de8b05c1-471e-4e02-Ae06-108db5258814\"\n    },\n    {\n      \"createdAt\": \"<string>\",\n      \"id\": \"d0b0bde3-5d1c-4952-913a-5e0f18a11b1d\",\n      \"meshUrl\": \"<string>\",\n      \"name\": \"<string>\",\n      \"updatedAt\": \"<string>\",\n      \"userId\": \"1f5f2148-da63-47fb-b26b-9fdeca84d53b\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:04:50.000Z",
+                      "updatedAt": "2026-07-28T02:04:50.000Z",
+                      "uid": "35240-ae5a52e9-0ec0-4c77-abac-289154382199"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:04:50.000Z",
+                  "updatedAt": "2026-07-28T02:04:50.000Z",
+                  "uid": "35240-de85dd28-8a2a-4c29-9a9e-82617826040c"
+                }
+              ],
+              "id": "7b1e0dbd-2e86-4a50-88c4-7c46da17843d",
+              "createdAt": "2026-07-28T02:04:50.000Z",
+              "updatedAt": "2026-07-28T02:04:50.000Z",
+              "uid": "35240-7b1e0dbd-2e86-4a50-88c4-7c46da17843d"
+            }
+          ],
+          "id": "b70093ef-6a28-44cc-abfe-720a508851ea",
+          "createdAt": "2026-07-28T02:04:50.000Z",
+          "updatedAt": "2026-07-28T02:04:50.000Z",
+          "uid": "35240-b70093ef-6a28-44cc-abfe-720a508851ea"
+        },
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get 3D Model by ID",
+              "id": "d10123b8-5675-45a3-9672-3e9d05c1a82b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"92ceb17c-1ec0-4fc8-Ba0e-f9fb2fd70818\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/models-3d/:id?offset=0&limit=10",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "models-3d",
+                    ":id"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "4cba0653-f656-4be0-bae8-42f0d96cb797",
+                      "key": "id",
+                      "value": "75f1ba6a-7954-484b-a34c-2251e58cd401",
+                      "description": "(Required) _\"id\" is required (enter it either in parameters or request body)_"
+                    }
+                  ]
+                },
+                "description": "This endpoint gets the specific 3D model"
+              },
+              "response": [
+                {
+                  "id": "70d307cb-96cf-4e40-acfd-3047b981de4a",
+                  "name": "Responses for GET /api/rest/v1/models-3d/{id}",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"92ceb17c-1ec0-4fc8-Ba0e-f9fb2fd70818\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/models-3d/:id?offset=0&limit=10",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "models-3d",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "key": "offset",
+                          "value": "0"
+                        },
+                        {
+                          "key": "limit",
+                          "value": "10"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"model_assets_by_pk\": {\n    \"createdAt\": \"<string>\",\n    \"id\": \"46f83b64-e3be-4705-A605-b909750eef20\",\n    \"meshUrl\": \"<string>\",\n    \"name\": \"<string>\",\n    \"updatedAt\": \"<string>\",\n    \"userId\": \"eebace9a-2f0a-4914-Bf94-2db19f1c9a75\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:04:50.000Z",
+                  "updatedAt": "2026-07-28T02:04:50.000Z",
+                  "uid": "35240-70d307cb-96cf-4e40-acfd-3047b981de4a"
+                }
+              ],
+              "createdAt": "2026-07-28T02:04:50.000Z",
+              "updatedAt": "2026-07-28T02:04:50.000Z",
+              "uid": "35240-d10123b8-5675-45a3-9672-3e9d05c1a82b"
+            },
+            {
+              "name": "Delete 3D Model by ID",
+              "id": "20fa0f6a-a79b-462c-8667-9cc3cd63e794",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"92ceb17c-1ec0-4fc8-Ba0e-f9fb2fd70818\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/models-3d/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "models-3d",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "b3dc523f-9ee7-4ffa-bd1f-02a6c65ab74a",
+                      "key": "id",
+                      "value": "75f1ba6a-7954-484b-a34c-2251e58cd401",
+                      "description": "(Required) _\"id\" is required (enter it either in parameters or request body)_"
+                    }
+                  ]
+                },
+                "description": "This endpoint deletes the specific 3D Model"
+              },
+              "response": [
+                {
+                  "id": "3c208744-3930-4a88-a7a2-912b2d941344",
+                  "name": "Responses for DELETE /api/rest/v1/models-3d/{id}",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"92ceb17c-1ec0-4fc8-Ba0e-f9fb2fd70818\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/models-3d/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "models-3d",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"delete_model_assets_by_pk\": {\n    \"id\": \"d28de4cb-08df-4af4-A89b-8c80c746f2f5\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:04:50.000Z",
+                  "updatedAt": "2026-07-28T02:04:50.000Z",
+                  "uid": "35240-3c208744-3930-4a88-a7a2-912b2d941344"
+                }
+              ],
+              "createdAt": "2026-07-28T02:04:50.000Z",
+              "updatedAt": "2026-07-28T02:04:50.000Z",
+              "uid": "35240-20fa0f6a-a79b-462c-8667-9cc3cd63e794"
+            }
+          ],
+          "id": "25385dfa-4727-4dc2-8a7e-6117e04bdf01",
+          "createdAt": "2026-07-28T02:04:50.000Z",
+          "updatedAt": "2026-07-28T02:04:50.000Z",
+          "uid": "35240-25385dfa-4727-4dc2-8a7e-6117e04bdf01"
+        }
+      ],
+      "id": "e647e529-93e4-4f9c-8cf4-4a1c2df98a15",
+      "createdAt": "2026-07-28T02:04:50.000Z",
+      "updatedAt": "2026-07-28T02:04:50.000Z",
+      "uid": "35240-e647e529-93e4-4f9c-8cf4-4a1c2df98a15"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://cloud.leonardo.ai/api/rest/v1"
+    }
+  ]
+}

@@ -1,0 +1,590 @@
+{
+  "info": {
+    "_postman_id": "ce9486db-c214-420f-a606-5c3c061da8ab",
+    "name": "Leonardo.AI 3D Model Assets Dataset API",
+    "description": "Upload, retrieve, and delete 3D model assets for use with Rodin and other 3D-capable workflows.\n\nContact Support:\n Name: Leonardo.AI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:04:51.000Z",
+    "updatedAt": "2026-07-28T02:04:52.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ce9486db-c214-420f-a606-5c3c061da8ab"
+  },
+  "item": [
+    {
+      "name": "datasets",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get a Single Dataset by ID",
+              "id": "5f43126f-2f5b-4bea-885c-491893da6410",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/datasets/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "datasets",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "779b1bf4-aa9e-4292-ac01-f4118c039ccf",
+                      "key": "id",
+                      "value": "51cc1bbe-32e9-45b4-96ee-c831f6aa5279",
+                      "description": "(Required) The ID of the dataset to return."
+                    }
+                  ]
+                },
+                "description": "This endpoint gets the specific dataset"
+              },
+              "response": [
+                {
+                  "id": "6feb637d-e8f4-446d-8efd-12d7fee7500f",
+                  "name": "Responses for GET /datasets/{id}",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/datasets/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "datasets",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"datasets_by_pk\": {\n    \"createdAt\": \"<string>\",\n    \"dataset_images\": [\n      {\n        \"createdAt\": \"<string>\",\n        \"id\": \"a5fa007b-3c0d-43f7-b601-5576169a6656\",\n        \"url\": \"<string>\"\n      },\n      {\n        \"createdAt\": \"<string>\",\n        \"id\": \"893cd25f-12ea-40a7-Babb-d828f231ccea\",\n        \"url\": \"<string>\"\n      }\n    ],\n    \"description\": \"<string>\",\n    \"id\": \"8b074258-14b1-4b98-a738-c0e8b11ac85e\",\n    \"name\": \"<string>\",\n    \"updatedAt\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:04:52.000Z",
+                  "updatedAt": "2026-07-28T02:04:52.000Z",
+                  "uid": "35240-6feb637d-e8f4-446d-8efd-12d7fee7500f"
+                }
+              ],
+              "createdAt": "2026-07-28T02:04:52.000Z",
+              "updatedAt": "2026-07-28T02:04:52.000Z",
+              "uid": "35240-5f43126f-2f5b-4bea-885c-491893da6410"
+            },
+            {
+              "name": "Delete a Single Dataset by ID",
+              "id": "aab94d93-9dba-4458-a358-8f81138d5906",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/datasets/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "datasets",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "639faa15-d0e3-4ab0-9fb4-1ccb872e1537",
+                      "key": "id",
+                      "value": "51cc1bbe-32e9-45b4-96ee-c831f6aa5279",
+                      "description": "(Required) The ID of the dataset to delete."
+                    }
+                  ]
+                },
+                "description": "This endpoint deletes the specific dataset"
+              },
+              "response": [
+                {
+                  "id": "0e472781-c237-4aef-b1f9-313c5ce24ef6",
+                  "name": "Responses for DELETE /datasets/{id}",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/datasets/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "datasets",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"delete_datasets_by_pk\": {\n    \"id\": \"116dc2b9-5d00-4850-B4ab-dc03eb94e15c\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:04:52.000Z",
+                  "updatedAt": "2026-07-28T02:04:52.000Z",
+                  "uid": "35240-0e472781-c237-4aef-b1f9-313c5ce24ef6"
+                }
+              ],
+              "createdAt": "2026-07-28T02:04:52.000Z",
+              "updatedAt": "2026-07-28T02:04:52.000Z",
+              "uid": "35240-aab94d93-9dba-4458-a358-8f81138d5906"
+            }
+          ],
+          "id": "a46380d2-8705-437a-b857-38a39a8f53d6",
+          "createdAt": "2026-07-28T02:04:52.000Z",
+          "updatedAt": "2026-07-28T02:04:52.000Z",
+          "uid": "35240-a46380d2-8705-437a-b857-38a39a8f53d6"
+        },
+        {
+          "name": "{datasetId}",
+          "item": [
+            {
+              "name": "upload",
+              "item": [
+                {
+                  "name": "gen",
+                  "item": [
+                    {
+                      "name": "Upload a Single Generated Image to a Dataset",
+                      "id": "993ad810-ef2d-4a68-b6d0-bcaf3184fe80",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"generatedImageId\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/datasets/:datasetId/upload/gen",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "datasets",
+                            ":datasetId",
+                            "upload",
+                            "gen"
+                          ],
+                          "variable": [
+                            {
+                              "id": "eb3daf13-cb6f-4c40-b1ee-a207bcda36f7",
+                              "key": "datasetId",
+                              "value": "<string>",
+                              "description": "(Required) The ID of the dataset to upload the image to."
+                            }
+                          ]
+                        },
+                        "description": "This endpoint will upload a previously generated image to the dataset"
+                      },
+                      "response": [
+                        {
+                          "id": "1ab2c583-05e8-429c-b77f-bae1db5f349e",
+                          "name": "Responses for POST /datasets/{datasetId}/upload/gen",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"generatedImageId\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/datasets/:datasetId/upload/gen",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "datasets",
+                                ":datasetId",
+                                "upload",
+                                "gen"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "datasetId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"uploadDatasetImageFromGen\": {\n    \"id\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T02:04:52.000Z",
+                          "updatedAt": "2026-07-28T02:04:52.000Z",
+                          "uid": "35240-1ab2c583-05e8-429c-b77f-bae1db5f349e"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:04:52.000Z",
+                      "updatedAt": "2026-07-28T02:04:52.000Z",
+                      "uid": "35240-993ad810-ef2d-4a68-b6d0-bcaf3184fe80"
+                    }
+                  ],
+                  "id": "21c2b96f-ca8a-4344-8f15-c38630557680",
+                  "createdAt": "2026-07-28T02:04:52.000Z",
+                  "updatedAt": "2026-07-28T02:04:52.000Z",
+                  "uid": "35240-21c2b96f-ca8a-4344-8f15-c38630557680"
+                },
+                {
+                  "name": "Upload dataset image",
+                  "id": "91a849a8-1842-419b-8745-9c28b80be458",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"extension\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/datasets/:datasetId/upload",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "datasets",
+                        ":datasetId",
+                        "upload"
+                      ],
+                      "variable": [
+                        {
+                          "id": "96a0e8c6-ba66-4663-9a58-d7a83154bc92",
+                          "key": "datasetId",
+                          "value": "<string>",
+                          "description": "(Required) _\"datasetId\" is required"
+                        }
+                      ]
+                    },
+                    "description": "This endpoint returns presigned details to upload a dataset image to S3"
+                  },
+                  "response": [
+                    {
+                      "id": "d77c12db-46af-48c8-8719-b528b53a09c1",
+                      "name": "Responses for POST /datasets/{datasetId}/upload",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"extension\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/datasets/:datasetId/upload",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "datasets",
+                            ":datasetId",
+                            "upload"
+                          ],
+                          "variable": [
+                            {
+                              "key": "datasetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"uploadDatasetImage\": {\n    \"fields\": \"<string>\",\n    \"id\": \"<string>\",\n    \"key\": \"<string>\",\n    \"url\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:04:52.000Z",
+                      "updatedAt": "2026-07-28T02:04:52.000Z",
+                      "uid": "35240-d77c12db-46af-48c8-8719-b528b53a09c1"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:04:52.000Z",
+                  "updatedAt": "2026-07-28T02:04:52.000Z",
+                  "uid": "35240-91a849a8-1842-419b-8745-9c28b80be458"
+                }
+              ],
+              "id": "d72267a1-1793-4a90-adba-e486cc9e3719",
+              "createdAt": "2026-07-28T02:04:52.000Z",
+              "updatedAt": "2026-07-28T02:04:52.000Z",
+              "uid": "35240-d72267a1-1793-4a90-adba-e486cc9e3719"
+            }
+          ],
+          "id": "e3973a2b-2371-4d31-a609-5bc83f0d2a1c",
+          "createdAt": "2026-07-28T02:04:52.000Z",
+          "updatedAt": "2026-07-28T02:04:52.000Z",
+          "uid": "35240-e3973a2b-2371-4d31-a609-5bc83f0d2a1c"
+        },
+        {
+          "name": "Create a Dataset",
+          "id": "d0de2bc1-63b5-470e-962a-11432963ac3e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/datasets",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "datasets"
+              ]
+            },
+            "description": "This endpoint creates a new dataset"
+          },
+          "response": [
+            {
+              "id": "d1b86ef4-eef4-4389-b2de-c5aec0a653c8",
+              "name": "Responses for POST /datasets",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/datasets",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "datasets"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"insert_datasets_one\": {\n    \"id\": \"12f25a42-8fa5-45a5-Beab-708935ab9ecd\"\n  }\n}",
+              "createdAt": "2026-07-28T02:04:52.000Z",
+              "updatedAt": "2026-07-28T02:04:52.000Z",
+              "uid": "35240-d1b86ef4-eef4-4389-b2de-c5aec0a653c8"
+            }
+          ],
+          "createdAt": "2026-07-28T02:04:52.000Z",
+          "updatedAt": "2026-07-28T02:04:52.000Z",
+          "uid": "35240-d0de2bc1-63b5-470e-962a-11432963ac3e"
+        }
+      ],
+      "id": "f0ef6d68-510f-4f96-a535-4ce6f8dfba46",
+      "createdAt": "2026-07-28T02:04:52.000Z",
+      "updatedAt": "2026-07-28T02:04:52.000Z",
+      "uid": "35240-f0ef6d68-510f-4f96-a535-4ce6f8dfba46"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://cloud.leonardo.ai/api/rest/v1"
+    }
+  ]
+}

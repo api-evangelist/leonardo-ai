@@ -1,0 +1,435 @@
+{
+  "info": {
+    "_postman_id": "f5a7910f-b752-4987-84ee-56ec0a804931",
+    "name": "Leonardo.AI 3D Model Assets Init Images API",
+    "description": "Upload, retrieve, and delete 3D model assets for use with Rodin and other 3D-capable workflows.\n\nContact Support:\n Name: Leonardo.AI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:05:45.000Z",
+    "updatedAt": "2026-07-28T02:05:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f5a7910f-b752-4987-84ee-56ec0a804931"
+  },
+  "item": [
+    {
+      "name": "init-image",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get single init image",
+              "id": "cd368a2f-632d-485e-907d-d31c2bc3e80d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/init-image/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "init-image",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "85beda5a-7153-4ee8-8167-869edb292bea",
+                      "key": "id",
+                      "value": "162617a4-c479-4de4-af91-62c2646e4cb7",
+                      "description": "(Required) _\"id\" is required_"
+                    }
+                  ]
+                },
+                "description": "This endpoint will return a single init image"
+              },
+              "response": [
+                {
+                  "id": "2e474af0-dfbc-4859-a3a7-cc458f8fb8fe",
+                  "name": "Responses for GET /init-image/{id}",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/init-image/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "init-image",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"init_images_by_pk\": {\n    \"createdAt\": \"<string>\",\n    \"id\": \"6261f58a-916f-47a8-8b73-bdc8fbec69e3\",\n    \"url\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:05:45.000Z",
+                  "updatedAt": "2026-07-28T02:05:45.000Z",
+                  "uid": "35240-2e474af0-dfbc-4859-a3a7-cc458f8fb8fe"
+                }
+              ],
+              "createdAt": "2026-07-28T02:05:45.000Z",
+              "updatedAt": "2026-07-28T02:05:45.000Z",
+              "uid": "35240-cd368a2f-632d-485e-907d-d31c2bc3e80d"
+            },
+            {
+              "name": "Delete init image",
+              "id": "fd4c007b-06a3-4f1c-ab4b-5a3ab5c71b05",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/init-image/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "init-image",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "ccf38776-f828-435d-9c8e-5c05fa495e41",
+                      "key": "id",
+                      "value": "162617a4-c479-4de4-af91-62c2646e4cb7",
+                      "description": "(Required) _\"id\" is required_"
+                    }
+                  ]
+                },
+                "description": "This endpoint deletes an init image"
+              },
+              "response": [
+                {
+                  "id": "e8d6d28d-0fcd-4de1-9575-303c3ac86308",
+                  "name": "Responses for DELETE /init-image/{id}",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/init-image/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "init-image",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"delete_init_images_by_pk\": {\n    \"id\": \"fea4a8d8-b98c-4944-9a00-9e6fb9c45d92\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:05:45.000Z",
+                  "updatedAt": "2026-07-28T02:05:45.000Z",
+                  "uid": "35240-e8d6d28d-0fcd-4de1-9575-303c3ac86308"
+                }
+              ],
+              "createdAt": "2026-07-28T02:05:45.000Z",
+              "updatedAt": "2026-07-28T02:05:45.000Z",
+              "uid": "35240-fd4c007b-06a3-4f1c-ab4b-5a3ab5c71b05"
+            }
+          ],
+          "id": "03ce5bd5-2595-4963-8b86-8fc8b2a14642",
+          "createdAt": "2026-07-28T02:05:45.000Z",
+          "updatedAt": "2026-07-28T02:05:45.000Z",
+          "uid": "35240-03ce5bd5-2595-4963-8b86-8fc8b2a14642"
+        },
+        {
+          "name": "Upload init image",
+          "id": "35eb3a56-884f-4547-9f0f-bc80fb9bd4d2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"extension\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/init-image",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "init-image"
+              ]
+            },
+            "description": "This endpoint returns presigned details to upload an init image to S3"
+          },
+          "response": [
+            {
+              "id": "fc6de2c1-ab9e-4ebb-8075-8db7df581799",
+              "name": "Responses for POST /init-image",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"extension\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/init-image",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "init-image"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"uploadInitImage\": {\n    \"fields\": \"<string>\",\n    \"id\": \"<string>\",\n    \"key\": \"<string>\",\n    \"url\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:05:45.000Z",
+              "updatedAt": "2026-07-28T02:05:45.000Z",
+              "uid": "35240-fc6de2c1-ab9e-4ebb-8075-8db7df581799"
+            }
+          ],
+          "createdAt": "2026-07-28T02:05:45.000Z",
+          "updatedAt": "2026-07-28T02:05:45.000Z",
+          "uid": "35240-35eb3a56-884f-4547-9f0f-bc80fb9bd4d2"
+        }
+      ],
+      "id": "4eb47a60-8e9a-4544-9263-6665c78dd443",
+      "createdAt": "2026-07-28T02:05:45.000Z",
+      "updatedAt": "2026-07-28T02:05:45.000Z",
+      "uid": "35240-4eb47a60-8e9a-4544-9263-6665c78dd443"
+    },
+    {
+      "name": "canvas-init-image",
+      "item": [
+        {
+          "name": "Upload Canvas Editor init and mask image",
+          "id": "bc9dd40a-4d8f-49f6-a6dd-1b9533506b52",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"initExtension\": \"<string>\",\n  \"maskExtension\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/canvas-init-image",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "canvas-init-image"
+              ]
+            },
+            "description": "This endpoint returns presigned details to upload an init image and a mask image to S3"
+          },
+          "response": [
+            {
+              "id": "afa49fc8-26d1-448d-a9e3-3cb7d0efb1f0",
+              "name": "Responses for POST /canvas-init-image",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"initExtension\": \"<string>\",\n  \"maskExtension\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/canvas-init-image",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "canvas-init-image"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"uploadCanvasInitImage\": {\n    \"initImageId\": \"<string>\",\n    \"initFields\": \"<string>\",\n    \"initKey\": \"<string>\",\n    \"initUrl\": \"<string>\",\n    \"maskImageId\": \"<string>\",\n    \"maskFields\": \"<string>\",\n    \"maskKey\": \"<string>\",\n    \"maskUrl\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:05:45.000Z",
+              "updatedAt": "2026-07-28T02:05:45.000Z",
+              "uid": "35240-afa49fc8-26d1-448d-a9e3-3cb7d0efb1f0"
+            }
+          ],
+          "createdAt": "2026-07-28T02:05:45.000Z",
+          "updatedAt": "2026-07-28T02:05:45.000Z",
+          "uid": "35240-bc9dd40a-4d8f-49f6-a6dd-1b9533506b52"
+        }
+      ],
+      "id": "4c59fa5b-16fa-40fc-8ad7-d0c7557a6323",
+      "createdAt": "2026-07-28T02:05:45.000Z",
+      "updatedAt": "2026-07-28T02:05:45.000Z",
+      "uid": "35240-4c59fa5b-16fa-40fc-8ad7-d0c7557a6323"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://cloud.leonardo.ai/api/rest/v1"
+    }
+  ]
+}

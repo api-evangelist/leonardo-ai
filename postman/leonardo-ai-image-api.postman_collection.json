@@ -1,0 +1,453 @@
+{
+  "info": {
+    "_postman_id": "50f9d760-87c7-49d8-ab42-46ccf7ab1ac4",
+    "name": "Leonardo.AI 3D Model Assets Image API",
+    "description": "Upload, retrieve, and delete 3D model assets for use with Rodin and other 3D-capable workflows.\n\nContact Support:\n Name: Leonardo.AI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:05:43.000Z",
+    "updatedAt": "2026-07-28T02:05:43.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-50f9d760-87c7-49d8-ab42-46ccf7ab1ac4"
+  },
+  "item": [
+    {
+      "name": "generations",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get a Single Generation",
+              "id": "9799eab5-e83b-4404-9651-9290fe8d2907",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/generations/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "generations",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "16ce7201-f2bd-4319-86ff-ea0b71688e1c",
+                      "key": "id",
+                      "value": "356e7fe3-88b2-49c5-Bfbe-b6777e39dd41",
+                      "description": "(Required) The ID of the generation to return."
+                    }
+                  ]
+                },
+                "description": "This endpoint will provide information about a specific generation"
+              },
+              "response": [
+                {
+                  "id": "d3c8c6ca-724b-4bbd-b6d0-c37c196b0f11",
+                  "name": "Responses for GET /generations/{id}",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/generations/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "generations",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"generations_by_pk\": {\n    \"createdAt\": \"<string>\",\n    \"generated_images\": [\n      {\n        \"generated_image_variation_generics\": [\n          {\n            \"id\": \"d722d70e-85d5-4124-A9a8-1aed9aa6e9f0\",\n            \"status\": \"PENDING\",\n            \"transformType\": \"OUTPAINT\",\n            \"url\": \"<string>\"\n          },\n          {\n            \"id\": \"84420ba2-c14d-43f7-913d-301e22b3c19c\",\n            \"status\": \"COMPLETE\",\n            \"transformType\": \"UPSCALE\",\n            \"url\": \"<string>\"\n          }\n        ],\n        \"fantasyAvatar\": \"<boolean>\",\n        \"id\": \"73117733-13c4-4dac-97f9-dadda3da3b1b\",\n        \"imageToVideo\": \"<boolean>\",\n        \"likeCount\": \"<integer>\",\n        \"motion\": \"<boolean>\",\n        \"motionModel\": \"<string>\",\n        \"motionMP4URL\": \"<string>\",\n        \"motionStrength\": \"<integer>\",\n        \"nsfw\": \"<boolean>\",\n        \"url\": \"<string>\"\n      },\n      {\n        \"generated_image_variation_generics\": [\n          {\n            \"id\": \"019a0ab6-ba0c-4c78-b90d-f096e70a41f6\",\n            \"status\": \"COMPLETE\",\n            \"transformType\": \"UPSCALE\",\n            \"url\": \"<string>\"\n          },\n          {\n            \"id\": \"ce8b64ff-7320-4d5f-b56c-49bea4ce25c0\",\n            \"status\": \"PENDING\",\n            \"transformType\": \"UPSCALE\",\n            \"url\": \"<string>\"\n          }\n        ],\n        \"fantasyAvatar\": \"<boolean>\",\n        \"id\": \"79c10511-e273-4f1c-89a1-6c84a6aa9c00\",\n        \"imageToVideo\": \"<boolean>\",\n        \"likeCount\": \"<integer>\",\n        \"motion\": \"<boolean>\",\n        \"motionModel\": \"<string>\",\n        \"motionMP4URL\": \"<string>\",\n        \"motionStrength\": \"<integer>\",\n        \"nsfw\": \"<boolean>\",\n        \"url\": \"<string>\"\n      }\n    ],\n    \"generation_elements\": [\n      {\n        \"id\": \"<integer>\",\n        \"lora\": {\n          \"akUUID\": \"<string>\",\n          \"baseModel\": \"SDXL_0_8\",\n          \"description\": \"<string>\",\n          \"name\": \"<string>\",\n          \"urlImage\": \"<string>\",\n          \"weightDefault\": \"<integer>\",\n          \"weightMax\": \"<integer>\",\n          \"weightMin\": \"<integer>\"\n        },\n        \"weightApplied\": \"<number>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"lora\": {\n          \"akUUID\": \"<string>\",\n          \"baseModel\": \"SDXL_0_8\",\n          \"description\": \"<string>\",\n          \"name\": \"<string>\",\n          \"urlImage\": \"<string>\",\n          \"weightDefault\": \"<integer>\",\n          \"weightMax\": \"<integer>\",\n          \"weightMin\": \"<integer>\"\n        },\n        \"weightApplied\": \"<number>\"\n      }\n    ],\n    \"guidanceScale\": \"<number>\",\n    \"id\": \"87aa40b9-d6eb-4438-8e4f-98ffe2ec0991\",\n    \"imageHeight\": \"<integer>\",\n    \"imageWidth\": \"<integer>\",\n    \"inferenceSteps\": \"<integer>\",\n    \"initStrength\": \"<number>\",\n    \"modelId\": \"296db979-8ff2-442f-815f-3a07f92009b0\",\n    \"negativePrompt\": \"<string>\",\n    \"photoReal\": \"<boolean>\",\n    \"photoRealStrength\": \"<number>\",\n    \"presetStyle\": \"DYNAMIC\",\n    \"prompt\": \"<string>\",\n    \"promptMagic\": \"<boolean>\",\n    \"promptMagicStrength\": \"<number>\",\n    \"promptMagicVersion\": \"<string>\",\n    \"public\": \"<boolean>\",\n    \"scheduler\": \"DPM_SOLVER\",\n    \"sdVersion\": \"FLUX_DEV\",\n    \"seed\": \"<integer>\",\n    \"status\": \"FAILED\",\n    \"ultra\": \"<boolean>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:05:44.000Z",
+                  "updatedAt": "2026-07-28T02:05:44.000Z",
+                  "uid": "35240-d3c8c6ca-724b-4bbd-b6d0-c37c196b0f11"
+                }
+              ],
+              "createdAt": "2026-07-28T02:05:44.000Z",
+              "updatedAt": "2026-07-28T02:05:44.000Z",
+              "uid": "35240-9799eab5-e83b-4404-9651-9290fe8d2907"
+            },
+            {
+              "name": "Delete a Single Generation",
+              "id": "0515c459-c0c9-47b2-b3f7-f55636398fd1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/generations/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "generations",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "44ce54e3-7d4e-425e-a752-c8066323352a",
+                      "key": "id",
+                      "value": "356e7fe3-88b2-49c5-Bfbe-b6777e39dd41",
+                      "description": "(Required) The ID of the generation to delete."
+                    }
+                  ]
+                },
+                "description": "This endpoint deletes a specific generation"
+              },
+              "response": [
+                {
+                  "id": "d7812b56-d441-46b6-97a9-34aa031928e7",
+                  "name": "Responses for DELETE /generations/{id}",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/generations/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "generations",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"delete_generations_by_pk\": {\n    \"id\": \"765815b3-66df-4554-8236-e8edbdcd182d\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:05:44.000Z",
+                  "updatedAt": "2026-07-28T02:05:44.000Z",
+                  "uid": "35240-d7812b56-d441-46b6-97a9-34aa031928e7"
+                }
+              ],
+              "createdAt": "2026-07-28T02:05:44.000Z",
+              "updatedAt": "2026-07-28T02:05:44.000Z",
+              "uid": "35240-0515c459-c0c9-47b2-b3f7-f55636398fd1"
+            }
+          ],
+          "id": "dcc2243a-a61b-476d-aa12-4cd74e517e0e",
+          "createdAt": "2026-07-28T02:05:44.000Z",
+          "updatedAt": "2026-07-28T02:05:44.000Z",
+          "uid": "35240-dcc2243a-a61b-476d-aa12-4cd74e517e0e"
+        },
+        {
+          "name": "user",
+          "item": [
+            {
+              "name": "{userId}",
+              "item": [
+                {
+                  "name": "Get generations by user ID",
+                  "id": "c0ac11d4-d1c2-478f-a0ed-99e8a6abf351",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/generations/user/:userId?offset=0&limit=10",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "generations",
+                        "user",
+                        ":userId"
+                      ],
+                      "query": [
+                        {
+                          "key": "offset",
+                          "value": "0"
+                        },
+                        {
+                          "key": "limit",
+                          "value": "10"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "2d945684-e8f4-45d2-be20-87ea16bddb31",
+                          "key": "userId",
+                          "value": "356e7fe3-88b2-49c5-Bfbe-b6777e39dd41",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "This endpoint returns all generations by a specific user"
+                  },
+                  "response": [
+                    {
+                      "id": "1beb98b4-0481-458a-8ab2-7187ee0d8bf6",
+                      "name": "Responses for GET /generations/user/{userId}",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/generations/user/:userId?offset=0&limit=10",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "generations",
+                            "user",
+                            ":userId"
+                          ],
+                          "query": [
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "key": "limit",
+                              "value": "10"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "userId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"generations\": [\n    {\n      \"createdAt\": \"<string>\",\n      \"generated_images\": [\n        {\n          \"generated_image_variation_generics\": [\n            {\n              \"id\": \"94ce3190-6e66-40f8-A694-f44f2eb0e613\",\n              \"status\": \"PENDING\",\n              \"transformType\": \"UNZOOM\",\n              \"url\": \"<string>\"\n            },\n            {\n              \"id\": \"ff194589-4d93-4238-B9b9-b5f9dd09a541\",\n              \"status\": \"PENDING\",\n              \"transformType\": \"UNZOOM\",\n              \"url\": \"<string>\"\n            }\n          ],\n          \"id\": \"e5570d9f-0b3a-40ea-Ba21-b8c9c4cb6e83\",\n          \"imageToVideo\": \"<boolean>\",\n          \"likeCount\": \"<integer>\",\n          \"motion\": \"<boolean>\",\n          \"motionModel\": \"<string>\",\n          \"motionMP4URL\": \"<string>\",\n          \"motionStrength\": \"<integer>\",\n          \"nsfw\": \"<boolean>\",\n          \"url\": \"<string>\"\n        },\n        {\n          \"generated_image_variation_generics\": [\n            {\n              \"id\": \"82908fbd-9fd5-4158-B7b9-b6b79f356ef4\",\n              \"status\": \"PENDING\",\n              \"transformType\": \"INPAINT\",\n              \"url\": \"<string>\"\n            },\n            {\n              \"id\": \"35dc4cab-7438-485e-8380-0fa78a669929\",\n              \"status\": \"PENDING\",\n              \"transformType\": \"UPSCALE\",\n              \"url\": \"<string>\"\n            }\n          ],\n          \"id\": \"f99c4195-244f-489f-B1af-94b4137e727f\",\n          \"imageToVideo\": \"<boolean>\",\n          \"likeCount\": \"<integer>\",\n          \"motion\": \"<boolean>\",\n          \"motionModel\": \"<string>\",\n          \"motionMP4URL\": \"<string>\",\n          \"motionStrength\": \"<integer>\",\n          \"nsfw\": \"<boolean>\",\n          \"url\": \"<string>\"\n        }\n      ],\n      \"generation_elements\": [\n        {\n          \"id\": \"<integer>\",\n          \"lora\": {\n            \"akUUID\": \"<string>\",\n            \"baseModel\": \"v2\",\n            \"description\": \"<string>\",\n            \"name\": \"<string>\",\n            \"urlImage\": \"<string>\",\n            \"weightDefault\": \"<integer>\",\n            \"weightMax\": \"<integer>\",\n            \"weightMin\": \"<integer>\"\n          },\n          \"weightApplied\": \"<number>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"lora\": {\n            \"akUUID\": \"<string>\",\n            \"baseModel\": \"FLUX\",\n            \"description\": \"<string>\",\n            \"name\": \"<string>\",\n            \"urlImage\": \"<string>\",\n            \"weightDefault\": \"<integer>\",\n            \"weightMax\": \"<integer>\",\n            \"weightMin\": \"<integer>\"\n          },\n          \"weightApplied\": \"<number>\"\n        }\n      ],\n      \"guidanceScale\": \"<number>\",\n      \"id\": \"2864f59a-415f-485b-B352-13c93d09124a\",\n      \"imageHeight\": \"<integer>\",\n      \"imageWidth\": \"<integer>\",\n      \"inferenceSteps\": \"<integer>\",\n      \"initStrength\": \"<number>\",\n      \"modelId\": \"61a18dd2-c919-40db-aa55-923971c562ae\",\n      \"negativePrompt\": \"<string>\",\n      \"photoReal\": \"<boolean>\",\n      \"photoRealStrength\": \"<number>\",\n      \"presetStyle\": \"DYNAMIC\",\n      \"prompt\": \"<string>\",\n      \"promptMagic\": \"<boolean>\",\n      \"promptMagicStrength\": \"<number>\",\n      \"promptMagicVersion\": \"<string>\",\n      \"public\": \"<boolean>\",\n      \"scheduler\": \"EULER_DISCRETE\",\n      \"sdVersion\": \"FLUX\",\n      \"seed\": \"<integer>\",\n      \"status\": \"FAILED\",\n      \"ultra\": \"<boolean>\"\n    },\n    {\n      \"createdAt\": \"<string>\",\n      \"generated_images\": [\n        {\n          \"generated_image_variation_generics\": [\n            {\n              \"id\": \"bf55f559-2945-415d-ba32-ee82c3f678cd\",\n              \"status\": \"FAILED\",\n              \"transformType\": \"UNZOOM\",\n              \"url\": \"<string>\"\n            },\n            {\n              \"id\": \"df2fb5ef-ca88-4069-8f47-fadf7757765b\",\n              \"status\": \"PENDING\",\n              \"transformType\": \"NOBG\",\n              \"url\": \"<string>\"\n            }\n          ],\n          \"id\": \"1263c49e-318c-4eee-B4d3-784be43f73da\",\n          \"imageToVideo\": \"<boolean>\",\n          \"likeCount\": \"<integer>\",\n          \"motion\": \"<boolean>\",\n          \"motionModel\": \"<string>\",\n          \"motionMP4URL\": \"<string>\",\n          \"motionStrength\": \"<integer>\",\n          \"nsfw\": \"<boolean>\",\n          \"url\": \"<string>\"\n        },\n        {\n          \"generated_image_variation_generics\": [\n            {\n              \"id\": \"ddedb971-98eb-4172-A48c-ad65a03d3c7a\",\n              \"status\": \"FAILED\",\n              \"transformType\": \"UPSCALE\",\n              \"url\": \"<string>\"\n            },\n            {\n              \"id\": \"7e8c45af-0c27-4ce8-b07d-2a52dcfaac31\",\n              \"status\": \"FAILED\",\n              \"transformType\": \"UNZOOM\",\n              \"url\": \"<string>\"\n            }\n          ],\n          \"id\": \"749a6a41-bd26-47a1-9be2-c8010f023e28\",\n          \"imageToVideo\": \"<boolean>\",\n          \"likeCount\": \"<integer>\",\n          \"motion\": \"<boolean>\",\n          \"motionModel\": \"<string>\",\n          \"motionMP4URL\": \"<string>\",\n          \"motionStrength\": \"<integer>\",\n          \"nsfw\": \"<boolean>\",\n          \"url\": \"<string>\"\n        }\n      ],\n      \"generation_elements\": [\n        {\n          \"id\": \"<integer>\",\n          \"lora\": {\n            \"akUUID\": \"<string>\",\n            \"baseModel\": \"v3\",\n            \"description\": \"<string>\",\n            \"name\": \"<string>\",\n            \"urlImage\": \"<string>\",\n            \"weightDefault\": \"<integer>\",\n            \"weightMax\": \"<integer>\",\n            \"weightMin\": \"<integer>\"\n          },\n          \"weightApplied\": \"<number>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"lora\": {\n            \"akUUID\": \"<string>\",\n            \"baseModel\": \"SDXL_0_8\",\n            \"description\": \"<string>\",\n            \"name\": \"<string>\",\n            \"urlImage\": \"<string>\",\n            \"weightDefault\": \"<integer>\",\n            \"weightMax\": \"<integer>\",\n            \"weightMin\": \"<integer>\"\n          },\n          \"weightApplied\": \"<number>\"\n        }\n      ],\n      \"guidanceScale\": \"<number>\",\n      \"id\": \"d8bce82b-ecbb-4d61-96d7-0d0eca7b660a\",\n      \"imageHeight\": \"<integer>\",\n      \"imageWidth\": \"<integer>\",\n      \"inferenceSteps\": \"<integer>\",\n      \"initStrength\": \"<number>\",\n      \"modelId\": \"85dea484-afb7-4839-9d59-c0b6044f3ce4\",\n      \"negativePrompt\": \"<string>\",\n      \"photoReal\": \"<boolean>\",\n      \"photoRealStrength\": \"<number>\",\n      \"presetStyle\": \"DYNAMIC\",\n      \"prompt\": \"<string>\",\n      \"promptMagic\": \"<boolean>\",\n      \"promptMagicStrength\": \"<number>\",\n      \"promptMagicVersion\": \"<string>\",\n      \"public\": \"<boolean>\",\n      \"scheduler\": \"LEONARDO\",\n      \"sdVersion\": \"FLUX\",\n      \"seed\": \"<integer>\",\n      \"status\": \"PENDING\",\n      \"ultra\": \"<boolean>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:05:44.000Z",
+                      "updatedAt": "2026-07-28T02:05:44.000Z",
+                      "uid": "35240-1beb98b4-0481-458a-8ab2-7187ee0d8bf6"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:05:44.000Z",
+                  "updatedAt": "2026-07-28T02:05:44.000Z",
+                  "uid": "35240-c0ac11d4-d1c2-478f-a0ed-99e8a6abf351"
+                }
+              ],
+              "id": "bd8ec15c-1282-4533-8aab-f37c096e8bcc",
+              "createdAt": "2026-07-28T02:05:44.000Z",
+              "updatedAt": "2026-07-28T02:05:44.000Z",
+              "uid": "35240-bd8ec15c-1282-4533-8aab-f37c096e8bcc"
+            }
+          ],
+          "id": "63cf5636-8e1a-44f9-be45-299355c95ff3",
+          "createdAt": "2026-07-28T02:05:44.000Z",
+          "updatedAt": "2026-07-28T02:05:44.000Z",
+          "uid": "35240-63cf5636-8e1a-44f9-be45-299355c95ff3"
+        },
+        {
+          "name": "Create a Generation of Images",
+          "id": "2f80b9cc-e7d6-4691-96f9-528111ff2caf",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"prompt\": \"A majestic cat in the snow\",\n  \"alchemy\": true,\n  \"contrastRatio\": \"<number>\",\n  \"contrast\": \"<number>\",\n  \"controlnets\": [\n    {\n      \"initImageId\": \"<string>\",\n      \"initImageType\": \"GENERATED\",\n      \"preprocessorId\": \"<number>\",\n      \"weight\": \"<number>\",\n      \"strengthType\": \"Ultra\"\n    },\n    {\n      \"initImageId\": \"<string>\",\n      \"initImageType\": \"GENERATED\",\n      \"preprocessorId\": \"<number>\",\n      \"weight\": \"<number>\",\n      \"strengthType\": \"Mid\"\n    }\n  ],\n  \"elements\": [\n    {\n      \"akUUID\": \"<string>\",\n      \"weight\": 1\n    },\n    {\n      \"akUUID\": \"<string>\",\n      \"weight\": 1\n    }\n  ],\n  \"userElements\": [\n    {\n      \"userLoraId\": \"<number>\",\n      \"weight\": \"<number>\"\n    },\n    {\n      \"userLoraId\": \"<number>\",\n      \"weight\": \"<number>\"\n    }\n  ],\n  \"expandedDomain\": \"<boolean>\",\n  \"fantasyAvatar\": \"<boolean>\",\n  \"guidance_scale\": \"<number>\",\n  \"height\": 768,\n  \"highContrast\": \"<boolean>\",\n  \"highResolution\": \"<boolean>\",\n  \"imagePrompts\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"imagePromptWeight\": \"<number>\",\n  \"init_generation_image_id\": \"<string>\",\n  \"init_image_id\": \"<string>\",\n  \"init_strength\": \"<number>\",\n  \"modelId\": \"b24e16ff-06e3-43eb-8d33-4416c2d75876\",\n  \"negative_prompt\": \"<string>\",\n  \"num_images\": 4,\n  \"num_inference_steps\": \"<integer>\",\n  \"photoReal\": \"<boolean>\",\n  \"photoRealVersion\": \"<string>\",\n  \"photoRealStrength\": \"<number>\",\n  \"presetStyle\": \"DYNAMIC\",\n  \"promptMagic\": \"<boolean>\",\n  \"promptMagicStrength\": \"<number>\",\n  \"promptMagicVersion\": \"<string>\",\n  \"public\": \"<boolean>\",\n  \"scheduler\": \"EULER_DISCRETE\",\n  \"sd_version\": \"SDXL_0_9\",\n  \"seed\": \"<integer>\",\n  \"tiling\": \"<boolean>\",\n  \"transparency\": \"disabled\",\n  \"ultra\": \"<boolean>\",\n  \"unzoom\": \"<boolean>\",\n  \"unzoomAmount\": \"<number>\",\n  \"upscaleRatio\": \"<number>\",\n  \"width\": 1024,\n  \"controlNet\": \"<boolean>\",\n  \"controlNetType\": \"CANNY\",\n  \"weighting\": \"<number>\",\n  \"canvasRequest\": \"<boolean>\",\n  \"canvasRequestType\": \"OUTPAINT\",\n  \"canvasInitId\": \"<string>\",\n  \"canvasMaskId\": \"<string>\",\n  \"enhancePrompt\": \"<boolean>\",\n  \"enhancePromptInstruction\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/generations",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "generations"
+              ]
+            },
+            "description": "This endpoint will generate images"
+          },
+          "response": [
+            {
+              "id": "31f8d296-fefc-4dee-84a7-c14775f443d0",
+              "name": "Responses for POST /generations",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"prompt\": \"A majestic cat in the snow\",\n  \"alchemy\": true,\n  \"contrastRatio\": \"<number>\",\n  \"contrast\": \"<number>\",\n  \"controlnets\": [\n    {\n      \"initImageId\": \"<string>\",\n      \"initImageType\": \"GENERATED\",\n      \"preprocessorId\": \"<number>\",\n      \"weight\": \"<number>\",\n      \"strengthType\": \"Ultra\"\n    },\n    {\n      \"initImageId\": \"<string>\",\n      \"initImageType\": \"GENERATED\",\n      \"preprocessorId\": \"<number>\",\n      \"weight\": \"<number>\",\n      \"strengthType\": \"Mid\"\n    }\n  ],\n  \"elements\": [\n    {\n      \"akUUID\": \"<string>\",\n      \"weight\": 1\n    },\n    {\n      \"akUUID\": \"<string>\",\n      \"weight\": 1\n    }\n  ],\n  \"userElements\": [\n    {\n      \"userLoraId\": \"<number>\",\n      \"weight\": \"<number>\"\n    },\n    {\n      \"userLoraId\": \"<number>\",\n      \"weight\": \"<number>\"\n    }\n  ],\n  \"expandedDomain\": \"<boolean>\",\n  \"fantasyAvatar\": \"<boolean>\",\n  \"guidance_scale\": \"<number>\",\n  \"height\": 768,\n  \"highContrast\": \"<boolean>\",\n  \"highResolution\": \"<boolean>\",\n  \"imagePrompts\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"imagePromptWeight\": \"<number>\",\n  \"init_generation_image_id\": \"<string>\",\n  \"init_image_id\": \"<string>\",\n  \"init_strength\": \"<number>\",\n  \"modelId\": \"b24e16ff-06e3-43eb-8d33-4416c2d75876\",\n  \"negative_prompt\": \"<string>\",\n  \"num_images\": 4,\n  \"num_inference_steps\": \"<integer>\",\n  \"photoReal\": \"<boolean>\",\n  \"photoRealVersion\": \"<string>\",\n  \"photoRealStrength\": \"<number>\",\n  \"presetStyle\": \"DYNAMIC\",\n  \"promptMagic\": \"<boolean>\",\n  \"promptMagicStrength\": \"<number>\",\n  \"promptMagicVersion\": \"<string>\",\n  \"public\": \"<boolean>\",\n  \"scheduler\": \"EULER_DISCRETE\",\n  \"sd_version\": \"SDXL_0_9\",\n  \"seed\": \"<integer>\",\n  \"tiling\": \"<boolean>\",\n  \"transparency\": \"disabled\",\n  \"ultra\": \"<boolean>\",\n  \"unzoom\": \"<boolean>\",\n  \"unzoomAmount\": \"<number>\",\n  \"upscaleRatio\": \"<number>\",\n  \"width\": 1024,\n  \"controlNet\": \"<boolean>\",\n  \"controlNetType\": \"CANNY\",\n  \"weighting\": \"<number>\",\n  \"canvasRequest\": \"<boolean>\",\n  \"canvasRequestType\": \"OUTPAINT\",\n  \"canvasInitId\": \"<string>\",\n  \"canvasMaskId\": \"<string>\",\n  \"enhancePrompt\": \"<boolean>\",\n  \"enhancePromptInstruction\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/generations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "generations"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"sdGenerationJob\": {\n    \"generationId\": \"<string>\",\n    \"apiCreditCost\": \"<integer>\",\n    \"cost\": {\n      \"amount\": \"<string>\",\n      \"unit\": \"DOLLARS\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:05:44.000Z",
+              "updatedAt": "2026-07-28T02:05:44.000Z",
+              "uid": "35240-31f8d296-fefc-4dee-84a7-c14775f443d0"
+            }
+          ],
+          "createdAt": "2026-07-28T02:05:44.000Z",
+          "updatedAt": "2026-07-28T02:05:44.000Z",
+          "uid": "35240-2f80b9cc-e7d6-4691-96f9-528111ff2caf"
+        }
+      ],
+      "id": "87a92cdb-889d-443d-a85e-764c6222d941",
+      "createdAt": "2026-07-28T02:05:44.000Z",
+      "updatedAt": "2026-07-28T02:05:44.000Z",
+      "uid": "35240-87a92cdb-889d-443d-a85e-764c6222d941"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://cloud.leonardo.ai/api/rest/v1"
+    }
+  ]
+}
