@@ -1,0 +1,637 @@
+{
+  "item": [
+    {
+      "id": "bf5f85bb-54a6-4bb7-89e2-60ed6e55f243",
+      "name": "Variation",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a022f577-c8e9-4220-91a3-1357c6c2f9e6",
+          "name": "Create unzoom",
+          "request": {
+            "name": "Create unzoom",
+            "description": {
+              "content": "This endpoint will create an unzoom variation for the provided image ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "variations",
+                "unzoom"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"isVariation\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b84a5fe2-4c67-4603-b606-260442f8adaa",
+              "name": "Responses for POST /api/rest/v1/variations/unzoom",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "variations",
+                    "unzoom"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"isVariation\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sdUnzoomJob\": {\n    \"id\": \"c2d3e4f5-g6h7-8901-ijkl-mn2345678901\",\n    \"apiCreditCost\": null,\n    \"cost\": {\n      \"amount\": \"0.0147\",\n      \"unit\": \"DOLLARS\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a113017b-78cf-4b0d-9397-a3a5dac5da32",
+          "name": "Create upscale",
+          "request": {
+            "name": "Create upscale",
+            "description": {
+              "content": "This endpoint will create an upscale for the provided image ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "variations",
+                "upscale"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "11cf0c3c-230d-4dc4-8794-6272d60c7ff2",
+              "name": "Responses for POST /variations/upscale",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "variations",
+                    "upscale"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sdUpscalerjob\": {\n    \"id\": \"d3e4f5g6-h7i8-9012-jklm-no3456789012\",\n    \"apiCreditCost\": null,\n    \"cost\": {\n      \"amount\": \"0.0147\",\n      \"unit\": \"DOLLARS\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8bee1269-2a0d-477f-8f45-9a7f27ef2e05",
+          "name": "Create no background",
+          "request": {
+            "name": "Create no background",
+            "description": {
+              "content": "This endpoint will create a no background variation of the provided image ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "variations",
+                "nobg"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"isVariation\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0bd1bf82-610d-4709-b57d-28e7f32e9676",
+              "name": "Responses for POST /variations/nobg",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "variations",
+                    "nobg"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"isVariation\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sdNobgJob\": {\n    \"id\": \"f5g6h7i8-j9k0-l1m2-nopq-rs4567890123\",\n    \"apiCreditCost\": null,\n    \"cost\": {\n      \"amount\": \"0.0147\",\n      \"unit\": \"DOLLARS\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f12652f0-c4ba-4385-86a2-af0c0e5e793f",
+          "name": "Create using Universal Upscaler",
+          "request": {
+            "name": "Create using Universal Upscaler",
+            "description": {
+              "content": "This endpoint will create a high resolution image using Universal Upscaler",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "variations",
+                "universal-upscaler"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"creativityStrength\": 5,\n  \"detailContrast\": \"<integer>\",\n  \"generatedImageId\": \"<string>\",\n  \"initImageId\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"similarity\": \"<integer>\",\n  \"ultraUpscaleStyle\": \"<string>\",\n  \"upscaleMultiplier\": 1.5,\n  \"upscalerStyle\": \"GENERAL\",\n  \"variationId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2199d4f8-3f48-4ad9-b010-e4467e5ead0f",
+              "name": "Responses for POST /variations/universal-upscaler",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "variations",
+                    "universal-upscaler"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"creativityStrength\": 5,\n  \"detailContrast\": \"<integer>\",\n  \"generatedImageId\": \"<string>\",\n  \"initImageId\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"similarity\": \"<integer>\",\n  \"ultraUpscaleStyle\": \"<string>\",\n  \"upscaleMultiplier\": 1.5,\n  \"upscalerStyle\": \"GENERAL\",\n  \"variationId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"universalUpscaler\": {\n    \"id\": \"g6h7i8j9-k0l1-m2n3-opqr-st5678901234\",\n    \"apiCreditCost\": null,\n    \"cost\": {\n      \"amount\": \"0.0147\",\n      \"unit\": \"DOLLARS\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7ee65d8b-68aa-4ee5-b3d6-7604b6522c5e",
+          "name": "Get variation by ID",
+          "request": {
+            "name": "Get variation by ID",
+            "description": {
+              "content": "This endpoint will get the variation by ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "variations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) \"id\" is required"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "562dae94-e9a2-4dc1-91ab-4da8cfc32387",
+              "name": "Responses for GET /variations/{id}",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "variations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) \"id\" is required"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"generated_image_variation_generic\": [\n    {\n      \"createdAt\": \"string\",\n      \"id\": \"ba2ddf71-4a5e-4799-841a-ec3063e7c032\",\n      \"status\": \"COMPLETE\",\n      \"transformType\": \"OUTPAINT\",\n      \"url\": \"string\"\n    },\n    {\n      \"createdAt\": \"string\",\n      \"id\": \"d5d3ceb3-4e73-47e5-A50e-edd5df53e61c\",\n      \"status\": \"COMPLETE\",\n      \"transformType\": \"INPAINT\",\n      \"url\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "128522b0-fdab-4eae-8ce5-7db120c59f66",
+          "name": "Get motion variation by ID",
+          "request": {
+            "name": "Get motion variation by ID",
+            "description": {
+              "content": "This endpoint will get the motion variation by ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "motion-variations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) \"id\" is required"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "98fff1c6-8f4e-4377-bf58-bd083eb34ea7",
+              "name": "Responses for GET /motion-variations/{id}",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "motion-variations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) \"id\" is required"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"generated_image_variation_motion\": [\n    {\n      \"createdAt\": \"string\",\n      \"id\": \"bb279bbb-bbb2-4985-b79d-db99b1586beb\",\n      \"status\": \"FAILED\",\n      \"motionTransformType\": \"UPSCALE\",\n      \"resolution\": \"RESOLUTION_720\",\n      \"url\": \"string\"\n    },\n    {\n      \"createdAt\": \"string\",\n      \"id\": \"a2a7714e-2d73-4dcb-8e62-4fd3c4e29760\",\n      \"status\": \"COMPLETE\",\n      \"motionTransformType\": \"UPSCALE\",\n      \"resolution\": \"RESOLUTION_720\",\n      \"url\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cloud.leonardo.ai/api/rest/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ed1aafbe-eb4c-4bfd-adfb-888fdb82efea",
+    "name": "Leonardo.AI 3D Model Assets Variation API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Upload, retrieve, and delete 3D model assets for use with Rodin and other 3D-capable workflows.\n\nContact Support:\n Name: Leonardo.AI Support",
+      "type": "text/plain"
+    }
+  }
+}

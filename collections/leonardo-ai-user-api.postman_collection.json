@@ -1,0 +1,119 @@
+{
+  "item": [
+    {
+      "id": "3a10138c-c1b5-49a4-952a-dc93a188c28b",
+      "name": "User",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b39f0820-954b-4146-918c-bc2bea10ef2a",
+          "name": "Get user information",
+          "request": {
+            "name": "Get user information",
+            "description": {
+              "content": "This endpoint will return your user information such as your user id, username, token renewal date and current amounts of the following: subscription tokens, gpt (prompt generation) tokens, and model training tokens",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "me"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c209ab49-5fcf-4046-b261-4dbdf3e9646c",
+              "name": "Responses for GET /me",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "me"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user_details\": [\n    {\n      \"user\": {\n        \"id\": \"6e1f3fda-5116-4f51-8dd6-02e7b1d386da\",\n        \"username\": \"string\"\n      },\n      \"tokenRenewalDate\": \"string\",\n      \"paidTokens\": 5864,\n      \"subscriptionTokens\": 4666,\n      \"subscriptionGptTokens\": 270,\n      \"subscriptionModelTokens\": 7581,\n      \"apiConcurrencySlots\": 3170,\n      \"apiPaidTokens\": 5400,\n      \"apiSubscriptionTokens\": 1050,\n      \"apiPlanTokenRenewalDate\": \"string\"\n    },\n    {\n      \"user\": {\n        \"id\": \"820a6764-a60b-41d5-Bf38-0111251989b2\",\n        \"username\": \"string\"\n      },\n      \"tokenRenewalDate\": \"string\",\n      \"paidTokens\": 1790,\n      \"subscriptionTokens\": 1983,\n      \"subscriptionGptTokens\": 3022,\n      \"subscriptionModelTokens\": 614,\n      \"apiConcurrencySlots\": 3171,\n      \"apiPaidTokens\": 5505,\n      \"apiSubscriptionTokens\": 8781,\n      \"apiPlanTokenRenewalDate\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cloud.leonardo.ai/api/rest/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7367bafe-d1bf-4c8a-ad99-703a5802b480",
+    "name": "Leonardo.AI 3D Model Assets User API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Upload, retrieve, and delete 3D model assets for use with Rodin and other 3D-capable workflows.\n\nContact Support:\n Name: Leonardo.AI Support",
+      "type": "text/plain"
+    }
+  }
+}
