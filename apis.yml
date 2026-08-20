@@ -25,6 +25,15 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/leonardo-a
 kind: contract
 access: 3rd-Party
 tags:
+  - Artificial Intelligence
+  - Image-Generation
+  - Video Generation
+  - Generative AI
+  - Creative
+  - 3D
+  - Diffusion
+  - Canva
+tags_raw:
   - AI
   - Artificial Intelligence
   - Image Generation
