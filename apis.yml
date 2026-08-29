@@ -715,6 +715,9 @@ apis:
   - type: Documentation
     url: https://docs.leonardo.ai/reference/getuserself
 common:
+  - type: CapabilityMap
+    url: capabilities/leonardo-ai-capability-edges.yml
+    name: Leonardo.AI Business Capability Map
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/leonardoai/overview
   - type: AgenticAccess
