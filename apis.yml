@@ -156,6 +156,8 @@ apis:
   description: The Dataset API from Leonardo.AI — 4 operation(s) for dataset.
   humanURL: https://docs.leonardo.ai/reference/creategeneration
   tags:
+  - Datasets
+  tags_raw:
   - Dataset
   properties:
   - type: OpenAPI
