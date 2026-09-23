@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Leonardo.AI 3D Model Assets Media API
-  description: Upload, retrieve, and delete 3D model assets for use with Rodin and other 3D-capable workflows.
+  title: Leonardo.AI Media API
+  description: Upload, retrieve, and delete general-purpose media (images, video frames, reference assets) used across generation endpoints.
   version: v1.0.0
   contact:
     name: Leonardo.AI Support
@@ -30,7 +30,6 @@ paths:
             schema:
               properties:
                 extension:
-                  nullable: false
                   title: String
                   type: string
                   description: 'The file extension of the media file to upload. Supported extensions: mp4, mov.'
@@ -47,22 +46,26 @@ paths:
                 type: object
                 properties:
                   uploadMedia:
-                    nullable: true
                     properties:
                       uploadId:
-                        nullable: true
                         title: String
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                       url:
-                        nullable: true
                         title: String
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                       fields:
-                        nullable: true
                         title: String
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                     title: MediaUploadOutput
-                    type: object
+                    type:
+                    - object
+                    - 'null'
           description: Responses for POST /media
   /media/{id}:
     get:
@@ -87,54 +90,66 @@ paths:
                 type: object
                 properties:
                   uploaded_media_by_pk:
-                    nullable: true
                     properties:
                       id:
-                        nullable: true
                         title: uuid
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                       createdAt:
-                        nullable: true
                         title: timestamp
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                       url:
-                        nullable: true
                         title: String
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                       thumbnailUrl:
-                        nullable: true
                         title: String
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                       status:
-                        nullable: true
                         title: String
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                       statusReason:
-                        nullable: true
                         title: String
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                       mediaType:
-                        nullable: true
                         title: String
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                       duration:
-                        nullable: true
                         title: Float
-                        type: number
+                        type:
+                        - number
+                        - 'null'
                       width:
-                        nullable: true
                         title: Int
-                        type: integer
+                        type:
+                        - integer
+                        - 'null'
                       height:
-                        nullable: true
                         title: Int
-                        type: integer
+                        type:
+                        - integer
+                        - 'null'
                       video_fps:
-                        nullable: true
                         title: Float
-                        type: number
+                        type:
+                        - number
+                        - 'null'
                     title: uploaded_media
-                    type: object
+                    type:
+                    - object
+                    - 'null'
           description: Responses for GET /media/{id}
     delete:
       tags:
@@ -158,14 +173,16 @@ paths:
                 type: object
                 properties:
                   delete_uploaded_media_by_pk:
-                    nullable: true
                     properties:
                       id:
-                        nullable: true
                         title: uuid
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                     title: uploaded_media
-                    type: object
+                    type:
+                    - object
+                    - 'null'
           description: Responses for DELETE /media/{id}
 components:
   securitySchemes:

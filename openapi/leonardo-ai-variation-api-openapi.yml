@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Leonardo.AI 3D Model Assets Variation API
-  description: Upload, retrieve, and delete 3D model assets for use with Rodin and other 3D-capable workflows.
+  title: Leonardo.AI & Upscale Variation API
+  description: Apply variations to existing images including unzoom (outpainting), upscale, background removal, and Universal Upscaler. Retrieve variation job status.
   version: v1.0.0
   contact:
     name: Leonardo.AI Support
@@ -30,13 +30,13 @@ paths:
             schema:
               properties:
                 id:
-                  nullable: false
                   title: String
                   type: string
                 isVariation:
-                  nullable: true
                   title: Boolean
-                  type: boolean
+                  type:
+                  - boolean
+                  - 'null'
               type: object
         description: Query parameters can also be provided in the request body as a JSON object
         required: false
@@ -47,21 +47,22 @@ paths:
               schema:
                 properties:
                   sdUnzoomJob:
-                    nullable: true
                     properties:
                       id:
-                        nullable: false
                         title: String
                         type: string
                       apiCreditCost:
-                        nullable: true
-                        type: integer
+                        type:
+                        - integer
+                        - 'null'
                         description: 'API Credits Cost for Unzoom Variation. Available for Production API Users. Note: it will be deprecated. Please use the cost instead.'
                         deprecated: true
                       cost:
                         $ref: '#/components/schemas/cost'
                     title: SDUnzoomOutput
-                    type: object
+                    type:
+                    - object
+                    - 'null'
               example:
                 sdUnzoomJob:
                   id: c2d3e4f5-g6h7-8901-ijkl-mn2345678901
@@ -83,7 +84,6 @@ paths:
             schema:
               properties:
                 id:
-                  nullable: false
                   title: String
                   type: string
               required:
@@ -99,21 +99,22 @@ paths:
                 type: object
                 properties:
                   sdUpscaleJob:
-                    nullable: true
                     properties:
                       id:
-                        nullable: false
                         title: String
                         type: string
                       apiCreditCost:
-                        nullable: true
-                        type: integer
+                        type:
+                        - integer
+                        - 'null'
                         description: 'API Credits Cost for Upscale Variation. Available for Production API Users. Note: it will be deprecated. Please use the cost instead.'
                         deprecated: true
                       cost:
                         $ref: '#/components/schemas/cost'
                     title: SDUpscaleJobOutput
-                    type: object
+                    type:
+                    - object
+                    - 'null'
               example:
                 sdUpscalerjob:
                   id: d3e4f5g6-h7i8-9012-jklm-no3456789012
@@ -135,11 +136,9 @@ paths:
             schema:
               properties:
                 id:
-                  nullable: false
                   title: String
                   type: string
                 isVariation:
-                  nullable: false
                   type: boolean
                   title: Boolean
               required:
@@ -159,8 +158,9 @@ paths:
                       id:
                         $ref: '#/components/schemas/uuid'
                       apiCreditCost:
-                        nullable: true
-                        type: integer
+                        type:
+                        - integer
+                        - 'null'
                         description: 'API Credits Cost for No Background Variation. Available for Production API Users. Note: it will be deprecated. Please use the cost instead.'
                         deprecated: true
                       cost:
@@ -188,50 +188,58 @@ paths:
             schema:
               properties:
                 creativityStrength:
-                  nullable: true
                   title: Int
-                  type: integer
+                  type:
+                  - integer
+                  - 'null'
                   default: 5
                   description: The creativity strength of the universal upscaler. Must be between 1 and 10.
                 detailContrast:
-                  nullable: true
                   title: Int
-                  type: integer
+                  type:
+                  - integer
+                  - 'null'
                   description: The detail contrast of the universal upscaler. Must be between 1 and 10. Can only be used with ultraUpscaleStyle.
                 generatedImageId:
-                  nullable: true
                   title: String
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   description: The ID of the generated image.
                 initImageId:
-                  nullable: true
                   title: String
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   description: The ID of the init image uploaded.
                 prompt:
-                  nullable: true
                   title: String
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   description: The prompt for the universal upscaler.
                 similarity:
-                  nullable: true
                   title: Int
-                  type: integer
+                  type:
+                  - integer
+                  - 'null'
                   description: The similarity of the universal upscaler. Must be between 1 and 10. Can only be used with ultraUpscaleStyle.
                 ultraUpscaleStyle:
                   $ref: '#/components/schemas/universal_upscaler_ultra_style'
                 upscaleMultiplier:
-                  nullable: true
                   title: Float
-                  type: number
+                  type:
+                  - number
+                  - 'null'
                   default: 1.5
                   description: The upscale multiplier of the universal upscaler. Must be between 1.0 and 2.0.
                 upscalerStyle:
                   $ref: '#/components/schemas/universal_upscaler_style'
                 variationId:
-                  nullable: true
                   title: String
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   description: The ID of the variation image.
               type: object
         description: Query parameters are provided in the request body as a JSON object
@@ -248,8 +256,9 @@ paths:
                       id:
                         $ref: '#/components/schemas/uuid'
                       apiCreditCost:
-                        nullable: true
-                        type: integer
+                        type:
+                        - integer
+                        - 'null'
                         description: 'API Credits Cost for Universal Upscaler Variation. Available for Production API Users. Note: it will be deprecated. Please use the cost instead.'
                         deprecated: true
                       cost:
@@ -289,7 +298,6 @@ paths:
                   generated_image_variation_generic:
                     items:
                       description: columns and relationships of "generated_image_variation_generic"
-                      nullable: false
                       properties:
                         createdAt:
                           $ref: '#/components/schemas/timestamp'
@@ -300,12 +308,12 @@ paths:
                         transformType:
                           $ref: '#/components/schemas/VARIATION_TYPE'
                         url:
-                          nullable: true
                           title: String
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                       title: generated_image_variation_generic
                       type: object
-                    nullable: false
                     type: array
           description: Responses for GET /variations/{id}
   /motion-variations/{id}:
@@ -333,7 +341,6 @@ paths:
                   generated_image_variation_motion:
                     items:
                       description: columns and relationships of "generated_image_variation_motion"
-                      nullable: false
                       properties:
                         createdAt:
                           $ref: '#/components/schemas/timestamp'
@@ -346,81 +353,40 @@ paths:
                         resolution:
                           $ref: '#/components/schemas/MOTION_RESOLUTION'
                         url:
-                          nullable: true
                           title: String
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                       title: generated_image_variation_motion
                       type: object
-                    nullable: false
                     type: array
           description: Responses for GET /motion-variations/{id}
 components:
   schemas:
-    uuid:
-      nullable: true
-      pattern: '[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}'
-      title: uuid
-      type: string
-    timestamp:
-      type: string
-      nullable: false
-      title: timestamp
-    MOTION_RESOLUTION:
-      type: string
-      nullable: false
-      title: MOTION_RESOLUTION
-      enum:
-      - RESOLUTION_720
-      description: The resolution of the upscaled video. RESOLUTION_720 is the only option for now.
-    universal_upscaler_ultra_style:
-      type: string
-      nullable: true
-      title: universal_upscaler_ultra_style
-      enum:
-      - ARTISTIC
-      - REALISTIC
-      description: The ultra style to upscale images using universal upscaler with. Can not be used with upscalerStyle.
-    VARIATION_TYPE:
-      type: string
-      nullable: false
-      title: VARIATION_TYPE
-      enum:
-      - OUTPAINT
-      - INPAINT
-      - UPSCALE
-      - UNZOOM
-      - NOBG
-      description: The type of variation.
-    universal_upscaler_style:
-      type: string
-      nullable: true
-      default: GENERAL
-      title: universal_upscaler_style
-      enum:
-      - GENERAL
-      - CINEMATIC
-      - 2D ART & ILLUSTRATION
-      - CG ART & GAME ASSETS
-      description: The style to upscale images using universal upscaler with. Can not be used with ultraUpscaleStyle.
     job_status:
       type: string
-      nullable: false
       title: job_status
       enum:
       - PENDING
       - COMPLETE
       - FAILED
       description: The status of the current task.
-    MOTION_VARIATION_TYPE:
+    MOTION_RESOLUTION:
       type: string
-      nullable: false
-      title: MOTION_VARIATION_TYPE
+      title: MOTION_RESOLUTION
       enum:
-      - UPSCALE
-      description: The type of motion variation.
+      - RESOLUTION_720
+      description: The resolution of the upscaled video. RESOLUTION_720 is the only option for now.
+    uuid:
+      pattern: '[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}'
+      title: uuid
+      type:
+      - string
+      - 'null'
     cost:
-      nullable: true
-      type: object
+      type:
+      - object
+      - 'null'
       title: Cost
       description: The cost of the operation.
       properties:
@@ -433,6 +399,46 @@ components:
           - CREDITS
           - DOLLARS
           description: 'The unit of the cost. Can be CREDITS or DOLLARS. Note: DOLLARS unit only supports PAYG plan.'
+    universal_upscaler_ultra_style:
+      type:
+      - string
+      - 'null'
+      title: universal_upscaler_ultra_style
+      enum:
+      - ARTISTIC
+      - REALISTIC
+      description: The ultra style to upscale images using universal upscaler with. Can not be used with upscalerStyle.
+    timestamp:
+      type: string
+      title: timestamp
+    universal_upscaler_style:
+      type:
+      - string
+      - 'null'
+      default: GENERAL
+      title: universal_upscaler_style
+      enum:
+      - GENERAL
+      - CINEMATIC
+      - 2D ART & ILLUSTRATION
+      - CG ART & GAME ASSETS
+      description: The style to upscale images using universal upscaler with. Can not be used with ultraUpscaleStyle.
+    MOTION_VARIATION_TYPE:
+      type: string
+      title: MOTION_VARIATION_TYPE
+      enum:
+      - UPSCALE
+      description: The type of motion variation.
+    VARIATION_TYPE:
+      type: string
+      title: VARIATION_TYPE
+      enum:
+      - OUTPAINT
+      - INPAINT
+      - UPSCALE
+      - UNZOOM
+      - NOBG
+      description: The type of variation.
   securitySchemes:
     bearerAuth:
       type: http

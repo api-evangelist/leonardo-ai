@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Leonardo.AI 3D Model Assets Motion API
-  description: Upload, retrieve, and delete 3D model assets for use with Rodin and other 3D-capable workflows.
+  title: Leonardo.AI Video Generation Motion API
+  description: Generate videos from text or images using Kling, LTX, Veo, Seedance, Hailuo and Stable Video Diffusion motion models. Supports image-to-video, text-to-video, and SVD motion.
   version: v1.0.0
   contact:
     name: Leonardo.AI Support
@@ -30,7 +30,6 @@ paths:
             schema:
               properties:
                 imageId:
-                  nullable: false
                   title: String
                   type: string
                   description: The ID of the image, supports generated images, variation images, and init images.
@@ -55,10 +54,8 @@ paths:
                 type: object
                 properties:
                   motionSvdGenerationJob:
-                    nullable: true
                     properties:
                       generationId:
-                        nullable: false
                         title: String
                         type: string
                       apiCreditCost:
@@ -66,7 +63,9 @@ paths:
                       cost:
                         $ref: '#/components/schemas/cost'
                     title: MotionSvdGenerationOutput
-                    type: object
+                    type:
+                    - object
+                    - 'null'
               example:
                 motionSvdGenerationJob:
                   generationId: h7i8j9k0-l1m2-n3o4-pqrs-tu6789012345
@@ -88,35 +87,31 @@ paths:
             schema:
               properties:
                 prompt:
-                  nullable: false
                   title: String
                   type: string
                   description: The prompt used to generate video
                 imageId:
-                  nullable: false
                   title: String
                   type: string
                   description: The ID of the image, supports generated images and init images. Use only image or imageId with imageType.
                 imageType:
                   type: string
-                  nullable: false
                   enum:
                   - GENERATED
                   - UPLOADED
                   description: Type indicating whether the init image is uploaded or generated. Use only image or imageId with imageType.
                 endFrameImage:
-                  nullable: true
                   title: Object
-                  type: object
+                  type:
+                  - object
+                  - 'null'
                   description: The end frame image. Supported only on kling2_1 model when used in conjunction with an init image.
                   properties:
                     id:
-                      nullable: false
                       title: String
                       type: string
                       description: The ID of the end frame image.
                     type:
-                      nullable: false
                       title: String
                       type: string
                       enum:
@@ -127,7 +122,6 @@ paths:
                   - id
                   - type
                 resolution:
-                  nullable: true
                   title: String
                   enum:
                   - RESOLUTION_480
@@ -135,7 +129,6 @@ paths:
                   - RESOLUTION_1080
                   description: The resolution of the output video. Acceptable values vary based on model
                 model:
-                  nullable: true
                   title: String
                   enum:
                   - MOTION2
@@ -147,60 +140,70 @@ paths:
                   description: The model to use for the video generation. Defaults to MOTION2 if not specified.
                   default: MOTION2
                 frameInterpolation:
-                  nullable: true
                   title: Boolean
-                  type: boolean
+                  type:
+                  - boolean
+                  - 'null'
                   description: Smoothly blend frames for fluid video transitions using Interpolation.
                 isPublic:
                   $ref: '#/components/schemas/public'
                 seed:
-                  type: integer
-                  nullable: true
+                  type:
+                  - integer
+                  - 'null'
                   title: seed
                   description: Apply a fixed seed to maintain consistency across generation sets. The maximum seed value is 2147483637 for Motion 2.0.
                 negativePrompt:
-                  nullable: true
                   title: String
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   description: The negative prompt used for the video generation.
                 promptEnhance:
-                  nullable: true
                   title: Boolean
-                  type: boolean
+                  type:
+                  - boolean
+                  - 'null'
                   description: Whether to enhance the prompt.
                 duration:
-                  nullable: true
                   title: Integer
-                  type: integer
+                  type:
+                  - integer
+                  - 'null'
                   description: 'Duration of the output video in seconds. Allowed values: 4, 6, or 8 on models VEO3 and VEO3FAST (default: 8) and 5 or 10 on model KLING2_5 (default: 5).'
                 promptEnhanceInstruction:
-                  nullable: true
                   title: String
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   description: A natural language instruction used to modify the main prompt. For example, 'make it cinematic', 'add a rainbow', or 'change the subject to a cat'.
                 styleIds:
-                  nullable: true
                   title: Array of Strings
-                  type: array
+                  type:
+                  - array
+                  - 'null'
                   items:
                     type: string
                   description: Predefined styles to enhance the prompt. This accepts a list of style uuids.
                 elements:
-                  nullable: true
                   title: Array of Element Inputs
-                  type: array
+                  type:
+                  - array
+                  - 'null'
                   items:
                     $ref: '#/components/schemas/element_input'
                   description: 'An array of elements/loras objects that will be applied sequentially to the output. Elements are only supported for Motion2.0 generations. '
                 height:
-                  nullable: true
                   title: Integer
-                  type: integer
+                  type:
+                  - integer
+                  - 'null'
                   description: Height of the output video. Acceptable values vary based on model
                 width:
-                  nullable: true
                   title: Integer
-                  type: integer
+                  type:
+                  - integer
+                  - 'null'
                   description: Width of the output video. Acceptable values vary based on model
               type: object
               required:
@@ -217,10 +220,8 @@ paths:
                 type: object
                 properties:
                   motionVideoGenerationJob:
-                    nullable: true
                     properties:
                       generationId:
-                        nullable: false
                         title: String
                         type: string
                       apiCreditCost:
@@ -228,7 +229,9 @@ paths:
                       cost:
                         $ref: '#/components/schemas/cost'
                     title: MotionVideoGenerationOutput
-                    type: object
+                    type:
+                    - object
+                    - 'null'
               example:
                 motionVideoGenerationJob:
                   generationId: i8j9k0l1-m2n3-o4p5-qrst-uv7890123456
@@ -250,12 +253,10 @@ paths:
             schema:
               properties:
                 prompt:
-                  nullable: false
                   title: String
                   type: string
                   description: The prompt used to generate video
                 resolution:
-                  nullable: true
                   title: String
                   enum:
                   - RESOLUTION_480
@@ -263,7 +264,6 @@ paths:
                   - RESOLUTION_1080
                   description: The resolution of the output video. Acceptable values vary based on model
                 model:
-                  nullable: true
                   title: String
                   enum:
                   - MOTION2
@@ -275,59 +275,69 @@ paths:
                   description: The model to use for the video generation. Defaults to MOTION2 if not specified.
                   default: MOTION2
                 frameInterpolation:
-                  nullable: true
                   title: Boolean
-                  type: boolean
+                  type:
+                  - boolean
+                  - 'null'
                   description: Smoothly blend frames for fluid video transitions using Interpolation.
                 isPublic:
                   $ref: '#/components/schemas/public'
                 seed:
-                  type: integer
-                  nullable: true
+                  type:
+                  - integer
+                  - 'null'
                   title: seed
                   description: Apply a fixed seed to maintain consistency across generation sets. The maximum seed value is 2147483637 for Motion 2.0 and 4294967293 for Veo3.
                 negativePrompt:
-                  nullable: true
                   title: String
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   description: The negative prompt used for the video generation.
                 promptEnhance:
-                  nullable: true
                   title: Boolean
-                  type: boolean
+                  type:
+                  - boolean
+                  - 'null'
                   description: Whether to enhance the prompt.
                 promptEnhanceInstruction:
-                  nullable: true
                   title: String
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   description: A natural language instruction used to modify the main prompt. For example, 'make it cinematic', 'add a rainbow', or 'change the subject to a cat'.
                 styleIds:
-                  nullable: true
                   title: Array of Strings
-                  type: array
+                  type:
+                  - array
+                  - 'null'
                   items:
                     type: string
                   description: Predefined styles to enhance the prompt. This accepts a list of style uuids.
                 height:
-                  nullable: true
                   title: Integer
-                  type: integer
+                  type:
+                  - integer
+                  - 'null'
                   description: Height of the output video. Acceptable values vary based on model
                 width:
-                  nullable: true
                   title: Integer
-                  type: integer
+                  type:
+                  - integer
+                  - 'null'
                   description: Width of the output video. Acceptable values vary based on model
                 duration:
-                  nullable: true
                   title: Integer
-                  type: integer
+                  type:
+                  - integer
+                  - 'null'
                   description: 'Duration of the output video in seconds. Defaults to 8 seconds if not specified. Allowed values: 4, 6, or 8. Supported on models VEO3 and VEO3FAST.'
                   default: 8
                 elements:
-                  nullable: true
                   title: Array of Element Inputs
-                  type: array
+                  type:
+                  - array
+                  - 'null'
                   items:
                     $ref: '#/components/schemas/element_input'
                   description: 'An array of elements/loras objects that will be applied sequentially to the output. Elements are only supported for Motion2.0 generations. '
@@ -344,10 +354,8 @@ paths:
                 type: object
                 properties:
                   motionVideoGenerationJob:
-                    nullable: true
                     properties:
                       generationId:
-                        nullable: false
                         title: String
                         type: string
                       apiCreditCost:
@@ -355,7 +363,9 @@ paths:
                       cost:
                         $ref: '#/components/schemas/cost'
                     title: MotionVideoGenerationOutput
-                    type: object
+                    type:
+                    - object
+                    - 'null'
               example:
                 motionVideoGenerationJob:
                   generationId: j9k0l1m2-n3o4-p5q6-rstu-vw8901234567
@@ -366,48 +376,16 @@ paths:
           description: Responses for POST /generations-text-to-video
 components:
   schemas:
-    element_input:
-      nullable: false
-      properties:
-        akUUID:
-          nullable: false
-          title: String
-          type: string
-          description: Unique identifier for element. Elements can be found from the List Elements endpoint.
-        weight:
-          nullable: true
-          title: Float
-          type: number
-          default: 1.0
-          description: Weight for the element
-      required:
-      - akUUID
-      title: element_input
-      type: object
-    public:
-      nullable: true
-      title: Boolean
-      type: boolean
-      description: Whether the generation is public or not
-    isInitImage:
-      nullable: true
-      title: Boolean
-      type: boolean
-      description: 'If it is an init image uploaded by the user. This image is uploaded from endpoint: Upload init image.'
-    apiCreditCost:
-      nullable: true
-      title: Int
-      type: integer
-      description: 'API credits cost, available for Production API users. Note: it will be deprecated. Please use the cost instead.'
-      deprecated: true
     motionStrength:
-      nullable: true
       title: Int
-      type: integer
+      type:
+      - integer
+      - 'null'
       description: The motion strength.
     cost:
-      nullable: true
-      type: object
+      type:
+      - object
+      - 'null'
       title: Cost
       description: The cost of the operation.
       properties:
@@ -420,11 +398,48 @@ components:
           - CREDITS
           - DOLLARS
           description: 'The unit of the cost. Can be CREDITS or DOLLARS. Note: DOLLARS unit only supports PAYG plan.'
-    isVariation:
-      nullable: true
+    element_input:
+      properties:
+        akUUID:
+          title: String
+          type: string
+          description: Unique identifier for element. Elements can be found from the List Elements endpoint.
+        weight:
+          title: Float
+          type:
+          - number
+          - 'null'
+          default: 1.0
+          description: Weight for the element
+      required:
+      - akUUID
+      title: element_input
+      type: object
+    public:
       title: Boolean
-      type: boolean
+      type:
+      - boolean
+      - 'null'
+      description: Whether the generation is public or not
+    isInitImage:
+      title: Boolean
+      type:
+      - boolean
+      - 'null'
+      description: 'If it is an init image uploaded by the user. This image is uploaded from endpoint: Upload init image.'
+    isVariation:
+      title: Boolean
+      type:
+      - boolean
+      - 'null'
       description: If it is a variation image.
+    apiCreditCost:
+      title: Int
+      type:
+      - integer
+      - 'null'
+      description: 'API credits cost, available for Production API users. Note: it will be deprecated. Please use the cost instead.'
+      deprecated: true
   securitySchemes:
     bearerAuth:
       type: http

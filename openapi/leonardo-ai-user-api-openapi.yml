@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Leonardo.AI 3D Model Assets User API
-  description: Upload, retrieve, and delete 3D model assets for use with Rodin and other 3D-capable workflows.
+  title: Leonardo.AI User API
+  description: Retrieve the authenticated user's profile, API key info, and remaining credit balance via /me.
   version: v1.0.0
   contact:
     name: Leonardo.AI Support
@@ -34,78 +34,78 @@ paths:
                   user_details:
                     items:
                       description: columns and relationships of "user_details"
-                      nullable: false
                       properties:
                         user:
                           description: columns and relationships of "users"
-                          nullable: true
                           properties:
                             id:
                               $ref: '#/components/schemas/uuid'
                             username:
-                              nullable: true
                               title: String
-                              type: string
+                              type:
+                              - string
+                              - 'null'
                               description: Username of the user.
                           title: users
-                          type: object
+                          type:
+                          - object
+                          - 'null'
                         tokenRenewalDate:
-                          nullable: true
                           title: timestamp
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           description: User Plan Token Renewal Date.
                         paidTokens:
-                          nullable: true
                           title: Int
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           description: Current balance of paid tokens the user has.
                         subscriptionTokens:
-                          nullable: false
                           title: Int
                           type: integer
                           description: Current balance of user plan subscription tokens the user has.
                         subscriptionGptTokens:
-                          nullable: false
                           title: Int
                           type: integer
                           description: Current balance of user plan GPT tokens the user has.
                         subscriptionModelTokens:
-                          nullable: false
                           title: Int
                           type: integer
                           description: Current balance of model training tokens the user has.
                         apiConcurrencySlots:
-                          nullable: false
                           title: Int
                           type: integer
                           description: API Concurrency Slots.
                         apiPaidTokens:
-                          nullable: true
                           title: Int
-                          type: integer
+                          type:
+                          - integer
+                          - 'null'
                           description: Current balance of API paid tokens the user has.
                         apiSubscriptionTokens:
-                          nullable: false
                           title: Int
                           type: integer
                           description: Current balance of Enterprise API subscriptions tokens the user has.
                         apiPlanTokenRenewalDate:
-                          nullable: true
                           title: timestamp
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                           description: API Plan Token Renewal Date.
                       title: user_details
                       type: object
-                    nullable: false
                     type: array
           description: Responses for GET /me
 components:
   schemas:
     uuid:
-      nullable: true
       pattern: '[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}'
       title: uuid
-      type: string
+      type:
+      - string
+      - 'null'
   securitySchemes:
     bearerAuth:
       type: http

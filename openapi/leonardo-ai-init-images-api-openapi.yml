@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Leonardo.AI 3D Model Assets Init Images API
-  description: Upload, retrieve, and delete 3D model assets for use with Rodin and other 3D-capable workflows.
+  title: Leonardo.AI Init Images API
+  description: Upload, retrieve, and delete init images used for image-to-image, canvas, and image-prompt workflows.
   version: v1.0.0
   contact:
     name: Leonardo.AI Support
@@ -30,7 +30,6 @@ paths:
             schema:
               properties:
                 extension:
-                  nullable: false
                   title: String
                   type: string
                   description: Has to be png, jpg, jpeg, or webp.
@@ -47,26 +46,31 @@ paths:
                 type: object
                 properties:
                   uploadInitImage:
-                    nullable: true
                     properties:
                       fields:
-                        nullable: true
                         title: String
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                       id:
-                        nullable: true
                         title: String
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                       key:
-                        nullable: true
                         title: String
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                       url:
-                        nullable: true
                         title: String
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                     title: InitImageUploadOutput
-                    type: object
+                    type:
+                    - object
+                    - 'null'
           description: Responses for POST /init-image
   /init-image/{id}:
     get:
@@ -92,18 +96,18 @@ paths:
                 properties:
                   init_images_by_pk:
                     description: columns and relationships of "init_images"
-                    nullable: true
                     properties:
                       createdAt:
                         $ref: '#/components/schemas/timestamp'
                       id:
                         $ref: '#/components/schemas/uuid'
                       url:
-                        nullable: false
                         title: String
                         type: string
                     title: init_images
-                    type: object
+                    type:
+                    - object
+                    - 'null'
           description: Responses for GET /init-image/{id}
     delete:
       tags:
@@ -128,12 +132,13 @@ paths:
                 properties:
                   delete_init_images_by_pk:
                     description: columns and relationships of "init_images"
-                    nullable: true
                     properties:
                       id:
                         $ref: '#/components/schemas/uuid'
                     title: init_images
-                    type: object
+                    type:
+                    - object
+                    - 'null'
           description: Responses for DELETE /init-image/{id}
   /canvas-init-image:
     post:
@@ -148,12 +153,10 @@ paths:
             schema:
               properties:
                 initExtension:
-                  nullable: false
                   title: String
                   type: string
                   description: Has to be png, jpg, jpeg, or webp.
                 maskExtension:
-                  nullable: false
                   title: String
                   type: string
                   description: Has to be png, jpg, jpeg, or webp.
@@ -171,53 +174,62 @@ paths:
                 type: object
                 properties:
                   uploadCanvasInitImage:
-                    nullable: true
                     properties:
                       initImageId:
-                        nullable: true
                         title: String
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                       initFields:
-                        nullable: true
                         title: String
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                       initKey:
-                        nullable: true
                         title: String
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                       initUrl:
-                        nullable: true
                         title: String
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                       maskImageId:
-                        nullable: true
                         title: String
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                       maskFields:
-                        nullable: true
                         title: String
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                       maskKey:
-                        nullable: true
                         title: String
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                       maskUrl:
-                        nullable: true
                         title: String
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                     title: CanvasInitImageUploadOutput
-                    type: object
+                    type:
+                    - object
+                    - 'null'
           description: Responses for POST /canvas-init-image
 components:
   schemas:
     uuid:
-      nullable: true
       pattern: '[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}'
       title: uuid
-      type: string
+      type:
+      - string
+      - 'null'
     timestamp:
       type: string
-      nullable: false
       title: timestamp
   securitySchemes:
     bearerAuth:

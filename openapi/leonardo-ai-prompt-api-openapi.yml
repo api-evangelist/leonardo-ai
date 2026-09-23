@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Leonardo.AI 3D Model Assets Prompt API
-  description: Upload, retrieve, and delete 3D model assets for use with Rodin and other 3D-capable workflows.
+  title: Leonardo.AI Prompt API
+  description: Improve user-supplied prompts with the Prompt Improvement endpoint and generate random prompts for inspiration.
   version: v1.0.0
   contact:
     name: Leonardo.AI Support
@@ -32,16 +32,13 @@ paths:
                 type: object
                 properties:
                   promptGeneration:
-                    nullable: false
                     properties:
                       prompt:
-                        nullable: false
                         title: String
                         type: string
                         description: The random prompt generated.
                         default: The random prompt generated.
                       apiCreditCost:
-                        nullable: false
                         type: integer
                         description: 'API Credits Cost for Random Prompt Generation. Available for Production API Users. Note: it will be deprecated. Please use the cost instead.'
                         default: 4
@@ -71,19 +68,20 @@ paths:
             schema:
               properties:
                 prompt:
-                  nullable: false
                   title: String
                   type: string
                   description: The prompt to improve.
                 promptInstructions:
-                  nullable: true
                   title: String
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   description: The prompt is improved based on the given instructions.
                 isVideo:
-                  type: boolean
+                  type:
+                  - boolean
+                  - 'null'
                   description: Specifies whether the prompt is for a video generation. Defaults to false (image prompt).
-                  nullable: true
                   example: true
               required:
               - prompt
@@ -98,16 +96,13 @@ paths:
                 type: object
                 properties:
                   promptGeneration:
-                    nullable: false
                     properties:
                       prompt:
-                        nullable: false
                         title: String
                         type: string
                         description: The improved prompt.
                         default: The improved prompt.
                       apiCreditCost:
-                        nullable: false
                         type: integer
                         description: 'API Credits Cost for Random Prompt Generation. Available for Production API Users. Note: it will be deprecated. Please use the cost instead.'
                         default: 4
@@ -127,8 +122,9 @@ paths:
 components:
   schemas:
     cost:
-      nullable: true
-      type: object
+      type:
+      - object
+      - 'null'
       title: Cost
       description: The cost of the operation.
       properties:

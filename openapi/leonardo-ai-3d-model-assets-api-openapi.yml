@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   title: Leonardo.AI 3D Model Assets API
   description: Upload, retrieve, and delete 3D model assets for use with Rodin and other 3D-capable workflows.
@@ -31,13 +31,13 @@ paths:
             schema:
               properties:
                 modelExtension:
-                  nullable: false
                   title: String
                   type: string
                 name:
-                  nullable: true
                   title: String
-                  type: string
+                  type:
+                  - string
+                  - 'null'
               type: object
         description: Query parameters can also be provided in the request body as a JSON object
         required: false
@@ -48,26 +48,31 @@ paths:
               schema:
                 properties:
                   uploadModelAsset:
-                    nullable: true
                     properties:
                       modelFields:
-                        nullable: true
                         title: String
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                       modelId:
-                        nullable: true
                         title: String
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                       modelKey:
-                        nullable: true
                         title: String
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                       modelUrl:
-                        nullable: true
                         title: String
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                     title: ModelAssetUploadOutput
-                    type: object
+                    type:
+                    - object
+                    - 'null'
           description: Responses for POST /api/rest/v1/models-3d/upload
   /models-3d/user/{userId}:
     get:
@@ -112,27 +117,25 @@ paths:
                   model_assets:
                     items:
                       description: columns and relationships of "model_assets"
-                      nullable: false
                       properties:
                         createdAt:
                           $ref: '#/components/schemas/timestamp'
                         id:
                           $ref: '#/components/schemas/uuid'
                         meshUrl:
-                          nullable: false
                           title: String
                           type: string
                         name:
-                          nullable: true
                           title: String
-                          type: string
+                          type:
+                          - string
+                          - 'null'
                         updatedAt:
                           $ref: '#/components/schemas/timestamp'
                         userId:
                           $ref: '#/components/schemas/uuid'
                       title: model_assets
                       type: object
-                    nullable: false
                     type: array
           description: Responses for GET /api/rest/v1/models-3d/user/{userId}
   /models-3d/{id}:
@@ -178,26 +181,27 @@ paths:
                 properties:
                   model_assets_by_pk:
                     description: columns and relationships of "model_assets"
-                    nullable: true
                     properties:
                       createdAt:
                         $ref: '#/components/schemas/timestamp'
                       id:
                         $ref: '#/components/schemas/uuid'
                       meshUrl:
-                        nullable: false
                         title: String
                         type: string
                       name:
-                        nullable: true
                         title: String
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                       updatedAt:
                         $ref: '#/components/schemas/timestamp'
                       userId:
                         $ref: '#/components/schemas/uuid'
                     title: model_assets
-                    type: object
+                    type:
+                    - object
+                    - 'null'
           description: Responses for GET /api/rest/v1/models-3d/{id}
     delete:
       tags:
@@ -231,23 +235,24 @@ paths:
                 properties:
                   delete_model_assets_by_pk:
                     description: columns and relationships of "model_assets"
-                    nullable: true
                     properties:
                       id:
                         $ref: '#/components/schemas/uuid'
                     title: model_assets
-                    type: object
+                    type:
+                    - object
+                    - 'null'
           description: Responses for DELETE /api/rest/v1/models-3d/{id}
 components:
   schemas:
     uuid:
-      nullable: true
       pattern: '[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}'
       title: uuid
-      type: string
+      type:
+      - string
+      - 'null'
     timestamp:
       type: string
-      nullable: false
       title: timestamp
   securitySchemes:
     bearerAuth:
