@@ -703,35 +703,63 @@ paths:
           description: Responses for GET /generations/user/{userId}
 components:
   schemas:
-    float8:
-      type:
-      - number
-      - 'null'
-      title: float8
     motionStrength:
       title: Int
       type:
       - integer
       - 'null'
       description: The motion strength.
-    motionModel:
-      title: String
+    float8:
       type:
-      - string
+      - number
       - 'null'
-      description: The name of the motion model.
-    promptMagicArg:
+      title: float8
+    job_status:
+      type: string
+      title: job_status
+      enum:
+      - PENDING
+      - COMPLETE
+      - FAILED
+      description: The status of the current task.
+    user_elements_input:
+      properties:
+        userLoraId:
+          title: Int
+          type:
+          - number
+          - 'null'
+          description: Unique identifier for user custom element.
+        weight:
+          title: Float
+          type:
+          - number
+          - 'null'
+          description: Weight for the element
+      title: user_elements_input
+      type: object
+    imageToVideo:
       title: Boolean
       type:
       - boolean
       - 'null'
-      description: Enable to use Prompt Magic.
-    photoRealStrengthRes:
-      title: Float
+      description: If it is an image to video generation.
+    cost:
       type:
-      - number
+      - object
       - 'null'
-      description: Depth of field of photoReal used. 0.55 is low, 0.5 is medium, and 0.45 is high. Default is 0.55.
+      title: Cost
+      description: The cost of the operation.
+      properties:
+        amount:
+          type: string
+          description: The amount of the cost.
+        unit:
+          type: string
+          enum:
+          - CREDITS
+          - DOLLARS
+          description: 'The unit of the cost. Can be CREDITS or DOLLARS. Note: DOLLARS unit only supports PAYG plan.'
     lora:
       type: object
       properties:
@@ -783,32 +811,12 @@ components:
         __typename:
           type: string
           description: Type name for introspection purposes
-    controlnet_type:
-      type: string
-      title: controlnet_type
-      enum:
-      - POSE
-      - CANNY
-      - DEPTH
-      description: This parameter will be deprecated in September 2024. Please use the controlnets array instead.
-      deprecated: true
-    bigint:
-      type:
-      - integer
-      - 'null'
-      title: bigint
-    promptMagicStrengthRes:
-      title: Float
-      type:
-      - number
-      - 'null'
-      description: Strength of prompt magic used.
-    promptMagicVersionRes:
+    motionModel:
       title: String
       type:
       - string
       - 'null'
-      description: Version of prompt magic used.
+      description: The name of the motion model.
     sd_versions:
       type: string
       title: sd_versions
@@ -825,65 +833,47 @@ components:
       - FLUX_DEV
       - KINO_2_0
       description: The base version of stable diffusion to use if not using a custom model. v1_5 is 1.5, v2 is 2.1, if not specified it will default to v1_5. Also includes SDXL and SDXL Lightning models
-    uuid:
-      pattern: '[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}'
-      title: uuid
+    promptMagicRes:
+      title: Boolean
+      type:
+      - boolean
+      - 'null'
+      description: If prompt magic was used.
+    bigint:
+      type:
+      - integer
+      - 'null'
+      title: bigint
+    motionMP4URL:
+      title: String
       type:
       - string
       - 'null'
-    promptMagicStrengthArg:
+      description: The URL of the motion MP4.
+    promptMagicVersionRes:
+      title: String
+      type:
+      - string
+      - 'null'
+      description: Version of prompt magic used.
+    photoRealStrengthRes:
       title: Float
       type:
       - number
       - 'null'
-      description: Strength of prompt magic. Must be a float between 0.1 and 1.0
-    user_elements_input:
-      properties:
-        userLoraId:
-          title: Int
-          type:
-          - number
-          - 'null'
-          description: Unique identifier for user custom element.
-        weight:
-          title: Float
-          type:
-          - number
-          - 'null'
-          description: Weight for the element
-      title: user_elements_input
-      type: object
-    element_input:
-      properties:
-        akUUID:
-          title: String
-          type: string
-          description: Unique identifier for element. Elements can be found from the List Elements endpoint.
-        weight:
-          title: Float
-          type:
-          - number
-          - 'null'
-          default: 1.0
-          description: Weight for the element
-      required:
-      - akUUID
-      title: element_input
-      type: object
-    timestamp:
-      type: string
-      title: timestamp
-    canvasRequestType:
+      description: Depth of field of photoReal used. 0.55 is low, 0.5 is medium, and 0.45 is high. Default is 0.55.
+    photoRealRes:
+      title: Boolean
+      type:
+      - boolean
+      - 'null'
+      description: If photoReal feature was used.
+    photoRealVersion:
+      title: String
       type:
       - string
       - 'null'
-      title: canvasRequestType
-      enum:
-      - INPAINT
-      - OUTPAINT
-      - SKETCH2IMG
-      - IMG2IMG
-      description: The type of request for the Canvas Editor.
+      description: The version of photoReal to use. Must be v1 or v2.
     VARIATION_TYPE:
       type: string
       title: VARIATION_TYPE
@@ -894,96 +884,11 @@ components:
       - UNZOOM
       - NOBG
       description: The type of variation.
-    job_status:
-      type: string
-      title: job_status
-      enum:
-      - PENDING
-      - COMPLETE
-      - FAILED
-      description: The status of the current task.
-    cost:
-      type:
-      - object
-      - 'null'
-      title: Cost
-      description: The cost of the operation.
-      properties:
-        amount:
-          type: string
-          description: The amount of the cost.
-        unit:
-          type: string
-          enum:
-          - CREDITS
-          - DOLLARS
-          description: 'The unit of the cost. Can be CREDITS or DOLLARS. Note: DOLLARS unit only supports PAYG plan.'
-    photoRealArg:
-      title: Boolean
-      type:
-      - boolean
-      - 'null'
-      description: Enable the photoReal feature. Requires enabling alchemy and unspecifying modelId (for photoRealVersion V1).
-    promptMagicRes:
-      title: Boolean
-      type:
-      - boolean
-      - 'null'
-      description: If prompt magic was used.
-    sd_generation_ultra:
-      title: Boolean
-      type:
-      - boolean
-      - 'null'
-      description: If ultra generation mode was used.
-    photoRealVersion:
-      title: String
-      type:
-      - string
-      - 'null'
-      description: The version of photoReal to use. Must be v1 or v2.
-    promptMagicVersionArg:
-      title: String
-      type:
-      - string
-      - 'null'
-      description: 'Prompt magic version v2 or v3, for use when promptMagic: true'
-    sd_generation_schedulers:
-      type: string
-      title: sd_generation_schedulers
-      enum:
-      - KLMS
-      - EULER_ANCESTRAL_DISCRETE
-      - EULER_DISCRETE
-      - DDIM
-      - DPM_SOLVER
-      - PNDM
-      - LEONARDO
-      description: The scheduler to generate images with. Defaults to EULER_DISCRETE if not specified.
-    photoRealStrengthArg:
-      title: Float
+    numeric:
       type:
       - number
       - 'null'
-      description: Depth of field of photoReal. Must be 0.55 for low, 0.5 for medium, or 0.45 for high. Defaults to 0.55 if not specified.
-    imageToVideo:
-      title: Boolean
-      type:
-      - boolean
-      - 'null'
-      description: If it is an image to video generation.
-    motion:
-      title: Boolean
-      type:
-      - boolean
-      - 'null'
-      description: If generation is of motion type.
-    motionMP4URL:
-      title: String
-      type:
-      - string
-      - 'null'
-      description: The URL of the motion MP4.
+      title: numeric
     seed:
       type:
       - integer
@@ -1064,17 +969,112 @@ components:
       - UNPROCESSED
       description: The style to generate images with. When photoReal is enabled, refer to the Guide section for a full list. When alchemy is disabled, use LEONARDO or NONE. When alchemy is enabled, use ANIME, CREATIVE, DYNAMIC, ENVIRONMENT, GENERAL, ILLUSTRATION, PHOTOGRAPHY, RAYTRACED, RENDER_3D, SKETCH_BW, SKETCH_COLOR, or NONE.
       default: DYNAMIC
-    photoRealRes:
+    photoRealArg:
       title: Boolean
       type:
       - boolean
       - 'null'
-      description: If photoReal feature was used.
-    numeric:
+      description: Enable the photoReal feature. Requires enabling alchemy and unspecifying modelId (for photoRealVersion V1).
+    canvasRequestType:
+      type:
+      - string
+      - 'null'
+      title: canvasRequestType
+      enum:
+      - INPAINT
+      - OUTPAINT
+      - SKETCH2IMG
+      - IMG2IMG
+      description: The type of request for the Canvas Editor.
+    photoRealStrengthArg:
+      title: Float
       type:
       - number
       - 'null'
-      title: numeric
+      description: Depth of field of photoReal. Must be 0.55 for low, 0.5 for medium, or 0.45 for high. Defaults to 0.55 if not specified.
+    promptMagicArg:
+      title: Boolean
+      type:
+      - boolean
+      - 'null'
+      description: Enable to use Prompt Magic.
+    element_input:
+      properties:
+        akUUID:
+          title: String
+          type: string
+          description: Unique identifier for element. Elements can be found from the List Elements endpoint.
+        weight:
+          title: Float
+          type:
+          - number
+          - 'null'
+          default: 1.0
+          description: Weight for the element
+      required:
+      - akUUID
+      title: element_input
+      type: object
+    motion:
+      title: Boolean
+      type:
+      - boolean
+      - 'null'
+      description: If generation is of motion type.
+    uuid:
+      pattern: '[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}'
+      title: uuid
+      type:
+      - string
+      - 'null'
+    promptMagicStrengthArg:
+      title: Float
+      type:
+      - number
+      - 'null'
+      description: Strength of prompt magic. Must be a float between 0.1 and 1.0
+    sd_generation_schedulers:
+      type: string
+      title: sd_generation_schedulers
+      enum:
+      - KLMS
+      - EULER_ANCESTRAL_DISCRETE
+      - EULER_DISCRETE
+      - DDIM
+      - DPM_SOLVER
+      - PNDM
+      - LEONARDO
+      description: The scheduler to generate images with. Defaults to EULER_DISCRETE if not specified.
+    timestamp:
+      type: string
+      title: timestamp
+    controlnet_type:
+      type: string
+      title: controlnet_type
+      enum:
+      - POSE
+      - CANNY
+      - DEPTH
+      description: This parameter will be deprecated in September 2024. Please use the controlnets array instead.
+      deprecated: true
+    sd_generation_ultra:
+      title: Boolean
+      type:
+      - boolean
+      - 'null'
+      description: If ultra generation mode was used.
+    promptMagicVersionArg:
+      title: String
+      type:
+      - string
+      - 'null'
+      description: 'Prompt magic version v2 or v3, for use when promptMagic: true'
+    promptMagicStrengthRes:
+      title: Float
+      type:
+      - number
+      - 'null'
+      description: Strength of prompt magic used.
   securitySchemes:
     bearerAuth:
       type: http

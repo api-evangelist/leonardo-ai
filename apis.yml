@@ -39,7 +39,7 @@ kind: contract
 access: 3rd-Party
 tags:
 - Artificial Intelligence
-- Image-Generation
+- Image Generation
 - Video Generation
 - Generative AI
 - Creative
@@ -56,6 +56,7 @@ tags_raw:
 - 3D
 - Diffusion
 - Canva
+- Image-Generation
 apis:
 - aid: leonardo-ai:leonardo-ai-3d-model-assets-api
   name: Leonardo.AI 3D Model Assets API

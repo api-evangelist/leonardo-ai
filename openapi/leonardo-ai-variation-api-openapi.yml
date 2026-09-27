@@ -363,6 +363,12 @@ paths:
           description: Responses for GET /motion-variations/{id}
 components:
   schemas:
+    MOTION_RESOLUTION:
+      type: string
+      title: MOTION_RESOLUTION
+      enum:
+      - RESOLUTION_720
+      description: The resolution of the upscaled video. RESOLUTION_720 is the only option for now.
     job_status:
       type: string
       title: job_status
@@ -371,18 +377,15 @@ components:
       - COMPLETE
       - FAILED
       description: The status of the current task.
-    MOTION_RESOLUTION:
-      type: string
-      title: MOTION_RESOLUTION
-      enum:
-      - RESOLUTION_720
-      description: The resolution of the upscaled video. RESOLUTION_720 is the only option for now.
     uuid:
       pattern: '[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}'
       title: uuid
       type:
       - string
       - 'null'
+    timestamp:
+      type: string
+      title: timestamp
     cost:
       type:
       - object
@@ -408,9 +411,6 @@ components:
       - ARTISTIC
       - REALISTIC
       description: The ultra style to upscale images using universal upscaler with. Can not be used with upscalerStyle.
-    timestamp:
-      type: string
-      title: timestamp
     universal_upscaler_style:
       type:
       - string
@@ -423,12 +423,6 @@ components:
       - 2D ART & ILLUSTRATION
       - CG ART & GAME ASSETS
       description: The style to upscale images using universal upscaler with. Can not be used with ultraUpscaleStyle.
-    MOTION_VARIATION_TYPE:
-      type: string
-      title: MOTION_VARIATION_TYPE
-      enum:
-      - UPSCALE
-      description: The type of motion variation.
     VARIATION_TYPE:
       type: string
       title: VARIATION_TYPE
@@ -439,6 +433,12 @@ components:
       - UNZOOM
       - NOBG
       description: The type of variation.
+    MOTION_VARIATION_TYPE:
+      type: string
+      title: MOTION_VARIATION_TYPE
+      enum:
+      - UPSCALE
+      description: The type of motion variation.
   securitySchemes:
     bearerAuth:
       type: http
