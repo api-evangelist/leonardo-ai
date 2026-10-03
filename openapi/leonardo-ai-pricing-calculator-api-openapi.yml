@@ -299,16 +299,6 @@ components:
       title: Int
       type: integer
       description: The number of images to generate. Must be between 1 and 8. If either width or height is over 768, must be between 1 and 4.
-    promptMagicStrengthArg:
-      title: Float
-      type:
-      - number
-      - 'null'
-      description: Strength of prompt magic. Must be a float between 0.1 and 1.0
-    imageHeight:
-      title: Int
-      type: integer
-      description: 'The input height of the images. Must be between 32 and 1024 and be a multiple of 8. Note: Input resolution is not always the same as output resolution due to upscaling from other features'
     pricingCalculatorServices:
       type: string
       title: pricingCalculatorServices
@@ -324,18 +314,22 @@ components:
       - UNIVERSAL_UPSCALER
       - UNIVERSAL_UPSCALER_ULTRA
       description: The services to be chosen for calculating the API credit cost.
+    imageHeight:
+      title: Int
+      type: integer
+      description: 'The input height of the images. Must be between 32 and 1024 and be a multiple of 8. Note: Input resolution is not always the same as output resolution due to upscaling from other features'
+    promptMagicStrengthArg:
+      title: Float
+      type:
+      - number
+      - 'null'
+      description: Strength of prompt magic. Must be a float between 0.1 and 1.0
     photoRealStrengthArg:
       title: Float
       type:
       - number
       - 'null'
       description: Depth of field of photoReal. Must be 0.55 for low, 0.5 for medium, or 0.45 for high. Defaults to 0.55 if not specified.
-    promptMagicArg:
-      title: Boolean
-      type:
-      - boolean
-      - 'null'
-      description: Enable to use Prompt Magic.
     photoRealVersion:
       title: String
       type:
@@ -348,6 +342,12 @@ components:
       - string
       - 'null'
       description: 'Prompt magic version v2 or v3, for use when promptMagic: true'
+    promptMagicArg:
+      title: Boolean
+      type:
+      - boolean
+      - 'null'
+      description: Enable to use Prompt Magic.
   securitySchemes:
     bearerAuth:
       type: http

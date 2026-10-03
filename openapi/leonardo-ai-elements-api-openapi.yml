@@ -395,33 +395,6 @@ components:
         __typename:
           type: string
           description: Type name for introspection purposes
-    job_status:
-      type: string
-      title: job_status
-      enum:
-      - PENDING
-      - COMPLETE
-      - FAILED
-      description: The status of the current task.
-    timestamp:
-      type: string
-      title: timestamp
-    cost:
-      type:
-      - object
-      - 'null'
-      title: Cost
-      description: The cost of the operation.
-      properties:
-        amount:
-          type: string
-          description: The amount of the cost.
-        unit:
-          type: string
-          enum:
-          - CREDITS
-          - DOLLARS
-          description: 'The unit of the cost. Can be CREDITS or DOLLARS. Note: DOLLARS unit only supports PAYG plan.'
     sd_versions:
       type: string
       title: sd_versions
@@ -438,6 +411,33 @@ components:
       - FLUX_DEV
       - KINO_2_0
       description: The base version of stable diffusion to use if not using a custom model. v1_5 is 1.5, v2 is 2.1, if not specified it will default to v1_5. Also includes SDXL and SDXL Lightning models
+    cost:
+      type:
+      - object
+      - 'null'
+      title: Cost
+      description: The cost of the operation.
+      properties:
+        amount:
+          type: string
+          description: The amount of the cost.
+        unit:
+          type: string
+          enum:
+          - CREDITS
+          - DOLLARS
+          description: 'The unit of the cost. Can be CREDITS or DOLLARS. Note: DOLLARS unit only supports PAYG plan.'
+    timestamp:
+      type: string
+      title: timestamp
+    job_status:
+      type: string
+      title: job_status
+      enum:
+      - PENDING
+      - COMPLETE
+      - FAILED
+      description: The status of the current task.
   securitySchemes:
     bearerAuth:
       type: http
