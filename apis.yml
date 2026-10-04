@@ -37,6 +37,9 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/leonardo-ai.png
 kind: contract
 access: 3rd-Party
+x-docs-platform: readme
+x-docs-platform-confidence: high
+x-docs-platform-checked: 2026-10-03
 tags:
 - Artificial Intelligence
 - Image Generation
