@@ -631,60 +631,31 @@ paths:
                       edges: []
 components:
   schemas:
-    ApiError:
-      type: object
-      title: ApiError
-      description: API error response structure
-      required:
-      - message
+    PromptModerationFailureReason:
+      type:
+      - object
+      - 'null'
+      title: PromptModerationFailureReason
+      description: Details about a generation failure due to prompt moderation
       properties:
+        type:
+          type: string
+          enum:
+          - PROMPT_MODERATION_BLOCKED
+          description: The type of failure - PROMPT_MODERATION_BLOCKED indicates the prompt was blocked by content moderation
+          example: PROMPT_MODERATION_BLOCKED
         message:
           type: string
-          description: Error message
-        path:
-          type: array
-          items:
-            type: string
-          description: Path to the field that caused the error
-        locations:
-          type: array
-          items:
-            type: object
-            properties:
-              column:
-                type: integer
-              line:
-                type: integer
-          description: Location information for the error
-        extensions:
-          type: object
-          description: Additional error details and context
-    BlueprintExecutionGenerationStatus:
-      type: string
-      title: BlueprintExecutionGenerationStatus
-      enum:
-      - PENDING
-      - COMPLETED
-      - FAILED
-      description: The status of a Blueprint Execution Generation
-    totalCount:
-      type: integer
-      description: Total number of results available
-    BlueprintExecutionStatus:
-      type: string
-      title: BlueprintExecutionStatus
-      enum:
-      - PENDING
-      - QUEUED
-      - COMPLETED
-      - FAILED
-      description: The status of a Blueprint Execution.
-    uuid:
-      pattern: '[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}'
-      title: uuid
-      type:
-      - string
-      - 'null'
+          description: Human-readable message describing the failure
+          example: Generation blocked due to prompt moderation
+        affectedOutputCount:
+          type: integer
+          description: Number of outputs affected by this failure
+          example: 1
+      required:
+      - type
+      - message
+      - affectedOutputCount
     BlueprintExecution:
       type: object
       title: BlueprintExecution
@@ -715,6 +686,12 @@ components:
       - inputs
       - public
       - createdAt
+    public:
+      title: Boolean
+      type:
+      - boolean
+      - 'null'
+      description: Whether the generation is public or not
     BlueprintVersion:
       type: object
       title: BlueprintVersion
@@ -803,6 +780,31 @@ components:
               example: eyJjcmVhdGVkQXQiOiIyMDI1LTExLTI3VDA1OjEzOjIxLjg5NloiLCJha1VVSUQiOiI5NTZlOTU2NC0xOWY3LTQ5NjgtYjU2ZC0wNWMyYzU2NzcyNmYifQ==
           additionalProperties: false
       additionalProperties: false
+    timestamp:
+      type: string
+      title: timestamp
+    totalCount:
+      type: integer
+      description: Total number of results available
+    pageInfo:
+      type: object
+      title: PageInfo
+      description: Pagination information following the Relay cursor pagination spec
+      properties:
+        hasNextPage:
+          type: boolean
+          description: Whether there is a next page
+        hasPreviousPage:
+          type: boolean
+          description: Whether there is a previous page
+        startCursor:
+          allOf:
+          - $ref: '#/components/schemas/Cursor'
+          description: Cursor for the first item in the result set
+        endCursor:
+          allOf:
+          - $ref: '#/components/schemas/Cursor'
+          description: Cursor for the last item in the result set
     BlueprintExecutionGeneration:
       type: object
       title: BlueprintExecutionGeneration
@@ -826,6 +828,64 @@ components:
       - akUUID
       - status
       - generationId
+    NodeInput:
+      type: object
+      title: NodeInput
+      description: A node input object for customizing a Blueprint Execution
+      required:
+      - nodeId
+      - settingName
+      - value
+      properties:
+        nodeId:
+          type: string
+          format: uuid
+          description: The ID of the node in the Blueprint
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+        settingName:
+          type: string
+          enum:
+          - text
+          - imageUrl
+          - textVariables
+          description: 'The type of setting to replace:
+
+            - `text`: Direct text replacement (value is a string)
+
+            - `imageUrl`: Image URL input (value is a URL string)
+
+            - `textVariables`: Text with placeholder variables (value is an array of TextVariable)'
+          example: text
+        value:
+          oneOf:
+          - type: string
+            description: String value. Use for settingName='text' (direct text) or settingName='imageUrl' (image URL)
+          - type: array
+            items:
+              $ref: '#/components/schemas/TextVariable'
+            description: Array of TextVariable objects. Use only for settingName='textVariables' to replace {{placeholders}} in the Blueprint
+          description: 'The replacement value. Type depends on settingName:
+
+            - `text`: string (the full text)
+
+            - `imageUrl`: string (the image URL)
+
+            - `textVariables`: array of TextVariable objects'
+          example: A futuristic cityscape at sunset
+    BlueprintExecutionGenerationStatus:
+      type: string
+      title: BlueprintExecutionGenerationStatus
+      enum:
+      - PENDING
+      - COMPLETED
+      - FAILED
+      description: The status of a Blueprint Execution Generation
+    uuid:
+      pattern: '[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}'
+      title: uuid
+      type:
+      - string
+      - 'null'
     TextVariable:
       type: object
       title: TextVariable
@@ -842,19 +902,34 @@ components:
           type: string
           description: The value to replace the placeholder with
           example: Luna
-    BlueprintExecutionGenerationEdge:
+    ApiError:
       type: object
-      title: BlueprintExecutionGenerationEdge
-      description: An edge containing a Blueprint Execution Generation node
-      properties:
-        cursor:
-          $ref: '#/components/schemas/Cursor'
-          description: Cursor for this edge, used for pagination
-        node:
-          $ref: '#/components/schemas/BlueprintExecutionGeneration'
+      title: ApiError
+      description: API error response structure
       required:
-      - cursor
-      - node
+      - message
+      properties:
+        message:
+          type: string
+          description: Error message
+        path:
+          type: array
+          items:
+            type: string
+          description: Path to the field that caused the error
+        locations:
+          type: array
+          items:
+            type: object
+            properties:
+              column:
+                type: integer
+              line:
+                type: integer
+          description: Location information for the error
+        extensions:
+          type: object
+          description: Additional error details and context
     bigint:
       type:
       - integer
@@ -910,13 +985,19 @@ components:
           type: boolean
           description: Whether this is an official Blueprint
           example: true
-    timestamp:
-      type: string
-      title: timestamp
-    Cursor:
-      type: string
-      title: Cursor
-      description: An opaque cursor used for pagination
+    BlueprintExecutionGenerationEdge:
+      type: object
+      title: BlueprintExecutionGenerationEdge
+      description: An edge containing a Blueprint Execution Generation node
+      properties:
+        cursor:
+          $ref: '#/components/schemas/Cursor'
+          description: Cursor for this edge, used for pagination
+        node:
+          $ref: '#/components/schemas/BlueprintExecutionGeneration'
+      required:
+      - cursor
+      - node
     BlueprintExecutionGenerationsConnection:
       type: object
       title: BlueprintExecutionGenerationsConnection
@@ -932,100 +1013,19 @@ components:
       required:
       - pageInfo
       - edges
-    public:
-      title: Boolean
-      type:
-      - boolean
-      - 'null'
-      description: Whether the generation is public or not
-    NodeInput:
-      type: object
-      title: NodeInput
-      description: A node input object for customizing a Blueprint Execution
-      required:
-      - nodeId
-      - settingName
-      - value
-      properties:
-        nodeId:
-          type: string
-          format: uuid
-          description: The ID of the node in the Blueprint
-          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
-        settingName:
-          type: string
-          enum:
-          - text
-          - imageUrl
-          - textVariables
-          description: 'The type of setting to replace:
-
-            - `text`: Direct text replacement (value is a string)
-
-            - `imageUrl`: Image URL input (value is a URL string)
-
-            - `textVariables`: Text with placeholder variables (value is an array of TextVariable)'
-          example: text
-        value:
-          oneOf:
-          - type: string
-            description: String value. Use for settingName='text' (direct text) or settingName='imageUrl' (image URL)
-          - type: array
-            items:
-              $ref: '#/components/schemas/TextVariable'
-            description: Array of TextVariable objects. Use only for settingName='textVariables' to replace {{placeholders}} in the Blueprint
-          description: 'The replacement value. Type depends on settingName:
-
-            - `text`: string (the full text)
-
-            - `imageUrl`: string (the image URL)
-
-            - `textVariables`: array of TextVariable objects'
-          example: A futuristic cityscape at sunset
-    PromptModerationFailureReason:
-      type:
-      - object
-      - 'null'
-      title: PromptModerationFailureReason
-      description: Details about a generation failure due to prompt moderation
-      properties:
-        type:
-          type: string
-          enum:
-          - PROMPT_MODERATION_BLOCKED
-          description: The type of failure - PROMPT_MODERATION_BLOCKED indicates the prompt was blocked by content moderation
-          example: PROMPT_MODERATION_BLOCKED
-        message:
-          type: string
-          description: Human-readable message describing the failure
-          example: Generation blocked due to prompt moderation
-        affectedOutputCount:
-          type: integer
-          description: Number of outputs affected by this failure
-          example: 1
-      required:
-      - type
-      - message
-      - affectedOutputCount
-    pageInfo:
-      type: object
-      title: PageInfo
-      description: Pagination information following the Relay cursor pagination spec
-      properties:
-        hasNextPage:
-          type: boolean
-          description: Whether there is a next page
-        hasPreviousPage:
-          type: boolean
-          description: Whether there is a previous page
-        startCursor:
-          allOf:
-          - $ref: '#/components/schemas/Cursor'
-          description: Cursor for the first item in the result set
-        endCursor:
-          allOf:
-          - $ref: '#/components/schemas/Cursor'
-          description: Cursor for the last item in the result set
+    BlueprintExecutionStatus:
+      type: string
+      title: BlueprintExecutionStatus
+      enum:
+      - PENDING
+      - QUEUED
+      - COMPLETED
+      - FAILED
+      description: The status of a Blueprint Execution.
+    Cursor:
+      type: string
+      title: Cursor
+      description: An opaque cursor used for pagination
   securitySchemes:
     bearerAuth:
       type: http

@@ -319,28 +319,6 @@ paths:
           description: Responses for GET /api/rest/v1/platformModels
 components:
   schemas:
-    uuid:
-      pattern: '[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}'
-      title: uuid
-      type:
-      - string
-      - 'null'
-    sd_versions:
-      type: string
-      title: sd_versions
-      enum:
-      - v1_5
-      - v2
-      - v3
-      - SDXL_0_8
-      - SDXL_0_9
-      - SDXL_1_0
-      - SDXL_LIGHTNING
-      - PHOENIX
-      - FLUX
-      - FLUX_DEV
-      - KINO_2_0
-      description: The base version of stable diffusion to use if not using a custom model. v1_5 is 1.5, v2 is 2.1, if not specified it will default to v1_5. Also includes SDXL and SDXL Lightning models
     custom_model_type:
       type: string
       default: GENERAL
@@ -361,25 +339,25 @@ components:
       - UI_ELEMENTS
       - VECTOR
       description: The category the most accurately reflects the model.
-    cost:
-      type:
-      - object
-      - 'null'
-      title: Cost
-      description: The cost of the operation.
-      properties:
-        amount:
-          type: string
-          description: The amount of the cost.
-        unit:
-          type: string
-          enum:
-          - CREDITS
-          - DOLLARS
-          description: 'The unit of the cost. Can be CREDITS or DOLLARS. Note: DOLLARS unit only supports PAYG plan.'
     timestamp:
       type: string
       title: timestamp
+    sd_versions:
+      type: string
+      title: sd_versions
+      enum:
+      - v1_5
+      - v2
+      - v3
+      - SDXL_0_8
+      - SDXL_0_9
+      - SDXL_1_0
+      - SDXL_LIGHTNING
+      - PHOENIX
+      - FLUX
+      - FLUX_DEV
+      - KINO_2_0
+      description: The base version of stable diffusion to use if not using a custom model. v1_5 is 1.5, v2 is 2.1, if not specified it will default to v1_5. Also includes SDXL and SDXL Lightning models
     strength:
       type: string
       title: strength
@@ -398,6 +376,28 @@ components:
       - COMPLETE
       - FAILED
       description: The status of the current task.
+    cost:
+      type:
+      - object
+      - 'null'
+      title: Cost
+      description: The cost of the operation.
+      properties:
+        amount:
+          type: string
+          description: The amount of the cost.
+        unit:
+          type: string
+          enum:
+          - CREDITS
+          - DOLLARS
+          description: 'The unit of the cost. Can be CREDITS or DOLLARS. Note: DOLLARS unit only supports PAYG plan.'
+    uuid:
+      pattern: '[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}'
+      title: uuid
+      type:
+      - string
+      - 'null'
   securitySchemes:
     bearerAuth:
       type: http

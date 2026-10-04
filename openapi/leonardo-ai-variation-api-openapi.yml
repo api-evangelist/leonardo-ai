@@ -369,28 +369,16 @@ components:
       enum:
       - RESOLUTION_720
       description: The resolution of the upscaled video. RESOLUTION_720 is the only option for now.
-    uuid:
-      pattern: '[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}'
-      title: uuid
-      type:
-      - string
-      - 'null'
-    cost:
-      type:
-      - object
-      - 'null'
-      title: Cost
-      description: The cost of the operation.
-      properties:
-        amount:
-          type: string
-          description: The amount of the cost.
-        unit:
-          type: string
-          enum:
-          - CREDITS
-          - DOLLARS
-          description: 'The unit of the cost. Can be CREDITS or DOLLARS. Note: DOLLARS unit only supports PAYG plan.'
+    VARIATION_TYPE:
+      type: string
+      title: VARIATION_TYPE
+      enum:
+      - OUTPAINT
+      - INPAINT
+      - UPSCALE
+      - UNZOOM
+      - NOBG
+      description: The type of variation.
     timestamp:
       type: string
       title: timestamp
@@ -400,6 +388,15 @@ components:
       enum:
       - UPSCALE
       description: The type of motion variation.
+    universal_upscaler_ultra_style:
+      type:
+      - string
+      - 'null'
+      title: universal_upscaler_ultra_style
+      enum:
+      - ARTISTIC
+      - REALISTIC
+      description: The ultra style to upscale images using universal upscaler with. Can not be used with upscalerStyle.
     universal_upscaler_style:
       type:
       - string
@@ -420,25 +417,28 @@ components:
       - COMPLETE
       - FAILED
       description: The status of the current task.
-    universal_upscaler_ultra_style:
+    cost:
+      type:
+      - object
+      - 'null'
+      title: Cost
+      description: The cost of the operation.
+      properties:
+        amount:
+          type: string
+          description: The amount of the cost.
+        unit:
+          type: string
+          enum:
+          - CREDITS
+          - DOLLARS
+          description: 'The unit of the cost. Can be CREDITS or DOLLARS. Note: DOLLARS unit only supports PAYG plan.'
+    uuid:
+      pattern: '[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}'
+      title: uuid
       type:
       - string
       - 'null'
-      title: universal_upscaler_ultra_style
-      enum:
-      - ARTISTIC
-      - REALISTIC
-      description: The ultra style to upscale images using universal upscaler with. Can not be used with upscalerStyle.
-    VARIATION_TYPE:
-      type: string
-      title: VARIATION_TYPE
-      enum:
-      - OUTPAINT
-      - INPAINT
-      - UPSCALE
-      - UNZOOM
-      - NOBG
-      description: The type of variation.
   securitySchemes:
     bearerAuth:
       type: http
