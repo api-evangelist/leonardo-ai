@@ -363,60 +363,12 @@ paths:
           description: Responses for GET /motion-variations/{id}
 components:
   schemas:
-    MOTION_RESOLUTION:
-      type: string
-      title: MOTION_RESOLUTION
-      enum:
-      - RESOLUTION_720
-      description: The resolution of the upscaled video. RESOLUTION_720 is the only option for now.
-    VARIATION_TYPE:
-      type: string
-      title: VARIATION_TYPE
-      enum:
-      - OUTPAINT
-      - INPAINT
-      - UPSCALE
-      - UNZOOM
-      - NOBG
-      description: The type of variation.
-    timestamp:
-      type: string
-      title: timestamp
     MOTION_VARIATION_TYPE:
       type: string
       title: MOTION_VARIATION_TYPE
       enum:
       - UPSCALE
       description: The type of motion variation.
-    universal_upscaler_ultra_style:
-      type:
-      - string
-      - 'null'
-      title: universal_upscaler_ultra_style
-      enum:
-      - ARTISTIC
-      - REALISTIC
-      description: The ultra style to upscale images using universal upscaler with. Can not be used with upscalerStyle.
-    universal_upscaler_style:
-      type:
-      - string
-      - 'null'
-      default: GENERAL
-      title: universal_upscaler_style
-      enum:
-      - GENERAL
-      - CINEMATIC
-      - 2D ART & ILLUSTRATION
-      - CG ART & GAME ASSETS
-      description: The style to upscale images using universal upscaler with. Can not be used with ultraUpscaleStyle.
-    job_status:
-      type: string
-      title: job_status
-      enum:
-      - PENDING
-      - COMPLETE
-      - FAILED
-      description: The status of the current task.
     cost:
       type:
       - object
@@ -433,12 +385,60 @@ components:
           - CREDITS
           - DOLLARS
           description: 'The unit of the cost. Can be CREDITS or DOLLARS. Note: DOLLARS unit only supports PAYG plan.'
+    universal_upscaler_ultra_style:
+      type:
+      - string
+      - 'null'
+      title: universal_upscaler_ultra_style
+      enum:
+      - ARTISTIC
+      - REALISTIC
+      description: The ultra style to upscale images using universal upscaler with. Can not be used with upscalerStyle.
+    job_status:
+      type: string
+      title: job_status
+      enum:
+      - PENDING
+      - COMPLETE
+      - FAILED
+      description: The status of the current task.
+    VARIATION_TYPE:
+      type: string
+      title: VARIATION_TYPE
+      enum:
+      - OUTPAINT
+      - INPAINT
+      - UPSCALE
+      - UNZOOM
+      - NOBG
+      description: The type of variation.
     uuid:
       pattern: '[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}'
       title: uuid
       type:
       - string
       - 'null'
+    universal_upscaler_style:
+      type:
+      - string
+      - 'null'
+      default: GENERAL
+      title: universal_upscaler_style
+      enum:
+      - GENERAL
+      - CINEMATIC
+      - 2D ART & ILLUSTRATION
+      - CG ART & GAME ASSETS
+      description: The style to upscale images using universal upscaler with. Can not be used with ultraUpscaleStyle.
+    timestamp:
+      type: string
+      title: timestamp
+    MOTION_RESOLUTION:
+      type: string
+      title: MOTION_RESOLUTION
+      enum:
+      - RESOLUTION_720
+      description: The resolution of the upscaled video. RESOLUTION_720 is the only option for now.
   securitySchemes:
     bearerAuth:
       type: http
