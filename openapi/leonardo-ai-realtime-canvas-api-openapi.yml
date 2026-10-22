@@ -444,22 +444,9 @@ paths:
           description: Responses for POST /lcm-upscale
 components:
   schemas:
-    cost:
-      type:
-      - object
-      - 'null'
-      title: Cost
-      description: The cost of the operation.
-      properties:
-        amount:
-          type: string
-          description: The amount of the cost.
-        unit:
-          type: string
-          enum:
-          - CREDITS
-          - DOLLARS
-          description: 'The unit of the cost. Can be CREDITS or DOLLARS. Note: DOLLARS unit only supports PAYG plan.'
+    timestamp:
+      type: string
+      title: timestamp
     lcm_generation_style:
       type:
       - string
@@ -481,12 +468,22 @@ components:
       - VIBRANT
       - NONE
       description: The style to generate LCM images with.
-    seed:
+    cost:
       type:
-      - integer
+      - object
       - 'null'
-      title: seed
-      description: Apply a fixed seed to maintain consistency across generation sets. The maximum seed value is 2147483637 for Flux and 9999999998 for other models
+      title: Cost
+      description: The cost of the operation.
+      properties:
+        amount:
+          type: string
+          description: The amount of the cost.
+        unit:
+          type: string
+          enum:
+          - CREDITS
+          - DOLLARS
+          description: 'The unit of the cost. Can be CREDITS or DOLLARS. Note: DOLLARS unit only supports PAYG plan.'
     apiCreditCost:
       title: Int
       type:
@@ -494,9 +491,12 @@ components:
       - 'null'
       description: 'API credits cost, available for Production API users. Note: it will be deprecated. Please use the cost instead.'
       deprecated: true
-    timestamp:
-      type: string
-      title: timestamp
+    seed:
+      type:
+      - integer
+      - 'null'
+      title: seed
+      description: Apply a fixed seed to maintain consistency across generation sets. The maximum seed value is 2147483637 for Flux and 9999999998 for other models
   securitySchemes:
     bearerAuth:
       type: http

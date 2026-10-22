@@ -1,0 +1,11 @@
+{
+  "issuer": "https://www.canva.com",
+  "authorization_endpoint": "https://www.canva.com/api/oauth/authorize",
+  "token_endpoint": "https://api.canva.com/auth/v1/oauth/token",
+  "response_types_supported": [
+    "code"
+  ],
+  "code_challenge_methods_supported": [
+    "S256"
+  ]
+}

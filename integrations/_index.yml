@@ -41,3 +41,24 @@
     builder: Pipedream repo (component)
   status: not-a-workflow
   arazzo: null
+- slug: leonardo-ai-make
+  label: Make
+  partner: make
+  partner_name: Make
+  type: claimed
+  marketplace: make
+  channel: integration-platform
+  evidence: https://docs.leonardo.ai/docs/api-faq
+  source: edge
+  status: pending-generation
+  arazzo: null
+- slug: leonardo-ai-pabbly-connect
+  label: Pabbly Connect
+  partner_name: Pabbly Connect
+  type: claimed
+  marketplace: pabbly-connect
+  channel: integration-platform
+  evidence: https://docs.leonardo.ai/docs/api-faq
+  source: edge
+  status: pending-partner-spec
+  arazzo: null

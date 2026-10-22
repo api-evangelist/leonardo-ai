@@ -1,0 +1,57 @@
+generated: '2026-10-21'
+method: generated
+name: Leonardo.AI agent skills
+source: Packaged Agent Skills generated from the Leonardo.AI OpenAPI specs under openapi/. Every operationId was
+  checked verbatim against the specs. No provider-published skills or AGENTS.md were found (a 2026-10-21 search
+  found only a third-party community CLI skill, mrgoonie/leonardo-cli, which is not saved here).
+skills:
+- file: leonardo-ai-generate-images.md
+  name: generate-images
+  title: Generate images from a prompt
+  api: openapi/leonardo-ai-image-api-openapi.yml
+  operations:
+  - pricingCalculator
+  - promptImprove
+  - createGeneration
+  - getGenerationById
+  - deleteGenerationById
+- file: leonardo-ai-animate-an-image.md
+  name: animate-an-image
+  title: Turn an image into a video
+  api: openapi/leonardo-ai-motion-api-openapi.yml
+  operations:
+  - uploadInitImage
+  - getInitImageById
+  - createImageToVideoGeneration
+  - getGenerationById
+- file: leonardo-ai-remove-background-and-upscale.md
+  name: remove-background-and-upscale
+  title: Remove background or upscale an image
+  api: openapi/leonardo-ai-variation-api-openapi.yml
+  operations:
+  - createVariationNoBG
+  - createVariationUpscale
+  - CreateUniversalUpscalerJob
+  - getVariationById
+- file: leonardo-ai-train-a-custom-model.md
+  name: train-a-custom-model
+  title: Train a custom model from a dataset
+  api: openapi/leonardo-ai-models-api-openapi.yml
+  operations:
+  - createDataset
+  - uploadDatasetImage
+  - uploadDatasetImageFromGen
+  - getDatasetById
+  - createModel
+  - getModelById
+- file: leonardo-ai-run-a-blueprint.md
+  name: run-a-blueprint
+  title: Execute a Blueprint
+  api: openapi/leonardo-ai-blueprints-api-openapi.yml
+  operations:
+  - listBlueprints
+  - getBlueprintById
+  - getBlueprintVersionsByBlueprintId
+  - executeBlueprint
+  - getBlueprintExecution
+  - getBlueprintExecutionGenerations

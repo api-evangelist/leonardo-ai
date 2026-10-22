@@ -376,40 +376,6 @@ paths:
           description: Responses for POST /generations-text-to-video
 components:
   schemas:
-    cost:
-      type:
-      - object
-      - 'null'
-      title: Cost
-      description: The cost of the operation.
-      properties:
-        amount:
-          type: string
-          description: The amount of the cost.
-        unit:
-          type: string
-          enum:
-          - CREDITS
-          - DOLLARS
-          description: 'The unit of the cost. Can be CREDITS or DOLLARS. Note: DOLLARS unit only supports PAYG plan.'
-    isVariation:
-      title: Boolean
-      type:
-      - boolean
-      - 'null'
-      description: If it is a variation image.
-    isInitImage:
-      title: Boolean
-      type:
-      - boolean
-      - 'null'
-      description: 'If it is an init image uploaded by the user. This image is uploaded from endpoint: Upload init image.'
-    motionStrength:
-      title: Int
-      type:
-      - integer
-      - 'null'
-      description: The motion strength.
     element_input:
       properties:
         akUUID:
@@ -433,6 +399,34 @@ components:
       - boolean
       - 'null'
       description: Whether the generation is public or not
+    cost:
+      type:
+      - object
+      - 'null'
+      title: Cost
+      description: The cost of the operation.
+      properties:
+        amount:
+          type: string
+          description: The amount of the cost.
+        unit:
+          type: string
+          enum:
+          - CREDITS
+          - DOLLARS
+          description: 'The unit of the cost. Can be CREDITS or DOLLARS. Note: DOLLARS unit only supports PAYG plan.'
+    motionStrength:
+      title: Int
+      type:
+      - integer
+      - 'null'
+      description: The motion strength.
+    isVariation:
+      title: Boolean
+      type:
+      - boolean
+      - 'null'
+      description: If it is a variation image.
     apiCreditCost:
       title: Int
       type:
@@ -440,6 +434,12 @@ components:
       - 'null'
       description: 'API credits cost, available for Production API users. Note: it will be deprecated. Please use the cost instead.'
       deprecated: true
+    isInitImage:
+      title: Boolean
+      type:
+      - boolean
+      - 'null'
+      description: 'If it is an init image uploaded by the user. This image is uploaded from endpoint: Upload init image.'
   securitySchemes:
     bearerAuth:
       type: http

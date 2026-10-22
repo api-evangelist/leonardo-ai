@@ -1,0 +1,78 @@
+generated: '2026-10-21'
+method: probed
+source: pre-flight dossier (docs platform, portal detections) + CNAME chains and response headers of the hosts apis.yml names
+registry: all/0-working/vendors.yml
+areas_vocabulary:
+- documentation
+- developer-portal
+- api-gateway
+- cdn
+- hosting
+- sdk-generation
+- api-collections
+- status-page
+- support
+- community
+- identity
+- mcp-hosting
+vendors:
+- vendor: cloudflare
+  name: Cloudflare
+  area: cdn
+  host: leonardo.ai
+  evidence: header:cf-ray
+  signal: header
+  confidence: high
+  kin_score:
+  - https_enforced
+  - hsts
+- vendor: cloudfront
+  name: Amazon CloudFront
+  area: cdn
+  host: intercom.help
+  evidence: header:x-amz-cf-id
+  signal: header
+  confidence: high
+  kin_score: []
+- vendor: readme
+  name: ReadMe
+  area: documentation
+  host: docs.leonardo.ai
+  evidence: cname:readmessl.com
+  signal: docs-platform
+  confidence: high
+  kin_score:
+  - openapi_published
+  - changelog_present
+  - llms_txt
+  - api_explorer
+- vendor: vercel
+  name: Vercel
+  area: hosting
+  host: app.leonardo.ai
+  evidence: cname:vercel-dns.com
+  signal: cname
+  confidence: high
+  kin_score: []
+reliance:
+  areas_vendor_served:
+  - cdn
+  - documentation
+  - hosting
+  vendor_count: 4
+  areas_observed: 12
+  share_of_observable_areas: 0.25
+  note: areas where a third party was DETECTED serving this provider; an area absent here was either self-run or not observed, and this script
+    cannot tell those apart
+checked:
+- 'docs-platform: readme'
+- leonardo.ai (Website)
+- leonardo.ai (Portal)
+- docs.leonardo.ai (Documentation)
+- docs.leonardo.ai (GettingStarted)
+- app.leonardo.ai (Portal)
+- intercom.help (Support)
+- intercom.help (Documentation)
+- docs.leonardo.ai (Support)
+- cloud.leonardo.ai (baseURL)
+- mcp.leonardo.ai (mcp)

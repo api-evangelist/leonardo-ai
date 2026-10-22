@@ -13,6 +13,8 @@
     "_original/leonardo-ai-prompt-openapi.json",
     "_original/leonardo-ai-realtime-canvas-openapi.json",
     "_original/leonardo-ai-user-openapi.json",
+    "_original/leonardo-ai-v2-createsyncgeneration-openapi.json",
+    "_original/leonardo-ai-v2-getmodels-openapi.json",
     "_original/leonardo-ai-variation-openapi.json",
     "_original/leonardo-ai-video-generation-openapi.json"
   ],
@@ -29,14 +31,18 @@
     "leonardo-ai-prompt-api-openapi.yml",
     "leonardo-ai-realtime-canvas-api-openapi.yml",
     "leonardo-ai-user-api-openapi.yml",
+    "leonardo-ai-generations-api-openapi.yml",
     "leonardo-ai-variation-api-openapi.yml",
     "leonardo-ai-motion-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
-    "sourced from openapi/_original/ (14 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "1 archived document(s) dropped as subsets of other archived documents",
+    "sourced from openapi/_original/ (16 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "leonardo-ai-3d-model-assets-openapi.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
     "leonardo-ai-blueprints-openapi.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
     "leonardo-ai-datasets-openapi.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
@@ -49,11 +55,16 @@
     "leonardo-ai-prompt-openapi.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
     "leonardo-ai-realtime-canvas-openapi.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
     "leonardo-ai-user-openapi.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "leonardo-ai-v2-createsyncgeneration-openapi.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "leonardo-ai-v2-getmodels-openapi.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
     "leonardo-ai-variation-openapi.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
     "leonardo-ai-video-generation-openapi.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
-    "apis.yml register: already-registered"
+    "tag 'Models' spans 2 source specs (leonardo-ai-models-openapi.json, leonardo-ai-v2-getmodels-openapi.json): per-path servers applied",
+    "superseded outputs removed: leonardo-ai-v2-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 15 total)"
   ],
   "skipped": [
+    "_original/leonardo-ai-v2-creategeneration-openapi.json: archived document superseded by a larger archived document",
     "leonardo-ai-3d-model-assets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "leonardo-ai-blueprints-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "leonardo-ai-dataset-api-openapi.yml: previously refined output, superseded by openapi/_original/",
@@ -67,6 +78,7 @@
     "leonardo-ai-prompt-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "leonardo-ai-realtime-canvas-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "leonardo-ai-user-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "leonardo-ai-v2-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "leonardo-ai-variation-api-openapi.yml: previously refined output, superseded by openapi/_original/"
   ]
 }

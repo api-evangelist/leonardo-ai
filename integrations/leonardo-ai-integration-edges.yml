@@ -1,9 +1,25 @@
-generated: '2026-10-13'
+generated: '2026-10-21'
 method: searched
+source:
+- https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/
+- https://zapier.com/apps/leonardo-ai/integrations
+- https://zapier.com/apps/leonardo/integrations
+- https://n8n.io/integrations/leonardo-ai/
+- https://n8n.io/integrations/leonardo/
+- https://composio.dev/toolkits/leonardo-ai
+- https://monid.ai/tools/leonardo-ai
 checked:
 - https://aws.amazon.com/marketplace/
 - https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/
 - https://github.com/PipedreamHQ/pipedream/tree/d5872355ef27b4efa769f05352f2820c299a456e/components/
+- https://docs.leonardo.ai/docs/api-faq.md
+- https://composio.dev/toolkits/leonardo-ai
+- https://monid.ai/tools/leonardo-ai
+- https://n8n.io/integrations/leonardo-ai/
+- https://n8n.io/integrations/leonardo/
+- https://zapier.com/apps/leonardo-ai/integrations
+- https://zapier.com/apps/leonardo/integrations
+summary: null
 marketplace_apps: []
 edges:
 - partner_name: AWS Marketplace
@@ -48,5 +64,32 @@ edges:
     builder: Pipedream repo (component)
   detected_by: sweep-workflow-automation.py
   first_seen: '2026-10-15'
-source:
-- https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/
+- partner_name: Make
+  partner: make
+  type: claimed
+  marketplace: make
+  channel: integration-platform
+  direction: third-party
+  evidence: https://docs.leonardo.ai/docs/api-faq
+  evidence_url_named: https://www.make.com/en/help/app/leonardo-ai
+  quote: Yes, Leonardo.Ai have an integration with Pabbly Connect and Make.com please reach out to these third party
+    apps if you have any questions on how to use it.
+  detected: '2026-10-21'
+- partner_name: Pabbly Connect
+  partner: null
+  type: claimed
+  marketplace: pabbly-connect
+  channel: integration-platform
+  direction: third-party
+  evidence: https://docs.leonardo.ai/docs/api-faq
+  evidence_url_named: https://www.pabbly.com/connect/integrations/leonardo-ai/
+  quote: Yes, Leonardo.Ai have an integration with Pabbly Connect and Make.com please reach out to these third party
+    apps if you have any questions on how to use it.
+  detected: '2026-10-21'
+templates: []
+skips:
+- label: Make
+  cause: partner-contract
+  why: The Leonardo integration is a module that runs inside Make scenarios. Make's public API (catalog make/) manages
+    scenarios, connections and organizations and has no operation that invokes the Leonardo module actions, so an
+    Arazzo workflow joining the two contracts would invent its steps. No market-proven template names this pair.

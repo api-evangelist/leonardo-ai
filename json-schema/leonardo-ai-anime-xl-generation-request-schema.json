@@ -1,0 +1,784 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/leonardo-ai/main/json-schema/leonardo-ai-anime-xl-generation-request-schema.json",
+  "title": "Anime",
+  "x-generated": "2026-10-21",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/leonardo-ai-v2-api-openapi.yml#/components/schemas/AnimeXlGenerationRequest",
+  "type": "object",
+  "required": [
+    "model"
+  ],
+  "properties": {
+    "model": {
+      "type": "string",
+      "enum": [
+        "anime-xl"
+      ],
+      "description": "Must be `anime-xl`."
+    },
+    "public": {
+      "type": "boolean",
+      "description": "Whether the generated images should show in the community feed."
+    },
+    "parameters": {
+      "type": "object",
+      "required": [
+        "prompt"
+      ],
+      "properties": {
+        "mode": {
+          "type": "string",
+          "title": "Generation Mode",
+          "pattern": "^[A-Z][A-Z0-9_]*[A-Z0-9]$",
+          "description": "Use this instead of `quality` for all proprietary models!",
+          "enum": [
+            "FAST",
+            "QUALITY"
+          ],
+          "anyOf": [
+            {
+              "enum": [
+                "FAST"
+              ]
+            },
+            {
+              "enum": [
+                "QUALITY"
+              ]
+            }
+          ],
+          "default": "FAST"
+        },
+        "seed": {
+          "type": "integer",
+          "title": "Seed",
+          "description": "The seed value for generation",
+          "minimum": 0
+        },
+        "width": {
+          "type": "integer",
+          "title": "Width",
+          "maximum": 1584,
+          "minimum": 32,
+          "description": "The width of the image to generate in pixels",
+          "default": 1024,
+          "multipleOf": 8
+        },
+        "height": {
+          "type": "integer",
+          "title": "Height",
+          "maximum": 1536,
+          "minimum": 32,
+          "description": "The height of the image to generate in pixels",
+          "default": 1024,
+          "multipleOf": 8
+        },
+        "prompt": {
+          "type": "string",
+          "title": "Prompt",
+          "maxLength": 9999,
+          "minLength": 1,
+          "description": "The prompt to use for the generation"
+        },
+        "tiling": {
+          "type": "boolean",
+          "title": "Tiling"
+        },
+        "contrast": {
+          "enum": [
+            "LOW",
+            "MEDIUM",
+            "HIGH"
+          ],
+          "type": "string",
+          "title": "Contrast",
+          "default": "LOW",
+          "description": "The contrast the image should have"
+        },
+        "quantity": {
+          "type": "integer",
+          "title": "Quantity",
+          "minimum": 1,
+          "description": "The number of outputs to generate",
+          "default": 4,
+          "maximum": 8
+        },
+        "guidances": {
+          "type": "object",
+          "title": "Image guidance",
+          "description": "The image guidance properties object that will be defined on a per-model basis.",
+          "properties": {
+            "edge": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "title": "Edge to Image guidance",
+                "required": [
+                  "image",
+                  "strength"
+                ],
+                "properties": {
+                  "image": {
+                    "type": "object",
+                    "allOf": [
+                      {},
+                      {}
+                    ],
+                    "title": "Image reference",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "url": {
+                        "type": "string",
+                        "format": "uri",
+                        "description": "Image URL or a base64 data URL. Required when type is URL. The backend enriches resolved image URLs."
+                      },
+                      "data": {
+                        "type": "string",
+                        "description": "Base64-encoded image bytes. Required when type is BASE64.",
+                        "format": "byte"
+                      },
+                      "type": {
+                        "enum": [
+                          "UPLOADED",
+                          "GENERATED",
+                          "VARIATION",
+                          "URL",
+                          "BASE64"
+                        ],
+                        "type": "string"
+                      },
+                      "width": {
+                        "type": "integer"
+                      },
+                      "height": {
+                        "type": "integer"
+                      }
+                    },
+                    "description": "A reference to an image"
+                  },
+                  "order": {
+                    "type": "integer",
+                    "title": "GuidanceOrder",
+                    "minimum": 0,
+                    "description": "The order at which we want this guidance to be in a list of guidances"
+                  },
+                  "strength": {
+                    "enum": [
+                      "LOW",
+                      "MID",
+                      "HIGH"
+                    ],
+                    "type": "string",
+                    "default": "MID",
+                    "description": "The strength of the guidance"
+                  }
+                },
+                "description": "Edge to Image guidance object — detects edges in the input image and uses them to guide generation"
+              },
+              "title": "Edge to Image",
+              "description": "Detects edges of any input image, and will use this to guide your image generation.",
+              "maxItems": 1
+            },
+            "pose": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "title": "Pose to Image guidance",
+                "required": [
+                  "image",
+                  "strength"
+                ],
+                "properties": {
+                  "image": {
+                    "type": "object",
+                    "allOf": [
+                      {},
+                      {}
+                    ],
+                    "title": "Image reference",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "url": {
+                        "type": "string",
+                        "format": "uri",
+                        "description": "Image URL or a base64 data URL. Required when type is URL. The backend enriches resolved image URLs."
+                      },
+                      "data": {
+                        "type": "string",
+                        "description": "Base64-encoded image bytes. Required when type is BASE64.",
+                        "format": "byte"
+                      },
+                      "type": {
+                        "enum": [
+                          "UPLOADED",
+                          "GENERATED",
+                          "VARIATION",
+                          "URL",
+                          "BASE64"
+                        ],
+                        "type": "string"
+                      },
+                      "width": {
+                        "type": "integer"
+                      },
+                      "height": {
+                        "type": "integer"
+                      }
+                    },
+                    "description": "A reference to an image"
+                  },
+                  "order": {
+                    "type": "integer",
+                    "title": "GuidanceOrder",
+                    "minimum": 0,
+                    "description": "The order at which we want this guidance to be in a list of guidances"
+                  },
+                  "strength": {
+                    "enum": [
+                      "LOW",
+                      "MID",
+                      "HIGH"
+                    ],
+                    "type": "string",
+                    "default": "MID",
+                    "description": "The strength of the guidance"
+                  }
+                },
+                "description": "Pose to Image guidance object — detects the pose of characters in the input image and uses it to guide generation"
+              },
+              "title": "Pose to Image",
+              "description": "Detects the pose of any characters in an input image, and will use this to guide your image generation.",
+              "maxItems": 1
+            },
+            "depth": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "title": "Depth to Image guidance",
+                "required": [
+                  "image",
+                  "strength"
+                ],
+                "properties": {
+                  "image": {
+                    "type": "object",
+                    "allOf": [
+                      {},
+                      {}
+                    ],
+                    "title": "Image reference",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "url": {
+                        "type": "string",
+                        "format": "uri",
+                        "description": "Image URL or a base64 data URL. Required when type is URL. The backend enriches resolved image URLs."
+                      },
+                      "data": {
+                        "type": "string",
+                        "description": "Base64-encoded image bytes. Required when type is BASE64.",
+                        "format": "byte"
+                      },
+                      "type": {
+                        "enum": [
+                          "UPLOADED",
+                          "GENERATED",
+                          "VARIATION",
+                          "URL",
+                          "BASE64"
+                        ],
+                        "type": "string"
+                      },
+                      "width": {
+                        "type": "integer"
+                      },
+                      "height": {
+                        "type": "integer"
+                      }
+                    },
+                    "description": "A reference to an image"
+                  },
+                  "order": {
+                    "type": "integer",
+                    "title": "GuidanceOrder",
+                    "minimum": 0,
+                    "description": "The order at which we want this guidance to be in a list of guidances"
+                  },
+                  "strength": {
+                    "enum": [
+                      "LOW",
+                      "MID",
+                      "HIGH"
+                    ],
+                    "type": "string",
+                    "default": "MID",
+                    "description": "The strength of the guidance"
+                  }
+                },
+                "description": "Depth to Image guidance — detects the depth features of the input image and uses them to guide generation"
+              },
+              "title": "Depth to Image",
+              "description": "Detects the depth features of any input image, and will use this to guide your image generation.",
+              "maxItems": 1
+            },
+            "style": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "title": "Style reference",
+                "required": [
+                  "image",
+                  "strength"
+                ],
+                "properties": {
+                  "image": {
+                    "type": "object",
+                    "allOf": [
+                      {},
+                      {}
+                    ],
+                    "title": "Image reference",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "url": {
+                        "type": "string",
+                        "format": "uri",
+                        "description": "Image URL or a base64 data URL. Required when type is URL. The backend enriches resolved image URLs."
+                      },
+                      "data": {
+                        "type": "string",
+                        "description": "Base64-encoded image bytes. Required when type is BASE64.",
+                        "format": "byte"
+                      },
+                      "type": {
+                        "enum": [
+                          "UPLOADED",
+                          "GENERATED",
+                          "VARIATION",
+                          "URL",
+                          "BASE64"
+                        ],
+                        "type": "string"
+                      },
+                      "width": {
+                        "type": "integer"
+                      },
+                      "height": {
+                        "type": "integer"
+                      }
+                    },
+                    "description": "A reference to an image"
+                  },
+                  "order": {
+                    "type": "integer",
+                    "title": "GuidanceOrder",
+                    "minimum": 0,
+                    "description": "The order at which we want this guidance to be in a list of guidances"
+                  },
+                  "strength": {
+                    "enum": [
+                      "LOW",
+                      "MID",
+                      "HIGH",
+                      "ULTRA",
+                      "MAX"
+                    ],
+                    "type": "string",
+                    "default": "MID",
+                    "description": "The strength of the guidance"
+                  }
+                },
+                "description": "Style transfer guidance object, containing parameters available for style transfer image guidance"
+              },
+              "title": "Style Reference",
+              "description": "References the style from the input image to guide your image generation.",
+              "maxItems": 4
+            },
+            "content": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "title": "Content reference",
+                "required": [
+                  "image",
+                  "strength"
+                ],
+                "properties": {
+                  "image": {
+                    "type": "object",
+                    "allOf": [
+                      {},
+                      {}
+                    ],
+                    "title": "Image reference",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "url": {
+                        "type": "string",
+                        "format": "uri",
+                        "description": "Image URL or a base64 data URL. Required when type is URL. The backend enriches resolved image URLs."
+                      },
+                      "data": {
+                        "type": "string",
+                        "description": "Base64-encoded image bytes. Required when type is BASE64.",
+                        "format": "byte"
+                      },
+                      "type": {
+                        "enum": [
+                          "UPLOADED",
+                          "GENERATED",
+                          "VARIATION",
+                          "URL",
+                          "BASE64"
+                        ],
+                        "type": "string"
+                      },
+                      "width": {
+                        "type": "integer"
+                      },
+                      "height": {
+                        "type": "integer"
+                      }
+                    },
+                    "description": "A reference to an image"
+                  },
+                  "order": {
+                    "type": "integer",
+                    "title": "GuidanceOrder",
+                    "minimum": 0,
+                    "description": "The order at which we want this guidance to be in a list of guidances"
+                  },
+                  "strength": {
+                    "enum": [
+                      "LOW",
+                      "MID",
+                      "HIGH",
+                      "ULTRA"
+                    ],
+                    "type": "string",
+                    "default": "MID",
+                    "description": "The strength of the guidance"
+                  }
+                },
+                "description": "Content transfer guidance object, containing parameters available for content transfer image guidance"
+              },
+              "title": "Content Reference",
+              "description": "References the form and content from the input image to guide your image generation.",
+              "maxItems": 1
+            },
+            "character": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "title": "Character reference",
+                "required": [
+                  "image",
+                  "strength"
+                ],
+                "properties": {
+                  "image": {
+                    "type": "object",
+                    "allOf": [
+                      {},
+                      {}
+                    ],
+                    "title": "Image reference",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "url": {
+                        "type": "string",
+                        "format": "uri",
+                        "description": "Image URL or a base64 data URL. Required when type is URL. The backend enriches resolved image URLs."
+                      },
+                      "data": {
+                        "type": "string",
+                        "description": "Base64-encoded image bytes. Required when type is BASE64.",
+                        "format": "byte"
+                      },
+                      "type": {
+                        "enum": [
+                          "UPLOADED",
+                          "GENERATED",
+                          "VARIATION",
+                          "URL",
+                          "BASE64"
+                        ],
+                        "type": "string"
+                      },
+                      "width": {
+                        "type": "integer"
+                      },
+                      "height": {
+                        "type": "integer"
+                      }
+                    },
+                    "description": "A reference to an image"
+                  },
+                  "order": {
+                    "type": "integer",
+                    "title": "GuidanceOrder",
+                    "minimum": 0,
+                    "description": "The order at which we want this guidance to be in a list of guidances"
+                  },
+                  "strength": {
+                    "enum": [
+                      "LOW",
+                      "MID",
+                      "HIGH"
+                    ],
+                    "type": "string",
+                    "default": "MID",
+                    "description": "The strength of the guidance"
+                  }
+                },
+                "description": "Character transfer guidance object, containing parameters available for character transfer image guidance"
+              },
+              "title": "Content Reference",
+              "description": "Generates an image in the likeness of the provided character reference image (works best with close up face portraits).",
+              "maxItems": 1
+            },
+            "text_image": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "title": "Text Image Input guidance",
+                "required": [
+                  "image",
+                  "strength"
+                ],
+                "properties": {
+                  "image": {
+                    "type": "object",
+                    "allOf": [
+                      {},
+                      {}
+                    ],
+                    "title": "Image reference",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "url": {
+                        "type": "string",
+                        "format": "uri",
+                        "description": "Image URL or a base64 data URL. Required when type is URL. The backend enriches resolved image URLs."
+                      },
+                      "data": {
+                        "type": "string",
+                        "description": "Base64-encoded image bytes. Required when type is BASE64.",
+                        "format": "byte"
+                      },
+                      "type": {
+                        "enum": [
+                          "UPLOADED",
+                          "GENERATED",
+                          "VARIATION",
+                          "URL",
+                          "BASE64"
+                        ],
+                        "type": "string"
+                      },
+                      "width": {
+                        "type": "integer"
+                      },
+                      "height": {
+                        "type": "integer"
+                      }
+                    },
+                    "description": "A reference to an image"
+                  },
+                  "order": {
+                    "type": "integer",
+                    "title": "GuidanceOrder",
+                    "minimum": 0,
+                    "description": "The order at which we want this guidance to be in a list of guidances"
+                  },
+                  "strength": {
+                    "enum": [
+                      "LOW",
+                      "MID",
+                      "HIGH"
+                    ],
+                    "type": "string",
+                    "default": "MID",
+                    "description": "The strength of the guidance"
+                  }
+                },
+                "description": "Text Image Input guidance — takes white text on a black background and uses it to guide image generation"
+              },
+              "title": "Text Image Input",
+              "description": "Takes in white text on a black background, and will use this to guide your image generation.",
+              "maxItems": 1
+            },
+            "image_to_image": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "title": "Image to image",
+                "required": [
+                  "image",
+                  "strength"
+                ],
+                "properties": {
+                  "image": {
+                    "type": "object",
+                    "allOf": [
+                      {},
+                      {}
+                    ],
+                    "title": "Image reference",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "url": {
+                        "type": "string",
+                        "format": "uri",
+                        "description": "Image URL or a base64 data URL. Required when type is URL. The backend enriches resolved image URLs."
+                      },
+                      "data": {
+                        "type": "string",
+                        "description": "Base64-encoded image bytes. Required when type is BASE64.",
+                        "format": "byte"
+                      },
+                      "type": {
+                        "enum": [
+                          "UPLOADED",
+                          "GENERATED",
+                          "VARIATION",
+                          "URL",
+                          "BASE64"
+                        ],
+                        "type": "string"
+                      },
+                      "width": {
+                        "type": "integer"
+                      },
+                      "height": {
+                        "type": "integer"
+                      }
+                    },
+                    "description": "A reference to an image"
+                  },
+                  "strength": {
+                    "enum": [
+                      "LOW",
+                      "MID",
+                      "HIGH"
+                    ],
+                    "type": "string",
+                    "default": "MID",
+                    "description": "The strength of the image to image guidance"
+                  }
+                },
+                "description": "Image to image guidance object, containing parameters available for image to image guidance"
+              },
+              "title": "Image to Image",
+              "description": "Creative reinterpretation of vibe or structure from a reference image.",
+              "maxItems": 1
+            }
+          }
+        },
+        "style_ids": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "32b653d2-8819-4363-bc82-a6466dfcb825",
+              "5f611024-668e-41cc-b538-4569a7985cad",
+              "df2def02-1104-46c8-a857-39292fcd9091",
+              "aab2fcb9-3600-4039-9c25-a2a26515df5f",
+              "1824f984-dc0b-4f72-aa32-0442091d488c",
+              "16818741-bdbb-474f-a7a8-1e33d706658e",
+              "bf0b8b5f-735f-4141-a365-8d8aa78fd147",
+              "5d256598-5671-424c-8152-27943f1000f1",
+              "726585f5-d231-4a3a-bee9-9a5e5d3df779",
+              "b2a54a51-230b-4d4f-ad4e-8409bf58645f",
+              "ca934804-ef39-4e1b-af37-608021452444",
+              "e89ca6f0-7653-4db6-8a24-ded9d1267d84"
+            ],
+            "type": "string",
+            "format": "uuid"
+          },
+          "title": "Style IDs for Image Models",
+          "default": [
+            "b2a54a51-230b-4d4f-ad4e-8409bf58645f"
+          ],
+          "description": "An array of style UUIDs for image models (limited to 1 style)."
+        },
+        "transparency": {
+          "type": "boolean",
+          "title": "Transparency",
+          "description": "Whether the image can be generated with a transparent background",
+          "default": false
+        },
+        "user_elements": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "weight": {
+                "minimum": 0
+              }
+            }
+          },
+          "title": "Your Elements",
+          "default": [],
+          "description": "An array of User Elements for image generation.",
+          "maxItems": 4
+        },
+        "prompt_enhance": {
+          "enum": [
+            "AUTO",
+            "ON",
+            "OFF"
+          ],
+          "type": "string",
+          "title": "Prompt Enhance",
+          "default": "OFF",
+          "description": "Whether to enhance the prompt or not"
+        },
+        "negative_prompt": {
+          "type": "string",
+          "title": "Negative Prompt",
+          "maxLength": 1000,
+          "description": "The negative prompt to use for the generation"
+        },
+        "platform_elements": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "weight": {
+                "minimum": 0
+              }
+            }
+          },
+          "title": "Platform Elements",
+          "default": [],
+          "description": "An array of Platform Elements for image generation.",
+          "maxItems": 4
+        }
+      }
+    }
+  }
+}

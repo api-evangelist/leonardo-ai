@@ -1,0 +1,127 @@
+generated: '2026-10-21'
+method: searched
+source: https://docs.leonardo.ai/docs/api-error-messages.md
+name: Leonardo.AI API error messages
+format: message-string
+envelope: GraphQL-style error bodies shown as samples on the page, carrying a message and an extensions `code` string (e.g. unexpected, access-denied, bad-request, validation-failed). Errors are catalogued
+  by message text, not a stable error-code registry.
+problems:
+- title: Invalid response from authorization hook
+  status: unstated
+  codes:
+  - unexpected
+  description: The API key is malformed, wrong, or not sent correctly.
+  remediation: 'Check the key is a valid UUID and sent as `authorization: Bearer XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX`.'
+- title: Authentication hook unauthorized this request
+  status: unstated
+  codes:
+  - access-denied
+  description: The API key was not set correctly on the request.
+  remediation: 'Send the key in the header as `authorization: Bearer <key>`.'
+- title: Invalid file extension
+  status: unstated
+  codes:
+  - unexpected
+  description: The `extension` parameter of Upload Init Image was given a filename or image data.
+  remediation: Pass only the extension, e.g. png, jpg, jpeg, webp.
+- title: Expected a boolean for type Boolean but found a string
+  status: unstated
+  codes:
+  - validation-failed
+  description: A boolean field was sent as a quoted string.
+  remediation: Send true/false unquoted.
+- title: Unexpected variable
+  status: unstated
+  codes:
+  - bad-request
+  description: An unknown or wrongly-cased body parameter was sent.
+  remediation: Body parameters are case-sensitive (e.g. sd_version, not sd_Version).
+- title: 204 (No Content) when uploading an image
+  status: 204
+  description: Expected success response for a presigned-URL upload; no image ID is returned at this step.
+  remediation: Use the image ID returned by the earlier Upload Init Image call.
+- title: '400 Bad Request: Too many images'
+  status: 400
+  description: num_images exceeds the maximum supported for the request's size and settings.
+  remediation: Lower num_images, or split into multiple requests.
+- title: 403 Forbidden error when uploading an image
+  status: 403
+  description: Authentication headers were sent to the presigned upload URL.
+  remediation: Remove API-key headers when uploading to the presigned URL.
+- title: '403 Forbidden: content moderation filter'
+  status: 403
+  codes:
+  - unexpected
+  description: The request may generate content outside Leonardo's Terms of Service.
+  remediation: Avoid prompts that may lead to prohibited depictions (see the Terms of Service Limitations of Use).
+- title: Couldn't access image
+  status: unstated
+  codes:
+  - unexpected
+  description: Variation endpoints (upscale, unzoom) received an ID that is not a Leonardo-generated image ID.
+  remediation: Use the image ID returned by Get a Single Generation.
+- title: Failed to find init variation
+  status: unstated
+  codes:
+  - unexpected
+  description: The image ID supplied is not an image generated on Leonardo.Ai.
+  remediation: Use the image ID returned by Get a Single Generation.
+- title: Invalid init image id
+  status: unstated
+  codes:
+  - unexpected
+  description: init_image_id is not a valid UUID or not an uploaded init image.
+  remediation: Use the ID returned by Upload Init Image (or init_generation_image_id for a generated image).
+- title: 200 Success but image URL array is empty
+  status: 200
+  description: The generation has not finished; Get a Single Generation returns 200 while pending.
+  remediation: Wait until generations_by_pk.status is COMPLETE, or use the webhook callback.
+- title: Key Creation Error Occurred
+  status: unstated
+  codes:
+  - unexpected
+  description: Web-app error when creating a Production API key with a non-https webhook callback URL ("WebhookCallbackUrl is not a valid url").
+  remediation: Use an https webhook URL.
+- title: Failed to find init variation
+  status: unstated
+  codes:
+  - unexpected
+  description: On variation endpoints (unzoom, no background), isVariation=true means the supplied image ID is itself the product of a previous variation.
+  remediation: Set isVariation to match whether the ID is a variation output.
+- title: Service Error
+  status: unstated
+  codes:
+  - unexpected
+  description: Generic Leonardo.Ai error.
+  remediation: Contact support; for Motion SVD, use the image ID from Get a Single Generation.
+- title: Invalid Dimensions
+  status: unstated
+  codes:
+  - unexpected
+  description: Commonly seen with Alchemy.
+  remediation: Keep height and width within 32 to 1024 and in multiples of 8.
+- title: 'Expecting a value for non-nullable variable: "prompt"'
+  status: unstated
+  codes:
+  - validation-failed
+  description: Generic error for an incorrectly formatted body; prompt is the only required field of Create Generation.
+  remediation: Check the request body formatting.
+- title: Invalid prompt, maximum length of 1500 characters exceeded.
+  status: unstated
+  codes:
+  - unexpected
+  description: Prompt exceeds 1,500 characters.
+  remediation: Shorten the prompt.
+- title: Prompt is too long, please keep it under 200 characters
+  status: unstated
+  codes:
+  - unexpected
+  description: Seen on the Improve Prompt endpoint.
+  remediation: Keep the prompt under 200 characters.
+- title: Model is not supported within the Production API
+  status: unstated
+  codes:
+  - unexpected
+  description: The requested model is not available through the Production API.
+  remediation: Choose a model supported by the Production API.
+note: HTTP status is recorded only where the page heading states it (204, 400, 403 x2, 200). `codes` are the `code` values in the sample bodies on the page.

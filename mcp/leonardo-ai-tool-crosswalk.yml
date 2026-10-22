@@ -1,0 +1,84 @@
+generated: '2026-10-21'
+method: derived
+type: ToolCrosswalk
+source: >-
+  Derived by aligning the provider's documented MCP tool list
+  (https://docs.leonardo.ai/docs/connect-to-leonardoai-mcp.md, mirrored in mcp/leonardo-ai-mcp.yml) with the
+  operationIds in openapi/. The live MCP tools/list is gated (401 without API key), so the binding is by
+  name and semantics only.
+surfaces:
+  rest_openapi: openapi/            # 15 split specs, 56 operations (v1 at cloud.leonardo.ai/api/rest/v1, v2 at /api/rest/v2)
+  graphql: null                     # no public GraphQL endpoint documented
+  mcp: https://mcp.leonardo.ai/v1/mcp   # gated: API-Key header; tool names from provider docs
+crosswalk:
+  - tool: generate-image
+    category: image-generation
+    rest: [createGeneration]
+    specs: [openapi/leonardo-ai-v2-api-openapi.yml, openapi/leonardo-ai-image-api-openapi.yml]
+    binding: rest
+    confidence: medium
+    note: >-
+      Documented models (Lucid Origin, Lucid Realism, Ideogram 3.0) are generated through POST /generations;
+      which API version (v1 or v2) the server calls is not documented. Results are retrieved via
+      getGenerationById (v1). Input schema is inherited from the matching createGeneration requestBody.
+mcp_only: []
+rest_only:
+  - createSyncGeneration
+  - getModels
+  - getGenerationById
+  - deleteGenerationById
+  - getGenerationsByUserId
+  - listPlatformModels
+  - createModel
+  - getModelById
+  - deleteModelById
+  - getCustomModelsByUserId
+  - createDataset
+  - getDatasetById
+  - deleteDatasetById
+  - uploadDatasetImage
+  - uploadDatasetImageFromGen
+  - createElement
+  - listElements
+  - getElementById
+  - deleteElementById
+  - getCustomElementsByUserId
+  - uploadInitImage
+  - getInitImageById
+  - deleteInitImageById
+  - uploadCanvasInitImage
+  - uploadMedia
+  - getUploadedMediaById
+  - deleteUploadedMediaById
+  - createSVDMotionGeneration
+  - createImageToVideoGeneration
+  - createTextToVideoGeneration
+  - createVariationUnzoom
+  - createVariationUpscale
+  - createVariationNoBG
+  - CreateUniversalUpscalerJob
+  - getVariationById
+  - getMotionVariationById
+  - createLCMGeneration
+  - performInstantRefine
+  - performInpaintingLCM
+  - performAlchemyUpscaleLCM
+  - promptRandom
+  - promptImprove
+  - pricingCalculator
+  - getUserSelf
+  - listBlueprints
+  - getBlueprintById
+  - getBlueprintVersionsByBlueprintId
+  - executeBlueprint
+  - getBlueprintExecution
+  - getBlueprintExecutionGenerations
+  - uploadModelAsset
+  - get3DModelsByUserId
+  - get3DModelById
+  - delete3DModelById
+coverage:
+  mcp_tools_documented: 1
+  mcp_tools_bound: 1
+  rest_operations: 56
+  rest_operations_with_tool: 1

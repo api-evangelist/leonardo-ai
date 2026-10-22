@@ -1,0 +1,44 @@
+generated: '2026-10-21'
+method: searched
+source: https://docs.leonardo.ai/docs/deprecations-changes.md
+versioning:
+  scheme: path
+  current: v2 (newer models, e.g. Veo 3.1, documented under https://docs.leonardo.ai/v2.0/reference/creategeneration-1) alongside v1 (https://cloud.leonardo.ai/api/rest/v1)
+  note: No written versioning policy was found. The docs host keeps per-version reference trees (v1.0, v2.0); the OpenAPI in openapi/ carries v1 and v2 operations.
+deprecation:
+  policy: Deprecations are announced on a single "Deprecations & Changes" page in reverse chronological order, each with a sunset date, a replacement and an "Action required" step. Some are provider-driven (third-party model retirement).
+  docs: https://docs.leonardo.ai/docs/deprecations-changes
+  notice_period_observed: Not stated as a policy. Observed notice on the page ranges from none (Sora 2 / Sora 2 Pro retired July 9, 2026, announced the same day) to 13 days (Motion 1.0, announced June 4, retired June 17, 2026) and 28 days (Veo 3, announced June 1, retired June 29, 2026).
+  sunset_headers: No Deprecation or Sunset response headers are documented.
+deprecated_products:
+- name: Sora 2 (sora-2), Sora 2 Pro (sora-2-pro)
+  announced: '2026-07-09'
+  sunset: '2026-07-09'
+  replacement: veo-3.1-fast-generate-001 / veo-3.1-generate-001
+- name: Motion 1.0 (svd)
+  announced: '2026-06-04'
+  sunset: '2026-06-17'
+  replacement: hailuo-2_3
+- name: Veo 3 and Veo 3 Fast
+  announced: '2026-06-01'
+  sunset: '2026-06-29'
+  replacement: Veo 3.1 / Veo 3.1 Fast
+- name: Veo -preview model aliases (veo-3.0-generate-preview, veo-3.0-fast-generate-preview, veo-3.1-generate-preview, veo-3.1-fast-generate-preview)
+  announced: '2026-05-05'
+  sunset: '2026-05-13'
+  replacement: the corresponding -001 model names
+- name: Seedance 1.0 Lite
+  announced: '2026-05-01'
+  sunset: '2026-05-13'
+  replacement: seedance-1.0-pro-fast (or seedance-2.0)
+- name: '`mode` parameter for GPT Image-1.5 and Ideogram 3.0'
+  announced: '2026-04-20'
+  sunset: '2026-05-04'
+  replacement: '`quality` parameter'
+- name: User API key
+  sunset: null
+  replacement: Production API key
+  note: 'API FAQ: "The User API key is now a deprecated feature and has been replaced by the Production API key." Existing User API keys still work. (https://docs.leonardo.ai/docs/api-faq)'
+sla: null
+status_page: null
+note: No public status page or SLA is linked from the docs. The docs pages reference www.readmestatus.com, which is the docs platform's (ReadMe) status, not Leonardo's, so it is not recorded.

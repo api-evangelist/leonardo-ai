@@ -363,12 +363,31 @@ paths:
           description: Responses for GET /motion-variations/{id}
 components:
   schemas:
+    MOTION_RESOLUTION:
+      type: string
+      title: MOTION_RESOLUTION
+      enum:
+      - RESOLUTION_720
+      description: The resolution of the upscaled video. RESOLUTION_720 is the only option for now.
+    VARIATION_TYPE:
+      type: string
+      title: VARIATION_TYPE
+      enum:
+      - OUTPAINT
+      - INPAINT
+      - UPSCALE
+      - UNZOOM
+      - NOBG
+      description: The type of variation.
     MOTION_VARIATION_TYPE:
       type: string
       title: MOTION_VARIATION_TYPE
       enum:
       - UPSCALE
       description: The type of motion variation.
+    timestamp:
+      type: string
+      title: timestamp
     cost:
       type:
       - object
@@ -394,30 +413,6 @@ components:
       - ARTISTIC
       - REALISTIC
       description: The ultra style to upscale images using universal upscaler with. Can not be used with upscalerStyle.
-    job_status:
-      type: string
-      title: job_status
-      enum:
-      - PENDING
-      - COMPLETE
-      - FAILED
-      description: The status of the current task.
-    VARIATION_TYPE:
-      type: string
-      title: VARIATION_TYPE
-      enum:
-      - OUTPAINT
-      - INPAINT
-      - UPSCALE
-      - UNZOOM
-      - NOBG
-      description: The type of variation.
-    uuid:
-      pattern: '[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}'
-      title: uuid
-      type:
-      - string
-      - 'null'
     universal_upscaler_style:
       type:
       - string
@@ -430,15 +425,20 @@ components:
       - 2D ART & ILLUSTRATION
       - CG ART & GAME ASSETS
       description: The style to upscale images using universal upscaler with. Can not be used with ultraUpscaleStyle.
-    timestamp:
+    uuid:
+      pattern: '[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}'
+      title: uuid
+      type:
+      - string
+      - 'null'
+    job_status:
       type: string
-      title: timestamp
-    MOTION_RESOLUTION:
-      type: string
-      title: MOTION_RESOLUTION
+      title: job_status
       enum:
-      - RESOLUTION_720
-      description: The resolution of the upscaled video. RESOLUTION_720 is the only option for now.
+      - PENDING
+      - COMPLETE
+      - FAILED
+      description: The status of the current task.
   securitySchemes:
     bearerAuth:
       type: http

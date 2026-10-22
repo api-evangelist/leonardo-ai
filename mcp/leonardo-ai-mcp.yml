@@ -1,0 +1,49 @@
+generated: '2026-10-21'
+method: searched
+type: MCPServer
+name: Leonardo.Ai Connector (MCP Server)
+description: >-
+  Official hosted MCP server ("Leonardo.Ai Connector") that lets an AI assistant use Leonardo.Ai
+  image generation over the Model Context Protocol. Requires a Leonardo.Ai API plan and API key.
+source: https://docs.leonardo.ai/docs/connect-to-leonardoai-mcp.md
+official: true
+status: live
+deployment:
+  mode: remote
+  endpoint: https://mcp.leonardo.ai/v1/mcp
+  auth: api-key
+  auth_header: API-Key
+  verified: probed
+probe:
+  date: '2026-10-21'
+  requests:
+    - method: POST
+      jsonrpc: initialize
+      url: https://mcp.leonardo.ai/v1/mcp
+      status: 401
+      body: 'Unauthorized: API key is required'
+    - method: POST
+      jsonrpc: tools/list
+      url: https://mcp.leonardo.ai/v1/mcp
+      status: 401
+  note: >-
+    Endpoint is the one documented in the provider's Cursor configuration example. It is live and gated by
+    an API key; tools/list was not read live. The tool list below is the provider's DOCUMENTED list.
+client_config_example:
+  client: cursor
+  file: .cursor/mcp.json
+  snippet: '"url": "https://mcp.leonardo.ai/v1/mcp", "headers": {"API-Key": "<your api key>"}'
+  note: MCP tools are only available in Cursor Agent mode (per provider docs).
+tools_source: documented
+tools_evidence_url: https://docs.leonardo.ai/docs/connect-to-leonardoai-mcp.md
+tools:
+  - name: generate-image
+    category: Image Generation & Management
+    description: Create images with prompts, models, dimensions, guidance scale, etc.
+    documented_models:
+      - Lucid Origin (HD Generalist)
+      - Lucid Realism (Hyperrealistic)
+      - Ideogram 3.0 (Accurate Text Rendering)
+notes: >-
+  Provider states new tools and models will be added over time; use the REST API for anything not yet
+  supported by the MCP server.

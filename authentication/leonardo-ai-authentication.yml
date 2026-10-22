@@ -1,10 +1,6 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/leonardo-ai-3d-model-assets-openapi.json, openapi/leonardo-ai-blueprints-openapi.json,
-  openapi/leonardo-ai-datasets-openapi.json, openapi/leonardo-ai-elements-openapi.json, openapi/leonardo-ai-image-generation-openapi.json,
-  openapi/leonardo-ai-init-images-openapi.json, openapi/leonardo-ai-media-openapi.json, openapi/leonardo-ai-models-openapi.json,
-  openapi/leonardo-ai-pricing-calculator-openapi.json, openapi/leonardo-ai-prompt-openapi.json,
-  openapi/leonardo-ai-realtime-canvas-openapi.json, openapi/leonardo-ai-user-openapi.json ...
+generated: '2026-10-21'
+method: searched
+source: https://docs.leonardo.ai/docs/getting-started.md
 summary:
   types:
   - http
@@ -29,3 +25,13 @@ schemes:
   - openapi/leonardo-ai-user-openapi.json
   - openapi/leonardo-ai-variation-openapi.json
   - openapi/leonardo-ai-video-generation-openapi.json
+derived_from: openapi/leonardo-ai-3d-model-assets-openapi.json, openapi/leonardo-ai-blueprints-openapi.json, openapi/leonardo-ai-datasets-openapi.json, openapi/leonardo-ai-elements-openapi.json, openapi/leonardo-ai-image-generation-openapi.json,
+  openapi/leonardo-ai-init-images-openapi.json, openapi/leonardo-ai-media-openapi.json, openapi/leonardo-ai-models-openapi.json, openapi/leonardo-ai-pricing-calculator-openapi.json, openapi/leonardo-ai-prompt-openapi.json,
+  openapi/leonardo-ai-realtime-canvas-openapi.json, openapi/leonardo-ai-user-openapi.json ...
+docs: https://docs.leonardo.ai/docs/getting-started
+notes:
+- 'Production API key, created on the web app API Access page ("Create New Key"); sent as `authorization: Bearer <YOUR_API_KEY>`. "Keep your API key secure. Do not embed it in client-side code." (getting-started)'
+- API keys are UUIDs; malformed keys yield "Invalid response from authorization hook" (https://docs.leonardo.ai/docs/api-error-messages).
+- The User API key is deprecated and replaced by the Production API key; limit of 10 API keys per account (https://docs.leonardo.ai/docs/api-faq).
+- 'Webhook callbacks authenticate to the receiver with `authorization: Bearer <webhook callback API key>` (https://docs.leonardo.ai/docs/guide-to-the-webhook-callback-feature).'
+- API plans are distinct from web app plans. No OAuth is documented.

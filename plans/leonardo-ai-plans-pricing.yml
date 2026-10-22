@@ -1,176 +1,30 @@
-# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (dated 2026-05-25 by the file itself), not
-# harvested from the provider. `method: generated` so the economics campaign may replace it with a
-# dated, verbatim transcription; every figure below is unverified until it does.
-method: generated
-generated: '2026-05-25'
-specification: API Commons Plans
-specificationVersion: '0.1'
-schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
-provider: Leonardo.AI
-providerId: leonardo-ai
-created: '2026-05-25'
-modified: '2026-05-25'
-reconciled: true
-tags:
-  - AI
-  - Image Generation
-  - Video Generation
-  - PAYG
-description: 'Reconciled plans for the Leonardo.AI Production API. As of 2024+, the API is on a Pay-As-You-Go
-  USD-denominated model that replaced the older Basic / Standard / Pro / Custom API tier subscriptions; legacy
-  app subscription plans remain available for the in-app product. Per-generation costs vary by model and
-  resolution — use the /pricing-calculator endpoint or the in-app calculator for exact figures.'
-sources:
-  - https://leonardo.ai/pricing/
-  - https://docs.leonardo.ai/docs/payg-guide
-  - https://docs.leonardo.ai/docs/pricing-and-plans-faq
-  - https://docs.leonardo.ai/docs/plan-with-the-pricing-calculator
+name: Leonardo.AI pricing
+generated: '2026-10-21'
+method: searched
+source: https://docs.leonardo.ai/docs/pricing-and-plans-faq.md
+audience: developer-api
+pricing_basis: usage-other
+published: false
+delivery:
+  delivery: managed
+plan_count: 2
+note: The API is Pay-As-You-Go, billed from a prepaid USD balance by the models and features used. The docs publish no per-unit prices; per-request cost is estimated in the in-app Pricing Calculator (https://app.leonardo.ai/api-access/pricing-calculator, sign-in required) and exposed by the Pricing Calculator API operation. Legacy API subscription plans still exist for customers who have not migrated. https://leonardo.ai/pricing/ answered 403 to a scripted GET on 2026-10-21 and was not read.
 plans:
-  - id: leonardo-ai-payg
-    name: API Pay-As-You-Go
-    type: usage-based
-    description: Dollar-denominated, top-up balance with no monthly commitment. Each generation deducts USD from
-      the account balance. Manual or automatic top-ups; balances never expire. New accounts receive starter
-      credits.
-    entries:
-      - label: Account balance top-up
-        name: balance_topup
-        type: prepaid
-        metric: usd
-        limit: -1
-        timeFrame: usage
-        geo: global
-        unit: 1
-        price: 'variable'
-        userMultiplied: false
-        description: Manual or auto top-up amount; minimum top-up applies.
-      - label: Per-generation usage
-        name: generation_usage
-        type: metered
-        metric: usd
-        limit: -1
-        timeFrame: usage
-        geo: global
-        unit: 1
-        price: 'variable'
-        userMultiplied: false
-        description: Per-generation USD cost varies by model, resolution, num_images, and feature toggles
-          (Alchemy, PhotoReal, Universal Upscaler, etc.). Use the Pricing Calculator endpoint for pre-flight
-          quotes.
-    notes:
-      - Legacy fixed API subscriptions (Basic ~$9/mo for ~3,500 credits, Standard ~$49 for 25k credits, Pro,
-        Custom) have been retired in favour of PAYG for new sign-ups. PAYG rates are reported to be ~24-42%
-        cheaper than the prior Standard/Basic tiers.
-      - In-app (non-API) consumer subscriptions — Free, Apprentice, Artisan, Maestro — remain on the consumer
-        product surface but do not grant API access.
-  - id: leonardo-ai-app-free
-    name: App Free
-    type: subscription
-    description: Free in-app tier for the Leonardo App. Does not grant API access.
-    entries:
-      - label: Monthly free tokens
-        name: free_tokens
-        type: included
-        metric: token
-        limit: 150
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-  - id: leonardo-ai-app-apprentice
-    name: App Apprentice
-    type: subscription
-    description: Entry-level paid in-app subscription. Does not grant API access.
-    entries:
-      - label: Monthly subscription
-        name: subscription
-        type: subscription
-        metric: subscription
-        limit: 1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '12.00'
-        userMultiplied: true
-  - id: leonardo-ai-app-artisan
-    name: App Artisan
-    type: subscription
-    description: Mid-tier in-app subscription. Does not grant API access.
-    entries:
-      - label: Monthly subscription
-        name: subscription
-        type: subscription
-        metric: subscription
-        limit: 1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '30.00'
-        userMultiplied: true
-  - id: leonardo-ai-app-maestro
-    name: App Maestro
-    type: subscription
-    description: Top-tier in-app subscription. Does not grant API access.
-    entries:
-      - label: Monthly subscription
-        name: subscription
-        type: subscription
-        metric: subscription
-        limit: 1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '60.00'
-        userMultiplied: true
-x-canonical:
-  generated: '2026-10-08'
-  vocabulary: all/0-working/economics/plans-canonical.yml
-  models:
-  - metered
-  - subscription
-  units:
-  - money
-  - period
-  - token
-  plans:
-  - name: API Pay-As-You-Go
-    access: other
-    model: metered
-    model_how: stated
-    units:
-    - money
-    periods:
-    - per-use
-  - name: App Free
-    access: other
-    model: subscription
-    model_how: stated
-    units:
-    - token
-    periods:
-    - month
-  - name: App Apprentice
-    access: other
-    model: subscription
-    model_how: stated
-    units:
-    - period
-    periods:
-    - month
-  - name: App Artisan
-    access: other
-    model: subscription
-    model_how: stated
-    units:
-    - period
-    periods:
-    - month
-  - name: App Maestro
-    access: other
-    model: subscription
-    model_how: stated
-    units:
-    - period
-    periods:
-    - month
+- name: Pay-As-You-Go (PAYG)
+  description: Prepaid, non-expiring account balance topped up manually (whole amounts) or by automatic top-ups at a threshold; usage costs are deducted in real time; API requests pause when the balance reaches zero.
+  price_text: The API is priced on a Pay-As-You-Go basis, with no upfront commitment or monthly fees.
+  features:
+  - Manual and automatic top-ups
+  - Account balance does not expire
+  - Generation responses include a `cost` object (amount charged and unit)
+  limits:
+  - API requests pause when the balance reaches zero
+- name: Custom / enterprise
+  description: For high-volume usage, dedicated infrastructure or custom per-model discounts; arranged through the Custom Deals contact form on the API Access tab or Customer Support.
+  price_text: please contact our team via the Custom Deals contact us form on the [API Access](https://app.leonardo.ai/api-access) Tab, or via general Customer Support, to discuss a tailored plan.
+  price: Contact sales
+  features:
+  - Custom pricing and per-model discounts
+  - Dedicated infrastructure
+  - Customised concurrency, queue and rate limits (per https://docs.leonardo.ai/docs/guide-to-concurrency-queue-and-rate-limit)
+  limits: []

@@ -1,17 +1,13 @@
 openapi: 3.2.0
 info:
-  title: Leonardo.AI Models API
-  description: List Leonardo platform models and manage custom-trained models for users. Includes platform model catalog, custom model training, retrieval, and deletion.
-  version: v1.0.0
-  contact:
-    name: Leonardo.AI Support
-    url: https://docs.leonardo.ai/docs/need-more-support
-  license:
-    name: Leonardo.AI Terms of Service
-    url: https://leonardo.ai/terms-of-service/
+  title: Leonardo Ai Models API
+  version: '1.0'
+  description: 'Operations tagged Models across 2 of this provider''s published API definitions: leonardo-ai-models-openapi.json, leonardo-ai-v2-getmodels-openapi.json. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://cloud.leonardo.ai/api/rest/v1
   description: Leonardo.AI Production API
+- url: https://cloud.leonardo.ai/api/rest/v2
+  description: Leonardo.Ai API server v2
 security:
 - bearerAuth: []
 tags:
@@ -111,6 +107,27 @@ paths:
                     amount: '0.0147'
                     unit: DOLLARS
           description: Responses for POST /models
+    get:
+      tags:
+      - Models
+      summary: Get Available Models
+      description: Fetch all production API available models with their parameter specifications.
+      operationId: getModels
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  productionApiAvailableModels:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ProductionApiAvailableModel'
+          description: Responses for GET /models
+    servers:
+    - url: https://cloud.leonardo.ai/api/rest/v1
+      description: Leonardo.AI Production API
   /models/{id}:
     get:
       tags:
@@ -204,6 +221,9 @@ paths:
                     - object
                     - 'null'
           description: Responses for DELETE /models/{id}
+    servers:
+    - url: https://cloud.leonardo.ai/api/rest/v1
+      description: Leonardo.AI Production API
   /models/user/{userId}:
     get:
       tags:
@@ -269,6 +289,9 @@ paths:
                     - array
                     - 'null'
           description: Responses for GET /models/user/{userId}
+    servers:
+    - url: https://cloud.leonardo.ai/api/rest/v1
+      description: Leonardo.AI Production API
   /platformModels:
     get:
       tags:
@@ -317,24 +340,21 @@ paths:
                       type: object
                     type: array
           description: Responses for GET /api/rest/v1/platformModels
+    servers:
+    - url: https://cloud.leonardo.ai/api/rest/v1
+      description: Leonardo.AI Production API
 components:
   schemas:
-    cost:
-      type:
-      - object
-      - 'null'
-      title: Cost
-      description: The cost of the operation.
-      properties:
-        amount:
-          type: string
-          description: The amount of the cost.
-        unit:
-          type: string
-          enum:
-          - CREDITS
-          - DOLLARS
-          description: 'The unit of the cost. Can be CREDITS or DOLLARS. Note: DOLLARS unit only supports PAYG plan.'
+    strength:
+      type: string
+      title: strength
+      enum:
+      - VERY_LOW
+      - LOW
+      - MEDIUM
+      - HIGH
+      description: When training using the PIXEL_ART model type, this influences the training strength.
+      default: MEDIUM
     custom_model_type:
       type: string
       default: GENERAL
@@ -355,6 +375,31 @@ components:
       - UI_ELEMENTS
       - VECTOR
       description: The category the most accurately reflects the model.
+    timestamp:
+      type: string
+      title: timestamp
+    cost:
+      type:
+      - object
+      - 'null'
+      title: Cost
+      description: The cost of the operation.
+      properties:
+        amount:
+          type: string
+          description: The amount of the cost.
+        unit:
+          type: string
+          enum:
+          - CREDITS
+          - DOLLARS
+          description: 'The unit of the cost. Can be CREDITS or DOLLARS. Note: DOLLARS unit only supports PAYG plan.'
+    uuid:
+      pattern: '[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}'
+      title: uuid
+      type:
+      - string
+      - 'null'
     sd_versions:
       type: string
       title: sd_versions
@@ -379,28 +424,26 @@ components:
       - COMPLETE
       - FAILED
       description: The status of the current task.
-    uuid:
-      pattern: '[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}'
-      title: uuid
-      type:
-      - string
-      - 'null'
-    strength:
-      type: string
-      title: strength
-      enum:
-      - VERY_LOW
-      - LOW
-      - MEDIUM
-      - HIGH
-      description: When training using the PIXEL_ART model type, this influences the training strength.
-      default: MEDIUM
-    timestamp:
-      type: string
-      title: timestamp
+    ProductionApiAvailableModel:
+      title: Production API Available Model
+      type: object
+      properties:
+        id:
+          type: string
+          description: Model identifier (e.g. "GPT_IMAGE_1_5").
+        name:
+          type: string
+          description: Model display name (e.g. "GPT Image 1.5").
+        parameters:
+          type: object
+          description: OpenAPI 3.0 schema describing the model's available parameters. Varies per model.
+          additionalProperties: true
   securitySchemes:
     bearerAuth:
       type: http
       bearerFormat: auth-scheme
       description: 'Bearer HTTP authentication. Allowed headers `Authorization: Bearer <api_key>`'
       scheme: bearer
+x-refined-from:
+- leonardo-ai-models-openapi.json
+- leonardo-ai-v2-getmodels-openapi.json

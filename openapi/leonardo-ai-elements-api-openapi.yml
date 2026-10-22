@@ -344,22 +344,6 @@ paths:
           description: Responses for GET /api/rest/v1/elements.
 components:
   schemas:
-    cost:
-      type:
-      - object
-      - 'null'
-      title: Cost
-      description: The cost of the operation.
-      properties:
-        amount:
-          type: string
-          description: The amount of the cost.
-        unit:
-          type: string
-          enum:
-          - CREDITS
-          - DOLLARS
-          description: 'The unit of the cost. Can be CREDITS or DOLLARS. Note: DOLLARS unit only supports PAYG plan.'
     lora:
       type: object
       properties:
@@ -411,6 +395,25 @@ components:
         __typename:
           type: string
           description: Type name for introspection purposes
+    timestamp:
+      type: string
+      title: timestamp
+    cost:
+      type:
+      - object
+      - 'null'
+      title: Cost
+      description: The cost of the operation.
+      properties:
+        amount:
+          type: string
+          description: The amount of the cost.
+        unit:
+          type: string
+          enum:
+          - CREDITS
+          - DOLLARS
+          description: 'The unit of the cost. Can be CREDITS or DOLLARS. Note: DOLLARS unit only supports PAYG plan.'
     sd_versions:
       type: string
       title: sd_versions
@@ -435,9 +438,6 @@ components:
       - COMPLETE
       - FAILED
       description: The status of the current task.
-    timestamp:
-      type: string
-      title: timestamp
   securitySchemes:
     bearerAuth:
       type: http

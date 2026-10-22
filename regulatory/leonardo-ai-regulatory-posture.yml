@@ -1,0 +1,96 @@
+generated: '2026-10-21'
+method: searched
+source: https://leonardo.ai/privacy-policy
+signals:
+  data_subject_request:
+    url: https://leonardo.ai/privacy-policy
+    section: 'Your rights; Additional information for users in the United States'
+    channel: privacy@leonardo.ai
+    rights_named: [access, correction, deletion, restriction, portability (structured electronic copy), objection, withdrawal of consent, opt out of sale/sharing (US), appeal (US)]
+    evidence:
+    - source: https://leonardo.ai/privacy-policy
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "You can exercise any of these rights by contacting us using the contact details provided at the bottom of this page in the “Contact us” section. We respond to all requests we receive in accordance with applicable data protection laws."
+    - source: https://leonardo.ai/privacy-policy
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "You may make a request by contacting us at privacy@leonardo.ai. We will authenticate your request using the email address associated with your account and if necessary, proof of residency."
+    note: >-
+      Rights for EU/UK/Brazil and US state residents are exercised by email; requests are authenticated
+      against the account email. No response period is stated and no self-service form or API is described.
+  data_residency:
+    url: https://leonardo.ai/privacy-policy
+    section: '4. How we transfer, store and protect your information'
+    evidence:
+    - source: https://leonardo.ai/privacy-policy
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "Your information will be stored in the United States and processed in Australia and any other country in which Leonardo.Ai, its group companies, service providers and partners maintain facilities or employ staff or contractors."
+    note: >-
+      States a storage location (United States) and processing in Australia and elsewhere, with transfers
+      relying on adequacy decisions or "appropriate transfer mechanisms". This is a disclosure of location,
+      not a customer-selectable residency option.
+  data_retention:
+    url: https://leonardo.ai/privacy-policy
+    section: '7. Data retention'
+    evidence:
+    - source: https://leonardo.ai/privacy-policy
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "We will retain your personal information for as long as your account is active or as needed to provide you with the Service or for as long as we have a valid purpose to do so."
+    - source: https://leonardo.ai/terms-of-service
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "3.7 If you have not used your Account for an extended period of time (12 months or more of inactivity), we may close and permanently delete your Account."
+    note: >-
+      Purpose-bound retention with no fixed periods for personal data; data with no ongoing need is deleted
+      or anonymised, or isolated in backups until deletion is possible. The Terms add a concrete 12-month
+      inactivity deletion rule for accounts (with prior email notice).
+  ai_transparency:
+    url: https://leonardo.ai/terms-of-service
+    section: '7. Disclaimer regarding Generative AI and Large Language Models'
+    evidence:
+    - source: https://leonardo.ai/terms-of-service
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "7.1 Our Platform utilises generative AI and large language model technologies, which can produce content that may appear highly realistic or convincing, including text, images, audio, and video outputs (collectively, Generated Content). You acknowledge and agree that Generated Content may include deep fakes, misinformation, biases, or other potentially misleading or inaccurate information."
+    - source: https://leonardo.ai/privacy-policy
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "If you don’t want your Content to be used for machine learning, you can generate Content privately with any paid subscription plan. Private Content isn’t accessible to others and won’t be used by Leonardo.Ai for model training."
+    note: >-
+      A contractual disclosure that outputs are AI-generated and may be misleading, plus a stated
+      training-use policy: user Content may train models unless generated privately on a paid plan
+      (ToS 8.5 repeats that Private Content is not used for training without express written consent).
+      No model cards, content-labelling or watermarking commitment was found on these pages.
+  training_data_summary:
+    url: https://leonardo.ai/privacy-policy
+    section: '1. Personal information we collect — (I) Information we collect from other sources'
+    evidence:
+    - source: https://leonardo.ai/privacy-policy
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "We also collect information from other sources, such as information that is publicly available on the Internet, to train our models and conduct research. While we do not intentionally collect personal information, this type of information may be incidentally included in these datasets."
+    note: >-
+      A one-sentence statement of training-data provenance (public Internet data). It is not a structured
+      training data summary in the EU AI Act sense; no dataset list or summary document was found.
+  age_assurance:
+    url: https://leonardo.ai/terms-of-service
+    section: '1. Engagement and Term'
+    evidence:
+    - source: https://leonardo.ai/terms-of-service
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: "1.2 You must be at least 13 years old (or the minimum legal age required to provide consent for processing of personal data in the country where the child is located). If you are under the age of 18, you must have obtained the consent of your parents or guardian or supervision of a responsible adult to use our Platform."
+    note: >-
+      A minimum-age rule (13, with parental consent under 18) stated in the Terms; the privacy policy adds
+      "We do not knowingly collect or solicit personal information from children." No age-verification
+      mechanism is described, so this is a self-declared age gate, not assurance.
+not_found:
+  - signal: subprocessors
+    note: Both pages refer to service providers and a data processing addendum but list no subprocessors.
+  - signal: global_privacy_control
+    note: US opt-out is via a "Do not sell or share my personal information" banner or email; GPC is not mentioned.
+  - signal: transparency_report
+    note: The privacy policy describes disclosure in response to legal process and government requests, but no transparency report is referenced.

@@ -1,0 +1,267 @@
+generated: '2026-10-21'
+method: derived
+generator: derive-data-model.py
+source:
+- openapi/leonardo-ai-3d-model-assets-api-openapi.yml
+- openapi/leonardo-ai-blueprints-api-openapi.yml
+- openapi/leonardo-ai-dataset-api-openapi.yml
+- openapi/leonardo-ai-elements-api-openapi.yml
+- openapi/leonardo-ai-image-api-openapi.yml
+- openapi/leonardo-ai-init-images-api-openapi.yml
+- openapi/leonardo-ai-media-api-openapi.yml
+- openapi/leonardo-ai-models-api-openapi.yml
+- openapi/leonardo-ai-motion-api-openapi.yml
+- openapi/leonardo-ai-pricing-calculator-api-openapi.yml
+- openapi/leonardo-ai-prompt-api-openapi.yml
+- openapi/leonardo-ai-realtime-canvas-api-openapi.yml
+notation: has_one = property $ref; has_many = array of $ref; belongs_to = <entity>_id field
+summary:
+  entities: 102
+  entities_in_spec: 102
+  relationships: 7
+entities:
+- name: Alibaba_wan3_0GenerationRequest
+  fields: 3
+- name: AnimeXlGenerationRequest
+  fields: 3
+- name: ApiError
+  fields: 4
+  description: API error response structure
+- name: AuroraUpscalerCreativeGenerationRequest
+  fields: 3
+- name: AuroraUpscalerPreciseGenerationRequest
+  fields: 3
+- name: Bfl_flux3ImageGenerationRequest
+  fields: 3
+- name: Bfl_flux3VideoGenerationRequest
+  fields: 3
+- name: Blueprint
+  fields: 8
+  description: A Blueprint object
+- name: BlueprintExecution
+  fields: 5
+  description: Represents the Execution of a Blueprint Version
+- name: BlueprintExecutionGeneration
+  fields: 4
+  description: Represents a single generation within a Blueprint Execution
+- name: BlueprintExecutionGenerationEdge
+  fields: 2
+  description: An edge containing a Blueprint Execution Generation node
+- name: BlueprintExecutionGenerationsConnection
+  fields: 2
+  description: A paginated connection of Blueprint Execution Generations
+- name: BlueprintVersion
+  fields: 3
+  description: A Blueprint Version object
+- name: Bytedance_seedance2_5GenerationRequest
+  fields: 3
+- name: Bytedance_seedream5_0FlashGenerationRequest
+  fields: 3
+- name: ConceptArtGenerationRequest
+  fields: 3
+- name: Cost
+  fields: 2
+- name: DialogueV3GenerationRequest
+  fields: 3
+- name: FluxDevGenerationRequest
+  fields: 3
+- name: FluxKontextMaxGenerationRequest
+  fields: 3
+- name: FluxKontextProGenerationRequest
+  fields: 3
+- name: FluxPro2_0GenerationRequest
+  fields: 3
+- name: FluxSchnellGenerationRequest
+  fields: 3
+- name: Gemini2_5FlashImageGenerationRequest
+  fields: 3
+- name: GeminiImage2GenerationRequest
+  fields: 3
+- name: GeminiOmniFlashGenerationRequest
+  fields: 3
+- name: Google_geminiOmni1_1FlashPreviewGenerationRequest
+  fields: 3
+- name: Google_nanoBanana2_1GenerationRequest
+  fields: 3
+- name: GptImage1_5GenerationRequest
+  fields: 3
+- name: GptImage2GenerationRequest
+  fields: 3
+- name: GraphicDesignGenerationRequest
+  fields: 3
+- name: GrokImagine1_5GenerationRequest
+  fields: 3
+- name: Hailuo03GenerationRequest
+  fields: 3
+- name: Hailuo23FastGenerationRequest
+  fields: 3
+- name: Hailuo23GenerationRequest
+  fields: 3
+- name: HappyHorse1_1GenerationRequest
+  fields: 3
+- name: HappyHorseGenerationRequest
+  fields: 3
+- name: IdeogramV3_0GenerationRequest
+  fields: 3
+- name: IdeogramV4_0GenerationRequest
+  fields: 3
+- name: Ideogram_ideogram4_5GenerationRequest
+  fields: 3
+- name: Ideogram_pImageIdeogramGenerationRequest
+  fields: 3
+- name: IllustrativeAlbedoGenerationRequest
+  fields: 3
+- name: KinoXlGenerationRequest
+  fields: 3
+- name: Kling2_5GenerationRequest
+  fields: 3
+- name: Kling2_5TurboStandardGenerationRequest
+  fields: 3
+- name: Kling2_6GenerationRequest
+  fields: 3
+- name: Kling3_0GenerationRequest
+  fields: 3
+- name: Kling3_0TurboGenerationRequest
+  fields: 3
+- name: KlingVideoO1GenerationRequest
+  fields: 3
+- name: KlingVideoO3GenerationRequest
+  fields: 3
+- name: Krea2TurboGenerationRequest
+  fields: 3
+- name: Krea_krea2GenerationRequest
+  fields: 3
+- name: LifelikeVisionGenerationRequest
+  fields: 3
+- name: LightningXlGenerationRequest
+  fields: 3
+- name: Ltxv2_3FastGenerationRequest
+  fields: 3
+- name: Ltxv2_3ProGenerationRequest
+  fields: 3
+- name: LucidOriginGenerationRequest
+  fields: 3
+- name: LucidRealismGenerationRequest
+  fields: 3
+- name: Meshy_meshy7GenerationRequest
+  fields: 3
+- name: Motion2_0FastGenerationRequest
+  fields: 3
+- name: Motion2_0GenerationRequest
+  fields: 3
+- name: MusicV1GenerationRequest
+  fields: 3
+- name: NanoBanana2GenerationRequest
+  fields: 3
+- name: NanoBanana2LiteGenerationRequest
+  fields: 3
+- name: NodeInput
+  fields: 3
+  description: A node input object for customizing a Blueprint Execution
+- name: Openai_gptImage2_5FlareGenerationRequest
+  fields: 3
+- name: Openai_gptImage2_5SunburstGenerationRequest
+  fields: 3
+- name: PhoenixV0_9GenerationRequest
+  fields: 3
+- name: PhoenixV1_0GenerationRequest
+  fields: 3
+- name: PortraitPerfectGenerationRequest
+  fields: 3
+- name: ProductionApiAvailableModel
+  fields: 3
+- name: PromptModerationFailureReason
+  fields: 3
+  description: Details about a generation failure due to prompt moderation
+- name: RecraftV4GenerationRequest
+  fields: 3
+- name: RecraftV4ProGenerationRequest
+  fields: 3
+- name: RemoveBgGenerationRequest
+  fields: 3
+- name: RemoveBgSyncGenerationRequest
+  fields: 5
+- name: RodinV2GenerationRequest
+  fields: 3
+- name: SeedAudio1_0GenerationRequest
+  fields: 3
+- name: Seedance1_0ProFastGenerationRequest
+  fields: 3
+- name: Seedance1_0ProGenerationRequest
+  fields: 3
+- name: Seedance2_0FastGenerationRequest
+  fields: 3
+- name: Seedance2_0GenerationRequest
+  fields: 3
+- name: Seedance2_0MiniGenerationRequest
+  fields: 3
+- name: Seedream4_0GenerationRequest
+  fields: 3
+- name: Seedream4_5GenerationRequest
+  fields: 3
+- name: Seedream5_0ProGenerationRequest
+  fields: 3
+- name: SoundEffectsV2GenerationRequest
+  fields: 3
+- name: StockPhotographyGenerationRequest
+  fields: 3
+- name: SyncGenerationResponse
+  fields: 4
+- name: SyncGenerationResult
+  fields: 5
+- name: TextVariable
+  fields: 2
+  description: A text variable for replacing placeholders in Blueprint templates
+- name: Veo3_1FastGenerate001GenerationRequest
+  fields: 3
+- name: Veo3_1Generate001GenerationRequest
+  fields: 3
+- name: Veo3_1LiteGenerationRequest
+  fields: 3
+- name: Wan2_6GenerationRequest
+  fields: 3
+- name: Wan2_7GenerationRequest
+  fields: 3
+- name: controlnet_input
+  fields: 5
+- name: cost
+  fields: 2
+  description: The cost of the operation.
+- name: element_input
+  fields: 2
+- name: lora
+  fields: 10
+- name: pageInfo
+  fields: 4
+  description: Pagination information following the Relay cursor pagination spec
+- name: user_elements_input
+  fields: 2
+relationships:
+- from: BlueprintExecutionGeneration
+  to: PromptModerationFailureReason
+  type: has_one
+  via: failedReason
+- from: BlueprintExecution
+  to: NodeInput
+  type: has_many
+  via: inputs
+- from: BlueprintExecutionGenerationsConnection
+  to: pageInfo
+  type: has_one
+  via: pageInfo
+- from: BlueprintExecutionGenerationsConnection
+  to: BlueprintExecutionGenerationEdge
+  type: has_many
+  via: edges
+- from: BlueprintExecutionGenerationEdge
+  to: BlueprintExecutionGeneration
+  type: has_one
+  via: node
+- from: SyncGenerationResponse
+  to: Cost
+  type: has_one
+  via: cost
+- from: SyncGenerationResponse
+  to: SyncGenerationResult
+  type: has_many
+  via: results

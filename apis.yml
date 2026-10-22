@@ -1,13 +1,15 @@
 aid: leonardo-ai
+
 url: https://raw.githubusercontent.com/api-evangelist/leonardo-ai/refs/heads/main/apis.yml
+
 name: Leonardo.AI
-description: Leonardo.AI is an Australian generative-AI company (acquired by Canva in July 2024) offering
-  a Production API for AI image generation, video generation, 3D model creation, custom model and element
-  training, realtime canvas editing, upscaling and variations, and Blueprint workflow execution. The platform
-  supports in-house Leonardo models (Phoenix, Lucid Origin, Lucid Realism) and third-party models (FLUX.1/FLUX.2,
-  Ideogram 3.0, GPT Image, Nano Banana, Seedream, Kling, LTX, Veo, Seedance, Hailuo, Rodin) under a unified
-  pay-as-you-go dollar-denominated API surface with webhook callbacks, MCP server integration, and official
-  Python and TypeScript SDKs.
+
+description: Leonardo.AI is an Australian generative-AI company (acquired by Canva in July 2024) offering a Production API for AI image generation,
+  video generation, 3D model creation, custom model and element training, realtime canvas editing, upscaling and variations, and Blueprint workflow
+  execution. The platform supports in-house Leonardo models (Phoenix, Lucid Origin, Lucid Realism) and third-party models (FLUX.1/FLUX.2, Ideogram
+  3.0, GPT Image, Nano Banana, Seedream, Kling, LTX, Veo, Seedance, Hailuo, Rodin) under a unified pay-as-you-go dollar-denominated API surface
+  with webhook callbacks, MCP server integration, and official Python and TypeScript SDKs.
+
 deliveryModel:
   model: saas
   open_source: false
@@ -20,6 +22,7 @@ deliveryModel:
   - pricing
   generated: '2026-08-28'
   method: derived
+
 accessModel:
   pricing: freemium
   onboarding: self-serve
@@ -34,12 +37,19 @@ accessModel:
   - security
   generated: '2026-09-03'
   method: derived
+
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/leonardo-ai.png
+
 kind: contract
+
 access: 3rd-Party
+
 x-docs-platform: readme
+
 x-docs-platform-confidence: high
+
 x-docs-platform-checked: 2026-10-03
+
 tags:
 - Artificial Intelligence
 - Image Generation
@@ -49,6 +59,7 @@ tags:
 - 3D
 - Diffusion Models
 - Canva
+
 tags_raw:
 - AI
 - Artificial Intelligence
@@ -60,668 +71,74 @@ tags_raw:
 - Diffusion
 - Canva
 - Image-Generation
-apis:
-- aid: leonardo-ai:leonardo-ai-3d-model-assets-api
-  name: Leonardo.AI 3D Model Assets API
-  description: The 3D Model Assets API from Leonardo.AI — 3 operation(s) for 3d model assets.
-  humanURL: https://docs.leonardo.ai/reference/creategeneration
-  tags:
-  - 3D Model Assets
-  properties:
-  - type: OpenAPI
-    url: openapi/leonardo-ai-3d-model-assets-api-openapi.yml
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/creategeneration
-  - type: GettingStarted
-    url: https://docs.leonardo.ai/docs/getting-started
-  - type: AsyncAPI
-    url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
-  - type: JSONSchema
-    url: json-schema/leonardo-ai-generation-schema.json
-  - type: JSONLD
-    url: json-ld/leonardo-ai-context.jsonld
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createimagetovideogeneration
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createvariationupscale
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createlcmgeneration
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/getplatformmodels
-  - type: JSONSchema
-    url: json-schema/leonardo-ai-model-schema.json
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createelement
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createdataset
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/uploadinitimage
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/uploadmedia
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/upload3dmodelasset
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/listblueprints
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/promptimprove
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/pricingcalculator
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/getuserself
-- aid: leonardo-ai:leonardo-ai-blueprints-api
-  name: Leonardo.AI Blueprints API
-  description: The Blueprints API from Leonardo.AI — 6 operation(s) for blueprints.
-  humanURL: https://docs.leonardo.ai/reference/creategeneration
-  tags:
-  - Blueprints
-  properties:
-  - type: OpenAPI
-    url: openapi/leonardo-ai-blueprints-api-openapi.yml
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/creategeneration
-  - type: GettingStarted
-    url: https://docs.leonardo.ai/docs/getting-started
-  - type: AsyncAPI
-    url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
-  - type: JSONSchema
-    url: json-schema/leonardo-ai-generation-schema.json
-  - type: JSONLD
-    url: json-ld/leonardo-ai-context.jsonld
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createimagetovideogeneration
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createvariationupscale
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createlcmgeneration
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/getplatformmodels
-  - type: JSONSchema
-    url: json-schema/leonardo-ai-model-schema.json
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createelement
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createdataset
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/uploadinitimage
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/uploadmedia
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/upload3dmodelasset
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/listblueprints
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/promptimprove
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/pricingcalculator
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/getuserself
-- aid: leonardo-ai:leonardo-ai-dataset-api
-  name: Leonardo.AI Dataset API
-  description: The Dataset API from Leonardo.AI — 4 operation(s) for dataset.
-  humanURL: https://docs.leonardo.ai/reference/creategeneration
-  tags:
-  - Datasets
-  tags_raw:
-  - Dataset
-  properties:
-  - type: OpenAPI
-    url: openapi/leonardo-ai-dataset-api-openapi.yml
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/creategeneration
-  - type: GettingStarted
-    url: https://docs.leonardo.ai/docs/getting-started
-  - type: AsyncAPI
-    url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
-  - type: JSONSchema
-    url: json-schema/leonardo-ai-generation-schema.json
-  - type: JSONLD
-    url: json-ld/leonardo-ai-context.jsonld
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createimagetovideogeneration
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createvariationupscale
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createlcmgeneration
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/getplatformmodels
-  - type: JSONSchema
-    url: json-schema/leonardo-ai-model-schema.json
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createelement
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createdataset
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/uploadinitimage
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/uploadmedia
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/upload3dmodelasset
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/listblueprints
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/promptimprove
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/pricingcalculator
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/getuserself
-- aid: leonardo-ai:leonardo-ai-elements-api
-  name: Leonardo.AI Elements API
-  description: The Elements API from Leonardo.AI — 3 operation(s) for elements.
-  humanURL: https://docs.leonardo.ai/reference/creategeneration
-  tags:
-  - Elements
-  properties:
-  - type: OpenAPI
-    url: openapi/leonardo-ai-elements-api-openapi.yml
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/creategeneration
-  - type: GettingStarted
-    url: https://docs.leonardo.ai/docs/getting-started
-  - type: AsyncAPI
-    url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
-  - type: JSONSchema
-    url: json-schema/leonardo-ai-generation-schema.json
-  - type: JSONLD
-    url: json-ld/leonardo-ai-context.jsonld
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createimagetovideogeneration
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createvariationupscale
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createlcmgeneration
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/getplatformmodels
-  - type: JSONSchema
-    url: json-schema/leonardo-ai-model-schema.json
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createelement
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createdataset
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/uploadinitimage
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/uploadmedia
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/upload3dmodelasset
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/listblueprints
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/promptimprove
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/pricingcalculator
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/getuserself
-- aid: leonardo-ai:leonardo-ai-image-api
-  name: Leonardo.AI Image API
-  description: The Image API from Leonardo.AI — 3 operation(s) for image.
-  humanURL: https://docs.leonardo.ai/reference/creategeneration
-  tags:
-  - Image
-  properties:
-  - type: OpenAPI
-    url: openapi/leonardo-ai-image-api-openapi.yml
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/creategeneration
-  - type: GettingStarted
-    url: https://docs.leonardo.ai/docs/getting-started
-  - type: AsyncAPI
-    url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
-  - type: JSONSchema
-    url: json-schema/leonardo-ai-generation-schema.json
-  - type: JSONLD
-    url: json-ld/leonardo-ai-context.jsonld
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createimagetovideogeneration
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createvariationupscale
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createlcmgeneration
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/getplatformmodels
-  - type: JSONSchema
-    url: json-schema/leonardo-ai-model-schema.json
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createelement
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createdataset
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/uploadinitimage
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/uploadmedia
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/upload3dmodelasset
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/listblueprints
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/promptimprove
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/pricingcalculator
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/getuserself
-- aid: leonardo-ai:leonardo-ai-init-images-api
-  name: Leonardo.AI Init Images API
-  description: The Init Images API from Leonardo.AI — 3 operation(s) for init images.
-  humanURL: https://docs.leonardo.ai/reference/creategeneration
-  tags:
-  - Init Images
-  properties:
-  - type: OpenAPI
-    url: openapi/leonardo-ai-init-images-api-openapi.yml
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/creategeneration
-  - type: GettingStarted
-    url: https://docs.leonardo.ai/docs/getting-started
-  - type: AsyncAPI
-    url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
-  - type: JSONSchema
-    url: json-schema/leonardo-ai-generation-schema.json
-  - type: JSONLD
-    url: json-ld/leonardo-ai-context.jsonld
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createimagetovideogeneration
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createvariationupscale
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createlcmgeneration
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/getplatformmodels
-  - type: JSONSchema
-    url: json-schema/leonardo-ai-model-schema.json
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createelement
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createdataset
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/uploadinitimage
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/uploadmedia
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/upload3dmodelasset
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/listblueprints
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/promptimprove
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/pricingcalculator
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/getuserself
-- aid: leonardo-ai:leonardo-ai-media-api
-  name: Leonardo.AI Media API
-  description: The Media API from Leonardo.AI — 2 operation(s) for media.
-  humanURL: https://docs.leonardo.ai/reference/creategeneration
-  tags:
-  - Media
-  properties:
-  - type: OpenAPI
-    url: openapi/leonardo-ai-media-api-openapi.yml
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/creategeneration
-  - type: GettingStarted
-    url: https://docs.leonardo.ai/docs/getting-started
-  - type: AsyncAPI
-    url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
-  - type: JSONSchema
-    url: json-schema/leonardo-ai-generation-schema.json
-  - type: JSONLD
-    url: json-ld/leonardo-ai-context.jsonld
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createimagetovideogeneration
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createvariationupscale
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createlcmgeneration
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/getplatformmodels
-  - type: JSONSchema
-    url: json-schema/leonardo-ai-model-schema.json
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createelement
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createdataset
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/uploadinitimage
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/uploadmedia
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/upload3dmodelasset
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/listblueprints
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/promptimprove
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/pricingcalculator
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/getuserself
-- aid: leonardo-ai:leonardo-ai-models-api
-  name: Leonardo.AI Models API
-  description: The Models API from Leonardo.AI — 4 operation(s) for models.
-  humanURL: https://docs.leonardo.ai/reference/creategeneration
-  tags:
-  - Models
-  properties:
-  - type: OpenAPI
-    url: openapi/leonardo-ai-models-api-openapi.yml
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/creategeneration
-  - type: GettingStarted
-    url: https://docs.leonardo.ai/docs/getting-started
-  - type: AsyncAPI
-    url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
-  - type: JSONSchema
-    url: json-schema/leonardo-ai-generation-schema.json
-  - type: JSONLD
-    url: json-ld/leonardo-ai-context.jsonld
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createimagetovideogeneration
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createvariationupscale
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createlcmgeneration
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/getplatformmodels
-  - type: JSONSchema
-    url: json-schema/leonardo-ai-model-schema.json
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createelement
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createdataset
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/uploadinitimage
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/uploadmedia
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/upload3dmodelasset
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/listblueprints
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/promptimprove
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/pricingcalculator
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/getuserself
-- aid: leonardo-ai:leonardo-ai-motion-api
-  name: Leonardo.AI Motion API
-  description: The Motion API from Leonardo.AI — 3 operation(s) for motion.
-  humanURL: https://docs.leonardo.ai/reference/creategeneration
-  tags:
-  - Motion
-  properties:
-  - type: OpenAPI
-    url: openapi/leonardo-ai-motion-api-openapi.yml
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/creategeneration
-  - type: GettingStarted
-    url: https://docs.leonardo.ai/docs/getting-started
-  - type: AsyncAPI
-    url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
-  - type: JSONSchema
-    url: json-schema/leonardo-ai-generation-schema.json
-  - type: JSONLD
-    url: json-ld/leonardo-ai-context.jsonld
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createimagetovideogeneration
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createvariationupscale
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createlcmgeneration
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/getplatformmodels
-  - type: JSONSchema
-    url: json-schema/leonardo-ai-model-schema.json
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createelement
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createdataset
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/uploadinitimage
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/uploadmedia
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/upload3dmodelasset
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/listblueprints
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/promptimprove
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/pricingcalculator
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/getuserself
-- aid: leonardo-ai:leonardo-ai-pricing-calculator-api
-  name: Leonardo.AI Pricing Calculator API
-  description: The Pricing Calculator API from Leonardo.AI — 1 operation(s) for pricing calculator.
-  humanURL: https://docs.leonardo.ai/reference/creategeneration
-  tags:
-  - Pricing Calculator
-  properties:
-  - type: OpenAPI
-    url: openapi/leonardo-ai-pricing-calculator-api-openapi.yml
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/creategeneration
-  - type: GettingStarted
-    url: https://docs.leonardo.ai/docs/getting-started
-  - type: AsyncAPI
-    url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
-  - type: JSONSchema
-    url: json-schema/leonardo-ai-generation-schema.json
-  - type: JSONLD
-    url: json-ld/leonardo-ai-context.jsonld
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createimagetovideogeneration
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createvariationupscale
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createlcmgeneration
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/getplatformmodels
-  - type: JSONSchema
-    url: json-schema/leonardo-ai-model-schema.json
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createelement
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createdataset
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/uploadinitimage
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/uploadmedia
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/upload3dmodelasset
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/listblueprints
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/promptimprove
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/pricingcalculator
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/getuserself
-- aid: leonardo-ai:leonardo-ai-prompt-api
-  name: Leonardo.AI Prompt API
-  description: The Prompt API from Leonardo.AI — 2 operation(s) for prompt.
-  humanURL: https://docs.leonardo.ai/reference/creategeneration
-  tags:
-  - Prompt
-  properties:
-  - type: OpenAPI
-    url: openapi/leonardo-ai-prompt-api-openapi.yml
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/creategeneration
-  - type: GettingStarted
-    url: https://docs.leonardo.ai/docs/getting-started
-  - type: AsyncAPI
-    url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
-  - type: JSONSchema
-    url: json-schema/leonardo-ai-generation-schema.json
-  - type: JSONLD
-    url: json-ld/leonardo-ai-context.jsonld
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createimagetovideogeneration
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createvariationupscale
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createlcmgeneration
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/getplatformmodels
-  - type: JSONSchema
-    url: json-schema/leonardo-ai-model-schema.json
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createelement
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createdataset
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/uploadinitimage
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/uploadmedia
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/upload3dmodelasset
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/listblueprints
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/promptimprove
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/pricingcalculator
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/getuserself
-- aid: leonardo-ai:leonardo-ai-realtime-canvas-api
-  name: Leonardo.AI Realtime Canvas API
-  description: The Realtime Canvas API from Leonardo.AI — 4 operation(s) for realtime canvas.
-  humanURL: https://docs.leonardo.ai/reference/creategeneration
-  tags:
-  - Realtime Canvas
-  properties:
-  - type: OpenAPI
-    url: openapi/leonardo-ai-realtime-canvas-api-openapi.yml
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/creategeneration
-  - type: GettingStarted
-    url: https://docs.leonardo.ai/docs/getting-started
-  - type: AsyncAPI
-    url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
-  - type: JSONSchema
-    url: json-schema/leonardo-ai-generation-schema.json
-  - type: JSONLD
-    url: json-ld/leonardo-ai-context.jsonld
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createimagetovideogeneration
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createvariationupscale
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createlcmgeneration
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/getplatformmodels
-  - type: JSONSchema
-    url: json-schema/leonardo-ai-model-schema.json
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createelement
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createdataset
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/uploadinitimage
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/uploadmedia
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/upload3dmodelasset
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/listblueprints
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/promptimprove
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/pricingcalculator
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/getuserself
-- aid: leonardo-ai:leonardo-ai-user-api
-  name: Leonardo.AI User API
-  description: The User API from Leonardo.AI — 1 operation(s) for user.
-  humanURL: https://docs.leonardo.ai/reference/creategeneration
-  tags:
-  - User
-  properties:
-  - type: OpenAPI
-    url: openapi/leonardo-ai-user-api-openapi.yml
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/creategeneration
-  - type: GettingStarted
-    url: https://docs.leonardo.ai/docs/getting-started
-  - type: AsyncAPI
-    url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
-  - type: JSONSchema
-    url: json-schema/leonardo-ai-generation-schema.json
-  - type: JSONLD
-    url: json-ld/leonardo-ai-context.jsonld
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createimagetovideogeneration
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createvariationupscale
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createlcmgeneration
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/getplatformmodels
-  - type: JSONSchema
-    url: json-schema/leonardo-ai-model-schema.json
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createelement
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createdataset
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/uploadinitimage
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/uploadmedia
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/upload3dmodelasset
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/listblueprints
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/promptimprove
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/pricingcalculator
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/getuserself
-- aid: leonardo-ai:leonardo-ai-variation-api
-  name: Leonardo.AI Variation API
-  description: The Variation API from Leonardo.AI — 6 operation(s) for variation.
-  humanURL: https://docs.leonardo.ai/reference/creategeneration
-  tags:
-  - Variation
-  properties:
-  - type: OpenAPI
-    url: openapi/leonardo-ai-variation-api-openapi.yml
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/creategeneration
-  - type: GettingStarted
-    url: https://docs.leonardo.ai/docs/getting-started
-  - type: AsyncAPI
-    url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
-  - type: JSONSchema
-    url: json-schema/leonardo-ai-generation-schema.json
-  - type: JSONLD
-    url: json-ld/leonardo-ai-context.jsonld
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createimagetovideogeneration
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createvariationupscale
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createlcmgeneration
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/getplatformmodels
-  - type: JSONSchema
-    url: json-schema/leonardo-ai-model-schema.json
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createelement
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/createdataset
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/uploadinitimage
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/uploadmedia
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/upload3dmodelasset
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/listblueprints
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/promptimprove
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/pricingcalculator
-  - type: Documentation
-    url: https://docs.leonardo.ai/reference/getuserself
+
+maintainers:
+- FN: Kin Lane
+  email: info@apievangelist.com
+  X: apievangelist
+  url: https://apievangelist.com
+
+created: '2026-05-25'
+
+modified: '2026-10-21'
+
+position: Consuming
+
+specificationVersion: '0.23'
+
 common:
+- type: Spectral
+  url: rules/leonardo-ai-rules.yml
+- type: Spectral
+  url: rules/leonardo-ai-jsonschema-spectral-rules.yml
+- type: Spectral
+  url: rules/leonardo-ai-asyncapi-spectral-rules.yml
+- type: Vocabulary
+  url: vocabulary/leonardo-ai-vocabulary.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Webhooks
+  url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
+- type: DataModel
+  url: data-model/leonardo-ai-data-model.yml
+- type: ChangeLog
+  url: changelog/leonardo-ai-changelog.yml
+- type: Conventions
+  url: conventions/leonardo-ai-conventions.yml
+- type: Deprecation
+  url: https://docs.leonardo.ai/docs/deprecations-changes
+- type: Lifecycle
+  url: lifecycle/leonardo-ai-lifecycle.yml
+- type: ErrorCatalog
+  url: errors/leonardo-ai-error-codes.yml
+- type: ErrorCatalog
+  url: errors/leonardo-ai-problem-types.yml
+- type: Conformance
+  url: conformance/leonardo-ai-conformance.yml
+- type: Overlay
+  url: overlays/leonardo-ai-3d-model-assets-api-overlay.yaml
+- type: LLMsTxt
+  url: llms/leonardo-ai-llms.txt
+- type: ToolCrosswalk
+  url: mcp/leonardo-ai-tool-crosswalk.yml
+- type: MCPServer
+  url: mcp/leonardo-ai-mcp.yml
+- type: SecurityTxt
+  url: well-known/leonardo-ai-www-security.txt
+- type: SecurityTxt
+  url: well-known/leonardo-ai-intercom-security.txt
+- type: SecurityTxt
+  url: well-known/leonardo-ai-api-security.txt
+- type: WellKnown
+  url: well-known/leonardo-ai-well-known.yml
+- type: Hosts
+  url: hosts/leonardo-ai-hosts.yml
+- type: IntegrationEdges
+  url: integrations/leonardo-ai-integration-edges.yml
+- type: Vendors
+  url: vendors/leonardo-ai-vendors.yml
+- type: Packages
+  url: packages/leonardo-ai-packages.yml
 - type: Website
   url: https://leonardo.ai
 - type: CapabilityMap
@@ -758,12 +175,9 @@ common:
 - url: https://docs.leonardo.ai/docs/api-error-messages
   name: API Error Messages
   type: ErrorCodes
-- url: https://docs.leonardo.ai/docs/concurrency-rate-limits-and-queue
+- url: https://docs.leonardo.ai/docs/guide-to-concurrency-queue-and-rate-limit
   name: Concurrency, Queue, and Rate Limiting
   type: RateLimits
-- url: https://docs.leonardo.ai/docs/webhook-callback-feature
-  name: Webhook Callback Feature
-  type: Webhooks
 - url: https://docs.leonardo.ai/docs/guide-to-the-webhook-callback-feature
   name: Guide to the Webhook Callback Feature
   type: Webhooks
@@ -779,10 +193,10 @@ common:
 - url: https://docs.leonardo.ai/docs/leonardoai-official-sdks
   name: Official SDKs
   type: SDKs
-- url: https://docs.leonardo.ai/docs/mcp-server
+- url: https://docs.leonardo.ai/docs/connect-to-leonardoai-mcp
   name: MCP Server Integration
   type: Documentation
-- url: https://docs.leonardo.ai/docs/nsfw-handling
+- url: https://docs.leonardo.ai/docs/guide-to-handling-not-safe-for-work-image-generation-nsfw
   name: NSFW Handling
   type: Documentation
 - url: https://github.com/Leonardo-Interactive
@@ -840,7 +254,7 @@ common:
 - type: LinkedIn
   url: https://www.linkedin.com/company/leonardo-ai/
 - type: X
-  url: https://x.com/LeonardoAi_
+  url: https://x.com/LeonardoAi
 - url: plans/leonardo-ai-plans-pricing.yml
   type: Plans
 - url: rate-limits/leonardo-ai-rate-limits.yml
@@ -849,12 +263,10 @@ common:
   type: FinOps
 - type: Features
   data:
-  - Production API for image, video, 3D, and workflow generation under a unified dollar-denominated PAYG
-    model
-  - In-house Leonardo models — Phoenix, Lucid Origin, Lucid Realism — alongside third-party FLUX.1/FLUX.2,
-    Ideogram 3.0, GPT Image 2, Nano Banana, Seedream
-  - Video generation through Kling 2.x/3.x, LTX 2.x, Veo 3.x, Seedance, Hailuo, and Stable Video Diffusion
-    motion models
+  - Production API for image, video, 3D, and workflow generation under a unified dollar-denominated PAYG model
+  - In-house Leonardo models — Phoenix, Lucid Origin, Lucid Realism — alongside third-party FLUX.1/FLUX.2, Ideogram 3.0, GPT Image 2, Nano Banana,
+    Seedream
+  - Video generation through Kling 2.x/3.x, LTX 2.x, Veo 3.x, Seedance, Hailuo, and Stable Video Diffusion motion models
   - 3D model generation via Rodin V2 and 3D model asset management
   - Realtime Canvas powered by LCM (Latent Consistency Models) for sub-second iterative editing
   - Custom Models and Custom Elements — LoRA-style fine-tuning on user-uploaded datasets
@@ -877,12 +289,438 @@ common:
   - https://leonardo.ai/api
   - https://leonardo.ai/news/supercharging-leonardo-with-canva/
   updated: '2026-05-25'
-maintainers:
-- FN: Kin Lane
-  email: info@apievangelist.com
-  X: apievangelist
-  url: https://apievangelist.com
-created: '2026-05-25'
-modified: '2026-09-16'
-position: Consuming
-specificationVersion: '0.23'
+- type: Support
+  url: https://docs.leonardo.ai/docs/need-more-support
+  name: Need More Support?
+- type: Pricing
+  url: https://docs.leonardo.ai/docs/pricing-and-plans-faq
+  name: Pricing & Plans FAQs
+
+apis:
+- aid: leonardo-ai:leonardo-ai-3d-model-assets-api
+  name: Leonardo.AI 3D Model Assets API
+  description: The 3D Model Assets API from Leonardo.AI — 3 operation(s) for 3d model assets.
+  humanURL: https://docs.leonardo.ai/reference/creategeneration
+  baseURL: https://cloud.leonardo.ai/api/rest/v1
+  tags:
+  - 3D Model Assets
+  properties:
+  - type: OpenAPI
+    url: openapi/leonardo-ai-3d-model-assets-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/creategeneration
+  - type: GettingStarted
+    url: https://docs.leonardo.ai/docs/getting-started
+  - type: AsyncAPI
+    url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-generation-schema.json
+  - type: JSONLD
+    url: json-ld/leonardo-ai-context.jsonld
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-model-schema.json
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/getmodels
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/createsyncgeneration
+- aid: leonardo-ai:leonardo-ai-blueprints-api
+  name: Leonardo.AI Blueprints API
+  description: The Blueprints API from Leonardo.AI — 6 operation(s) for blueprints.
+  humanURL: https://docs.leonardo.ai/reference/creategeneration
+  baseURL: https://cloud.leonardo.ai/api/rest/v1
+  tags:
+  - Blueprints
+  properties:
+  - type: OpenAPI
+    url: openapi/leonardo-ai-blueprints-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/creategeneration
+  - type: GettingStarted
+    url: https://docs.leonardo.ai/docs/getting-started
+  - type: AsyncAPI
+    url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-generation-schema.json
+  - type: JSONLD
+    url: json-ld/leonardo-ai-context.jsonld
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-model-schema.json
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/getmodels
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/createsyncgeneration
+- aid: leonardo-ai:leonardo-ai-dataset-api
+  name: Leonardo.AI Dataset API
+  description: The Dataset API from Leonardo.AI — 4 operation(s) for dataset.
+  humanURL: https://docs.leonardo.ai/reference/creategeneration
+  baseURL: https://cloud.leonardo.ai/api/rest/v1
+  tags:
+  - Datasets
+  tags_raw:
+  - Dataset
+  properties:
+  - type: OpenAPI
+    url: openapi/leonardo-ai-dataset-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/creategeneration
+  - type: GettingStarted
+    url: https://docs.leonardo.ai/docs/getting-started
+  - type: AsyncAPI
+    url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-generation-schema.json
+  - type: JSONLD
+    url: json-ld/leonardo-ai-context.jsonld
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-model-schema.json
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/getmodels
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/createsyncgeneration
+- aid: leonardo-ai:leonardo-ai-elements-api
+  name: Leonardo.AI Elements API
+  description: The Elements API from Leonardo.AI — 3 operation(s) for elements.
+  humanURL: https://docs.leonardo.ai/reference/creategeneration
+  baseURL: https://cloud.leonardo.ai/api/rest/v1
+  tags:
+  - Elements
+  properties:
+  - type: OpenAPI
+    url: openapi/leonardo-ai-elements-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/creategeneration
+  - type: GettingStarted
+    url: https://docs.leonardo.ai/docs/getting-started
+  - type: AsyncAPI
+    url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-generation-schema.json
+  - type: JSONLD
+    url: json-ld/leonardo-ai-context.jsonld
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-model-schema.json
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/getmodels
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/createsyncgeneration
+- aid: leonardo-ai:leonardo-ai-image-api
+  name: Leonardo.AI Image API
+  description: The Image API from Leonardo.AI — 3 operation(s) for image.
+  humanURL: https://docs.leonardo.ai/reference/creategeneration
+  baseURL: https://cloud.leonardo.ai/api/rest/v1
+  tags:
+  - Image
+  properties:
+  - type: OpenAPI
+    url: openapi/leonardo-ai-image-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/creategeneration
+  - type: GettingStarted
+    url: https://docs.leonardo.ai/docs/getting-started
+  - type: AsyncAPI
+    url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-generation-schema.json
+  - type: JSONLD
+    url: json-ld/leonardo-ai-context.jsonld
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-model-schema.json
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/getmodels
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/createsyncgeneration
+- aid: leonardo-ai:leonardo-ai-init-images-api
+  name: Leonardo.AI Init Images API
+  description: The Init Images API from Leonardo.AI — 3 operation(s) for init images.
+  humanURL: https://docs.leonardo.ai/reference/creategeneration
+  baseURL: https://cloud.leonardo.ai/api/rest/v1
+  tags:
+  - Init Images
+  properties:
+  - type: OpenAPI
+    url: openapi/leonardo-ai-init-images-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/creategeneration
+  - type: GettingStarted
+    url: https://docs.leonardo.ai/docs/getting-started
+  - type: AsyncAPI
+    url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-generation-schema.json
+  - type: JSONLD
+    url: json-ld/leonardo-ai-context.jsonld
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-model-schema.json
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/getmodels
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/createsyncgeneration
+- aid: leonardo-ai:leonardo-ai-media-api
+  name: Leonardo.AI Media API
+  description: The Media API from Leonardo.AI — 2 operation(s) for media.
+  humanURL: https://docs.leonardo.ai/reference/creategeneration
+  baseURL: https://cloud.leonardo.ai/api/rest/v1
+  tags:
+  - Media
+  properties:
+  - type: OpenAPI
+    url: openapi/leonardo-ai-media-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/creategeneration
+  - type: GettingStarted
+    url: https://docs.leonardo.ai/docs/getting-started
+  - type: AsyncAPI
+    url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-generation-schema.json
+  - type: JSONLD
+    url: json-ld/leonardo-ai-context.jsonld
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-model-schema.json
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/getmodels
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/createsyncgeneration
+- aid: leonardo-ai:leonardo-ai-models-api
+  name: Leonardo.AI Models API
+  description: The Models API from Leonardo.AI — 4 operation(s) for models.
+  humanURL: https://docs.leonardo.ai/reference/creategeneration
+  baseURL: https://cloud.leonardo.ai/api/rest/v1
+  tags:
+  - Models
+  properties:
+  - type: OpenAPI
+    url: openapi/leonardo-ai-models-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/creategeneration
+  - type: GettingStarted
+    url: https://docs.leonardo.ai/docs/getting-started
+  - type: AsyncAPI
+    url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-generation-schema.json
+  - type: JSONLD
+    url: json-ld/leonardo-ai-context.jsonld
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-model-schema.json
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/getmodels
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/createsyncgeneration
+- aid: leonardo-ai:leonardo-ai-motion-api
+  name: Leonardo.AI Motion API
+  description: The Motion API from Leonardo.AI — 3 operation(s) for motion.
+  humanURL: https://docs.leonardo.ai/reference/creategeneration
+  baseURL: https://cloud.leonardo.ai/api/rest/v1
+  tags:
+  - Motion
+  properties:
+  - type: OpenAPI
+    url: openapi/leonardo-ai-motion-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/creategeneration
+  - type: GettingStarted
+    url: https://docs.leonardo.ai/docs/getting-started
+  - type: AsyncAPI
+    url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-generation-schema.json
+  - type: JSONLD
+    url: json-ld/leonardo-ai-context.jsonld
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-model-schema.json
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/getmodels
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/createsyncgeneration
+- aid: leonardo-ai:leonardo-ai-pricing-calculator-api
+  name: Leonardo.AI Pricing Calculator API
+  description: The Pricing Calculator API from Leonardo.AI — 1 operation(s) for pricing calculator.
+  humanURL: https://docs.leonardo.ai/reference/creategeneration
+  baseURL: https://cloud.leonardo.ai/api/rest/v1
+  tags:
+  - Pricing Calculator
+  properties:
+  - type: OpenAPI
+    url: openapi/leonardo-ai-pricing-calculator-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/creategeneration
+  - type: GettingStarted
+    url: https://docs.leonardo.ai/docs/getting-started
+  - type: AsyncAPI
+    url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-generation-schema.json
+  - type: JSONLD
+    url: json-ld/leonardo-ai-context.jsonld
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-model-schema.json
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/getmodels
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/createsyncgeneration
+- aid: leonardo-ai:leonardo-ai-prompt-api
+  name: Leonardo.AI Prompt API
+  description: The Prompt API from Leonardo.AI — 2 operation(s) for prompt.
+  humanURL: https://docs.leonardo.ai/reference/creategeneration
+  baseURL: https://cloud.leonardo.ai/api/rest/v1
+  tags:
+  - Prompt
+  properties:
+  - type: OpenAPI
+    url: openapi/leonardo-ai-prompt-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/creategeneration
+  - type: GettingStarted
+    url: https://docs.leonardo.ai/docs/getting-started
+  - type: AsyncAPI
+    url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-generation-schema.json
+  - type: JSONLD
+    url: json-ld/leonardo-ai-context.jsonld
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-model-schema.json
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/getmodels
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/createsyncgeneration
+- aid: leonardo-ai:leonardo-ai-realtime-canvas-api
+  name: Leonardo.AI Realtime Canvas API
+  description: The Realtime Canvas API from Leonardo.AI — 4 operation(s) for realtime canvas.
+  humanURL: https://docs.leonardo.ai/reference/creategeneration
+  baseURL: https://cloud.leonardo.ai/api/rest/v1
+  tags:
+  - Realtime Canvas
+  properties:
+  - type: OpenAPI
+    url: openapi/leonardo-ai-realtime-canvas-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/creategeneration
+  - type: GettingStarted
+    url: https://docs.leonardo.ai/docs/getting-started
+  - type: AsyncAPI
+    url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-generation-schema.json
+  - type: JSONLD
+    url: json-ld/leonardo-ai-context.jsonld
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-model-schema.json
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/getmodels
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/createsyncgeneration
+- aid: leonardo-ai:leonardo-ai-user-api
+  name: Leonardo.AI User API
+  description: The User API from Leonardo.AI — 1 operation(s) for user.
+  humanURL: https://docs.leonardo.ai/reference/creategeneration
+  baseURL: https://cloud.leonardo.ai/api/rest/v1
+  tags:
+  - User
+  properties:
+  - type: OpenAPI
+    url: openapi/leonardo-ai-user-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/creategeneration
+  - type: GettingStarted
+    url: https://docs.leonardo.ai/docs/getting-started
+  - type: AsyncAPI
+    url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-generation-schema.json
+  - type: JSONLD
+    url: json-ld/leonardo-ai-context.jsonld
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-model-schema.json
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/getmodels
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/createsyncgeneration
+- aid: leonardo-ai:leonardo-ai-variation-api
+  name: Leonardo.AI Variation API
+  description: The Variation API from Leonardo.AI — 6 operation(s) for variation.
+  humanURL: https://docs.leonardo.ai/reference/creategeneration
+  baseURL: https://cloud.leonardo.ai/api/rest/v1
+  tags:
+  - Variation
+  properties:
+  - type: OpenAPI
+    url: openapi/leonardo-ai-variation-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/creategeneration
+  - type: GettingStarted
+    url: https://docs.leonardo.ai/docs/getting-started
+  - type: AsyncAPI
+    url: asyncapi/leonardo-ai-webhooks-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-generation-schema.json
+  - type: JSONLD
+    url: json-ld/leonardo-ai-context.jsonld
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-model-schema.json
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/getmodels
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/createsyncgeneration
+- aid: leonardo-ai:leonardo-ai-generations-api
+  name: Leonardo.AI Generations API
+  description: The Generations API from Leonardo.AI — 1 operation(s) for generations.
+  humanURL: https://docs.leonardo.ai/reference/creategeneration
+  baseURL: https://cloud.leonardo.ai/api/rest/v1
+  tags:
+  - Generations
+  properties:
+  - type: OpenAPI
+    url: openapi/leonardo-ai-generations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/creategeneration
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/createsyncgeneration
+  - type: Documentation
+    url: https://docs.leonardo.ai/reference/getmodels
+  - type: GettingStarted
+    url: https://docs.leonardo.ai/docs/getting-started
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-lightning-xl-generation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-kino-xl-generation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-lifelike-vision-generation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-illustrative-albedo-generation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-anime-xl-generation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/leonardo-ai-portrait-perfect-generation-request-schema.json
+x-coverage:
+  state: covered
+  reason: identity-verified
+  detail: leonardo.ai answers a plain GET with a 403 JS challenge (preflight front_door bot-challenge) but its legal pages render (preflight legal_pages
+    200); identity and pointers verified via docs.leonardo.ai (llms.txt index), GitHub org, LinkedIn and X. 13 dead docs reference pointers and
+    1 dead webhook page removed; 3 moved pages repointed; X handle corrected.
+  evidence:
+  - url: https://leonardo.ai
+    status: 403
+  - url: https://leonardo.ai/terms-of-service/
+    status: 200
+  - url: https://docs.leonardo.ai/llms.txt
+    status: 200
+  - url: https://docs.leonardo.ai/docs/getting-started
+    status: 200
+  - url: https://docs.leonardo.ai/reference/creategeneration
+    status: 200
+  - url: https://github.com/Leonardo-Interactive
+    status: 200
+  - url: https://x.com/LeonardoAi
+    status: 200
+  - url: https://x.com/LeonardoAi_
+    status: 404
+  - url: https://docs.leonardo.ai/reference/getuserself
+    status: 404
+x-enrichment:
+  date: '2026-10-21'
+  status: enriched
+  artifacts_added: 55
+  pass: modular-v1
+  engine: identity=anthropic,contract=anthropic,surfaces=anthropic,docs=anthropic,regulatory=anthropic

@@ -1,0 +1,6 @@
+generated: '2026-10-21'
+method: probed
+generator: harvest-llms.py
+source: https://docs.leonardo.ai/llms.txt
+bytes: 21848
+note: saved verbatim; the provider's own document

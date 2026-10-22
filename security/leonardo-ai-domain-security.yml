@@ -1,23 +1,22 @@
-generated: '2026-07-11'
+generated: '2026-10-21'
 method: probed
 source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
 hosts:
 - host: leonardo.ai
   https: true
   tls_version: TLSv1.3
-  cert_expires: Oct  4 03:33:35 2026 GMT
+  cert_expires: Dec  2 04:08:50 2026 GMT
   hsts: null
 - host: app.leonardo.ai
   https: true
   tls_version: TLSv1.3
-  cert_expires: Aug 11 09:13:55 2026 GMT
+  cert_expires: Dec 13 08:10:04 2026 GMT
   hsts: null
 - host: docs.leonardo.ai
   https: true
   tls_version: TLSv1.3
-  cert_expires: Oct  4 02:24:11 2026 GMT
-  hsts: true
-  hsts_max_age: 31536000
+  cert_expires: Dec  2 11:17:03 2026 GMT
+  hsts: null
 domains:
 - domain: leonardo.ai
   dnssec: false

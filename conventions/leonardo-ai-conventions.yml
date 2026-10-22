@@ -1,0 +1,40 @@
+generated: '2026-10-21'
+method: searched
+source: https://docs.leonardo.ai/docs/getting-started.md
+sources:
+- https://docs.leonardo.ai/docs/getting-started.md
+- https://docs.leonardo.ai/docs/api-faq.md
+- https://docs.leonardo.ai/docs/api-error-messages.md
+- https://docs.leonardo.ai/docs/guide-to-the-webhook-callback-feature.md
+- https://docs.leonardo.ai/docs/guide-to-concurrency-queue-and-rate-limit.md
+- openapi/
+authentication:
+  style: 'Bearer API key in the header: `authorization: Bearer <YOUR_API_KEY>` (Production API key, UUID format). Keys are created in the web app API Access tab; limit of 10 API keys per account.'
+  see: authentication/leonardo-ai-authentication.yml
+idempotency:
+  coverage: none
+  note: No idempotency key or replay protection is documented in the docs or declared in the OpenAPI.
+reversibility:
+  status: none
+  write_surface: Generation and training jobs (POST create*), uploads, and DELETE of generations, models, datasets, elements, init images, uploaded media and 3D models (deleteGenerationById, deleteModelById, deleteDatasetById, deleteElementById, deleteInitImageById, deleteUploadedMediaById, delete3DModelById).
+  reversal_operations: []
+  note: No cancel, refund, undo or restore operation is documented. Usage is deducted from the account balance in real time (https://docs.leonardo.ai/docs/pricing-and-plans-faq). On account deletion the docs state "your data is permanently removed and cannot be recovered" (https://docs.leonardo.ai/docs/api-faq).
+asynchrony:
+  pattern: Generation is asynchronous. Create returns a job ID; poll Get a Single Generation until status is COMPLETE or FAILED, or (recommended) receive a webhook callback.
+  webhooks: 'Webhook callback URL (https only) set per Production API key; Leonardo sends `authorization: Bearer <webhook callback API key>` and publishes source IP ranges (https://docs.leonardo.ai/docs/guide-to-the-webhook-callback-feature).'
+pagination:
+  style: offset
+  params: [offset, limit]
+  operations: [getGenerationsByUserId, get3DModelsByUserId]
+  source: openapi/leonardo-ai-image-api-openapi.yml, openapi/leonardo-ai-3d-model-assets-api-openapi.yml
+error_envelope:
+  shape: GraphQL-style error body with a message and an extensions `code` string (unexpected, access-denied, bad-request, validation-failed)
+  see: errors/leonardo-ai-error-codes.yml
+versioning:
+  style: URL path (/api/rest/v1, v2)
+  see: lifecycle/leonardo-ai-lifecycle.yml
+rate_limit_signaling:
+  note: Concurrency, queue/pending and rate limits are documented conceptually. No rate-limit response headers or exhaustion status code are documented.
+  see: rate-limits/leonardo-ai-rate-limits.yml
+cost_reporting: Generation responses include a `cost` object showing the amount charged and the unit (dollars or credits); `apiCreditCost` remains during the transition period (https://docs.leonardo.ai/docs/pricing-and-plans-faq).
+request_tracing: null

@@ -1,0 +1,1 @@
+{"resource":"https://mcp.leonardo.ai/v2/mcp","authorization_servers":["https://mcp.leonardo.ai"],"bearer_methods_supported":["header"],"resource_documentation":"https://docs.leonardo.ai/docs/connect-to-leonardoai-mcp","scopes_supported":["user.apiKey.create","offline_access"]}

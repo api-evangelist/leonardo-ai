@@ -1,0 +1,24 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist overlay for Leonardo.AI 3D Model Assets API
+  version: 1.0.0
+extends: openapi/leonardo-ai-3d-model-assets-api-openapi.yml
+x-generated: '2026-10-21'
+x-method: generated
+x-source: openapi/leonardo-ai-3d-model-assets-api-openapi.yml
+x-rationale: Adds provider documentation links (reference pages, llms.txt, error, rate-limit and webhook guides)
+  and agent-surface bindings without mutating the OpenAPI. Per-operation reference links are added only for the
+  v2 operations whose reference pages the provider indexes in llms.txt.
+actions:
+- target: $
+  description: Add externalDocs pointing at the provider API reference.
+  update:
+    externalDocs:
+      description: Leonardo.Ai API reference
+      url: https://docs.leonardo.ai/reference
+- target: $.info
+  description: Link the provider llms.txt index and error-message guide.
+  update:
+    x-llms-txt: https://docs.leonardo.ai/llms.txt
+    x-error-guide: https://docs.leonardo.ai/docs/api-error-messages
+    x-rate-limit-guide: https://docs.leonardo.ai/docs/guide-to-concurrency-queue-and-rate-limit

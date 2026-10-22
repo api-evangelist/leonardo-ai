@@ -1,0 +1,32 @@
+generated: '2026-10-21'
+method: searched
+source: https://docs.leonardo.ai/docs/deprecations-changes.md
+url: https://docs.leonardo.ai/docs/deprecations-changes
+scheme: dated
+current_version: null
+note: Leonardo publishes a dated deprecations-and-changes log rather than a release changelog; entries below are its most recent announcements. No general API changelog page was found in llms.txt.
+entries:
+- date: '2026-07-09'
+  version: null
+  breaking: true
+  highlights: [Sora 2 and Sora 2 Pro retired July 9, 2026 (provider-driven); use veo-3.1-fast-generate-001 / veo-3.1-generate-001.]
+- date: '2026-06-04'
+  version: null
+  breaking: true
+  highlights: [Motion 1.0 (svd) retiring June 17, 2026; replacement hailuo-2_3.]
+- date: '2026-06-01'
+  version: null
+  breaking: true
+  highlights: [Veo 3 and Veo 3 Fast retiring June 29, 2026 (Google retiring the models); replacement Veo 3.1 / Veo 3.1 Fast.]
+- date: '2026-05-05'
+  version: null
+  breaking: true
+  highlights: [Veo -preview model aliases retiring May 13, 2026; use the -001 model names (naming alias change only).]
+- date: '2026-05-01'
+  version: null
+  breaking: true
+  highlights: [Seedance 1.0 Lite retiring May 13, 2026; replacement seedance-1.0-pro-fast or seedance-2.0.]
+- date: '2026-04-20'
+  version: null
+  breaking: true
+  highlights: ['`mode` parameter for GPT Image-1.5 and Ideogram 3.0 retiring May 4, 2026; use `quality`.']

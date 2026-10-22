@@ -1,0 +1,31 @@
+generated: '2026-10-21'
+method: derived
+generator: derive-problem-types.py
+source:
+- openapi/leonardo-ai-3d-model-assets-api-openapi.yml
+- openapi/leonardo-ai-blueprints-api-openapi.yml
+- openapi/leonardo-ai-dataset-api-openapi.yml
+- openapi/leonardo-ai-elements-api-openapi.yml
+- openapi/leonardo-ai-image-api-openapi.yml
+- openapi/leonardo-ai-init-images-api-openapi.yml
+- openapi/leonardo-ai-media-api-openapi.yml
+- openapi/leonardo-ai-models-api-openapi.yml
+- openapi/leonardo-ai-motion-api-openapi.yml
+- openapi/leonardo-ai-pricing-calculator-api-openapi.yml
+- openapi/leonardo-ai-prompt-api-openapi.yml
+- openapi/leonardo-ai-realtime-canvas-api-openapi.yml
+format: custom
+envelope:
+  media_type: application/json
+  schema: null
+coverage:
+  operations: 56
+  statuses_declared: 1
+problems:
+- status: 400
+  title: Bad Request
+  description: Bad Request - Invalid input type or missing required GraphQL field
+  operations: 1
+  media_types:
+  - application/json
+  schema: null

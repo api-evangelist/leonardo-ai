@@ -1,0 +1,26 @@
+generated: '2026-10-21'
+method: searched
+source: https://docs.leonardo.ai/docs/leonardoai-official-sdks.md
+name: Leonardo.AI packages
+packages:
+- name: Leonardo-Ai-SDK
+  registry: pypi
+  url: https://pypi.org/project/Leonardo-Ai-SDK/
+  repository: https://github.com/Leonardo-Interactive/leonardo-python-sdk
+  language: python
+  official: true
+  version: 7.0.0
+  published: '2026-02-05'
+  install: pip install Leonardo-Ai-SDK
+  evidence: Listed as "Leonardo Python SDK" on https://docs.leonardo.ai/docs/leonardoai-official-sdks; install command from the repo README; version/date from https://pypi.org/pypi/leonardo-ai-sdk/json
+- name: '@leonardo-ai/sdk'
+  registry: npm
+  url: https://www.npmjs.com/package/@leonardo-ai/sdk
+  repository: https://github.com/Leonardo-Interactive/leonardo-ts-sdk
+  language: typescript
+  official: true
+  version: 4.21.3
+  published: '2026-04-21'
+  install: npm add @leonardo-ai/sdk
+  evidence: Listed as "Leonardo TypeScript SDK" on https://docs.leonardo.ai/docs/leonardoai-official-sdks; install command from the repo README; version/date from https://registry.npmjs.org/@leonardo-ai/sdk
+note: The docs name exactly two official SDKs (Python, TypeScript). The API FAQ states there is no official Unity plugin.
