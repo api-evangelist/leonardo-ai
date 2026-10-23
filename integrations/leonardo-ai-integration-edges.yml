@@ -19,6 +19,9 @@ checked:
 - https://n8n.io/integrations/leonardo/
 - https://zapier.com/apps/leonardo-ai/integrations
 - https://zapier.com/apps/leonardo/integrations
+- https://ifttt.com/explore/services
+- https://ifttt.com/leonardo_ai
+- https://ifttt.com/sitemap_services.xml
 summary: null
 marketplace_apps: []
 edges:
@@ -86,6 +89,31 @@ edges:
   quote: Yes, Leonardo.Ai have an integration with Pabbly Connect and Make.com please reach out to these third party
     apps if you have any questions on how to use it.
   detected: '2026-10-21'
+- partner_name: IFTTT
+  partner: ifttt
+  partner_match: aggregator
+  type: marketplace
+  marketplace: ifttt-services
+  channel: ipaas-listing
+  relationship: ipaas-bridge
+  direction: third-party
+  evidence: https://ifttt.com/leonardo_ai
+  category: null
+  contract_reference:
+    register: IFTTT service directory (ifttt.com/explore/services; ifttt.com/<service>)
+    spec_file: null
+    role: ipaas-connector:ifttt
+    registered_name: Leonardo AI
+    matched_domain: leonardo.ai
+    matched_by: domain
+    app_slug: leonardo_ai
+    ifttt_category: Photo & video
+    builder: unknown (the service page does not say who built it)
+    detected_by: sweep-ifttt-services.py
+    detected: '2026-10-23'
+    signal_note: one edge per (provider, platform); triggers, actions and applet counts are context, never read
+  detected_by: sweep-ifttt-services.py
+  first_seen: '2026-10-23'
 templates: []
 skips:
 - label: Make
