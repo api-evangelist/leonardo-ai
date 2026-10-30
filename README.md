@@ -1,4 +1,4 @@
-# Leonardo.AI (leonardo-ai)
+# Leonardo.AI
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,356 +66,242 @@
 
 Leonardo.AI is an Australian generative-AI company (acquired by Canva in July 2024) offering a Production API for AI image generation, video generation, 3D model creation, custom model and element training, realtime canvas editing, upscaling and variations, and Blueprint workflow execution. The platform supports in-house Leonardo models (Phoenix, Lucid Origin, Lucid Realism) and third-party models (FLUX.1/FLUX.2, Ideogram 3.0, GPT Image, Nano Banana, Seedream, Kling, LTX, Veo, Seedance, Hailuo, Rodin) under a unified pay-as-you-go dollar-denominated API surface with webhook callbacks, MCP server integration, and official Python and TypeScript SDKs.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/leonardo-ai/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/leonardo-ai/refs/heads/main/apis.yml)
+**Areas:** Artificial Intelligence · Image Generation · Video Generation · Generative AI · Creative · 3D · Diffusion Models · Canva
 
-## Scope
+## Leonardo.AI on APIs.io
 
-- **Position:** Consuming
-- **Access:** 3rd-Party
+Everything profiled for Leonardo.AI is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/leonardo-ai/](https://apis.io/providers/leonardo-ai/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (15)
 
-- AI
-- Artificial Intelligence
-- Image Generation
-- Video Generation
-- Generative AI
-- Creative
-- 3D
-- Diffusion
-- Canva
+- [Leonardo.AI 3D Model Assets API](https://apis.io/apis/leonardo-ai/leonardo-ai-3d-model-assets-api/) — The 3D Model Assets API from Leonardo.AI — 3 operation(s) for 3d model assets.
+- [Leonardo.AI Blueprints API](https://apis.io/apis/leonardo-ai/leonardo-ai-blueprints-api/) — The Blueprints API from Leonardo.AI — 6 operation(s) for blueprints.
+- [Leonardo.AI Dataset API](https://apis.io/apis/leonardo-ai/leonardo-ai-dataset-api/) — The Dataset API from Leonardo.AI — 4 operation(s) for dataset.
+- [Leonardo.AI Elements API](https://apis.io/apis/leonardo-ai/leonardo-ai-elements-api/) — The Elements API from Leonardo.AI — 3 operation(s) for elements.
+- [Leonardo.AI Image API](https://apis.io/apis/leonardo-ai/leonardo-ai-image-api/) — The Image API from Leonardo.AI — 3 operation(s) for image.
+- [Leonardo.AI Init Images API](https://apis.io/apis/leonardo-ai/leonardo-ai-init-images-api/) — The Init Images API from Leonardo.AI — 3 operation(s) for init images.
+- [Leonardo.AI Media API](https://apis.io/apis/leonardo-ai/leonardo-ai-media-api/) — The Media API from Leonardo.AI — 2 operation(s) for media.
+- [Leonardo.AI Models API](https://apis.io/apis/leonardo-ai/leonardo-ai-models-api/) — The Models API from Leonardo.AI — 4 operation(s) for models.
+- [Leonardo.AI Motion API](https://apis.io/apis/leonardo-ai/leonardo-ai-motion-api/) — The Motion API from Leonardo.AI — 3 operation(s) for motion.
+- [Leonardo.AI Pricing Calculator API](https://apis.io/apis/leonardo-ai/leonardo-ai-pricing-calculator-api/) — The Pricing Calculator API from Leonardo.AI — 1 operation(s) for pricing calculator.
+- [Leonardo.AI Prompt API](https://apis.io/apis/leonardo-ai/leonardo-ai-prompt-api/) — The Prompt API from Leonardo.AI — 2 operation(s) for prompt.
+- [Leonardo.AI Realtime Canvas API](https://apis.io/apis/leonardo-ai/leonardo-ai-realtime-canvas-api/) — The Realtime Canvas API from Leonardo.AI — 4 operation(s) for realtime canvas.
+- [Leonardo.AI User API](https://apis.io/apis/leonardo-ai/leonardo-ai-user-api/) — The User API from Leonardo.AI — 1 operation(s) for user.
+- [Leonardo.AI Variation API](https://apis.io/apis/leonardo-ai/leonardo-ai-variation-api/) — The Variation API from Leonardo.AI — 6 operation(s) for variation.
+- [Leonardo.AI Generations API](https://apis.io/apis/leonardo-ai/leonardo-ai-generations-api/) — The Generations API from Leonardo.AI — 1 operation(s) for generations.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-25
-- **Modified:** 2026-05-30
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### AsyncAPI (1)
 
-### Leonardo.AI Image Generation API
+Event-driven and webhook contracts.
 
-Create image generations with FLUX.2 Pro, FLUX Dev, FLUX Schnell, FLUX.1 Kontext, Phoenix, Lucid Origin, Lucid Realism, Ideogram 3.0, GPT Image 2, Nano Banana, Seedream, and other supported models. POST /generations submits a job; results are retrieved via GET /generations/{id} or via the optional webhook callback. Supports PhotoReal, Alchemy, image prompts, image guidance (ControlNet), enhanced prompts, transparency, and per-model knobs.
+- [Leonardo.AI Webhook Callbacks](https://apis.io/asyncapis/leonardo-ai/leonardo-ai-webhooks-asyncapi/)
 
-- **Human URL:** [https://docs.leonardo.ai/reference/creategeneration](https://docs.leonardo.ai/reference/creategeneration)
+#### Event channels (1)
 
-#### Tags
+Individual events and webhooks the provider emits.
 
-- AI
-- Image Generation
-- Generations
+- [/leonardo/webhook](https://apis.io/channels/leonardo-ai/leonardo-webhook/)
 
-#### Properties
+#### Agentic access (1)
 
-- [Documentation](https://docs.leonardo.ai/reference/creategeneration)
-- [Getting Started](https://docs.leonardo.ai/docs/getting-started)
-- [OpenAPI](openapi/leonardo-ai-image-generation-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/leonardo-ai-image-generation.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/leonardo-ai-image-generation.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [AsyncAPI](asyncapi/leonardo-ai-webhooks-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-- [JSON Schema](json-schema/leonardo-ai-generation-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/leonardo-ai-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-### Leonardo.AI Video Generation API
+- [Leonardo Ai Agentic Access](https://apis.io/agentic-access/leonardo-ai/leonardo-ai-agentic-access/)
 
-Generate videos from text or images via Kling 2.x/3.x, LTX 2.x, Veo 3.x, Seedance, Hailuo, and Stable Video Diffusion motion models. Three endpoints cover image-to-video, text-to-video, and SVD motion. Jobs are asynchronous; poll the variation/motion endpoints or use a webhook for completion.
+#### JSON Schema (8)
 
-- **Human URL:** [https://docs.leonardo.ai/reference/createimagetovideogeneration](https://docs.leonardo.ai/reference/createimagetovideogeneration)
+The data models the API reads and writes.
 
-#### Tags
+- [Anime](https://apis.io/schemas/leonardo-ai/leonardo-ai-anime-xl-generation-request/)
+- [Leonardo.AI Generation](https://apis.io/schemas/leonardo-ai/leonardo-ai-generation/)
+- [Illustrative Albedo](https://apis.io/schemas/leonardo-ai/leonardo-ai-illustrative-albedo-generation-request/)
+- [Cinematic Kino](https://apis.io/schemas/leonardo-ai/leonardo-ai-kino-xl-generation-request/)
+- [Lifelike Vision](https://apis.io/schemas/leonardo-ai/leonardo-ai-lifelike-vision-generation-request/)
+- [Leonardo Lightning](https://apis.io/schemas/leonardo-ai/leonardo-ai-lightning-xl-generation-request/)
+- [Leonardo.AI Model](https://apis.io/schemas/leonardo-ai/leonardo-ai-model/)
+- [Portrait Perfect](https://apis.io/schemas/leonardo-ai/leonardo-ai-portrait-perfect-generation-request/)
 
-- AI
-- Video Generation
-- Motion
+#### JSON Structure (1)
 
-#### Properties
+Data models expressed in JSON Structure.
 
-- [Documentation](https://docs.leonardo.ai/reference/createimagetovideogeneration)
-- [OpenAPI](openapi/leonardo-ai-video-generation-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/leonardo-ai-video-generation.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/leonardo-ai-video-generation.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Leonardo Ai Generation Structure](https://apis.io/json-structure/leonardo-ai/leonardo-ai-generation-structure/)
 
-### Leonardo.AI Variation and Upscale API
+#### JSON-LD (1)
 
-Apply post-generation transformations to existing images including unzoom (outpainting), creative upscale, background removal, and the Universal Upscaler. Retrieve variation job status by ID.
+Linked-data contexts for the provider's vocabulary.
 
-- **Human URL:** [https://docs.leonardo.ai/reference/createvariationupscale](https://docs.leonardo.ai/reference/createvariationupscale)
+- [Leonardo Ai Context](https://apis.io/jsonld/leonardo-ai/leonardo-ai-context/)
 
-#### Tags
+#### Vocabulary (1)
 
-- AI
-- Upscale
-- Variation
-- Image Editing
+The provider's domain terms, defined.
 
-#### Properties
+- [Leonardo.AI Vocabulary](https://apis.io/vocabularies/leonardo-ai/leonardo-ai-vocabulary/)
 
-- [Documentation](https://docs.leonardo.ai/reference/createvariationupscale)
-- [OpenAPI](openapi/leonardo-ai-variation-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/leonardo-ai-variation.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/leonardo-ai-variation.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Examples (5)
 
-### Leonardo.AI Realtime Canvas API
+Example requests and responses.
 
-Real-time Latent Consistency Model (LCM) endpoints for sub-second iterative generation, inpainting, instant refine, and Alchemy upscale — backing the Leonardo Realtime Canvas product surface.
+- [Leonardo Ai Create Generation Example](https://apis.io/examples/leonardo-ai/leonardo-ai-create-generation-example/)
+- [Leonardo Ai Get Generation Example](https://apis.io/examples/leonardo-ai/leonardo-ai-get-generation-example/)
+- [Leonardo Ai Image To Video Example](https://apis.io/examples/leonardo-ai/leonardo-ai-image-to-video-example/)
+- [Leonardo Ai Me Example](https://apis.io/examples/leonardo-ai/leonardo-ai-me-example/)
+- [Leonardo Ai Pricing Calculator Example](https://apis.io/examples/leonardo-ai/leonardo-ai-pricing-calculator-example/)
 
-- **Human URL:** [https://docs.leonardo.ai/reference/createlcmgeneration](https://docs.leonardo.ai/reference/createlcmgeneration)
+#### Collections (42)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- AI
-- Realtime
-- LCM
-- Canvas
+- [Leonardo.AI 3D Model Assets API](https://apis.io/collections/leonardo-ai/open-leonardo-ai-3d-model-assets/)
+- [Leonardo.AI 3D Model Assets API](https://apis.io/collections/leonardo-ai/open-leonardo-ai-3d-model-assets-api/)
+- [Leonardo.AI Blueprints API](https://apis.io/collections/leonardo-ai/open-leonardo-ai-blueprints/)
+- [Leonardo.AI 3D Model Assets Blueprints API](https://apis.io/collections/leonardo-ai/open-leonardo-ai-blueprints-api/)
+- [Leonardo.AI 3D Model Assets Dataset API](https://apis.io/collections/leonardo-ai/open-leonardo-ai-dataset-api/)
+- [Leonardo.AI Datasets API](https://apis.io/collections/leonardo-ai/open-leonardo-ai-datasets/)
+- [Leonardo.AI Elements API](https://apis.io/collections/leonardo-ai/open-leonardo-ai-elements/)
+- [Leonardo.AI 3D Model Assets Elements API](https://apis.io/collections/leonardo-ai/open-leonardo-ai-elements-api/)
+- [Leonardo.AI 3D Model Assets Image API](https://apis.io/collections/leonardo-ai/open-leonardo-ai-image-api/)
+- [Leonardo.AI Image Generation API](https://apis.io/collections/leonardo-ai/open-leonardo-ai-image-generation/)
+- [Leonardo.AI Init Images API](https://apis.io/collections/leonardo-ai/open-leonardo-ai-init-images/)
+- [Leonardo.AI 3D Model Assets Init Images API](https://apis.io/collections/leonardo-ai/open-leonardo-ai-init-images-api/)
+- [Leonardo.AI Media API](https://apis.io/collections/leonardo-ai/open-leonardo-ai-media/)
+- [Leonardo.AI 3D Model Assets Media API](https://apis.io/collections/leonardo-ai/open-leonardo-ai-media-api/)
+- [Leonardo.AI Models API](https://apis.io/collections/leonardo-ai/open-leonardo-ai-models/)
+- [Leonardo.AI 3D Model Assets Models API](https://apis.io/collections/leonardo-ai/open-leonardo-ai-models-api/)
+- [Leonardo.AI 3D Model Assets Motion API](https://apis.io/collections/leonardo-ai/open-leonardo-ai-motion-api/)
+- [Leonardo.AI Pricing Calculator API](https://apis.io/collections/leonardo-ai/open-leonardo-ai-pricing-calculator/)
+- [Leonardo.AI 3D Model Assets Pricing Calculator API](https://apis.io/collections/leonardo-ai/open-leonardo-ai-pricing-calculator-api/)
+- [Leonardo.AI Prompt API](https://apis.io/collections/leonardo-ai/open-leonardo-ai-prompt/)
+- [Leonardo.AI 3D Model Assets Prompt API](https://apis.io/collections/leonardo-ai/open-leonardo-ai-prompt-api/)
+- [Leonardo.AI Realtime Canvas API](https://apis.io/collections/leonardo-ai/open-leonardo-ai-realtime-canvas/)
+- [Leonardo.AI 3D Model Assets Realtime Canvas API](https://apis.io/collections/leonardo-ai/open-leonardo-ai-realtime-canvas-api/)
+- [Leonardo.AI User API](https://apis.io/collections/leonardo-ai/open-leonardo-ai-user/)
+- [Leonardo.AI 3D Model Assets User API](https://apis.io/collections/leonardo-ai/open-leonardo-ai-user-api/)
+- …and 17 more published on APIs.io
 
-#### Properties
+#### Overlays (15)
 
-- [Documentation](https://docs.leonardo.ai/reference/createlcmgeneration)
-- [OpenAPI](openapi/leonardo-ai-realtime-canvas-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/leonardo-ai-realtime-canvas.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/leonardo-ai-realtime-canvas.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+OpenAPI overlays, including conversational phrasing for each operation.
 
-### Leonardo.AI Models API
+- [Leonardo Ai 3D Model Assets Api Overlay](https://apis.io/overlays/leonardo-ai/leonardo-ai-3d-model-assets-api-overlay/)
+- [Leonardo Ai Blueprints Api Overlay](https://apis.io/overlays/leonardo-ai/leonardo-ai-blueprints-api-overlay/)
+- [Leonardo Ai Dataset Api Overlay](https://apis.io/overlays/leonardo-ai/leonardo-ai-dataset-api-overlay/)
+- [Leonardo Ai Elements Api Overlay](https://apis.io/overlays/leonardo-ai/leonardo-ai-elements-api-overlay/)
+- [Leonardo Ai Image Api Overlay](https://apis.io/overlays/leonardo-ai/leonardo-ai-image-api-overlay/)
+- [Leonardo Ai Init Images Api Overlay](https://apis.io/overlays/leonardo-ai/leonardo-ai-init-images-api-overlay/)
+- [Leonardo Ai Media Api Overlay](https://apis.io/overlays/leonardo-ai/leonardo-ai-media-api-overlay/)
+- [Leonardo Ai Models Api Overlay](https://apis.io/overlays/leonardo-ai/leonardo-ai-models-api-overlay/)
+- [Leonardo Ai Motion Api Overlay](https://apis.io/overlays/leonardo-ai/leonardo-ai-motion-api-overlay/)
+- [Leonardo Ai Pricing Calculator Api Overlay](https://apis.io/overlays/leonardo-ai/leonardo-ai-pricing-calculator-api-overlay/)
+- [Leonardo Ai Prompt Api Overlay](https://apis.io/overlays/leonardo-ai/leonardo-ai-prompt-api-overlay/)
+- [Leonardo Ai Realtime Canvas Api Overlay](https://apis.io/overlays/leonardo-ai/leonardo-ai-realtime-canvas-api-overlay/)
+- [Leonardo Ai User Api Overlay](https://apis.io/overlays/leonardo-ai/leonardo-ai-user-api-overlay/)
+- [Leonardo Ai V2 Api Overlay](https://apis.io/overlays/leonardo-ai/leonardo-ai-v2-api-overlay/)
+- [Leonardo Ai Variation Api Overlay](https://apis.io/overlays/leonardo-ai/leonardo-ai-variation-api-overlay/)
 
-List Leonardo platform models (Phoenix, Lucid, FLUX, Ideogram, etc.) and manage custom fine-tuned models. Includes model catalog, custom model training, retrieval, and deletion by user.
+#### Governance rules (3)
 
-- **Human URL:** [https://docs.leonardo.ai/reference/getplatformmodels](https://docs.leonardo.ai/reference/getplatformmodels)
+Spectral rulesets for the provider's contracts.
 
-#### Tags
+- [Leonardo.AI — asyncapi rules](https://apis.io/rules/leonardo-ai/leonardo-ai-asyncapi-spectral-rules/)
+- [Leonardo.AI — jsonschema rules](https://apis.io/rules/leonardo-ai/leonardo-ai-jsonschema-spectral-rules/)
+- [Leonardo.AI API Rules](https://apis.io/rules/leonardo-ai/leonardo-ai-rules/)
 
-- AI
-- Models
-- Custom Models
-- Training
+#### Security (2)
 
-#### Properties
+Authentication, trust centre, and vulnerability disclosure.
 
-- [Documentation](https://docs.leonardo.ai/reference/getplatformmodels)
-- [OpenAPI](openapi/leonardo-ai-models-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/leonardo-ai-models.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/leonardo-ai-models.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/leonardo-ai-model-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [Leonardo Ai Authentication](https://apis.io/security/leonardo-ai/leonardo-ai-authentication/)
+- [Leonardo Ai Domain Security](https://apis.io/security/leonardo-ai/leonardo-ai-domain-security/)
 
-### Leonardo.AI Elements API
+#### Plans and pricing (1)
 
-Create and manage Custom Elements — LoRA-style style adapters trainable on user datasets and reusable across image generations to enforce visual identity, style, or character consistency.
+Published plans, tiers and prices.
 
-- **Human URL:** [https://docs.leonardo.ai/reference/createelement](https://docs.leonardo.ai/reference/createelement)
+- [Leonardo Ai Plans Pricing](https://apis.io/plans/leonardo-ai/leonardo-ai-plans-pricing/)
 
-#### Tags
+#### Rate limits (1)
 
-- AI
-- Elements
-- LoRA
-- Fine Tuning
+Published request limits.
 
-#### Properties
+- [Leonardo Ai Rate Limits](https://apis.io/rate-limits/leonardo-ai/leonardo-ai-rate-limits/)
 
-- [Documentation](https://docs.leonardo.ai/reference/createelement)
-- [OpenAPI](openapi/leonardo-ai-elements-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/leonardo-ai-elements.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/leonardo-ai-elements.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### FinOps (1)
 
-### Leonardo.AI Datasets API
+What the API costs to run, by operation.
 
-Create, upload to, and delete training datasets used as input to custom model and element training. Upload images directly or from existing generations.
+- [Leonardo Ai Finops](https://apis.io/finops/leonardo-ai/leonardo-ai-finops/)
 
-- **Human URL:** [https://docs.leonardo.ai/reference/createdataset](https://docs.leonardo.ai/reference/createdataset)
+## Where to find this API
 
-#### Tags
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- AI
-- Datasets
-- Training
-
-#### Properties
-
-- [Documentation](https://docs.leonardo.ai/reference/createdataset)
-- [OpenAPI](openapi/leonardo-ai-datasets-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/leonardo-ai-datasets.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/leonardo-ai-datasets.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Leonardo.AI Init Images API
-
-Upload, retrieve, and delete init images used for image-to-image, image-prompt, canvas, and image-guidance workflows. Returns presigned upload URLs.
-
-- **Human URL:** [https://docs.leonardo.ai/reference/uploadinitimage](https://docs.leonardo.ai/reference/uploadinitimage)
-
-#### Tags
-
-- AI
-- Image Upload
-- Init Images
-
-#### Properties
-
-- [Documentation](https://docs.leonardo.ai/reference/uploadinitimage)
-- [OpenAPI](openapi/leonardo-ai-init-images-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/leonardo-ai-init-images.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/leonardo-ai-init-images.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Leonardo.AI Media API
-
-Upload, retrieve, and delete general-purpose media (images, video frames, reference assets) used across generation endpoints.
-
-- **Human URL:** [https://docs.leonardo.ai/reference/uploadmedia](https://docs.leonardo.ai/reference/uploadmedia)
-
-#### Tags
-
-- AI
-- Media
-- Upload
-
-#### Properties
-
-- [Documentation](https://docs.leonardo.ai/reference/uploadmedia)
-- [OpenAPI](openapi/leonardo-ai-media-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/leonardo-ai-media.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/leonardo-ai-media.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Leonardo.AI 3D Model Assets API
-
-Upload, retrieve, and delete 3D model assets — used with Rodin V2 and other 3D-capable workflows for texturing and generation.
-
-- **Human URL:** [https://docs.leonardo.ai/reference/upload3dmodelasset](https://docs.leonardo.ai/reference/upload3dmodelasset)
-
-#### Tags
-
-- AI
-- 3D
-- Models
-- Assets
-
-#### Properties
-
-- [Documentation](https://docs.leonardo.ai/reference/upload3dmodelasset)
-- [OpenAPI](openapi/leonardo-ai-3d-model-assets-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/leonardo-ai-3d-model-assets.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/leonardo-ai-3d-model-assets.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Leonardo.AI Blueprints API
-
-Execute Leonardo Blueprints — pre-packaged multi-step image and video workflows authored in the Leonardo App — and retrieve their executions, generations, and version history. List the blueprint catalog for the authenticated user.
-
-- **Human URL:** [https://docs.leonardo.ai/reference/listblueprints](https://docs.leonardo.ai/reference/listblueprints)
-
-#### Tags
-
-- AI
-- Blueprints
-- Workflows
-
-#### Properties
-
-- [Documentation](https://docs.leonardo.ai/reference/listblueprints)
-- [OpenAPI](openapi/leonardo-ai-blueprints-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/leonardo-ai-blueprints.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/leonardo-ai-blueprints.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Leonardo.AI Prompt API
-
-Improve user-supplied prompts with the Prompt Improvement endpoint and generate random prompts for inspiration. Used to bootstrap and refine generation requests.
-
-- **Human URL:** [https://docs.leonardo.ai/reference/promptimprove](https://docs.leonardo.ai/reference/promptimprove)
-
-#### Tags
-
-- AI
-- Prompts
-- Prompt Engineering
-
-#### Properties
-
-- [Documentation](https://docs.leonardo.ai/reference/promptimprove)
-- [OpenAPI](openapi/leonardo-ai-prompt-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/leonardo-ai-prompt.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/leonardo-ai-prompt.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Leonardo.AI Pricing Calculator API
-
-Pre-calculate the API credit cost (in USD) of a generation request before submitting it. Mirrors the cost estimation logic of the in-app Pricing Calculator.
-
-- **Human URL:** [https://docs.leonardo.ai/reference/pricingcalculator](https://docs.leonardo.ai/reference/pricingcalculator)
-
-#### Tags
-
-- AI
-- Pricing
-- Cost
-- FinOps
-
-#### Properties
-
-- [Documentation](https://docs.leonardo.ai/reference/pricingcalculator)
-- [OpenAPI](openapi/leonardo-ai-pricing-calculator-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/leonardo-ai-pricing-calculator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/leonardo-ai-pricing-calculator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Leonardo.AI User API
-
-Retrieve the authenticated user's profile, subscription info, and remaining API credit balance via GET /me. Used as the canonical balance-check endpoint for FinOps reporting.
-
-- **Human URL:** [https://docs.leonardo.ai/reference/getuserself](https://docs.leonardo.ai/reference/getuserself)
-
-#### Tags
-
-- AI
-- User
-- Account
-
-#### Properties
-
-- [Documentation](https://docs.leonardo.ai/reference/getuserself)
-- [OpenAPI](openapi/leonardo-ai-user-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/leonardo-ai-user.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/leonardo-ai-user.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [Portal](https://leonardo.ai)
-- [Portal](https://leonardo.ai/api)
+- [Website](https://leonardo.ai)
 - [Documentation](https://docs.leonardo.ai/)
-- [Getting Started](https://docs.leonardo.ai/docs/getting-started)
-- [Documentation](https://docs.leonardo.ai/reference)
-- [Documentation](https://docs.leonardo.ai/llms.txt)
-- [Documentation](https://docs.leonardo.ai/docs/api-faq)
-- [Errors](https://docs.leonardo.ai/docs/api-error-messages)
-- [Rate Limits](https://docs.leonardo.ai/docs/concurrency-rate-limits-and-queue)
-- [Webhooks](https://docs.leonardo.ai/docs/webhook-callback-feature)
-- [Webhooks](https://docs.leonardo.ai/docs/guide-to-the-webhook-callback-feature)
-- [AsyncAPI](asyncapi/leonardo-ai-webhooks-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
+- [Getting started](https://docs.leonardo.ai/docs/getting-started)
 - [Pricing](https://docs.leonardo.ai/docs/payg-guide)
-- [Pricing](https://docs.leonardo.ai/docs/plan-with-the-pricing-calculator)
-- [SDK](https://docs.leonardo.ai/docs/leonardoai-official-sdks)
-- [Documentation](https://docs.leonardo.ai/docs/mcp-server)
-- [Documentation](https://docs.leonardo.ai/docs/nsfw-handling)
-- [GitHub Organization](https://github.com/Leonardo-Interactive)
-- [SDK](https://github.com/Leonardo-Interactive/leonardo-python-sdk)
-- [SDK](https://github.com/Leonardo-Interactive/leonardo-ts-sdk)
-- [Tool](https://github.com/Leonardo-Interactive/agent-browser)
-- [Tool](https://github.com/Leonardo-Interactive/background-removal-js)
-- [Plugins](https://github.com/Leonardo-Interactive/leonardo-texturing-blender-plugin)
-- [SDK](https://pypi.org/project/leonardoai/)
-- [SDK](https://www.npmjs.com/package/@leonardo-ai/sdk)
-- [Sign Up](https://app.leonardo.ai/api-access)
-- [Portal](https://app.leonardo.ai/)
-- [Pricing](https://leonardo.ai/pricing/)
-- [Blog](https://leonardo.ai/news/)
-- [Press](https://leonardo.ai/news/supercharging-leonardo-with-canva/)
-- [Press](https://www.canva.com/newsroom/news/leonardo-ai/)
-- [Terms of Service](https://leonardo.ai/terms-of-service/)
-- [Privacy Policy](https://leonardo.ai/privacy-policy/)
-- [Acceptable Use Policy](https://leonardo.ai/legal/acceptable-use-policy/)
 - [Support](https://intercom.help/leonardo-ai/)
-- [Documentation](https://intercom.help/leonardo-ai/en/articles/8973587-api-reference-and-guides-for-developers)
-- [LinkedIn](https://www.linkedin.com/company/leonardo-ai/)
-- [X (Twitter)](https://x.com/LeonardoAi_)
-- [Plans](plans/leonardo-ai-plans-pricing.yml)
-- [Rate Limits](rate-limits/leonardo-ai-rate-limits.yml)
-- [Fin Ops](finops/leonardo-ai-finops.yml)
-- [Features](undefined)
+- [Blog](https://leonardo.ai/news/)
+- [Terms of service](https://leonardo.ai/terms-of-service/)
+- [Privacy policy](https://leonardo.ai/privacy-policy/)
+- [GitHub](https://github.com/Leonardo-Interactive)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** info@apievangelist.com
-**URL:** https://apievangelist.com
+**Kin Score 62.9** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.7 |
+| Contract quality | 66.1 |
+| Contract governance | 31.8 |
+| Operational transparency | 68.4 |
+| Developer ergonomics | 58.9 |
+| Access clarity | 73.7 |
+
+**Agent readiness 43.7** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 22.7** — AI & Biometrics
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/leonardo-ai/](https://apis.io/providers/leonardo-ai/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Leonardo.AI: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/leonardo-ai/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
